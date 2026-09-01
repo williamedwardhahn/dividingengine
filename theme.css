@@ -1,0 +1,156 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   THE DIVIDING ENGINE — shared design system
+   Two halves, one instrument.
+
+   The site is about marks made to count things: tally notches on a bone,
+   graduations on a sextant, ticks on a rule, frames on a strip of film.
+   So the whole system is built from one motif — the graduation — and one
+   rule about colour:
+
+       RUBRIC (red)  = the human mark.   Headings, links, chapter marks,
+                       the reckoner's own voice. Rubrication is what a
+                       scribe used to mark a book of tables.
+       BRASS  (gold) = the machine's graduation.  Years, scale ticks,
+                       durations, counts. Anything an instrument measured.
+
+   That rule holds in both halves, so the two never look like two sites.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --paper:#f2eee4; --paper-2:#e9e3d5; --card:#fbf9f4;
+  --ink:#231e15;   --ink-2:#57514a;   --ink-3:#8b8377;
+  --rule:#cdc4b0;  --rule-2:#ded6c4;
+
+  --rubric:#9a3b28; --rubric-2:#b8503a;      /* the human mark   */
+  --brass:#9a6c2f;  --brass-2:#b98a45;       /* the machine's    */
+  --dead:#a8271b;
+
+  --display:Copperplate,"Copperplate Gothic Light",Cinzel,Georgia,serif;
+  --serif:Spectral,"Iowan Old Style",Charter,Palatino,Georgia,serif;
+  --mono:"IBM Plex Mono","SF Mono",Menlo,ui-monospace,monospace;
+
+  --shadow:0 1px 2px rgba(40,32,20,.07), 0 6px 18px -8px rgba(40,32,20,.18);
+  --shadow-lift:0 24px 70px -18px rgba(40,32,20,.42);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#14130f; --paper-2:#1b1a15; --card:#1e1c17;
+    --ink:#ece5d6;   --ink-2:#a49b8a;   --ink-3:#6f6759;
+    --rule:#37332a;  --rule-2:#2a2721;
+    --rubric:#d4644a; --rubric-2:#e87d63;
+    --brass:#d0a15a;  --brass-2:#e0b978;
+    --dead:#d4574a;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -10px rgba(0,0,0,.7);
+    --shadow-lift:0 24px 70px -18px rgba(0,0,0,.75);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14130f; --paper-2:#1b1a15; --card:#1e1c17;
+  --ink:#ece5d6;   --ink-2:#a49b8a;   --ink-3:#6f6759;
+  --rule:#37332a;  --rule-2:#2a2721;
+  --rubric:#d4644a; --rubric-2:#e87d63;
+  --brass:#d0a15a;  --brass-2:#e0b978;
+  --dead:#d4574a;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 24px -10px rgba(0,0,0,.7);
+  --shadow-lift:0 24px 70px -18px rgba(0,0,0,.75);
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--serif); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+/* paper grain — the ground both halves stand on */
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none; opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) body::before{mix-blend-mode:screen;opacity:.28}
+}
+:root[data-theme="dark"] body::before{mix-blend-mode:screen;opacity:.28}
+
+.wrap{position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 28px}
+a{color:var(--rubric)}
+a:hover{color:var(--rubric-2)}
+
+/* ── the graduation: the site's one motif ─────────────────────────────── */
+.gradrule{
+  height:9px; width:100%;
+  background-image:repeating-linear-gradient(to right,var(--rule) 0 1px,transparent 1px 8px);
+  background-position:bottom; background-repeat:repeat-x; background-size:auto 5px;
+  border-bottom:1px solid var(--rule);
+}
+
+/* ── masthead, shared by both halves ──────────────────────────────────── */
+.masthead{padding:38px 0 0; text-align:center}
+.wordmark{
+  margin:0; font-weight:400; letter-spacing:.15em; font-family:var(--display);
+  font-size:clamp(28px,5.4vw,48px); line-height:1;
+}
+.wordmark a{text-decoration:none; color:var(--ink); display:inline-block}
+.tagline{
+  margin:13px 0 0; font-family:var(--mono); font-size:11px; letter-spacing:.42em;
+  text-transform:uppercase; color:var(--ink-2); text-indent:.42em;
+}
+
+/* the half-switcher: one site, two halves */
+.halves{
+  display:flex; justify-content:center; gap:0; margin:22px 0 0;
+  font-family:var(--mono); font-size:11px; letter-spacing:.2em; text-transform:uppercase;
+}
+.halves a{
+  text-decoration:none; color:var(--ink-3); padding:7px 20px;
+  border:1px solid var(--rule); border-right-width:0; background:var(--card);
+}
+.halves a:first-child{border-radius:2px 0 0 2px}
+.halves a:last-child{border-right-width:1px; border-radius:0 2px 2px 0}
+.halves a:hover{color:var(--ink)}
+.halves a[aria-current]{background:var(--rubric); color:var(--paper); border-color:var(--rubric)}
+.masthead .gradrule{margin-top:24px}
+
+/* ── shared small parts ───────────────────────────────────────────────── */
+.mono{font-family:var(--mono)}
+.datum{                                  /* anything an instrument measured */
+  font-family:var(--mono); font-variant-numeric:tabular-nums;
+  color:var(--brass); letter-spacing:.04em;
+}
+.label{
+  font-family:var(--mono); font-size:10px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.chip{
+  display:inline-block; background:var(--paper-2); border:1px solid var(--rule);
+  border-radius:2px; cursor:pointer; color:var(--rubric); font-family:var(--mono);
+  font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; padding:3px 8px;
+  text-decoration:none;
+}
+.chip:hover{border-color:var(--rubric); background:var(--card); color:var(--rubric-2)}
+.chip.era{color:var(--brass)}
+.chip.era:hover{border-color:var(--brass); color:var(--brass-2)}
+
+footer{margin-top:56px; border-top:1px solid var(--rule); background:var(--paper-2)}
+footer .in{
+  display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap;
+  padding:22px 0 30px; font-family:var(--mono); font-size:10.5px;
+  letter-spacing:.11em; text-transform:uppercase; color:var(--ink-3);
+}
+footer a{color:var(--ink-3); text-decoration:none}
+footer a:hover{color:var(--rubric)}
+.theme{
+  background:none; border:1px solid var(--rule); border-radius:2px; cursor:pointer;
+  color:var(--ink-3); font:inherit; font-family:var(--mono); padding:5px 9px;
+  letter-spacing:.11em; text-transform:uppercase;
+}
+.theme:hover{color:var(--brass); border-color:var(--brass)}
+
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .masthead{padding:26px 0 0}
+}

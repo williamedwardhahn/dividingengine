@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A history of computation as one timeline, from 43,000 BCE to now — 1,266 cards, 734 of them archival film.">
+<link rel="icon" href="favicon.ico">
+<title>Dividing Engine — Technology, Science, History</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
+<style>
+/*__THEME__*/
+#masthead{position:relative;text-align:center;padding:0 0 20px}
+#masthead .banner{height:150px;background-image:url("assets/banner.png");
+  background-repeat:repeat-x;background-position:0 0;opacity:.85}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #masthead .banner{opacity:.30}}
+:root[data-theme="dark"] #masthead .banner{opacity:.30}
+#masthead .brandwrap{position:absolute;left:0;right:0;top:38px}
+/* let the drawing sit behind the words without fighting them */
+#masthead .brandwrap::before{content:"";position:absolute;left:50%;top:-26px;
+  transform:translateX(-50%);width:min(760px,86vw);height:150px;z-index:-1;
+  background:radial-gradient(ellipse at center,
+    var(--paper) 0%, var(--paper) 42%, transparent 78%)}
+#masthead .wordmark{margin:0;font-family:var(--display);font-weight:400;letter-spacing:.15em;
+  font-size:clamp(26px,5vw,46px);line-height:1}
+#masthead .wordmark a{color:var(--ink);text-decoration:none}
+#masthead .tagline{margin:12px 0 0;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.4em;text-transform:uppercase;color:var(--ink-2);text-indent:.4em}
+@media(max-width:640px){#masthead .banner{height:112px}#masthead .brandwrap{top:24px}}
+
+#sheetview{max-width:1280px;margin:0 auto;padding:22px 24px 40px}
+.sheetbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:6px 0 18px;
+  border-bottom:1px solid var(--rule)}
+.sfind{position:relative;flex:1 1 240px;min-width:200px}
+.sfind svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);opacity:.45}
+.sfind input{width:100%;background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  padding:9px 12px 9px 30px;color:var(--ink);font:inherit;font-size:14px}
+.sfind input:focus{outline:none;border-color:var(--brass)}
+#sera{background:var(--card);border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:8px 10px}
+#scount{margin-left:auto}
+#sheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:24px 18px;padding:26px 0 0;list-style:none;margin:0}
+#sheet li a{display:block;text-decoration:none;color:inherit}
+.sfr{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--paper-2);
+  border:1px solid var(--rule);border-radius:1px;box-shadow:var(--shadow);transition:border-color .18s,transform .18s}
+.sfr img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.72) contrast(1.03);
+  transition:filter .3s,transform .5s}
+#sheet li a:hover .sfr{border-color:var(--brass);transform:translateY(-2px)}
+#sheet li a:hover .sfr img{filter:saturate(1);transform:scale(1.035)}
+.sfr .sdur{position:absolute;right:0;bottom:0;font-family:var(--mono);font-size:9px;
+  background:rgba(20,18,15,.74);color:#f2eee4;padding:2px 5px}
+.sfr .sbad{position:absolute;right:0;top:0;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:#fff;padding:2px 5px;background:var(--dead)}
+.sfr .sbad.off{background:var(--brass)}
+.smeta{display:flex;gap:8px;align-items:baseline;padding:9px 1px 0}
+.smeta .sy{font-family:var(--mono);font-size:11px;color:var(--brass);flex:none}
+.smeta .sn{font-size:13.5px;line-height:1.35}
+#sheet li a:hover .sn{color:var(--rubric)}
+li.sdead .sfr img{filter:saturate(.12) opacity(.6)}
+.smore{grid-column:1/-1;padding:24px 0;text-align:center;color:var(--ink-3);
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+
+.filmmeta{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 14px}
+.film{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--rule);
+  border-radius:2px;overflow:hidden;box-shadow:var(--shadow);margin:2px 0 4px}
+.film iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.filmshot{margin:0 0 18px}
+.filmshot img{max-width:340px;width:100%;border:1px solid var(--rule);display:block;
+  filter:saturate(.15) opacity(.65)}
+.filmgone{border:1px dashed var(--rule);border-radius:2px;background:var(--paper-2);
+  padding:26px;display:flex;flex-direction:column;align-items:center;gap:11px;text-align:center}
+.filmgone .hd{font-family:var(--mono);font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--dead)}
+.filmgone p{margin:0;max-width:46ch;font-size:14px;color:var(--ink-2)}
+
+/* ============================================================
+   THE RECKONER — HyperCard's model, a manuscript's manners.
+   Warm paper, ink serif, one rubric red. No chrome, no noise.
+   ============================================================ */
+/* tokens come from the shared theme, injected above */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;min-height:100vh;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:17px;line-height:1.62;
+  background-image:radial-gradient(rgba(120,100,60,.05) 1px,transparent 1px);
+  background-size:5px 5px;
+}
+::selection{background:var(--rubric);color:var(--card)}
+a{color:var(--rubric)}
+
+/* ---------- header ---------- */
+#menubar{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:2px;flex-wrap:wrap;
+  background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--rule);padding:10px 18px;
+}
+#menubar .brand{
+  font-style:italic;font-size:19px;letter-spacing:.2px;margin-right:auto;
+}
+#menubar .brand b{font-style:normal;font-weight:700}
+.mi{
+  font-family:var(--serif);font-size:14.5px;color:var(--ink);background:none;border:0;
+  padding:7px 11px;cursor:pointer;border-radius:999px;
+}
+.mi:hover,.mi:focus-visible,details.menu[open]>summary.mi{background:var(--ink);color:var(--card)}
+details.menu{position:relative}
+details.menu>summary{list-style:none}
+details.menu>summary::-webkit-details-marker{display:none}
+.dropdown{
+  position:absolute;right:0;top:calc(100% + 8px);min-width:290px;max-height:68vh;overflow:auto;
+  background:var(--card);border:1px solid var(--rule);border-radius:8px;
+  box-shadow:0 14px 40px rgba(40,28,10,.14);padding:8px 0;
+}
+.dropdown a{display:block;padding:6px 18px;color:var(--ink);text-decoration:none;font-size:14.5px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dropdown a:hover,.dropdown a:focus-visible{background:var(--paper-2)}
+.dropdown .grp{padding:10px 18px 4px;font-size:11px;letter-spacing:.18em;color:var(--rubric);font-weight:700}
+.dropdown .sep{border-top:1px solid var(--rule);margin:6px 0}
+
+/* ---------- the card ---------- */
+#deskarea{display:flex;justify-content:center;padding:34px 16px 80px}
+#card{
+  width:100%;max-width:780px;background:var(--card);
+  border:1px solid var(--rule);border-radius:4px;
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset,0 16px 44px rgba(50,35,12,.08);
+  overflow:hidden;
+}
+#tbar{padding:22px 52px 0;display:flex;align-items:baseline;gap:14px}
+#tbar .lbl{
+  font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rubric);
+}
+#tbar .box{display:none}
+#progress{height:2px;background:var(--paper-2);margin:14px 52px 0;border-radius:2px;overflow:hidden}
+#progress i{display:block;height:100%;background:var(--rubric);width:0;transition:width .25s ease}
+#content{padding:26px 52px 34px;min-height:340px}
+.eyebrow{display:flex;gap:12px;font-size:12.5px;letter-spacing:.06em;color:var(--ink-3);margin:0 0 6px}
+.eyebrow .ch{margin-left:auto;font-style:italic;letter-spacing:0;text-align:right}
+.date{
+  display:inline-block;font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
+  color:var(--brass);border:1px solid color-mix(in srgb,var(--brass) 45%,var(--rule));
+  border-radius:999px;padding:3px 12px;margin:6px 0 14px;background:color-mix(in srgb,var(--brass) 5%,var(--card));
+}
+h1.cardtitle{
+  font-size:clamp(26px,4.6vw,34px);line-height:1.16;margin:2px 0 16px;
+  font-weight:700;letter-spacing:-.012em;text-wrap:balance;
+}
+.body{font-size:17px;color:var(--ink)}
+.body em{font-style:italic}
+.body strong{font-weight:700}
+a.x{
+  color:var(--rubric);font-weight:600;text-decoration:underline;
+  text-decoration-color:color-mix(in srgb,var(--rubric) 40%,transparent);
+  text-underline-offset:3px;text-decoration-thickness:1px;border-radius:2px;
+}
+a.x:hover,a.x:focus-visible{text-decoration-color:var(--rubric)}
+sup{font-size:.72em}
+
+/* ---------- nav strip ---------- */
+#navbar{
+  display:flex;align-items:center;gap:10px;border-top:1px solid var(--rule);
+  padding:16px 52px;background:color-mix(in srgb,var(--paper-2) 45%,var(--card));flex-wrap:wrap;
+}
+.btn{
+  font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--card);
+  border:1px solid var(--rule);border-radius:999px;padding:9px 18px;cursor:pointer;
+  min-height:40px;transition:background .12s,color .12s,border-color .12s;
+}
+.btn:hover{border-color:var(--ink)}
+.btn:active{background:var(--ink);color:var(--card)}
+.btn:disabled{opacity:.32;cursor:default;border-color:var(--rule)}
+.btn.arrow{width:44px;padding:0;font-size:17px;line-height:1}
+#counter{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);letter-spacing:.05em}
+:focus-visible{outline:2px solid var(--rubric);outline-offset:2px;border-radius:3px}
+
+/* ---------- widgets ---------- */
+table.hc{border-collapse:collapse;width:100%;margin:16px 0;font-family:var(--mono);font-size:12.5px}
+table.hc th,table.hc td{border-bottom:1px solid var(--rule);padding:9px 10px;text-align:left}
+table.hc th{font-family:var(--serif);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+table.hc tr:first-child th{border-top:2px solid var(--ink)}
+table.hc td.num{text-align:right;white-space:nowrap}
+table.hc tr:nth-child(2) td{font-weight:700;color:var(--rubric)}
+.field{
+  font-family:var(--mono);font-size:16px;border:1px solid var(--rule);border-radius:6px;
+  padding:7px 10px;width:96px;background:var(--card);color:var(--ink);
+}
+.field:focus{border-color:var(--rubric);outline:none}
+.punch{
+  border-left:3px solid var(--rubric);background:color-mix(in srgb,var(--rubric) 4%,var(--card));
+  padding:14px 18px;margin:18px 0 6px;font-size:16.5px;border-radius:0 6px 6px 0;
+}
+.small{font-size:13px;color:var(--ink-3)}
+ul.map{list-style:none;padding:0;margin:0 0 8px;columns:2;column-gap:34px}
+ul.map li{margin:0 0 7px;break-inside:avoid;font-size:15.5px}
+ul.map .small{margin-left:6px}
+@media (max-width:600px){
+  ul.map{columns:1}
+  #tbar,#content,#navbar{padding-left:24px;padding-right:24px}
+  #progress{margin-left:24px;margin-right:24px}
+}
+kbd{
+  font-family:var(--mono);font-size:12px;border:1px solid var(--rule);border-bottom-width:2px;
+  padding:1px 6px;border-radius:5px;background:var(--card);
+}
+
+/* ---------- find dialog ---------- */
+dialog{
+  border:1px solid var(--rule);border-radius:10px;background:var(--card);color:var(--ink);
+  padding:26px;max-width:440px;width:92%;font-family:var(--serif);
+  box-shadow:0 24px 70px rgba(40,28,10,.25);
+}
+dialog::backdrop{background:rgba(58,46,24,.35);backdrop-filter:blur(2px)}
+dialog h2{font-size:20px;margin:0 0 14px;font-style:italic;font-weight:600}
+dialog input{
+  width:100%;font-family:var(--serif);font-size:17px;border:1px solid var(--rule);
+  border-radius:8px;padding:11px 14px;background:var(--paper);color:var(--ink);
+}
+dialog input:focus{border-color:var(--rubric);outline:none}
+dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
+
+@media (prefers-reduced-motion:no-preference){
+  #card .fade{animation:rise .18s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+}
+@media print{#menubar,#navbar,#progress{display:none}#card{box-shadow:none;border:0}}
+</style>
+</head>
+<body>
+
+<header id="masthead">
+  <div class="banner"></div>
+  <div class="brandwrap">
+    <h1 class="wordmark"><a href="#" data-act="sheet">Dividing Engine</a></h1>
+    <p class="tagline">Technology &middot; Science &middot; History</p>
+  </div>
+</header>
+
+<nav id="menubar" aria-label="Menu">
+  <button class="mi" data-act="sheet">Films</button>
+  <button class="mi" data-act="home">Home</button>
+  <details class="menu" id="gomenu">
+    <summary class="mi">Go &#9662;</summary>
+    <div class="dropdown" id="golist"></div>
+  </details>
+  <button class="mi" data-act="find">Find</button>
+  <button class="mi" data-act="wander">Wander</button>
+  <button class="mi" data-act="back">Back</button>
+</nav>
+<div class="gradrule"></div>
+
+<section id="sheetview" hidden>
+  <div class="sheetbar">
+    <div class="sfind">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5 14.5 14.5"/></svg>
+      <input id="sq" type="search" placeholder="Search the films" autocomplete="off" aria-label="Search films">
+    </div>
+    <select id="sera" aria-label="Era"></select>
+    <span id="scount" class="label"></span>
+  </div>
+  <ul id="sheet"></ul>
+  <p id="smore" class="smore" hidden></p>
+</section>
+
+<main id="deskarea">
+  <article id="card" aria-live="polite">
+    <div id="tbar"><span class="lbl" id="stacklbl">Stack</span></div>
+    <div id="progress"><i id="progfill"></i></div>
+    <div id="content"></div>
+    <div id="navbar">
+      <button class="btn arrow" id="prevb" aria-label="Previous card">&#8592;</button>
+      <button class="btn arrow" id="nextb" aria-label="Next card">&#8594;</button>
+      <button class="btn" id="nextstackb">Next stack</button>
+      <span id="counter"></span>
+    </div>
+  </article>
+</main>
+
+<dialog id="finddlg">
+  <h2>Find in all cards</h2>
+  <input id="findq" type="search" placeholder="abacus, Turing, tide, Mersenne&#8230;" aria-label="Search text">
+  <div class="row">
+    <button class="btn" id="findcancel">Cancel</button>
+    <button class="btn" id="findgo">Find</button>
+  </div>
+</dialog>
+
+<script>
+"use strict";
+/* ================================================================
+   DATA — injected by build.py from the master-list markdown.
+   To add cards: edit the .md, re-run build.py. Or edit this object.
+   Card fields: t=title, b=body, d=date, ch=chapter. ================ */
+const DATA = /*__DATA__*/null;
+
+/* ---------- hand-authored Home stack ---------- */
+const AGE_UNIVERSE_S = 4.35e17;
+const TRAINING_RUN   = 3e26;
+const LADDER = [
+  ["A skilled abacus operator", 1],
+  ["A mechanical desk calculator", 0.3],
+  ["ENIAC (1945)", 5e3],
+  ["IBM System/360 (1964)", 5e5],
+  ["Cray-1 (1976)", 1.6e8],
+  ["A 2020s smartphone", 1e12],
+  ["One modern AI GPU", 1e15],
+  ["An exascale supercomputer", 2e18],
+];
+const HOME = {
+  id:"home", kind:"home", title:"Home", sub:"", cards:[
+   {t:"Welcome to The Reckoner", d:"c. 43,000 BCE \u2013 today",
+    b:"A history of computation told as a stack of linked cards \u2014 cards, stacks, links, and the freedom to wander.<br><br>The thesis: <strong>mathematics has been done by machines, and machine-like systems of people, for as long as mathematics has existed.</strong> When you practice arithmetic by hand, you are practicing a living tradition that runs from notched bones through rooms full of human computers to chips performing arithmetic at speeds no one can picture.<br><br>Walk forward with <strong>\u2192</strong>. Open <strong>Go</strong> to jump anywhere. Or press <strong>Wander</strong> and let history find you."},
+   {t:"How to use this stack", b:"<strong>Eras 1\u201310</strong> are the timeline, from tally bones to frontier AI. <strong>Threads A\u2013U</strong> are themes that cut across time: human computers, secrecy, ethnomathematics, harmony, failure, memory, the hermetic current, and more.<br><br>Words like Thread J or Era 4 inside any card are links \u2014 follow them the way you'd follow a thought. <strong>Find</strong> searches every card. <strong>Back</strong> retraces your steps, and <kbd>\u2190</kbd> <kbd>\u2192</kbd> flip cards. On a phone, swipe.<br><br>There is no required order. A stack of cards, unlike a textbook, trusts you to wander."},
+   {t:"Try it: the Speed Ladder", d:"the punchline", special:"ladder", b:""},
+   {t:"The map", special:"map", b:""},
+   {t:"Why learn it by hand, then?", b:"Because every era's mathematicians trained on the previous era's methods. Because estimation and number sense are how humans catch machines being confidently wrong \u2014 John Glenn would not fly until Katherine Johnson re-checked the electronic computer's numbers by hand, and the Pentium bug was caught by a mathematician verifying primes independently (Thread N). Because soroban masters prove that a tool practiced deeply enough becomes a mental faculty (Thread H). And because when you carry a digit, you are doing precisely what a GPU does 10<sup>15</sup> times each second \u2014 you and the machine are practicing the same tradition (Thread E)."}
+  ]
+};
+
+/* ================================================================ */
+const STACKS = [HOME, ...DATA.stacks];
+const byId = Object.fromEntries(STACKS.map((s,i)=>[s.id,i]));
+let cur = {s:0,c:0};
+const hist = [];
+
+const $ = s=>document.querySelector(s);
+const esc = t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function md(t){
+  return t.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+          .replace(/\*(.+?)\*/g,"<em>$1</em>");
+}
+function linkify(h){
+  h = h.replace(/Thread ([A-Z])(\d?)\b/g,(m,L)=> byId["thread-"+L]!==undefined
+      ? `<a class="x" href="#thread-${L}/0">${m}</a>` : m);
+  h = h.replace(/Era (\d{1,2})\b/g,(m,n)=> byId["era-"+n]!==undefined
+      ? `<a class="x" href="#era-${n}/0">${m}</a>` : m);
+  return h;
+}
+function fmtSci(x){
+  if(!isFinite(x)) return "\u221e";
+  const e=Math.floor(Math.log10(x)), man=x/Math.pow(10,e);
+  return `${man.toFixed(1)}\u00d710<sup>${e}</sup>`;
+}
+function humanTime(sec){
+  if(sec<1) return sec.toPrecision(2)+" s";
+  if(sec<60) return Math.round(sec)+" s";
+  if(sec<3600) return Math.round(sec/60)+" min";
+  if(sec<86400) return Math.round(sec/3600)+" h";
+  const yr=sec/3.156e7;
+  if(yr<1) return Math.round(sec/86400)+" days";
+  if(yr<1e4) return Math.round(yr).toLocaleString()+" years";
+  if(sec<AGE_UNIVERSE_S) return fmtSci(yr)+" years";
+  return fmtSci(sec/AGE_UNIVERSE_S)+" \u00d7 age of universe";
+}
+
+function renderLadder(){
+  return `
+  <p>A modern frontier AI model is trained with roughly <strong>3\u00d710<sup>26</sup></strong> arithmetic operations \u2014 additions and multiplications, the very operations you practice.</p>
+  <p>How long does one multi-digit multiplication take <em>you</em>, by hand?
+     <input id="secs" class="field" type="number" min="1" max="600" value="30" aria-label="Seconds per operation"> seconds</p>
+  <div id="ladderout"></div>
+  <p class="small">Rates are order-of-magnitude estimates. See Thread A for the full ladder, and Thread L for why none of this is in your textbook.</p>`;
+}
+function computeLadder(){
+  const secs = Math.max(1, +($("#secs").value||30));
+  const yourRate = 1/secs;
+  let rows = [["You, by hand", yourRate], ...LADDER];
+  let h = `<table class="hc"><tr><th>Computer</th><th>ops / second</th><th>One training run</th></tr>`;
+  for(const [name,rate] of rows){
+    h += `<tr><td>${name}</td><td class="num">${fmtSci(rate)}</td><td class="num">${humanTime(TRAINING_RUN/rate)}</td></tr>`;
+  }
+  h += `</table>`;
+  const mult = (TRAINING_RUN/yourRate)/AGE_UNIVERSE_S;
+  h += `<div class="punch">Working nonstop at your pace, one training run would take you about <strong>${fmtSci(mult)} times the age of the universe</strong>. Every one of those operations is the arithmetic you are learning. The tradition is yours; only the speed has changed.</div>`;
+  $("#ladderout").innerHTML = h;
+}
+function renderMap(){
+  const eras = STACKS.filter(s=>s.kind==="era");
+  const thr  = STACKS.filter(s=>s.kind==="thread");
+  const li = s=>`<li><a class="x" href="#${s.id}/0">${esc(s.title)}</a><span class="small">${s.cards.length}</span></li>`;
+  return `<p><strong>The timeline</strong> \u2014 ${eras.reduce((a,s)=>a+s.cards.length,0)} cards:</p>
+    <ul class="map">${eras.map(li).join("")}</ul>
+    <p><strong>The threads</strong> \u2014 ${thr.reduce((a,s)=>a+s.cards.length,0)} cards:</p>
+    <ul class="map">${thr.map(li).join("")}</ul>`;
+}
+
+function renderFilm(cd){
+  const meta = [cd.by, cd.dur? fmtDur(cd.dur) : "", cd.via? "restored copy" : ""]
+        .filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join("");
+  let h = meta? `<div class="filmmeta">${meta}</div>` : "";
+  if(cd.status==="live" && cd.emb){
+    h += `<div class="film"><iframe src="${esc(cd.emb)}" title="${esc(cd.t)}" loading="lazy"
+          allowfullscreen allow="accelerometer; encrypted-media; picture-in-picture"></iframe></div>`;
+    if(cd.via) h += `<p class="small">Restored copy — <a href="${esc(cd.url)}" target="_blank"
+          rel="noopener">${esc(cd.via)} on YouTube &nearr;</a></p>`;
+  } else if(cd.status==="blocked"){
+    if(cd.img) h += `<figure class="filmshot"><img src="${esc(cd.img)}" alt=""></figure>`;
+    h += `<div class="filmgone"><span class="hd">Will not embed</span>
+          <p>Still on YouTube, but the rights holder blocks playback elsewhere.</p>
+          <a class="chip" href="${esc(cd.url)}" target="_blank" rel="noopener">Watch there &nearr;</a></div>`;
+  } else {
+    if(cd.img) h += `<figure class="filmshot"><img src="${esc(cd.img)}" alt=""></figure>`;
+    const q = encodeURIComponent(cd.t||"");
+    h += `<div class="filmgone"><span class="hd">${/private/i.test(cd.why||"")? "Made private":"Signal lost"}</span>
+          <p>${/private/i.test(cd.why||"")
+              ? "The uploader set this video to private."
+              : "The source this film came from has gone offline."}
+          These searches may turn up another copy.</p>
+          <a class="chip" href="https://archive.org/search?query=${q}" target="_blank" rel="noopener">Internet Archive &nearr;</a>
+          <a class="chip" href="https://www.youtube.com/results?search_query=${q}" target="_blank" rel="noopener">YouTube &nearr;</a></div>`;
+  }
+  return h;
+}
+function fmtDur(s){
+  const h=Math.floor(s/3600), m=Math.floor(s%3600/60), x=s%60;
+  return h? `${h}:${String(m).padStart(2,"0")}:${String(x).padStart(2,"0")}`
+          : `${m}:${String(x).padStart(2,"0")}`;
+}
+/* ── the sheet: every film in the stack, which is where you land ─────── */
+const FILMS = [];
+STACKS.forEach((st,si)=>st.cards.forEach((cd,ci)=>{
+  if(cd.kindc==="film") FILMS.push({st:si,c:ci,cd,y:cd.d?parseInt(cd.d,10):null});
+}));
+let sLimit = 120, sList = [];
+
+function sheetOn(){
+  $("#sheetview").hidden = false;
+  $("#deskarea").hidden = true;
+  if(location.hash) history.replaceState(null,"",location.pathname+location.search);
+  document.title = "Dividing Engine — Technology, Science, History";
+}
+function sheetOff(){ $("#sheetview").hidden = true; $("#deskarea").hidden = false; }
+
+function sheetFilter(){
+  const q = ($("#sq").value||"").trim().toLowerCase();
+  const era = $("#sera").value;
+  sList = FILMS.filter(f=>{
+    if(q && !((f.cd.t||"")+" "+(f.cd.d||"")+" "+(f.cd.by||"")).toLowerCase().includes(q)) return false;
+    if(era!=="all" && STACKS[f.st].id!==era) return false;
+    return true;
+  });
+  sLimit = 120; paintSheet(false);
+  $("#scount").textContent = sList.length===FILMS.length
+    ? FILMS.length+" films" : sList.length+" of "+FILMS.length+" films";
+}
+function paintSheet(append){
+  const from = append ? $("#sheet").children.length : 0;
+  const slice = sList.slice(from, sLimit);
+  const h = slice.map(f=>{
+    const cd=f.cd;
+    const bad = cd.status==="dead" ? '<span class="sbad">lost</span>'
+              : cd.status==="blocked" ? '<span class="sbad off">off-site</span>' : "";
+    return `<li class="${cd.status==="dead"?"sdead":""}"><a href="#${STACKS[f.st].id}/${f.c}" data-s="${f.st}" data-c="${f.c}">
+      <span class="sfr">${bad}${cd.dur?`<span class="sdur">${fmtDur(cd.dur)}</span>`:""}
+      <img src="${esc(cd.img||"")}" alt="" loading="lazy" decoding="async"></span>
+      <span class="smeta"><span class="sy">${cd.d?esc(cd.d):"—"}</span><span class="sn">${esc(cd.t)}</span></span>
+    </a></li>`;}).join("");
+  if(append) $("#sheet").insertAdjacentHTML("beforeend",h); else $("#sheet").innerHTML=h;
+  const shown=Math.min(sLimit,sList.length);
+  $("#smore").hidden = shown>=sList.length;
+  $("#smore").textContent = "Showing "+shown+" of "+sList.length+" — scroll for more";
+}
+function initSheet(){
+  const eras = STACKS.map((s,i)=>({s,i})).filter(x=>x.s.kind==="era"&&x.s.cards.some(c=>c.kindc==="film"));
+  $("#sera").innerHTML = '<option value="all">All eras</option>' +
+    eras.map(x=>`<option value="${x.s.id}">${esc(x.s.title.replace(/^Era \d+: /,""))}</option>`).join("");
+  $("#sq").addEventListener("input", sheetFilter);
+  $("#sera").addEventListener("change", sheetFilter);
+  $("#sheet").addEventListener("click", e=>{
+    const a=e.target.closest("a[data-s]"); if(!a) return;
+    e.preventDefault(); sheetOff(); go(+a.dataset.s, +a.dataset.c);
+  });
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(es=>{
+      if(es[0].isIntersecting && sLimit<sList.length){ sLimit+=120; paintSheet(true); }
+    },{rootMargin:"600px"}).observe($("#smore"));
+  }
+  sheetFilter();
+}
+
+function render(push=true){
+  const st = STACKS[cur.s], cd = st.cards[cur.c];
+  if(push) hist.push(location.hash);
+  location.hash = `${st.id}/${cur.c}`;
+  $("#stacklbl").textContent = st.title + (st.sub? " \u2014 "+st.sub : "");
+  let h = `<div class="fade">`;
+  h += `<div class="eyebrow"><span>${st.kind==="era"?"Timeline":"Stack"}</span>` +
+       (cd.ch? `<span class="ch">${esc(cd.ch)}</span>`:"") + `</div>`;
+  if(cd.d) h += `<span class="date">${esc(cd.d)}</span><br>`;
+  h += `<h1 class="cardtitle">${md(esc(cd.t))}</h1>`;
+  if(cd.special==="ladder") h += renderLadder();
+  else if(cd.special==="map") h += renderMap();
+  else if(cd.kindc==="film") h += renderFilm(cd);
+  else h += `<div class="body">${linkify(md(cd.b.includes("<")? cd.b : esc(cd.b)))}</div>`;
+  h += `</div>`;
+  $("#content").innerHTML = h;
+  if(cd.special==="ladder"){ computeLadder(); $("#secs").addEventListener("input",computeLadder); }
+  $("#progfill").style.width = ((cur.c+1)/st.cards.length*100)+"%";
+  $("#prevb").disabled = (cur.s===0 && cur.c===0);
+  const lastStack = cur.s===STACKS.length-1, lastCard = cur.c===st.cards.length-1;
+  $("#nextb").disabled = lastStack && lastCard;
+  $("#nextstackb").style.display = lastStack? "none":"";
+  $("#counter").textContent = `Card ${cur.c+1} of ${st.cards.length}`;
+  window.scrollTo({top:0});
+}
+function go(s,c,push=true){ sheetOff(); cur={s:Math.max(0,Math.min(s,STACKS.length-1)),c:0};
+  cur.c = Math.max(0,Math.min(c,STACKS[cur.s].cards.length-1)); render(push); }
+function step(dir){
+  let {s,c}=cur; c+=dir;
+  if(c<0){ if(s>0){s--; c=STACKS[s].cards.length-1;} else c=0; }
+  else if(c>=STACKS[s].cards.length){ if(s<STACKS.length-1){s++;c=0;} else c=STACKS[s].cards.length-1; }
+  go(s,c);
+}
+function showSheet(){ sheetOn(); }
+function fromHash(){
+  const m = location.hash.replace(/^#/,"").split("/");
+  if(byId[m[0]]!==undefined){ go(byId[m[0]], +(m[1]||0), false); return true; }
+  return false;
+}
+
+function buildGo(){
+  const g=$("#golist");
+  let h = `<a href="#home/0">Home</a><div class="sep"></div><div class="grp">TIMELINE</div>`;
+  for(const s of STACKS) if(s.kind==="era") h+=`<a href="#${s.id}/0">${esc(s.title)}</a>`;
+  h += `<div class="sep"></div><div class="grp">THREADS</div>`;
+  for(const s of STACKS) if(s.kind==="thread") h+=`<a href="#${s.id}/0">${esc(s.title)}</a>`;
+  g.innerHTML=h;
+}
+function wander(){
+  const pool=[]; STACKS.forEach((s,i)=>s.cards.forEach((_,j)=>{ if(!(i===cur.s&&j===cur.c)) pool.push([i,j]); }));
+  const [s,c]=pool[Math.floor(Math.random()*pool.length)]; go(s,c);
+}
+function doFind(q){
+  q=q.trim().toLowerCase(); if(!q) return;
+  const found={id:"found",kind:"thread",title:`Found: \u201c${q}\u201d`,sub:"",cards:[]};
+  STACKS.forEach(s=>{ if(s.id==="found") return;
+    s.cards.forEach((cd,j)=>{
+      if((cd.t+" "+(cd.d||"")+" "+cd.b).toLowerCase().includes(q))
+        found.cards.push({...cd, ch:s.title});
+    });});
+  if(!found.cards.length){ found.cards.push({t:"Nothing found", b:`No card mentions \u201c${esc(q)}\u201d. Try a shorter word \u2014 or add the card yourself (see Home).`}); }
+  const i = byId["found"];
+  if(i!==undefined) STACKS[i]=found; else { byId["found"]=STACKS.length; STACKS.push(found); }
+  go(byId["found"],0);
+}
+
+document.addEventListener("click",e=>{
+  const act=e.target.closest("[data-act]")?.dataset.act;
+  if(act==="home") go(0,0);
+  if(act==="sheet"){ e.preventDefault(); sheetOn(); }
+  if(act==="wander") wander();
+  if(act==="back"){ const h=hist.pop(); if(h&&h!==location.hash){ location.hash=h; fromHash(); hist.pop(); } }
+  if(act==="find"){ $("#finddlg").showModal(); $("#findq").select(); }
+  const menu=$("#gomenu"); if(menu.open && !e.target.closest("#gomenu")) menu.open=false;
+  if(e.target.closest("#golist a")) menu.open=false;
+});
+$("#prevb").onclick=()=>step(-1);
+$("#nextb").onclick=()=>step(1);
+$("#nextstackb").onclick=()=>go(cur.s+1,0);
+$("#findgo").onclick=()=>{ $("#finddlg").close(); doFind($("#findq").value); };
+$("#findcancel").onclick=()=>$("#finddlg").close();
+$("#findq").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); $("#finddlg").close(); doFind($("#findq").value);} });
+document.addEventListener("keydown",e=>{
+  if(e.target.tagName==="INPUT"||$("#finddlg").open) return;
+  if(e.key==="ArrowLeft") step(-1);
+  if(e.key==="ArrowRight") step(1);
+  if(e.key.toLowerCase()==="h") go(0,0);
+  if(e.key.toLowerCase()==="w") wander();
+  if(e.key.toLowerCase()==="f"){ e.preventDefault(); $("#finddlg").showModal(); $("#findq").select(); }
+});
+let tx=null;
+document.addEventListener("touchstart",e=>{ tx=e.changedTouches[0].clientX; },{passive:true});
+document.addEventListener("touchend",e=>{
+  if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; tx=null;
+  if(Math.abs(dx)>60 && !$("#finddlg").open) step(dx<0?1:-1);
+},{passive:true});
+window.addEventListener("hashchange",()=>{ if(!fromHash()) sheetOn(); });
+
+buildGo();
+initSheet();
+if(!fromHash()) sheetOn();      // no hash -> land on the films, as it was
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+#!/bin/sh
+# One timeline. Two sources — the markdown master list and archive.json —
+# merged into a single stack of cards, some of which play.
+set -e
+cd "$(dirname "$0")"
+python3 build-site.py

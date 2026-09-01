@@ -1,0 +1,1779 @@
+#!/usr/bin/env python3
+"""
+de — the Dividing Engine archive tool.
+
+    de add <url> [--collection SLUG]   add a video, a playlist, or both
+    de sync [--collection SLUG]        re-pull tracked playlists, add what is new
+    de check [--stale DAYS] [--all]    re-verify that videos still play
+    de build                           regenerate index.html
+    de list / de collections / de rm / de set
+
+Source of truth is archive.json. index.html is a build artifact: one
+self-contained file you can drop on any static host.
+"""
+import os as _os, sys as _sys
+
+# Run under the project venv if there is one. yt-dlp has already deprecated the
+# system Python 3.9 on macOS, so the venv is what keeps this working.
+_VENV = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '.venv', 'bin', 'python')
+if _os.path.exists(_VENV) and _os.path.realpath(_sys.executable) != _os.path.realpath(_VENV):
+    _os.execv(_VENV, [_VENV, _os.path.abspath(__file__)] + _sys.argv[1:])
+
+import warnings
+warnings.filterwarnings('ignore')            # LibreSSL / deprecation noise from deps
+
+import argparse, concurrent.futures as cf, datetime as dt, html, json, os, re
+import sys, unicodedata, urllib.parse, urllib.request
+
+warn = lambda *a: print(*a, file=sys.stderr)
+ROOT = os.path.dirname(os.path.abspath(__file__))
+DB = os.path.join(ROOT, 'archive.json')
+MEDIA = os.path.join(ROOT, 'media')
+YTDIR = os.path.join(MEDIA, 'yt')
+UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
+      '(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36')
+TODAY = dt.date.today().isoformat()
+
+# ── data ──────────────────────────────────────────────────────────────────
+_LOADED_MTIME = None
+
+def load():
+    global _LOADED_MTIME
+    if not os.path.exists(DB):
+        _LOADED_MTIME = None
+        return {'version': 1, 'collections': {}, 'films': []}
+    _LOADED_MTIME = os.path.getmtime(DB)
+    return json.load(open(DB, encoding='utf-8'))
+
+def save(d):
+    # A long command can take minutes. If the file moved under us, write our
+    # result beside it and stop, rather than overwriting someone's work — an
+    # earlier version parked the other copy and carried on, which is exactly
+    # how a title pass got silently thrown away.
+    if _LOADED_MTIME is not None and os.path.exists(DB):
+        if os.path.getmtime(DB) > _LOADED_MTIME + 1:
+            side = DB + '.new'
+            with open(side, 'w', encoding='utf-8') as fh:
+                json.dump(d, fh, indent=1, ensure_ascii=False)
+            warn(f'\nCONFLICT: archive.json changed while this command was running.\n'
+                 f'  Nothing was overwritten. This run\'s result is in '
+                 f'{os.path.basename(side)}.\n'
+                 f'  Compare them and keep the one you want, then re-run.')
+            raise SystemExit(3)
+    d['films'].sort(key=lambda f: (f.get('year') or 9999, (f.get('name') or '').lower()))
+    tmp = DB + '.tmp'
+    with open(tmp, 'w', encoding='utf-8') as fh:
+        json.dump(d, fh, indent=1, ensure_ascii=False)
+    os.replace(tmp, DB)
+
+def index_by_vid(d):
+    ix = {}
+    for f in d['films']:
+        for s in f['sources']:
+            if s['kind'] == 'youtube':
+                ix[s['id']] = f
+    return ix
+
+def slugify(s, taken=()):
+    s = unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
+    s = re.sub(r'[^\w\s-]', '', s).strip().lower()
+    s = re.sub(r'[-\s]+', '-', s)[:48].strip('-') or 'film'
+    base, n = s, 2
+    while s in taken:
+        s = f'{base}-{n}'; n += 1
+    return s
+
+# ── titles and years ──────────────────────────────────────────────────────
+NOISE = re.compile(
+    r'\s*[\[(]\s*(?:hd|4k|full (?:movie|film|documentary|episode)|complete|'
+    r'remastered|restored|colou?ri[sz]ed|reupload|part\s*\d+|pt\.?\s*\d+)\s*[\])]',
+    re.I)
+
+def clean_title(t):
+    t = html.unescape(t or '').strip()
+    t = NOISE.sub('', t)
+    t = re.sub(r'\s*\|\s*[^|]{0,40}$', '', t) if t.count('|') == 1 and len(t) > 46 else t
+    return re.sub(r'\s{2,}', ' ', t).strip(' -–—|·')
+
+YEAR_PATS = [
+    re.compile(r'[\[(](1[89]\d\d|20[0-2]\d)[\])]'),      # (1943)
+    re.compile(r'\b(1[89]\d\d|20[0-2]\d)\s*[:\-–—]'),    # 1966:  /  1966 -
+    re.compile(r'\bca?\.?\s*(1[89]\d\d|20[0-2]\d)\b', re.I),
+    re.compile(r'\b(1[89]\d\d|20[0-2]\d)\b'),            # bare year, last resort
+]
+
+def guess_year(title, upload=None):
+    for p in YEAR_PATS:
+        m = p.search(title or '')
+        if m:
+            y = int(m.group(1))
+            if 1870 <= y <= dt.date.today().year:
+                return y
+    return None
+
+def strip_year(title, year):
+    if not year:
+        return title
+    t = re.sub(r'\s*[\[(]\s*%d\s*[\])]' % year, '', title)
+    t = re.sub(r'^\s*%d\s*[:\-–—]\s*' % year, '', t)
+    t = re.sub(r'^\s*%d\s+' % year, '', t)
+    return re.sub(r'\s{2,}', ' ', t).strip(' -–—|·') or title
+
+# ── youtube ───────────────────────────────────────────────────────────────
+def _ydl(**extra):
+    import yt_dlp
+    opts = {'quiet': True, 'no_warnings': True, 'skip_download': True,
+            'ignoreerrors': True, 'socket_timeout': 30, 'noprogress': True}
+    opts.update(extra)
+    return yt_dlp.YoutubeDL(opts)
+
+def parse_url(u):
+    """-> ('playlist', id) | ('video', id) | ('both', (pid, vid)) | (None, None)"""
+    u = u.strip()
+    pl = re.search(r'[?&]list=([\w-]+)', u)
+    vi = re.search(r'(?:v=|youtu\.be/|/embed/|/shorts/|/live/)([\w-]{11})', u)
+    if pl and vi:  return 'both', (pl.group(1), vi.group(1))
+    if pl:         return 'playlist', pl.group(1)
+    if vi:         return 'video', vi.group(1)
+    if re.fullmatch(r'[\w-]{11}', u):        return 'video', u
+    if re.fullmatch(r'(PL|UU|OL|FL)[\w-]+', u): return 'playlist', u
+    return None, None
+
+class Truncated(RuntimeError):
+    pass
+
+def playlist_entries(pid, force=False):
+    """(playlist title, [{'id','title'}...]) — flat, so it is fast and complete.
+
+    YouTube tells us how long the playlist is; we check that against what we
+    actually got. An old yt-dlp once returned a clean, complete-looking 103
+    entries for a 546-video playlist, and nothing complained. Never again.
+    """
+    with _ydl(extract_flat='in_playlist') as y:
+        info = y.extract_info(f'https://www.youtube.com/playlist?list={pid}', download=False)
+    if not info:
+        raise RuntimeError(f'playlist {pid} could not be read')
+    out = [{'id': e['id'], 'title': e.get('title') or ''}
+           for e in (info.get('entries') or []) if e and e.get('id')]
+
+    claimed = info.get('playlist_count')
+    try:
+        claimed = int(claimed)
+    except (TypeError, ValueError):
+        claimed = None
+    if claimed and len(out) < claimed:
+        short = claimed - len(out)
+        msg = (f'playlist {pid} advertises {claimed} videos but only {len(out)} came back '
+               f'({short} missing)')
+        if len(out) < claimed * 0.9:
+            raise Truncated(
+                msg + '.\n  That is a big shortfall — usually a stale yt-dlp truncating a '
+                      'long playlist.\n  Try:  .venv/bin/python -m pip install -U yt-dlp'
+                      '\n  Or pass --force to ingest the partial list anyway.')
+        warn('  ! ' + msg + ' (private or deleted entries, most likely)')
+    return info.get('title') or pid, out
+
+def enrich(vid):
+    """duration / upload date / channel for one video, via the android client.
+
+    Errors are not ignored here: a failure tells us the video is gone, which is
+    worth recording rather than silently treating as healthy.
+    """
+    try:
+        with _ydl(ignoreerrors=False,
+                  extractor_args={'youtube': {'player_client': ['android']}}) as y:
+            i = y.extract_info(f'https://www.youtube.com/watch?v={vid}', download=False)
+        if not i:
+            return {}
+        return {'dur': i.get('duration'), 'chan': i.get('channel') or i.get('uploader') or '',
+                'upload': i.get('upload_date') or '', 'title': i.get('title') or ''}
+    except Exception as e:
+        m = str(e).lower()
+        gone = any(k in m for k in ('unavailable', 'terminated', 'removed', 'private',
+                                    'deleted', 'not available'))
+        return {'gone': True} if gone else {}
+
+def oembed(vid):
+    u = ('https://www.youtube.com/oembed?format=json&url=' +
+         urllib.parse.quote(f'https://www.youtube.com/watch?v={vid}', safe=''))
+    try:
+        r = urllib.request.Request(u, headers={'User-Agent': UA})
+        d = json.loads(urllib.request.urlopen(r, timeout=25).read())
+        return {'title': d.get('title', ''), 'chan': d.get('author_name', '')}
+    except urllib.error.HTTPError as e:
+        return {'gone': e.code in (401, 403, 404), 'code': e.code}
+    except Exception:
+        return {}
+
+def thumb_exists(vid):
+    """True if YouTube still serves a thumbnail.
+
+    oEmbed 403 is ambiguous: it covers both 'the owner disabled embedding' (the
+    video is public and watchable) and 'the video is private' (it is gone).
+    YouTube keeps serving thumbnails for the former and not the latter, so this
+    is what separates them.
+    """
+    for name in ('hqdefault', 'mqdefault'):
+        try:
+            r = urllib.request.Request(f'https://i.ytimg.com/vi/{vid}/{name}.jpg',
+                                       headers={'User-Agent': UA})
+            if len(urllib.request.urlopen(r, timeout=20).read()) > 1500:
+                return True
+        except Exception:
+            continue
+    return False
+
+def thumb_head(vid):
+    """'ok' if YouTube still serves a thumbnail, else the HTTP code.
+
+    This is the whole cheap liveness test: a removed or private video loses its
+    thumbnail, a live one keeps it. 28 ms instead of driving a browser.
+    """
+    try:
+        urllib.request.urlopen(urllib.request.Request(
+            f'https://i.ytimg.com/vi/{vid}/mqdefault.jpg',
+            headers={'User-Agent': UA}, method='HEAD'), timeout=15)
+        return 'ok'
+    except urllib.error.HTTPError as e:
+        return str(e.code)
+    except Exception:
+        return 'err'
+
+def oembed_code(vid):
+    u = ('https://www.youtube.com/oembed?format=json&url=' +
+         urllib.parse.quote(f'https://www.youtube.com/watch?v={vid}', safe=''))
+    try:
+        urllib.request.urlopen(urllib.request.Request(u, headers={'User-Agent': UA}), timeout=15)
+        return 200
+    except urllib.error.HTTPError as e:
+        return e.code
+    except Exception:
+        return 0
+
+def cheap_status(vid):
+    """(status, needs_browser) from HTTP alone.
+
+    Measured over the whole archive: every dead video has thumb=404, every live
+    one thumb=ok+oembed=200. Embed-blocked videos are the ambiguous case — only
+    ~13% announce themselves via oembed 401; the rest look exactly like live
+    ones and can only be told apart by actually loading the embed.
+    """
+    t = thumb_head(vid)
+    if t != 'ok':
+        return 'dead', False
+    c = oembed_code(vid)
+    if c == 404:
+        return 'dead', False
+    if c in (401, 403):
+        return 'embed-blocked', False
+    return 'live', True
+
+def reason(vid):
+    """Why a video will not play, in YouTube's own words.
+
+    'Private video' and 'Video unavailable' both surface as oEmbed 403/404 and
+    both look identical from an embed, but they are different fates and worth
+    telling the reader apart.
+    """
+    try:
+        r = urllib.request.Request(f'https://www.youtube.com/watch?v={vid}&hl=en',
+                                   headers={'User-Agent': UA, 'Accept-Language': 'en-US,en;q=0.9'})
+        h = urllib.request.urlopen(r, timeout=30).read().decode('utf8', 'replace')
+    except Exception:
+        return ''
+    for pat in (r'"reason":\{"simpleText":"([^"]{5,140})"',
+                r'"reason":\{"runs":\[\{"text":"([^"]{5,140})"',
+                r'"reason":"([^"]{5,140})"'):
+        m = re.search(pat, h)
+        if m:
+            return html.unescape(m.group(1))
+    return ''
+
+def fetch_thumb(vid, force=False):
+    """Save hqdefault.jpg locally so the page does not depend on i.ytimg.com."""
+    os.makedirs(YTDIR, exist_ok=True)
+    dest = os.path.join(YTDIR, f'{vid}.jpg')
+    rel = os.path.relpath(dest, ROOT)
+    if os.path.exists(dest) and os.path.getsize(dest) > 1500 and not force:
+        return rel
+    for name in ('maxresdefault', 'hqdefault', 'mqdefault'):
+        try:
+            r = urllib.request.Request(f'https://i.ytimg.com/vi/{vid}/{name}.jpg',
+                                       headers={'User-Agent': UA})
+            b = urllib.request.urlopen(r, timeout=30).read()
+            if len(b) > 1500:
+                open(dest, 'wb').write(b)
+                return rel
+        except Exception:
+            continue
+    return None
+
+def make_film(vid, raw_title, coll, taken, meta=None):
+    meta = meta or {}
+    title = clean_title(meta.get('title') or raw_title)
+    if not title:                      # removed/private videos come back with no title
+        title = f'Unavailable video ({vid})'
+    year = guess_year(title)
+    name = strip_year(title, year) or title
+    return {
+        'slug': slugify(name or vid, taken),
+        'title': title,
+        'name': name,
+        'year': year,
+        'chan': meta.get('chan', ''),
+        'dur': meta.get('dur'),
+        'thumb': None,
+        'collections': [coll] if coll else [],
+        'status': 'live',
+        'added': TODAY,
+        'checked': None,
+        'sources': [{
+            'kind': 'youtube', 'id': vid,
+            'url': f'https://www.youtube.com/watch?v={vid}',
+            'embed': f'https://www.youtube-nocookie.com/embed/{vid}?rel=0',
+            'status': 'live',
+        }],
+    }
+
+# ── title tidying ─────────────────────────────────────────────────────────
+ACRONYMS = {
+    'IBM','UNIVAC','RCA','AMPEX','NASA','MIT','BBC','UHF','VHF','TV','DNA','LP',
+    'PDP','CPU','GPU','RAM','ROM','LED','LCD','CRT','AI','ARPA','ARPANET','DEC',
+    'HP','GE','AT&T','ITT','NBC','CBS','ABC','PBS','USSR','USA','UK','US','LSI',
+    'VLSI','MOS','CMOS','TTL','IC','ENIAC','EDSAC','SAGE','SDC','PARC','NeXT',
+    'RAND','SRI','VPRI','OOPSLA','ACM','IEEE','DARPA','CDC','GM','TRW','MGM',
+    'BASIC','FORTRAN','COBOL','LISP','ALGOL','UNIX','DOS','GUI','WWW','HTTP',
+    'CERN','JPL','NIH','FDA','FCC','NSA','CIA','TDC','SPIRES','NLS','QED',
+    'II','III','IV','VI','VII','VIII','IX','XI','XII','3D','2D','I','A',
+}
+# short function words: lowercase them unless they open the title
+STOP = {'a','an','the','of','in','at','on','for','to','and','or','with','from',
+        'by','as','its','it','is','was','into','over','out','up','via','vs'}
+CRUFT = [
+    re.compile(r'\s*[\[(][^\])]{0,28}?(?:4k|1080p|720p|60\s*fps|hd|remastered|'
+               r'restored|colou?ri[sz]ed|reupload|full length|complete)[^\])]{0,28}?[\])]', re.I),
+    re.compile(r'\s*\|\s*[^|]{2,40}$'),          # trailing " | Some Channel"
+    re.compile(r'\s*[-–—]\s*(?:youtube|full (?:movie|film|documentary))\s*$', re.I),
+]
+
+def tidy(t):
+    """Normalise a scraped YouTube title without destroying a written one."""
+    out = html.unescape(t or '').strip()
+    for c in CRUFT:
+        out = c.sub('', out)
+    out = out.strip().strip('"\u201c\u201d\u2018\u2019\'')          # stray wrapping quotes
+    words = out.split()
+    caps = [w for w in words if len(w) > 3 and w.isupper()]
+    if len(caps) >= 2:                                # a shouty run, not an acronym
+        fixed = []
+        for i, w in enumerate(words):
+            core = re.sub(r'[^\w&]', '', w)
+            if not w.isupper():                       # already mixed case, leave it
+                fixed.append(w)
+            elif core.upper() in ACRONYMS:            # keep real acronyms
+                fixed.append(w)
+            elif (core.lower() in STOP and i > 0
+                  and not words[i - 1].endswith((':', '-', '–', '—'))):
+                fixed.append(w.lower())
+            else:                                     # Title Case the shouting
+                fixed.append(w[:1] + w[1:].lower())
+        out = ' '.join(fixed)
+    out = re.sub(r'\s{2,}', ' ', out).strip(' -–—|·,')
+    return out
+
+def cmd_title(a):
+    d = load()
+    films = [f for f in d['films'] if a.all or 'dividing-engine-original' not in f['collections']]
+    if a.collection:
+        films = [f for f in films if a.collection in f['collections']]
+    props = []
+    for f in films:
+        new = tidy(f['title'])
+        if new and new != f['title']:
+            props.append((f, new))
+    if not props:
+        print('no titles need tidying'); return 0
+    for f, new in props[:200]:
+        print(f'  - {f["title"][:74]}')
+        print(f'  + {new[:74]}')
+    print(f'\n{len(props)} title(s) would change')
+    if not a.apply:
+        print('re-run with --apply to write them'); return 0
+    for f, new in props:
+        f.setdefault('raw_title', f['title'])          # keep the original, reversibly
+        f['title'] = new
+        f['year'] = f.get('year') or guess_year(new)
+        f['name'] = strip_year(new, f['year']) or new
+    save(d)
+    print(f'rewrote {len(props)} titles (originals kept in raw_title)')
+    return 0
+
+# ── year backfill ─────────────────────────────────────────────────────────
+def describe(vid):
+    """Video description, for films whose title carries no year."""
+    try:
+        with _ydl(ignoreerrors=False,
+                  extractor_args={'youtube': {'player_client': ['android']}}) as y:
+            i = y.extract_info(f'https://www.youtube.com/watch?v={vid}', download=False)
+        return (i or {}).get('description') or ''
+    except Exception:
+        return ''
+
+# Only an explicit claim about the film counts. A bare year in a description is
+# usually the subject ("the Apollo landing in 1969"), not the film's own date,
+# and a wrong year puts the film at the wrong place on the scale — worse than
+# leaving it undated.
+DESC_YEAR = [
+    re.compile(r'\b(?:made|produced|released|filmed|shot|recorded|published|'
+               r'copyright|\u00a9|dated|circa)\W{0,12}(?:in\s+)?(1[89]\d\d|20[0-2]\d)\b', re.I),
+    re.compile(r'\bca?\.\s*(1[89]\d\d|20[0-2]\d)\b', re.I),
+    re.compile(r'\((1[89]\d\d|20[0-2]\d)\)\s*(?:film|movie|documentary|short)?', re.I),
+]
+
+def year_from_desc(text):
+    head = (text or '')[:900]                 # a date this late is usually not the film's
+    now = dt.date.today().year
+    for p in DESC_YEAR:
+        for m in p.finditer(head):
+            y = int(m.group(1))
+            if 1870 <= y <= now:
+                return y
+    return None
+
+def cmd_year(a):
+    d = load()
+    todo = [f for f in d['films']
+            if not f.get('year') and f['sources']
+            and f['sources'][0]['kind'] == 'youtube' and f['status'] != 'dead']
+    if a.collection:
+        todo = [f for f in todo if a.collection in f['collections']]
+    if a.limit:
+        todo = todo[:a.limit]
+    if not todo:
+        print('every film already has a year'); return 0
+    print(f'reading descriptions for {len(todo)} undated films...', flush=True)
+    vids = [f['sources'][0]['id'] for f in todo]
+    descs = {}
+    with cf.ThreadPoolExecutor(max_workers=6) as ex:
+        for i, (v, t) in enumerate(zip(vids, ex.map(describe, vids))):
+            descs[v] = t
+            if (i + 1) % 50 == 0: print(f'  {i+1}/{len(vids)}', flush=True)
+    found = []
+    for f in todo:
+        y = year_from_desc(descs.get(f['sources'][0]['id'], ''))
+        if y: found.append((f, y))
+    for f, y in found[:200]:
+        print(f'  {y}  {f["name"][:66]}')
+    print(f'\n{len(found)} of {len(todo)} got a year')
+    if not a.apply:
+        print('re-run with --apply to write them'); return 0
+    for f, y in found:
+        f['year'] = y
+        f['year_source'] = 'description'
+    save(d)
+    print(f'dated {len(found)} films (marked year_source=description)')
+    return 0
+
+# ── ingest ────────────────────────────────────────────────────────────────
+def ingest(d, vids, coll, enrich_meta=True, label=''):
+    """Add video ids that are not already present. Returns the new film records."""
+    ix = index_by_vid(d)
+    taken = {f['slug'] for f in d['films']}
+    fresh = [(v, t) for v, t in vids if v not in ix]
+    dup = len(vids) - len(fresh)
+
+    for v, _t in vids:                       # tag existing films with the collection
+        f = ix.get(v)
+        if f and coll and coll not in f['collections']:
+            f['collections'].append(coll)
+
+    if not fresh:
+        print(f'  {label}nothing new ({dup} already present)')
+        return []
+
+    meta = {}
+    if enrich_meta:
+        print(f'  {label}reading metadata for {len(fresh)} videos...', flush=True)
+        with cf.ThreadPoolExecutor(max_workers=6) as ex:
+            for v, m in zip([x[0] for x in fresh], ex.map(enrich, [x[0] for x in fresh])):
+                meta[v] = m
+
+    made = []
+    for v, t in fresh:
+        f = make_film(v, t, coll, taken, meta.get(v))
+        taken.add(f['slug'])
+        d['films'].append(f)
+        made.append(f)
+
+    print(f'  {label}fetching {len(made)} thumbnails...', flush=True)
+    with cf.ThreadPoolExecutor(max_workers=8) as ex:
+        for f, rel in zip(made, ex.map(fetch_thumb, [x['sources'][0]['id'] for x in made])):
+            f['thumb'] = rel
+
+    doa = 0
+    for f in made:
+        if meta.get(f['sources'][0]['id'], {}).get('gone') and not f['thumb']:
+            f['status'] = f['sources'][0]['status'] = 'dead'
+            f['n_live'], f['n_total'] = 0, 1
+            doa += 1
+    if doa:
+        warn(f'  {label}{doa} already dead on arrival (marked lost)')
+    missing = [f for f in made if not f['thumb'] and f['status'] != 'dead']
+    if missing:
+        warn(f'  {label}{len(missing)} thumbnails failed')
+    print(f'  {label}added {len(made)}' + (f', skipped {dup} duplicates' if dup else ''))
+    return made
+
+def cmd_add(a):
+    d = load()
+    kind, val = parse_url(a.url)
+    if not kind:
+        warn(f'not a YouTube video or playlist URL: {a.url}'); return 1
+
+    if kind == 'both':
+        pid, vid = val
+        kind, val = ('playlist', pid) if a.playlist else ('video', vid)
+        if not a.playlist:
+            print(f'URL names both a video and playlist {pid}; adding the video only '
+                  f'(use --playlist for the whole list)')
+
+    if kind == 'video':
+        coll = a.collection
+        if coll and coll not in d['collections']:
+            d['collections'][coll] = {'title': a.title or coll.replace('-', ' ').title(),
+                                      'playlist': None, 'added': TODAY}
+        m = enrich(val) or oembed(val)
+        ingest(d, [(val, m.get('title', ''))], coll)
+    else:
+        pid = val
+        try:
+            title, entries = playlist_entries(pid, force=a.force)
+        except Truncated as e:
+            warn(f'REFUSING: {e}'); return 1
+        coll = a.collection or slugify(title)
+        d['collections'].setdefault(coll, {'title': a.title or title,
+                                           'playlist': pid, 'added': TODAY})
+        d['collections'][coll]['playlist'] = pid
+        print(f'{title} — {len(entries)} videos -> collection "{coll}"')
+        ingest(d, [(e['id'], e['title']) for e in entries], coll,
+               enrich_meta=not a.fast)
+    save(d)
+    print(f'archive now holds {len(d["films"])} films. Run "de build" to rebuild the page.')
+    return 0
+
+def cmd_sync(a):
+    d = load()
+    colls = {k: v for k, v in d['collections'].items() if v.get('playlist')}
+    if a.collection:
+        colls = {k: v for k, v in colls.items() if k == a.collection}
+    if not colls:
+        print('no tracked playlists to sync'); return 0
+    total = 0
+    for slug, c in colls.items():
+        try:
+            title, entries = playlist_entries(c['playlist'], force=a.force)
+        except Truncated as e:
+            warn(f'{slug}: REFUSING — {e}'); continue
+        except Exception as e:
+            warn(f'{slug}: {e}'); continue
+        print(f'{slug}: {len(entries)} in playlist')
+        total += len(ingest(d, [(e['id'], e['title']) for e in entries], slug,
+                            enrich_meta=not a.fast, label=f'{slug}: '))
+    save(d)
+    print(f'\n{total} new film(s); archive holds {len(d["films"])}.')
+    if total: print('Run "de build" to rebuild the page.')
+    return 0
+
+# ── liveness ──────────────────────────────────────────────────────────────
+def browser_check(vids, batch=6, wait=7000, port=8899):
+    """Load each embed for real and report {vid: 'playable'|'unavailable'}.
+
+    YouTube rejects embeds from a null origin, so this serves a throwaway page
+    over http and reads the iframe. oEmbed alone is not trustworthy here: it
+    returns 200 for videos that will not actually play.
+    """
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        warn('playwright not installed — falling back to oEmbed, which is less accurate.')
+        warn('  python3 -m pip install --user playwright && python3 -m playwright install chromium')
+        out = {}
+        with cf.ThreadPoolExecutor(max_workers=8) as ex:
+            for v, r in zip(vids, ex.map(oembed, vids)):
+                out[v] = 'unavailable' if r.get('gone') else 'playable'
+        return out
+
+    import functools, http.server, socketserver, threading
+
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *a): pass
+
+    handler = functools.partial(Quiet, directory=ROOT)
+    socketserver.TCPServer.allow_reuse_address = True
+    srv = socketserver.TCPServer(('127.0.0.1', port), handler)
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    tmp = os.path.join(ROOT, '_check.html')
+    res = {}
+    try:
+        with sync_playwright() as pw:
+            br = pw.chromium.launch()
+            ctx = br.new_context(user_agent=UA, viewport={'width': 1200, 'height': 800})
+            for n in range(0, len(vids), batch):
+                chunk = vids[n:n + batch]
+                open(tmp, 'w').write(
+                    '<!doctype html><meta charset="utf-8"><body>' + ''.join(
+                        f'<iframe id="f{i}" width="320" height="180" '
+                        f'src="https://www.youtube-nocookie.com/embed/{v}?rel=0"></iframe>'
+                        for i, v in enumerate(chunk)) + '</body>')
+                pg = ctx.new_page()
+                pg.goto(f'http://127.0.0.1:{port}/_check.html', wait_until='load')
+                pg.wait_for_timeout(wait)
+                for i, v in enumerate(chunk):
+                    try:
+                        fr = pg.query_selector(f'#f{i}').content_frame()
+                        err = fr.query_selector('.ytp-error')
+                        ok = fr.query_selector(
+                            '.ytp-large-play-button, .ytp-cued-thumbnail-overlay, video')
+                        res[v] = 'playable' if (ok and not err) else 'unavailable'
+                    except Exception:
+                        res[v] = 'unknown'
+                pg.close()
+                print(f'  checked {min(n + batch, len(vids))}/{len(vids)}', flush=True)
+            br.close()
+    finally:
+        srv.shutdown()
+        if os.path.exists(tmp): os.remove(tmp)
+    return res
+
+def cmd_check(a):
+    d = load()
+    films = d['films']
+    if a.collection:
+        films = [f for f in films if a.collection in f['collections']]
+    if a.status:
+        films = [f for f in films if f.get('status') == a.status]
+    if not a.all and not a.status:
+        cutoff = (dt.date.today() - dt.timedelta(days=a.stale)).isoformat()
+        films = [f for f in films if not f.get('checked') or f['checked'] < cutoff]
+    vids = sorted({s['id'] for f in films for s in f['sources'] if s['kind'] == 'youtube'})
+    if not vids:
+        print('nothing to check (use --all to force)'); return 0
+
+    print(f'probing {len(vids)} videos over HTTP...', flush=True)
+    t0 = dt.datetime.now()
+    verdict, ambiguous = {}, []
+    with cf.ThreadPoolExecutor(max_workers=24) as ex:
+        for v, (st, more) in zip(vids, ex.map(cheap_status, vids)):
+            verdict[v] = st
+            if more: ambiguous.append(v)
+    el = (dt.datetime.now() - t0).total_seconds()
+    gone = [v for v, st in verdict.items() if st != 'live']
+    print(f'  {el:.0f}s — {len(gone)} not playable, {len(ambiguous)} look live')
+
+    # Only an actual embed tells a public-but-unembeddable video from a healthy
+    # one, so that check is opt-in rather than the default.
+    browser_saw = set()
+    if a.deep and ambiguous:
+        was_live = {v for f in d['films'] for s in f['sources']
+                    if s['kind'] == 'youtube' and s['status'] == 'live'
+                    for v in [s['id']]}
+        todo = ambiguous if a.all else [v for v in ambiguous if v not in was_live]
+        if todo:
+            print(f'confirming {len(todo)} embeds in a browser...', flush=True)
+            for v, r in browser_check(todo).items():
+                browser_saw.add(v)
+                if r == 'unavailable':
+                    verdict[v] = 'embed-blocked'
+                elif r == 'playable':
+                    verdict[v] = 'live'
+    elif ambiguous and not a.deep:
+        print('  (run with --deep to confirm these actually embed)')
+
+    why = {}
+    if gone:
+        with cf.ThreadPoolExecutor(max_workers=8) as ex:
+            for v, t in zip(gone, ex.map(reason, gone)):
+                why[v] = t
+
+    changed = 0
+    for f in d['films']:
+        touched = False
+        for s in f['sources']:
+            if s['kind'] != 'youtube' or s['id'] not in verdict:
+                continue
+            new = verdict[s['id']]
+            # The cheap pass cannot see "public but will not embed", so it must
+            # not promote a browser-confirmed embed-blocked video back to live.
+            if (new == 'live' and s['status'] == 'embed-blocked'
+                    and s['id'] not in browser_saw):
+                continue
+            if new == 'live':
+                s.pop('reason', None)
+            elif why.get(s['id']):
+                s['reason'] = why[s['id']]
+            if new != s['status']:
+                s['status'] = new; changed += 1
+            touched = True
+        if touched:
+            live = [s for s in f['sources'] if s['status'] == 'live']
+            blocked = [s for s in f['sources'] if s['status'] == 'embed-blocked']
+            f['status'] = 'live' if live else ('blocked' if blocked else 'dead')
+            f['n_live'] = len(live); f['n_total'] = len(f['sources'])
+            f['checked'] = TODAY
+    save(d)
+    import collections as C
+    print(f'\n{changed} source status change(s)')
+    print('entries:', dict(C.Counter(f['status'] for f in d['films'])))
+    return 0
+
+def cmd_enrich(a):
+    """Fill in duration / channel / thumbnail for records added with --fast."""
+    d = load()
+    todo = [f for f in d['films']
+            if f['sources'] and f['sources'][0]['kind'] == 'youtube'
+            and (a.all or not f.get('dur') or not f.get('thumb'))]
+    if a.collection:
+        todo = [f for f in todo if a.collection in f['collections']]
+    if not todo:
+        print('nothing to enrich'); return 0
+    vids = [f['sources'][0]['id'] for f in todo]
+    print(f'enriching {len(todo)} films...', flush=True)
+    meta = {}
+    with cf.ThreadPoolExecutor(max_workers=6) as ex:
+        for i, (v, m) in enumerate(zip(vids, ex.map(enrich, vids))):
+            meta[v] = m
+            if (i + 1) % 50 == 0: print(f'  {i+1}/{len(vids)}', flush=True)
+    with cf.ThreadPoolExecutor(max_workers=8) as ex:
+        thumbs = dict(zip(vids, ex.map(fetch_thumb, vids)))
+    n = gone = 0
+    for f in todo:
+        v = f['sources'][0]['id']; m = meta.get(v) or {}
+        if m.get('dur'):  f['dur'] = m['dur']; n += 1
+        if m.get('chan'): f['chan'] = m['chan']
+        if thumbs.get(v): f['thumb'] = thumbs[v]
+        if m.get('gone') and not thumbs.get(v):
+            f['status'] = f['sources'][0]['status'] = 'dead'
+            f['n_live'], f['n_total'] = 0, 1
+            gone += 1
+        if m.get('title'):
+            t = clean_title(m['title'])
+            if t and f['title'].startswith('Unavailable video'):
+                f['title'] = t
+                f['year'] = guess_year(t)
+                f['name'] = strip_year(t, f['year']) or t
+    save(d)
+    print(f'enriched {n}; {gone} found already gone')
+    return 0
+
+# ── page templates ────────────────────────────────────────────────────────
+# Kept at the end on purpose: everything above is code, this is the page.
+CSS = r'''/* Dividing Engine — the browsing half.
+   Shared tokens, masthead, grain and footer live in theme.css. */
+
+:root{ --grid:220px }          /* contact-sheet cell width; layout, not theme */
+
+*,*::before,*::after{box-sizing:border-box}
+/* ── the scale ────────────────────────────────────────────────────── */
+.scale-block{padding:24px 0 6px}
+.scale{position:relative; height:74px; user-select:none}
+.scale-axis{position:absolute; left:0; right:0; top:44px; height:1px; background:var(--rule)}
+.tick{
+  position:absolute; top:44px; width:1px; height:9px; background:var(--ink-3);
+  transform:translateX(-.5px); transition:height .18s, background .18s;
+}
+.tick.dead{background:var(--rule); height:5px}
+.tick.on{background:var(--brass); height:15px}
+.tick:hover{background:var(--brass-2); height:17px}
+.dec{position:absolute; top:0; transform:translateX(-50%); text-align:center; cursor:pointer;
+     background:none; border:0; padding:4px 6px; color:inherit; font:inherit}
+.dec-bar{width:1px; height:16px; background:var(--rule); margin:0 auto 6px}
+.dec-lab{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10px; letter-spacing:.1em;
+  color:var(--ink-3); display:block;
+}
+.dec-n{font-family:"IBM Plex Mono",monospace; font-size:9px; color:var(--ink-3); opacity:.7; display:block}
+.dec:hover .dec-lab,.dec.on .dec-lab{color:var(--brass)}
+.dec.on .dec-bar{background:var(--brass); height:22px}
+.scale-tip{
+  position:absolute; bottom:2px; transform:translateX(-50%); white-space:nowrap;
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink);
+  background:var(--card); border:1px solid var(--rule); padding:2px 7px; border-radius:2px;
+  pointer-events:none; opacity:0; transition:opacity .12s; box-shadow:var(--shadow); z-index:5;
+}
+.scale-tip.show{opacity:1}
+/* ── controls ─────────────────────────────────────────────────────── */
+.controls{
+  display:flex; gap:12px; align-items:center; flex-wrap:wrap;
+  padding:16px 0 18px; border-bottom:1px solid var(--rule);
+}
+.search{position:relative; flex:1 1 260px; min-width:220px}
+.search input{
+  width:100%; background:var(--card); border:1px solid var(--rule); border-radius:2px;
+  padding:9px 12px 9px 30px; color:var(--ink); font:inherit; font-size:14px;
+}
+.search input:focus{outline:none; border-color:var(--brass); box-shadow:0 0 0 3px rgba(154,108,47,.14)}
+.search svg{position:absolute; left:9px; top:50%; transform:translateY(-50%); opacity:.45}
+.seg{display:flex; border:1px solid var(--rule); border-radius:2px; overflow:hidden; background:var(--card)}
+.seg button{
+  background:none; border:0; border-right:1px solid var(--rule); cursor:pointer; color:var(--ink-2);
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; padding:8px 12px;
+}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--brass); color:var(--paper)}
+.seg button:hover:not(.on){color:var(--ink)}
+.count{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3);
+  letter-spacing:.06em; margin-left:auto; white-space:nowrap;
+}
+/* ── contact sheet ────────────────────────────────────────────────── */
+.sheet{
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(var(--grid),1fr));
+  gap:26px 20px; padding:32px 0 8px; list-style:none; margin:0;
+}
+.cell{opacity:0; animation:rise .5s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.cell{animation:none;opacity:1}}
+.cell a{text-decoration:none; display:block}
+.frame{
+  display:block; position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--paper-2);
+  border:1px solid var(--rule); border-radius:1px; box-shadow:var(--shadow);
+  transition:border-color .18s, transform .18s;
+}
+.frame img{
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.frame img.panoramic{object-fit:contain; background:var(--paper-2)}
+.frame img{
+  filter:saturate(.72) contrast(1.03); transition:filter .3s, transform .5s;
+}
+.cell a:hover .frame{border-color:var(--brass); transform:translateY(-2px)}
+.cell a:hover .frame img{filter:saturate(1) contrast(1.06); transform:scale(1.035)}
+.cell a:focus-visible .frame{outline:2px solid var(--brass); outline-offset:2px}
+.no{
+  display:block; position:absolute; left:0; top:0; z-index:2;
+  font-family:"IBM Plex Mono",monospace; font-size:9px; letter-spacing:.08em;
+  background:rgba(20,18,15,.72); color:#f2eee4; padding:2px 5px;
+}
+.badge{
+  display:block; position:absolute; right:0; top:0; z-index:2;
+  font-family:"IBM Plex Mono",monospace; font-size:8.5px; letter-spacing:.1em;
+  padding:2px 5px; text-transform:uppercase; color:#fff;
+}
+.badge.dead{background:var(--dead)}
+.badge.blocked{background:var(--brass)}
+.meta{display:flex; gap:8px; align-items:baseline; padding:9px 1px 0}
+.yr{
+  display:block; font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--brass);
+  letter-spacing:.04em; flex:none; font-variant-numeric:tabular-nums;
+}
+.nm{display:block; font-size:13.5px; line-height:1.35; color:var(--ink)}
+.cell a:hover .nm{color:var(--brass)}
+.cell.is-dead .frame img{filter:saturate(.12) contrast(.95) opacity(.62)}
+.cell.is-dead .yr{color:var(--ink-3)}
+.empty{padding:70px 0; text-align:center; color:var(--ink-3);
+       font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.1em}
+.sect{
+  grid-column:1/-1; margin:18px 0 -6px; padding-top:16px; border-top:1px solid var(--rule-2);
+  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+/* ── entry page ───────────────────────────────────────────────────── */
+
+.entry h1{
+  font-family:Copperplate,"Copperplate Gothic Light",Cinzel,Georgia,serif;
+  font-weight:400; letter-spacing:.045em; line-height:1.18;
+  font-size:clamp(23px,3.6vw,36px); margin:16px 0 0;
+}
+.entry .stamp{
+  display:flex; gap:14px; align-items:baseline; margin-top:12px; padding-bottom:16px;
+  border-bottom:1px solid var(--rule); flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+.entry .stamp .big{font-size:15px; color:var(--brass); letter-spacing:.06em}
+.player{margin:26px 0}
+.player .fr{
+  position:relative; aspect-ratio:16/9; background:#000; border:1px solid var(--rule);
+  border-radius:2px; overflow:hidden; box-shadow:var(--shadow);
+}
+.player .fr iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.player .cap{
+  font-family:"IBM Plex Mono",monospace; font-size:10px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin-top:8px;
+}
+.lost{
+  min-height:230px; border:1px dashed var(--rule); border-radius:2px; background:var(--paper-2);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:12px; text-align:center; padding:24px;
+}
+.lost .hd{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.26em;
+  text-transform:uppercase; color:var(--dead);
+}
+.lost p{margin:0; max-width:44ch; font-size:13px; color:var(--ink-2)}
+.lost .acts{display:flex; gap:8px; flex-wrap:wrap; justify-content:center}
+.lost a{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; text-decoration:none; color:var(--ink);
+  border:1px solid var(--rule); background:var(--card); padding:7px 11px; border-radius:2px;
+}
+.lost a:hover{border-color:var(--brass); color:var(--brass)}
+.shot{margin:0 0 26px}
+.shot img{max-width:340px; width:100%; border:1px solid var(--rule); box-shadow:var(--shadow); display:block}
+/* ── index (map) list ─────────────────────────────────────────────── */
+
+@media (max-width:720px){}
+@media (max-width:640px){
+  :root{--grid:150px}
+  .wrap{padding:0 16px}
+  .sheet{gap:20px 13px}
+  .count{margin-left:0; width:100%}
+  .dec-n{display:none}
+}
+/* ── view toggle ──────────────────────────────────────────────────── */
+.viewtog{display:flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden;background:var(--card)}
+.viewtog button{background:none;border:0;border-right:1px solid var(--rule);cursor:pointer;
+  color:var(--ink-2);font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;padding:8px 12px}
+.viewtog button:last-child{border-right:0}
+.viewtog button.on{background:var(--brass);color:var(--paper)}
+/* ── list view ────────────────────────────────────────────────────── */
+.rows{list-style:none;margin:0;padding:26px 0 8px;columns:2;column-gap:44px}
+@media (max-width:720px){.rows{columns:1}}
+.rows li{break-inside:avoid;border-bottom:1px solid var(--rule-2)}
+.rows button{width:100%;background:none;border:0;cursor:pointer;text-align:left;padding:7px 2px;
+  display:flex;gap:11px;align-items:baseline;font:inherit;font-size:13.5px;color:var(--ink)}
+.rows button:hover .tt{color:var(--brass)}
+.rows .yr{width:3.4em;flex:none}
+.rows .tt{flex:1}
+.rows .st{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.rows .st.dead{color:var(--dead)}
+.rows .st.blocked{color:var(--brass)}
+/* ── film overlay ─────────────────────────────────────────────────── */
+.veil{position:fixed;inset:0;z-index:40;background:rgba(18,16,12,.62);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  display:flex;align-items:flex-start;justify-content:center;overflow-y:auto;padding:36px 20px 60px}
+.veil[hidden]{display:none}
+@media (prefers-reduced-motion:no-preference){
+  .veil{animation:fade .18s ease both}
+  .sheetcard{animation:lift .24s cubic-bezier(.2,.7,.3,1) both}
+}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes lift{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.sheetcard{position:relative;width:min(940px,100%);background:var(--paper);
+  border:1px solid var(--rule);border-radius:3px;box-shadow:0 24px 70px -18px rgba(0,0,0,.5);
+  padding:30px 34px 34px}
+@media (max-width:640px){.sheetcard{padding:22px 18px 26px}}
+.sheetcard .x{position:absolute;right:12px;top:12px;width:32px;height:32px;border:1px solid var(--rule);
+  background:var(--card);border-radius:2px;cursor:pointer;color:var(--ink-2);font-size:17px;line-height:1;
+  display:flex;align-items:center;justify-content:center}
+.sheetcard .x:hover{color:var(--brass);border-color:var(--brass)}
+.sheetcard h2{font-family:Copperplate,"Copperplate Gothic Light",Cinzel,Georgia,serif;
+  font-weight:400;letter-spacing:.045em;line-height:1.18;font-size:clamp(21px,3.2vw,32px);
+  margin:0 44px 0 0}
+.sheetcard .stamp{display:flex;gap:14px;align-items:baseline;margin-top:11px;padding-bottom:15px;
+  border-bottom:1px solid var(--rule);flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.sheetcard .stamp .big{font-size:15px;color:var(--brass);letter-spacing:.06em}
+.jump{display:flex;justify-content:space-between;gap:14px;margin-top:26px;padding-top:16px;
+  border-top:1px solid var(--rule)}
+.jump button{background:none;border:0;cursor:pointer;font:inherit;font-size:13px;color:var(--ink);
+  display:flex;flex-direction:column;gap:3px;text-align:left;max-width:46%;padding:0}
+.jump button:last-child{text-align:right;margin-left:auto;align-items:flex-end}
+.jump button:disabled{opacity:.3;cursor:default}
+.jump .lb{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--ink-3)}
+.jump button:not(:disabled):hover .tt{color:var(--brass)}
+body.locked{overflow:hidden}
+/* the [hidden] attribute must beat .sheet{display:grid}
+/ .rows{columns:2}
+*/
+[hidden]{display:none !important}
+.scale-break{position:absolute;top:36px;transform:translateX(-50%);color:var(--rule);
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:-.1em}
+.undated-band{position:absolute;top:44px;height:9px;padding:0;border:0;cursor:pointer;
+  background:var(--rule);border-radius:1px;transition:background .18s,height .18s}
+.undated-band.on{background:var(--brass)}
+.undated-band:hover{height:15px;background:var(--brass-2)}
+.cap.restored{color:var(--brass);letter-spacing:.1em}
+.cap.restored a{color:inherit;text-decoration:none;border-bottom:1px solid currentColor}
+.cap.restored a:hover{color:var(--ink)}
+.badge.restored{background:var(--brass)}
+/* ── added for scale: durations, collections, paging ──────────────── */
+.dur{
+  display:block; position:absolute; right:0; bottom:0; z-index:2;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:9px; letter-spacing:.04em;
+  background:rgba(20,18,15,.74); color:#f2eee4; padding:2px 5px;
+}
+select#coll{
+  background:var(--card); border:1px solid var(--rule); border-radius:2px; color:var(--ink-2);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; padding:8px 10px; max-width:230px;
+}
+select#coll:focus{outline:none;border-color:var(--brass)}
+.more{
+  grid-column:1/-1; padding:26px 0 8px; text-align:center; color:var(--ink-3);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; letter-spacing:.14em;
+  text-transform:uppercase;
+}
+'''
+
+JS = r'''(function () {
+  'use strict';
+  var D = window.__FILMS__, F = D.films, C = D.collections || {};
+  var PAGE = 120;                              // cells rendered per chunk
+
+  var store = {
+    get: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  var saved = store.get('de-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function dur(s) {
+    if (!s) return '';
+    var h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60;
+    return h ? h + ':' + ('0' + m).slice(-2) + ':' + ('0' + x).slice(-2)
+             : m + ':' + ('0' + x).slice(-2);
+  }
+
+  var years = F.map(function (f) { return f.year; }).filter(Boolean);
+  var YMIN = Math.min.apply(null, years), YMAX = Math.max.apply(null, years);
+  var DEC0 = Math.floor(YMIN / 10) * 10, DEC1 = Math.floor(YMAX / 10) * 10;
+  var SPAN = (DEC1 + 10) - DEC0;
+
+  var state = { q: '', decade: null, status: 'all', coll: 'all', view: 'sheet', open: null, limit: PAGE };
+  var search = F.map(function (f) {
+    return (f.title + ' ' + (f.year || '') + ' ' + (f.chan || '')).toLowerCase();
+  });
+
+  /* ── scale ─────────────────────────────────────────────────────────── */
+  var scaleEl = $('#scale'), tip;
+  var undated = [];
+  for (var u = 0; u < F.length; u++) if (!F[u].year) undated.push(u);
+
+  (function () {
+    // Films with no known year still belong on the instrument. The dated range
+    // takes the left of the rule and undated films get their own graduation
+    // past a break, instead of being exiled to a bin under the grid.
+    var W = undated.length ? 84 : 100, UL = 90.5, UR = 99.5;
+    var h = '<div class="scale-axis" style="right:' +
+            (undated.length ? (100 - W) + '%' : '0') + '"></div>', d, n, i;
+    for (d = DEC0; d <= DEC1; d += 10) {
+      n = 0;
+      for (i = 0; i < F.length; i++) if (F[i].year >= d && F[i].year < d + 10) n++;
+      h += '<button class="dec" type="button" data-dec="' + d + '" title="' + n +
+           ' in the ' + d + 's" style="left:' + ((d - DEC0) / SPAN * W).toFixed(3) + '%">' +
+           '<span class="dec-bar"></span><span class="dec-lab">' + d + '</span>' +
+           '<span class="dec-n">' + (n || '') + '</span></button>';
+    }
+    for (var j = 0; j < F.length; j++) {
+      if (!F[j].year) continue;
+      h += '<span class="tick' + (F[j].status === 'dead' ? ' dead' : '') + '" data-i="' + j +
+           '" style="left:' + ((F[j].year - DEC0) / SPAN * W).toFixed(3) + '%"></span>';
+    }
+    if (undated.length) {
+      // Not a position on the scale — a category. Drawn as one deliberate band
+      // rather than 370 ticks crammed into 9% of the rule.
+      h += '<span class="scale-break" style="left:' + ((W + UL) / 2).toFixed(2) + '%">//</span>';
+      h += '<button class="undated-band" type="button" data-dec="undated" title="' +
+           undated.length + ' films with no known year" style="left:' + UL +
+           '%;width:' + (UR - UL) + '%"></button>';
+      h += '<button class="dec" type="button" data-dec="undated" style="left:' +
+           ((UL + UR) / 2) + '%">' +
+           '<span class="dec-bar"></span><span class="dec-lab">undated</span>' +
+           '<span class="dec-n">' + undated.length + '</span></button>';
+    }
+    h += '<span class="scale-tip" id="tip"></span>';
+    scaleEl.innerHTML = h;
+    tip = $('#tip');
+  })();
+
+  /* ── filtering ─────────────────────────────────────────────────────── */
+  function matches(f, i) {
+    var q = state.q.trim().toLowerCase();
+    if (q && search[i].indexOf(q) === -1) return false;
+    if (state.coll !== 'all') {
+      if (state.coll === 'none') { if ((f.collections || []).length) return false; }
+      else if ((f.collections || []).indexOf(state.coll) === -1) return false;
+    }
+    if (state.decade !== null) {
+      if (state.decade === 'undated') { if (f.year) return false; }
+      else if (!(f.year >= state.decade && f.year < state.decade + 10)) return false;
+    }
+    if (state.status === 'live' && f.status === 'dead') return false;
+    if (state.status === 'dead' && f.status !== 'dead') return false;
+    return true;
+  }
+
+  var sheetEl = $('#sheet'), rowsEl = $('#rows'), countEl = $('#count'),
+      emptyEl = $('#empty'), moreEl = $('#more');
+  var visible = [];
+
+  function cellHTML(i) {
+    var f = F[i];
+    var badge = f.status === 'dead' ? '<span class="badge dead">lost</span>'
+              : f.status === 'blocked' ? '<span class="badge blocked">off-site</span>' : '';
+    var d = dur(f.dur);
+    return '<li class="cell' + (f.status === 'dead' ? ' is-dead' : '') + '">' +
+      '<a href="#' + f.slug + '" data-i="' + i + '">' +
+      '<span class="frame"><span class="no">' + ('00' + (i + 1)).slice(-3) + '</span>' + badge +
+      (d ? '<span class="dur">' + d + '</span>' : '') +
+      '<img class="thumb' + (f.pan ? ' panoramic' : '') + '" src="' + esc(f.img) +
+      '" alt="" width="360" height="225" loading="lazy" decoding="async"></span>' +
+      '<span class="meta"><span class="yr">' + (f.year || '&mdash;') + '</span>' +
+      '<span class="nm">' + esc(f.name) + '</span></span></a></li>';
+  }
+  function rowHTML(i) {
+    var f = F[i];
+    var st = f.status === 'dead' ? '<span class="st dead">lost</span>'
+           : f.status === 'blocked' ? '<span class="st blocked">off-site</span>' : '';
+    return '<li><button type="button" data-i="' + i + '">' +
+      '<span class="yr">' + (f.year || '&mdash;') + '</span>' +
+      '<span class="tt">' + esc(f.name) + '</span>' + st + '</button></li>';
+  }
+
+  function paint(append) {
+    var slice = visible.slice(append ? sheetEl.children.length : 0, state.limit);
+    var gh = '', rh = '';
+    for (var k = 0; k < slice.length; k++) { gh += cellHTML(slice[k]); rh += rowHTML(slice[k]); }
+    if (append) { sheetEl.insertAdjacentHTML('beforeend', gh); rowsEl.insertAdjacentHTML('beforeend', rh); }
+    else { sheetEl.innerHTML = gh; rowsEl.innerHTML = rh; }
+    var shown = Math.min(state.limit, visible.length);
+    moreEl.hidden = shown >= visible.length;
+    moreEl.textContent = 'Showing ' + shown + ' of ' + visible.length + ' — scroll for more';
+  }
+
+  function render() {
+    visible = [];
+    for (var i = 0; i < F.length; i++) if (matches(F[i], i)) visible.push(i);
+    state.limit = PAGE;
+    sheetEl.hidden = state.view !== 'sheet';
+    rowsEl.hidden = state.view !== 'list';
+    emptyEl.hidden = visible.length !== 0;
+    countEl.textContent = visible.length === F.length
+      ? F.length + ' films' : visible.length + ' of ' + F.length + ' films';
+    paint(false);
+
+    var on = {};
+    for (var j = 0; j < visible.length; j++) on[visible[j]] = 1;
+    var ticks = scaleEl.querySelectorAll('.tick');
+    for (var t = 0; t < ticks.length; t++) ticks[t].classList.toggle('on', !!on[ticks[t].dataset.i]);
+    var decs = scaleEl.querySelectorAll('.dec');
+    for (var e = 0; e < decs.length; e++)
+      decs[e].classList.toggle('on', String(state.decade) === decs[e].dataset.dec);
+    var band = scaleEl.querySelector('.undated-band');
+    if (band) {
+      var nu = 0;
+      for (var b = 0; b < undated.length; b++) if (on[undated[b]]) nu++;
+      band.classList.toggle('on', nu > 0);
+      band.style.opacity = nu ? (0.35 + 0.65 * nu / undated.length).toFixed(2) : 0.12;
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) {
+      if (es[0].isIntersecting && state.limit < visible.length) {
+        state.limit += PAGE; paint(true);
+      }
+    }, { rootMargin: '600px' }).observe(moreEl);
+  }
+
+  /* ── film overlay ──────────────────────────────────────────────────── */
+  var veil = $('#veil'), card = $('#card'), lastFocus = null;
+
+  function playerHTML(f) {
+    return f.sources.map(function (s, n) {
+      var cap = f.sources.length > 1
+        ? '<p class="cap">Part ' + (n + 1) + ' of ' + f.sources.length + '</p>' : '';
+      if (s.status === 'live') {
+        var credit = s.restored
+          ? '<p class="cap restored">Restored copy &mdash; <a href="' + esc(s.url) +
+            '" target="_blank" rel="noopener">' + esc(s.via) + ' on YouTube &#8599;</a></p>' : '';
+        return '<div class="player"><div class="fr"><iframe src="' + esc(s.embed) +
+               '" title="' + esc(f.name) + '" loading="lazy" allowfullscreen ' +
+               'allow="accelerometer; encrypted-media; picture-in-picture"></iframe></div>' +
+               cap + credit + '</div>';
+      }
+      if (s.status === 'embed-blocked') {
+        return '<div class="player"><div class="lost"><span class="hd">Will not embed</span>' +
+               '<p>This film is still on ' + (s.kind === 'youtube' ? 'YouTube' : 'its host') +
+               ', but the rights holder blocks playback outside it.</p>' +
+               '<div class="acts"><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' +
+               'Watch there &#8599;</a></div></div>' + cap + '</div>';
+      }
+      var q = encodeURIComponent(f.title);
+      var wb = s.kind === 'youtube'
+        ? 'https://web.archive.org/web/2016/https://www.youtube.com/watch?v=' + s.id
+        : 'https://web.archive.org/web/2016/' + s.url;
+      var priv = /private/i.test(s.reason || '');
+      var hd = priv ? 'Made private' : 'Signal lost';
+      var why = priv
+        ? 'The uploader set this video to private, so it is no longer public. ' +
+          'These searches may turn up another copy.'
+        : 'The source this film was embedded from has gone offline. ' +
+          'These searches may turn up a surviving copy.';
+      return '<div class="player"><div class="lost"><span class="hd">' + hd + '</span>' +
+             '<p>' + why + '</p><div class="acts">' +
+             '<a href="https://archive.org/search?query=' + q + '" target="_blank" rel="noopener">Internet Archive &#8599;</a>' +
+             '<a href="https://www.youtube.com/results?search_query=' + q + '" target="_blank" rel="noopener">YouTube &#8599;</a>' +
+             '<a href="' + wb + '" target="_blank" rel="noopener">Wayback record &#8599;</a>' +
+             '</div></div>' + cap + '</div>';
+    }).join('');
+  }
+
+  function open(i, push) {
+    var f = F[i];
+    if (!f) return;
+    state.open = i;
+    var stat = f.status === 'live' ? 'Playable'
+             : f.status === 'blocked' ? 'Watch off-site' : 'Signal lost';
+    var bits = [];
+    if (f.year) bits.push('<span class="big">' + f.year + '</span>');
+    bits.push('<span>' + stat + '</span>');
+    if (f.dur) bits.push('<span>' + dur(f.dur) + '</span>');
+    if (f.chan) bits.push('<span>' + esc(f.chan) + '</span>');
+    (f.collections || []).forEach(function (c) {
+      if (C[c]) bits.push('<button class="chip" type="button" data-coll="' + esc(c) + '">' +
+                          esc(C[c].title) + '</button>');
+    });
+    var R = D.reckoner || {};
+    if (f.era && R[f.era])
+      bits.push('<a class="chip era" href="#' + esc(f.era) + '">' +
+                esc(R[f.era]) + ' &nearr;</a>');
+    (f.threads || []).forEach(function (t) {
+      if (R[t]) bits.push('<a class="chip" href="#' + esc(t) + '">' +
+                          esc(R[t]) + ' &nearr;</a>');
+    });
+    if (f.sources.length > 1)
+      bits.push('<span>' + (f.nLive || 0) + ' of ' + f.sources.length + ' parts playable</span>');
+    var shot = f.status === 'dead' && f.img
+      ? '<figure class="shot"><img src="' + esc(f.img) + '" alt="Frame from ' + esc(f.name) + '"></figure>' : '';
+    card.innerHTML =
+      '<button class="x" type="button" aria-label="Close">&times;</button>' +
+      '<h2>' + esc(f.name) + '</h2><div class="stamp">' + bits.join('') + '</div>' +
+      shot + playerHTML(f) +
+      '<nav class="jump">' +
+      '<button type="button" data-jump="' + (i - 1) + '"' + (i === 0 ? ' disabled' : '') +
+      '><span class="lb">&larr; Earlier</span><span class="tt">' +
+      (i > 0 ? esc(F[i - 1].name) : '') + '</span></button>' +
+      '<button type="button" data-jump="' + (i + 1) + '"' + (i === F.length - 1 ? ' disabled' : '') +
+      '><span class="lb">Later &rarr;</span><span class="tt">' +
+      (i < F.length - 1 ? esc(F[i + 1].name) : '') + '</span></button></nav>';
+    if (veil.hidden) lastFocus = document.activeElement;
+    veil.hidden = false;
+    document.body.classList.add('locked');
+    veil.scrollTo(0, 0);
+    $('.x', card).focus();
+    if (push !== false && location.hash.slice(1) !== f.slug) location.hash = f.slug;
+    document.title = f.title + ' | Dividing Engine';
+  }
+
+  function close() {
+    state.open = null;
+    veil.hidden = true;
+    card.innerHTML = '';
+    document.body.classList.remove('locked');
+    document.title = D.siteTitle || 'Dividing Engine';
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  /* ── events ────────────────────────────────────────────────────────── */
+  var input = $('#q'), collSel = $('#coll');
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('#sheet a[data-i]');
+    if (a) { e.preventDefault(); open(+a.dataset.i); return; }
+    var r = e.target.closest('#rows button[data-i]');
+    if (r) { open(+r.dataset.i); return; }
+    var j = e.target.closest('[data-jump]');
+    if (j && !j.disabled) { open(+j.dataset.jump); return; }
+    var chip = e.target.closest('[data-coll]');
+    if (chip) { close(); state.coll = chip.dataset.coll; collSel.value = state.coll; render(); return; }
+    if (e.target.closest('.x')) { close(); return; }
+    if (e.target === veil) { close(); return; }
+    var d = e.target.closest('[data-dec]');
+    if (d) {
+      var v = d.dataset.dec === 'undated' ? 'undated' : +d.dataset.dec;
+      state.decade = String(state.decade) === String(v) ? null : v;
+      render(); return;
+    }
+    var t = e.target.closest('.tick');
+    if (t) { open(+t.dataset.i); return; }
+  });
+
+  scaleEl.addEventListener('mouseover', function (e) {
+    var t = e.target.closest('.tick');
+    if (!t) return;
+    var f = F[+t.dataset.i];
+    tip.textContent = (f.year ? f.year + '  ' : '') + f.name;
+    tip.style.left = t.style.left;
+    tip.classList.add('show');
+  });
+  scaleEl.addEventListener('mouseleave', function () { tip.classList.remove('show'); });
+
+  var deb;
+  input.addEventListener('input', function () {
+    clearTimeout(deb);
+    deb = setTimeout(function () { state.q = input.value; render(); }, 90);
+  });
+  collSel.addEventListener('change', function () { state.coll = collSel.value; render(); });
+
+  [].forEach.call(document.querySelectorAll('.seg button'), function (b) {
+    b.addEventListener('click', function () {
+      state.status = b.dataset.status;
+      [].forEach.call(document.querySelectorAll('.seg button'), function (o) {
+        o.classList.toggle('on', o === b); });
+      render();
+    });
+  });
+  [].forEach.call(document.querySelectorAll('.viewtog button'), function (b) {
+    b.addEventListener('click', function () {
+      state.view = b.dataset.view;
+      [].forEach.call(document.querySelectorAll('.viewtog button'), function (o) {
+        o.classList.toggle('on', o === b); });
+      render();
+    });
+  });
+
+  $('.theme').addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    if (!cur) cur = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    store.set('de-theme', next);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (!veil.hidden) { close(); return; }
+      if (document.activeElement === input) { input.value = ''; state.q = ''; render(); }
+      return;
+    }
+    if (!veil.hidden) {
+      if (e.key === 'ArrowLeft' && state.open > 0) open(state.open - 1);
+      if (e.key === 'ArrowRight' && state.open < F.length - 1) open(state.open + 1);
+      if (e.key === 'Tab') {
+        var f = card.querySelectorAll('button:not(:disabled), a[href], iframe');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+      return;
+    }
+    if (e.key === '/' && document.activeElement !== input) { e.preventDefault(); input.focus(); }
+  });
+
+  var bySlug = {};
+  F.forEach(function (f, i) { bySlug[f.slug] = i; });
+  function fromHash() {
+    var h = decodeURIComponent(location.hash.slice(1));
+    if (h && bySlug[h] !== undefined) open(bySlug[h], false);
+    else if (!veil.hidden) close();
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  render();
+  fromHash();
+})();
+'''
+
+# ── eras and threads (the link to The Reckoner) ───────────────────────────
+ERAS = [
+    ('era-6',  'Era 6: Human Computers, Analog Machines & Theory', 1900, 1940),
+    ('era-7',  'Era 7: The Electronic Breakthrough',               1940, 1955),
+    ('era-8',  'Era 8: Computation Becomes Infrastructure',        1955, 1975),
+    ('era-9',  'Era 9: Personal, Symbolic & Networked',            1975, 2005),
+    ('era-10', 'Era 10: The Age of Massive Computation & AI',      2005, 9999),
+]
+
+# Keywords are a *proposal* only. Threads are editorial judgements about what a
+# film is really about, which no keyword list can make — so nothing is written
+# without review.
+THREADS = {
+    'thread-B': ('Human Computers',       r'human computer|computress|girls? who|hand[- ]comput|slide rule'),
+    'thread-D': ('Machines',              r'\bengine\b|mechanic|gear|lathe|machine shop|clockwork|automat[oa]n'),
+    'thread-G': ('Cryptography',          r'crypt|cipher|enigma|code[- ]break|secret writ|steganog'),
+    'thread-H': ('The Art of Reckoning',  r'abacus|arithmetic|reckon|calculat|multiplic|logarithm|nomogram'),
+    'thread-I': ('Computing with the World', r'analog|water clock|waterwheel|tide predict|differential analy|servo|feedback|hydraul|fluidic'),
+    'thread-J': ('The Secret History',    r'navy|milit|defen[cs]e|missile|weapon|nuclear|bomb|classified|radar|war'),
+    'thread-L': ('Teaching Math',         r'school|classroom|teach|student|pupil|lesson|educat|curricul'),
+    'thread-M': ('The Signal',            r'telephone|telegraph|radio\b|televis|broadcast|satellite|network|signal|transmitter|transmission of (speech|sound|picture|televis)|transmitted by wire|microwave|coaxial'),
+    'thread-N': ('When Computation Fails', r'fail|bug\b|crash|error|disaster|glitch|breakdown|blackout'),
+    'thread-O': ('Memory',                r'memory|core\b|magnetic tape|drum|disk|storage|punch(ed)? card|record'),
+    'thread-P': ('The Data Thread',       r'statistic|probabilit|census|survey|polling|data process|actuar'),
+    'thread-Q': ('Labor & Automation',    r'automat|labor|labour|worker|factory|assembly|employ|union|job'),
+    'thread-R': ('Commerce as Computation', r'bank|business|commerce|account|insur|payroll|inventory|retail|ledger'),
+    'thread-S': ('The Card and the Link', r'punch(ed)? card|librar|catalog|index|hypertext|hypercard|filing|retriev'),
+    'thread-T': ('The Harmony Thread',    r'music|sound|harmon|synthes[iz]|audio|acoustic|tone|voice|speech'),
+    'thread-U': ('The Hermetic Thread',   r'occult|hermetic|alchem|astrolog|mystic|esoteric|divinat'),
+}
+_TC = {k: (n, re.compile(p, re.I)) for k, (n, p) in THREADS.items()}
+
+def era_of(year):
+    if not year:
+        return None
+    for eid, _t, a, b in ERAS:
+        if a <= year < b:
+            return eid
+    return None
+
+def propose_threads(f, limit=3):
+    hay = ' '.join(filter(None, [f.get('title'), f.get('name'), f.get('chan')]))
+    hits = []
+    for eid, (name, pat) in _TC.items():
+        m = pat.findall(hay)
+        if m:
+            hits.append((len(m), eid, name))
+    hits.sort(key=lambda h: -h[0])
+    return [(eid, name) for _n, eid, name in hits[:limit]]
+
+REVIEW = 'tags-review.txt'
+
+def cmd_tag(a):
+    d = load()
+    if a.apply:
+        return _tag_apply(d, a)
+
+    n_era = 0
+    for f in d['films']:
+        e = era_of(f.get('year'))
+        if e and f.get('era') != e:
+            f['era'] = e; n_era += 1
+    save(d)
+    print(f'eras: {n_era} film(s) placed from their year (deterministic, no review needed)')
+
+    if a.eras_only:
+        return 0
+
+    rows = []
+    for f in d['films']:
+        if f.get('threads') and not a.all:
+            continue
+        props = propose_threads(f)
+        if props:
+            rows.append((f, props))
+    if not rows:
+        print('no thread proposals to review'); return 0
+
+    path = os.path.join(ROOT, REVIEW)
+    with open(path, 'w', encoding='utf-8') as fh:
+        fh.write('# Thread proposals — these are guesses from keywords, not judgements.\n'
+                 '#\n'
+                 '#   keep a line to accept it        edit the letters to correct it\n'
+                 '#   delete a line to reject it      then:  ./de tag --apply\n'
+                 '#\n'
+                 '# Threads: ' + '  '.join(sorted(k.split("-")[1] for k in THREADS)) + '\n#\n')
+        for f, props in rows:
+            letters = ','.join(p[0].split('-')[1] for p in props)
+            names = ' / '.join(p[1] for p in props)
+            fh.write(f'{letters:<8}{f["slug"]:<52}# {f["name"][:44]:<46}{names}\n')
+    print(f'{len(rows)} proposals written to {REVIEW}')
+    print(f'  edit it, then: ./de tag --apply')
+    return 0
+
+def _tag_apply(d, a):
+    path = os.path.join(ROOT, REVIEW)
+    if not os.path.exists(path):
+        warn(f'{REVIEW} not found — run "de tag" first'); return 1
+    by_slug = {f['slug']: f for f in d['films']}
+    n, bad = 0, []
+    for line in open(path, encoding='utf-8'):
+        line = line.split('#')[0].rstrip()
+        if not line.strip():
+            continue
+        parts = line.split()
+        if len(parts) < 2:
+            continue
+        letters, slug = parts[0], parts[1]
+        f = by_slug.get(slug)
+        if not f:
+            bad.append(slug); continue
+        ids = [f'thread-{c.strip().upper()}' for c in letters.split(',') if c.strip()]
+        ids = [i for i in ids if i in THREADS]
+        if ids:
+            f['threads'] = ids; n += 1
+    save(d)
+    print(f'tagged {n} film(s) with threads')
+    if bad:
+        warn(f'  {len(bad)} unknown slug(s) ignored, first: {bad[0]}')
+    import collections as C
+    c = C.Counter(t for f in d['films'] for t in (f.get('threads') or []))
+    for k, v in c.most_common():
+        print(f'   {v:4d}  {k}  {THREADS[k][0]}')
+    return 0
+
+# ── build ─────────────────────────────────────────────────────────────────
+def esc(s): return html.escape(str(s if s is not None else ''), quote=True)
+
+THEME = os.path.join(ROOT, 'theme.css')
+
+def cmd_build(a):
+    d = load()
+    theme = open(THEME, encoding='utf-8').read() if os.path.exists(THEME) else ''
+    if not theme:
+        warn('theme.css not found — the page will be unstyled')
+    films = d['films']
+    if not films:
+        warn('archive is empty — add something first'); return 1
+
+    films.sort(key=lambda f: (f.get('year') or 9999, (f.get('name') or '').lower()))
+    dated = [f for f in films if f.get('year')]
+    ymin = min(f['year'] for f in dated) if dated else 0
+    ymax = max(f['year'] for f in dated) if dated else 0
+
+    # assets live at the repo root; a page built into watch/ must climb out
+    depth = len([p for p in os.path.dirname(a.out).split(os.sep) if p and p != '.'])
+    up = '../' * depth
+
+    def img_of(f):
+        if f.get('thumb'): return up + f['thumb']
+        for k in ('360', 'med', '128'):
+            if k in (f.get('images') or {}):
+                return up + f['images'][k].replace('_Media/', 'media/')
+        return ''
+
+    out = []
+    for f in films:
+        rec = {
+            'slug': f['slug'], 'title': f['title'], 'name': f.get('name') or f['title'],
+            'year': f.get('year'), 'img': img_of(f), 'status': f.get('status', 'live'),
+            'nLive': f.get('n_live', sum(1 for s in f['sources'] if s['status'] == 'live')),
+            'collections': f.get('collections') or [],
+            'sources': [{k: v for k, v in
+                         dict(kind=s['kind'], id=s['id'], url=s['url'], embed=s['embed'],
+                              status=s['status'], restored=s.get('restored'),
+                              via=s.get('via'), reason=s.get('reason')).items()
+                         if v is not None}
+                        for s in f['sources']],
+        }
+        if f.get('dur'):  rec['dur'] = f['dur']
+        if f.get('chan'): rec['chan'] = f['chan']
+        if f.get('era'):  rec['era'] = f['era']
+        if f.get('threads'): rec['threads'] = f['threads']
+        if f.get('pan'):  rec['pan'] = 1
+        out.append(rec)
+
+    n_live = sum(1 for f in out if f['status'] == 'live')
+    n_blk  = sum(1 for f in out if f['status'] == 'blocked')
+    n_dead = sum(1 for f in out if f['status'] == 'dead')
+    title = d.get('siteTitle', 'Dividing Engine')
+    tag = d.get('tagline', 'Technology &middot; Science &middot; History')
+
+    reckoner = {e: t for e, t, _a, _b in ERAS}
+    reckoner.update({k: n for k, (n, _p) in THREADS.items()})
+    data = json.dumps({'films': out, 'collections': d['collections'], 'siteTitle': title,
+                       'reckoner': reckoner},
+                      separators=(',', ':'), ensure_ascii=False).replace('</', '<\\/')
+
+    used = sorted(set(c for f in out for c in f['collections']))
+    opts = ['<option value="all">All collections</option>']
+    for c in used:
+        n = sum(1 for f in out if c in f['collections'])
+        opts.append(f'<option value="{esc(c)}">{esc(d["collections"].get(c, {}).get("title", c))}'
+                    f' ({n})</option>')
+    if any(not f['collections'] for f in out):
+        n = sum(1 for f in out if not f['collections'])
+        opts.append(f'<option value="none">Uncollected ({n})</option>')
+    coll_sel = (f'<select id="coll" aria-label="Collection">{"".join(opts)}</select>'
+                if used else '<select id="coll" hidden></select>')
+
+    page = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{esc(title)} — Technology, Science, History</title>
+<meta name="description" content="A curated archive of {len(out)} technical, scientific and computing films{f", {ymin}–{ymax}" if dated else ""}.">
+<link rel="icon" href="{up}favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
+<style>
+{theme}
+{CSS}
+</style>
+</head>
+<body>
+
+<header class="masthead"><div class="wrap">
+<h1 class="wordmark"><a href="../">{esc(title)}</a></h1>
+<p class="tagline">{tag}</p>
+<nav class="halves">
+<a href="../read/">Read</a><a href="./" aria-current="page">Watch</a>
+</nav>
+</div><div class="gradrule"></div></header>
+
+<div class="wrap">
+  <div class="scale-block"><div class="scale" id="scale"></div></div>
+
+  <div class="controls">
+    <div class="search">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5 14.5 14.5"/></svg>
+      <input id="q" type="search" placeholder="Search {len(out)} films &mdash; press /" autocomplete="off" spellcheck="false" aria-label="Search films">
+    </div>
+    {coll_sel}
+    <div class="seg" role="group" aria-label="Filter by availability">
+      <button class="on" data-status="all" type="button">All</button>
+      <button data-status="live" type="button">Playable</button>
+      <button data-status="dead" type="button">Lost</button>
+    </div>
+    <div class="viewtog" role="group" aria-label="View">
+      <button class="on" data-view="sheet" type="button">Sheet</button>
+      <button data-view="list" type="button">Index</button>
+    </div>
+    <span class="count" id="count">{len(out)} films</span>
+  </div>
+
+  <ul class="sheet" id="sheet"></ul>
+  <ul class="rows" id="rows" hidden></ul>
+  <p class="more" id="more" hidden></p>
+  <p class="empty" id="empty" hidden>No films match.</p>
+</div>
+
+<div class="veil" id="veil" role="dialog" aria-modal="true" aria-label="Film" hidden>
+  <div class="sheetcard" id="card"></div>
+</div>
+
+<footer><div class="wrap"><div class="in">
+<span>{len(out)} films{f", {ymin}&ndash;{ymax}" if dated else ""} &nbsp;&middot;&nbsp; {n_live} playable, {n_blk} off-site, {n_dead} lost</span>
+<span><a href="../read/">The Reckoner &rarr;</a> &nbsp;&middot;&nbsp;
+<button class="theme" type="button">Invert</button></span>
+</div></div></footer>
+
+<script>window.__FILMS__ = {data};</script>
+<script>
+{JS}
+</script>
+</body>
+</html>
+'''
+    dest = os.path.join(ROOT, a.out)
+    open(dest, 'w', encoding='utf-8').write(page)
+    print(f'{a.out}: {len(page)/1024:.0f} KB, {len(out)} films '
+          f'({n_live} playable, {n_blk} off-site, {n_dead} lost)')
+    if len(page) > 3_000_000:
+        warn('page is over 3 MB — consider splitting the data out of the HTML')
+    return 0
+
+# ── small commands ────────────────────────────────────────────────────────
+def cmd_list(a):
+    d = load()
+    fs = d['films']
+    if a.collection: fs = [f for f in fs if a.collection in f['collections']]
+    if a.status:     fs = [f for f in fs if f.get('status') == a.status]
+    for f in fs:
+        vid = next((s['id'] for s in f['sources'] if s['kind'] == 'youtube'), '-')
+        print(f"{str(f.get('year') or '····'):4s}  {f.get('status','?'):8s} {vid:12s} "
+              f"{f['name'][:52]:54s} {','.join(f['collections'])}")
+    print(f'\n{len(fs)} film(s)')
+    return 0
+
+def cmd_collections(a):
+    d = load()
+    for slug, c in sorted(d['collections'].items()):
+        n = sum(1 for f in d['films'] if slug in f['collections'])
+        print(f"  {slug:34s} {n:4d}  {c.get('title','')[:36]:38s} "
+              f"{'playlist ' + c['playlist'] if c.get('playlist') else '(manual)'}")
+    if not d['collections']: print('  (none)')
+    return 0
+
+def cmd_rm(a):
+    d = load()
+    before = len(d['films'])
+    d['films'] = [f for f in d['films']
+                  if f['slug'] != a.ref
+                  and not any(s['id'] == a.ref for s in f['sources'])]
+    save(d)
+    print(f'removed {before - len(d["films"])} film(s)')
+    return 0
+
+def cmd_set(a):
+    d = load()
+    hit = [f for f in d['films']
+           if f['slug'] == a.ref or any(s['id'] == a.ref for s in f['sources'])]
+    if not hit: warn(f'no film matching {a.ref}'); return 1
+    f = hit[0]
+    if a.year is not None: f['year'] = a.year
+    if a.name: f['name'] = a.name
+    if a.add_collection:
+        d['collections'].setdefault(a.add_collection,
+                                    {'title': a.add_collection.replace('-', ' ').title(),
+                                     'playlist': None, 'added': TODAY})
+        if a.add_collection not in f['collections']: f['collections'].append(a.add_collection)
+    save(d)
+    print(f"{f['slug']}: year={f.get('year')} name={f['name']!r} "
+          f"collections={f['collections']}")
+    return 0
+
+def main():
+    p = argparse.ArgumentParser(prog='de', description='Dividing Engine archive tool')
+    sub = p.add_subparsers(dest='cmd', required=True)
+
+    s = sub.add_parser('add', help='add a video or playlist')
+    s.add_argument('url'); s.add_argument('--collection'); s.add_argument('--title')
+    s.add_argument('--playlist', action='store_true',
+                   help='for a watch?v=..&list=.. URL, take the whole playlist')
+    s.add_argument('--fast', action='store_true', help='skip per-video metadata')
+    s.add_argument('--force', action='store_true', help='ingest even a truncated playlist')
+    s.set_defaults(fn=cmd_add)
+
+    s = sub.add_parser('sync', help='re-pull tracked playlists, add what is new')
+    s.add_argument('--collection'); s.add_argument('--fast', action='store_true')
+    s.add_argument('--force', action='store_true', help='ingest even a truncated playlist')
+    s.set_defaults(fn=cmd_sync)
+
+    s = sub.add_parser('check', help='verify videos still play')
+    s.add_argument('--collection'); s.add_argument('--all', action='store_true')
+    s.add_argument('--status', help='only recheck films with this status')
+    s.add_argument('--deep', action='store_true',
+                   help='also load embeds in a browser to catch newly un-embeddable videos')
+    s.add_argument('--stale', type=int, default=30, help='recheck older than N days (default 30)')
+    s.set_defaults(fn=cmd_check)
+
+    s = sub.add_parser('enrich', help='fill in duration/channel/thumbnail for --fast adds')
+    s.add_argument('--collection'); s.add_argument('--all', action='store_true')
+    s.set_defaults(fn=cmd_enrich)
+
+    s = sub.add_parser('title', help='tidy scraped YouTube titles')
+    s.add_argument('--collection'); s.add_argument('--apply', action='store_true')
+    s.add_argument('--all', action='store_true', help='include the hand-written originals')
+    s.set_defaults(fn=cmd_title)
+
+    s = sub.add_parser('year', help='backfill years from video descriptions')
+    s.add_argument('--collection'); s.add_argument('--apply', action='store_true')
+    s.add_argument('--limit', type=int)
+    s.set_defaults(fn=cmd_year)
+
+    s = sub.add_parser('tag', help='place films in Reckoner eras and threads')
+    s.add_argument('--eras-only', action='store_true', help='only the deterministic era pass')
+    s.add_argument('--apply', action='store_true', help='read back the reviewed proposals')
+    s.add_argument('--all', action='store_true', help='re-propose even for already-tagged films')
+    s.set_defaults(fn=cmd_tag)
+
+    s = sub.add_parser('build', help='regenerate the page')
+    s.add_argument('--out', default='index.html'); s.set_defaults(fn=cmd_build)
+
+    s = sub.add_parser('list'); s.add_argument('--collection'); s.add_argument('--status')
+    s.set_defaults(fn=cmd_list)
+    sub.add_parser('collections').set_defaults(fn=cmd_collections)
+    s = sub.add_parser('rm'); s.add_argument('ref'); s.set_defaults(fn=cmd_rm)
+    s = sub.add_parser('set'); s.add_argument('ref'); s.add_argument('--year', type=int)
+    s.add_argument('--name'); s.add_argument('--add-collection'); s.set_defaults(fn=cmd_set)
+
+    a = p.parse_args()
+    return a.fn(a)
+
+if __name__ == '__main__':
+    sys.exit(main() or 0)

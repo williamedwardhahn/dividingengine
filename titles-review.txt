@@ -1,0 +1,65 @@
+# Card titles that are planning labels, not titles a reader should see.
+# Edit the "->" line to the title you want, or delete the pair to leave it alone.
+
+  301  was: The punchline card
+       ->  a student doing one operation per second, nonstop, would n
+
+  364  was: The payoff card (core to the site's thesis):
+       ->  the tool does not replace the skill
+
+  388  was: Closing card
+       ->  when calculation was economically vital, societies investe
+
+  415  was: Pedagogy card
+       ->  students can *build* a working nomogram for the ideal gas
+
+  426  was: Closing card
+       ->  digital was a choice, not a destiny
+
+  519  was: L3. The lag engine (core thesis card-set)
+       ->  L3. The lag engine (core thesis card-set)
+
+  521  was: Compounding card
+       ->  each generation can only pass on what it received plus the
+
+  526  was: L4. The orphaned history (the site's reason to exist)
+       ->  L4. The orphaned history (the site's reason to exist)
+
+  531  was: Mission card
+       ->  this site lives deliberately in that gap
+
+  573  was: The opening card is Babbage's motive
+       ->  he built engines *because human tables were full of errors
+
+  583  was: Closing card
+       ->  machines compute wrong at exactly the same speed they comp
+
+  593  was: Theme card
+       ->  storage has always been embodied labor
+
+  600  was: The uncomfortable card
+       ->  Galton and Pearson built correlation and regression in the
+
+  602  was: Closing card
+       ->  statistics is the mathematics most adults actually need, a
+
+  609  was: Honest closing card
+       ->  automation transitions are real, painful, uneven
+
+  618  was: Theme card
+       ->  from clay tokens to high-frequency trading, commerce has b
+
+  620  was: ### Thread S — The Card and the Link: From Library to HyperCard (this site's own ancestry)
+       ->  ### Thread S — The Card and the Link: From Library to HyperCard (this site's own ancestry)
+
+  628  was: Mission card
+       ->  this site is deliberately built as a HyperCard-style stack
+
+  666  was: Theme card
+       ->  music was the laboratory where the West first learned that
+
+  700  was: The honest-history card
+       ->  none of this endorses magic
+
+  701  was: The Yates card
+       ->  20th-century scholarship (Frances Yates and successors) re

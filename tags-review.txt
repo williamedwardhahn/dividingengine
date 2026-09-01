@@ -1,0 +1,159 @@
+# Thread proposals — these are guesses from keywords, not judgements.
+#
+#   keep a line to accept it        edit the letters to correct it
+#   delete a line to reject it      then:  ./de tag --apply
+#
+# Threads: B  D  G  H  I  J  L  M  N  O  P  Q  R  S  T  U
+#
+M,T     electrical-transmission-of                          # Electrical Transmission of Speech             The Signal / The Harmony Thread
+T       1930s-electronic-music-the-variophone               # 1930's Electronic Music - The Variophone      The Harmony Thread
+D       mechanical-principles-1930                          # Mechanical Principles                         Machines
+M       1930s-how-photographs-were-transmitted-by-wire-s    # 1930s How Photographs Were Transmitted by Wi  The Signal
+T       the-voder-1939-the-worlds-first-electronic-voice    # The Voder: 1939, the worlds first electronic  The Harmony Thread
+T       1939-voder-speech-synthesiz                         # Voder Speech Synthesizer                      The Harmony Thread
+T       1939-voder                                          # Voder Voice Coder                             The Harmony Thread
+T,O     sound-recording-and-reproduction-sound-on-film      # Sound Recording and Reproduction (Sound on F  The Harmony Thread / Memory
+M       television-and-telephone                            # Television and Telephone                      The Signal
+D       uclas-mechanical-brain-1948                         # UCLA's Mechanical Brain: 1948                 Machines
+L,O     1968-early-computer-magnetic-tape-units-history     # 1968 Early Computer Magnetic Tape Units- His  Teaching Math / Memory
+L,M     how-television-works-1952-an-educational-and-his    # How Television Works" 1952 An Educational an  Teaching Math / The Signal
+J       us-navy-uss-saufley-dd465-1952-living-conditions    # US Navy USS Saufley DD465 1952 Living Condit  The Secret History
+J       navy-fire-control-computers                         # Navy Fire Control Computers                   The Secret History
+Q       cbs-the-search-documentary-mit-automatic-robots     # CBS "the Search" Documentary M.I.T. Automati  Labor & Automation
+M       telephone-linemen-in-the                            # Telephone Linemen                             The Signal
+Q       digital-future                                      # Automation Scare in a Bakery                  Labor & Automation
+S       the-shape-of-the-future                             # The Shape of the Future                       The Card and the Link
+M       tools-of-telephony-1956-western-electric-telepho    # Tools of Telephony" 1956 Western Electric Te  The Signal
+L,M     gateways-to-the-mind-1958-bell-telephone-educati-2  # Gateways to the Mind " 1958 Bell Telephone E  Teaching Math / The Signal
+L,M     gateways-to-the-mind-1958-bell-telephone-educati    # Gateways to the Mind " 1958 Bell Telephone E  Teaching Math / The Signal
+P       computer-history-ibm-1401-announcement-1959-data    # Computer History: IBM 1401 Announcement 1959  The Data Thread
+O       memory-devices-bell-system-1959-4k                  # Memory Devices                                Memory
+J       system-technology-1960-2                            # System Technology                             The Secret History
+L       what-will-future-homes-look-like-filmed-in-the-1    # What Will Future Homes Look Like? Filmed in   Teaching Math
+T       computer-speech-synthesis                           # Computer Speech Synthesis                     The Harmony Thread
+M       behind-the-scenes-with-telstar-1962-bell-telepho    # Behind the Scenes with Telstar " 1962 Bell T  The Signal
+J       digital-computer-techniques-principles-1962-us-n    # Digital Computer Techniques & Principles 196  The Secret History
+T       milton-babbitt-and-the-music-machine-monitor-ret    # Milton Babbitt and the Music Machine | Monit  The Harmony Thread
+L       burroughs-computers-computer-history-b5000-b280     # Burroughs Computers Computer History (b5000,  Teaching Math
+J       fylingdales-early-warning                           # Fylingdales Early Warning                     The Secret History
+M       magi-and-the-history-of-2                           # Magi and the History of Computer Animation    The Signal
+T       milton-babbitt-demonstration-on-electronic-music    # Milton Babbitt-demonstration on electronic m  The Harmony Thread
+J,M     navy-satellite-navigation-ibm-7094-anuyk-compute    # Navy Satellite Navigation; IBM 7094; AN/UYK   The Secret History / The Signal
+Q       even-back-in-1968-workers-were-worried-about-bei    # Even back in 1968, workers were worried abou  Labor & Automation
+T       1968-hear-here-computer                             # Hear! Here! Computer Speech Recognition       The Harmony Thread
+L       space-age-latin-lesson                              # Space Age Latin Lesson                        Teaching Math
+S       an-introduction-to-digital-computers                # An Introduction to Digital Computers          The Card and the Link
+M       special-earth-satellite-station                     # Special ! Earth Satellite Station             The Signal
+L       tomorrows-world-nellie-the-school-computer-15-fe    # Tomorrow's World: Nellie the School Computer  Teaching Math
+L,O     computers-1970-educational-film-ibm-mainframe-pu    # Computers " 1970 Educational Film IBM Mainfr  Teaching Math / Memory
+J       edwin-h-land-in-the-long-walk-1970-directed-by-b    # Edwin H. Land in "The Long Walk" (1970; dire  The Secret History
+T       wendy-carlos-demonstrates-her-moog-synthesizer-i    # Wendy Carlos demonstrates her Moog Synthesiz  The Harmony Thread
+R       the-knowledge-bank                                  # The Knowledge Bank                            Commerce as Computation
+S       motion-vision                                       # Motion & Vision                               The Card and the Link
+I       sandin-analogue-image-proce                         # Sandin Analogue Image Processor               Computing with the World
+L,P     adventure-of-the-mind-1979-data-processing-perso    # Adventure of the Mind" 1979 Data Processing   Teaching Math / The Data Thread
+O       att-archives-bubble-generation-a-film-about-bubb    # AT&T Archives: Bubble Generation, a film abo  Memory
+L       introducing-sperry-univac-system-80-computer-his    # Introducing Sperry Univac System 80 Computer  Teaching Math
+M       1979-sign-language-telephon                         # Sign Language Telephone                       The Signal
+L       will-computers-revolutionise-education-tonight-r    # Will Computers Revolutionise Education? | To  Teaching Math
+L,T     computer-tool-for-the-future-1980s-national-geog    # Computer: Tool For the Future (1980's Nation  Teaching Math / The Harmony Thread
+I       negative-feedback-amplifier                         # Negative Feedback Amplifier                   Computing with the World
+Q       1990-steve-jobs                                     # Steve Jobs                                    Labor & Automation
+J       managing-the-micro-part-3-towards-the-last-front    # Managing The Micro - Part 3 - Towards The La  The Secret History
+Q       nightline-interview-with-steve-jobs                 # Nightline interview with Steve Jobs           Labor & Automation
+Q,T     steve-jobs-interview-2181981                        # Steve Jobs Interview - 2/18/1981              Labor & Automation / The Harmony Thread
+J       capt-grace-hopper-on-future-possibilities-data-h    # Capt. Grace Hopper on Future Possibilities:   The Secret History
+L       it-in-education-information-technology-82           # IT in Education - Information Technology 82   Teaching Math
+R       it-in-shops-and-banks-information-technology-82     # IT in Shops and Banks - Information Technolo  Commerce as Computation
+J       making-commodore-64-software-in-1983                # Making Commodore 64 Software In 1983          The Secret History
+J       the-computer-chronicles-simulator-software          # The Computer Chronicles - Simulator Software  The Secret History
+Q       centre-for-robotics-automation-1984                 # Centre for Robotics & Automation 1984         Labor & Automation
+T       1984-computer-chronicles--                          # Computer Chronicles - Speech Synthesis        The Harmony Thread
+L,Q     vintage-computer-automation-film-1985-educationa    # Vintage Computer Automation film 1985, Educa  Teaching Math / Labor & Automation
+T       midi-and-the-musical-micros-micro-live-retro-tec    # Midi and the Musical Micros | Micro Live | R  The Harmony Thread
+Q       mit-media-laboratory-19861987-side-b-vpri-0558      # MIT Media Laboratory 1986/1987 side B (VPRI   Labor & Automation
+M       1986-network-of-the-future                          # Network of the Future                         The Signal
+M       the-computer-chronicles-apple-local-area-network    # The Computer Chronicles - Apple Local Area N  The Signal
+S       the-computer-chronicles-hypercard                   # The Computer Chronicles - Hypercard           The Card and the Link
+M       the-computer-chronicles-ibm-compatible-local-are    # The Computer Chronicles - IBM Compatible Loc  The Signal
+M       1988-the-secret-life-of-3                           # The Secret Life of Machines: Radio            The Signal
+T       voice-first-computing-knowledge-navigatorimplica    # Voice First Computing: Knowledge Navigator—I  The Harmony Thread
+J       bcs-mac-awards-banquet-and-mactech-wizards-mtg-1    # BCS Mac Awards Banquet and MacTech Wizards m  The Secret History
+J       cybernetics                                         # Cybernetics                                   The Secret History
+M       1991-the-computer-chronicle                         # The Computer Chronicles - Neural Networks     The Signal
+J       hamming-history-of-computers-hardware-march-31-1    # Hamming, "History of Computers - Hardware" (  The Secret History
+J       hamming-history-of-computers-software-april-4-19    # Hamming, "History of Computers - Software" (  The Secret History
+M       three-dimensional-television-tomorrows-world-bbc    # Three Dimensional Television? | Tomorrow's W  The Signal
+P       biostatistics-museum-presentation2016-centennial    # Biostatistics Museum Presentation—2016 Cente  The Data Thread
+D       1-eulerian-and-lagrangian-descriptions-in-fluid     # 1. Eulerian and Lagrangian Descriptions in F  Machines
+J,P     1960s-general-electric-co-military-computer-data    # 1960s General Electric Co. Military Computer  The Secret History / The Data Thread
+O,P,S   1960s-punched-card-data-processing-key-punch-mac    # 1960s Punched Card Data Processing / Key Pun  Memory / The Data Thread / The Card and the Link
+L       1980s-advances-in-robotics-computer-engineering     # 1980s Advances in Robotics & Computer Engine  Teaching Math
+M       a-new-kind-of-science-stephen-wolfram               # A New Kind of Science - Stephen Wolfram       The Signal
+T       architecture-is-frozen-music-bits-and-bytes-epis    # Architecture is Frozen Music (Bits and Bytes  The Harmony Thread
+D,Q     automata-the-shockingly-advanced-17th-century-cl    # Automata: The Shockingly Advanced 17th Centu  Machines / Labor & Automation
+D,Q     automatons-the-original-robots                      # Automatons: The Original Robots               Machines / Labor & Automation
+J,M     biography-of-a-missile-juno-ii-explorer-satellit    # Biography of A Missile" Juno II Explorer Sat  The Secret History / The Signal
+S       book-o-tron-card-reading-keypunch-computer-syste    # Book-o-tron Card Reading & Keypunch Computer  The Card and the Link
+Q       computer-and-automation                             # Computer and Automation Scare                 Labor & Automation
+J       computer-and-the-mind-of-man-p1-logic-by-machine    # Computer And The Mind Of Man P1 Logic By Mac  The Secret History
+J       computer-and-the-mind-of-man-p2-universe-of-numb    # Computer And The Mind Of Man P2 Universe Of   The Secret History
+J       computer-and-the-mind-of-man-p3-the-universal-ma    # Computer And The Mind Of Man P3 The Universa  The Secret History
+J       computer-and-the-mind-of-man-p4-the-control-revo    # Computer And The Mind Of Man P4 The Control   The Secret History
+J       computer-and-the-mind-of-man-p5-managers-and-mod    # Computer And The Mind Of Man P5 Managers And  The Secret History
+D,J     computer-and-the-mind-of-man-p6-engine-at-the-do    # Computer And The Mind Of Man P6 Engine At Th  Machines / The Secret History
+M       computer-networks-bits-and-bytes-episode-5          # Computer Networks (Bits and Bytes, Episode 5  The Signal
+O       computer-storage-bits-and-bytes-episode-1           # Computer Storage (Bits and Bytes, Episode 1)  Memory
+L,T     computers-in-music-education-bits-and-bytes-epis    # Computers in Music Education (Bits and Bytes  Teaching Math / The Harmony Thread
+J,L     computers-tools-for-people-1980s-computer-softwa    # Computers: Tools for People " 1980s Computer  The Secret History / Teaching Math
+I       delia-derbyshire-the-delian-mode                    # Delia Derbyshire - The Delian Mode            Computing with the World
+D,I     difference-engines-mechanical-brains-analog-comp    # Difference Engines: Mechanical Brains, Analo  Machines / Computing with the World
+Q,D     documentary-on-old-automata-portrait-of-automato    # Documentary on old automata: Portrait of aut  Labor & Automation / Machines
+L       education-in-america-17th-and-18th-centuries        # Education in America - 17th and 18th Centuri  Teaching Math
+T       episode-10-computer-music                           # Episode 10: Computer Music                    The Harmony Thread
+D       episode-1-introduction-the-mechanical-universe      # Episode 1: Introduction - The Mechanical Uni  Machines
+O       fundamentals-of-oscilloscopes-digital-storage-co    # Fundamentals of Oscilloscopes Digital Storag  Memory
+I       future-computers-will-be-radically-different-ana    # Future Computers Will Be Radically Different  Computing with the World
+D       gears                                               # Gears                                         Machines
+Q       glen-j-culler-mathematical-laboratoriesa-new-pow    # Glen J. Culler, "Mathematical Laboratories—A  Labor & Automation
+Q       grace-hopper-lecture                                # Grace Hopper Lecture                          Labor & Automation
+Q,T     guinness-collection-of-automatic-musical-instrum    # Guinness Collection of Automatic Musical Ins  Labor & Automation / The Harmony Thread
+L       had-you-lived-then-america-around-1800-education    # Had You Lived Then ... America Around 1800 "  Teaching Math
+M       history-of-television-part-1-the-race-for-televi    # History of Television Part 1 (The Race for T  The Signal
+D       how-a-steam-engine-works-fully-animated             # How a Steam Engine works (Fully Animated)     Machines
+L       how-are-microchips-made-cpu-manufacturing-proces    # How are Microchips Made? 🖥️🛠️ CPU Manufactur  Teaching Math
+O,P,S   ibm-computer-card-model-82-sorting-machine-1960s    # IBM Computer Card Model 82 Sorting Machine 1  Memory / The Data Thread / The Card and the Link
+D,Q     jaquet-droz-the-writer-automaton-from-1774-in-ac    # Jaquet Droz The Writer Automaton From 1774 I  Machines / Labor & Automation
+N,S     justin-falcone-the-origin-of-hypercard-in-the-br    # Justin Falcone: The Origin of HyperCard in t  When Computation Fails / The Card and the Link
+D       lets-code-3d-engine-in-python-from-scratch          # Let's code 3D Engine in Python from Scratch   Machines
+G       lorenz-colossus-and-the-dream-of-a-universal-mac    # Lorenz, Colossus and the Dream of a Universa  Cryptography
+L       making-educational-programs-bits-and-bytes-episo    # Making Educational Programs (Bits and Bytes,  Teaching Math
+O       making-the-most-of-the-micro-5-keeping-a-record     # Making the Most of the Micro (5): Keeping a   Memory
+R       making-the-most-of-the-micro-6-getting-down-to-b    # Making the Most of the Micro (6): Getting Do  Commerce as Computation
+T       making-the-most-of-the-micro-7-sounds-interestin    # Making the Most of the Micro (7): Sounds Int  The Harmony Thread
+L       mathematics-at-your-fingertips-clip-1-of-3          # Mathematics At Your Fingertips clip 1 of 3    Teaching Math
+I       meet-the-engineer-preserving-the-last-analog-mot    # Meet the Engineer Preserving The Last Analog  Computing with the World
+Q       museum-of-automata-york-199x                        # Museum of Automata, York, 199x                Labor & Automation
+J       potted-and-printed-circuits-1950s-electronics-in    # Potted and Printed Circuits " 1950s Electron  The Secret History
+Q       reading-and-sorting-mail-automatically              # Reading and Sorting Mail Automatically        Labor & Automation
+H       relay-computer-calculates-7-digits-of-pi            # Relay computer calculates 7 digits of Pi      The Art of Reckoning
+D,Q     restoration-of-the-pierre-and-henri-louis-jaquet    # Restoration of the Pierre and Henri-Louis Ja  Machines / Labor & Automation
+R       second-revolution-in-banking-the                    # Second Revolution in Banking, the             Commerce as Computation
+M       secret-life-of-machines-the-telephone-full-lengt    # Secret Life Of Machines - The Telephone       The Signal
+T,Q     sound-vision-by-reflect                             # Sound Vision by Reflect                       The Harmony Thread / Labor & Automation
+I       space-time-dynamics-in-video-feedback               # Space-Time Dynamics in Video Feedback         Computing with the World
+T       suzanne-ciani-creates-the-soundtrack-for-a-pinba    # Suzanne Ciani Creates The Soundtrack For A P  The Harmony Thread
+O       tapes-disks-and-formatting-bits-and-bytes-episod    # Tapes, Disks and Formatting (Bits and Bytes,  Memory
+I       the-art-of-video-feedback                           # The Art of Video Feedback                     Computing with the World
+O,S     the-computer-programme-4-its-on-the-computer-dat    # The Computer Programme (4): It's On The Comp  Memory / The Card and the Link
+D       the-evolution-of-cpu-processing-power-part-1-the    # The Evolution Of CPU Processing Power Part 1  Machines
+M       the-moment-in-time-the-manhattan-project            # The Moment in Time: The Manhattan Project     The Signal
+D       the-shock-of-the-new-episode-1-mechanical-paradi    # The Shock of the New - Episode 1 - Mechanica  Machines
+Q       the-signing-machine-the-art-of-automata-interpre    # The Signing Machine: The Art of Automata Int  Labor & Automation
+L       the-skin-of-our-teeth-civilisation-a-personal-vi    # The Skin of Our Teeth" Civilisation: A Perso  Teaching Math
+J       there-would-be-no-hydrogen-bomb-without-him-its     # There Would Be No Hydrogen Bomb Without Him   The Secret History
+T       top-10-amazing-music-instruments-at-speelklok-mu    # Top 10 Amazing Music Instruments at Speelklo  The Harmony Thread
+M       trippy-att-telephone-network-promotional-film-59    # Trippy AT&T Telephone Network Promotional Fi  The Signal
+I       understanding-the-analog-computer                   # Understanding the analog computer             Computing with the World
+B       when-computers-were-human                           # When Computers Were Human                     Human Computers
+N       why-the-soviet-computer-failed                      # Why the Soviet Computer Failed                When Computation Fails

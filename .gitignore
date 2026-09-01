@@ -1,0 +1,11 @@
+# python venv — recreate with:  python3.14 -m venv .venv && .venv/bin/pip install yt-dlp playwright
+.venv/
+
+# build/tool scratch
+archive.json.tmp
+archive.json.new
+archive.json.conflict
+_check.html
+_probe.html
+
+.DS_Store

@@ -1,0 +1,290 @@
+@charset "UTF-8";
+
+/*
+   css Copyright © 2005-2012 Karelia Software. All rights reserved.
+   css released under Creative Commons License  - http://creativecommons.org/licenses/by-sa/2.5/
+   All associated graphics belong to their respective owners and are licensed separately.
+*/
+
+/* IE7 hacks */
+
+*:first-child+html .gridItem img {
+	position:relative;
+	top:0px;
+}
+
+*:first-child+html .gridItem h3 {
+	position:relative;
+	top:0px;
+}
+
+/* Navigation arrows */
+div.text-navigation { text-align:center; margin-bottom:1em;}
+div.text-navigation div { display:inline; margin:0px 0.5em; }
+.collection-navigation .disabled-navigation { text-indent:-5000px; }
+
+/* 2.0 wrap compatibility. 2.0-compatible designs can further adjust these if they need */
+.wide { display:block; }
+
+.narrow.left {   /* Some designs won't respect without !important */
+    float:left!important;
+    clear:left!important;
+}
+.narrow.right {
+    float:right!important;
+    clear:right!important;
+}
+
+.wide.left   .graphic, img.wide.left,   .wide.left video,   .wide.left audio   { display:block; margin-left:0px; margin-right:auto; }
+.wide.center .graphic, img.wide.center, .wide.center video, .wide.center audio { display:block; margin-left:auto; margin-right:auto; }
+.wide.right  .graphic, img.wide.right,  .wide.right video,  .wide.right audio  { display:block; margin-left:auto; margin-right:0px; }
+
+
+.ImageElement.left, .AudioElement.left { text-align:left; }
+.ImageElement.center, .AudioElement.center { text-align:center; }
+.ImageElement.right, .AudioElement.right { text-align:right; }
+
+/* Captions should align themselves with the graphic */
+.graphic-container.left .caption { text-align:left; }
+.graphic-container.center .caption { text-align:center; }
+.graphic-container.right .caption { text-align:right; }
+
+/* Inline iframes need to display as a block to layout right */
+.graphic iframe { display:block; }
+
+/* Pagelet photo grids should be generally be auto width (some 1.x designs hardcoded an exact width) */
+.pagelet .photogrid-index { width:auto; }
+
+/* For content like amazon which forces white background. Design SHOULD set color for A tag and text color. */
+.whiteBackground
+{
+	background-color:white;
+}
+
+.article-info
+{
+	margin-bottom:1em;
+}
+
+/* Firefox reduce dotted lines on links */
+.photo-navigation a:focus, .replaced a:focus {overflow:hidden;}
+
+/* Disqus correction to prevent overflow scroll bars in some designs */
+#dsq-content { overflow:hidden; }
+#dsq-content .dsq-auth-header { width: auto!important; }
+#dsq-content .dsq-by { margin: 4px 6px 0px 0px; }
+#dsq-content .dsq-by a, #dsq-content .dsq-by a:hover { border: 0px none; }
+#dsq-content h3 { margin:0px; }
+
+/* Site menus. Don't wrap the top level items, and wrap sub-menu items normaly. */
+#sitemenu-content ul li span.in { white-space:nowrap;}
+* html #sitemenu-content ul li span.in {white-space: normal}
+*:first-child+html #sitemenu-content ul li span.in {white-space: normal}
+#sitemenu-content ul ul li span.in {white-space: normal}
+#sitemenu-content span.in { position: relative; }
+
+body { word-wrap:break-word; }
+
+/* Make sure scaled-down images look good in IE */
+img { -ms-interpolation-mode: bicubic; }
+
+.photogrid-index-bottom { clear:left; }
+
+.HTMLElement { overflow:hidden; }
+
+/* 
+-- Carbone --
+v3.0.4 (304)
+A Design for Sandvox created by BehindTheRabbit
+http://www.behindtherabbit.com/
+*/
+
+/* Layout */
+body {font-size: 76%; margin:0; padding:0; background-color: #333; font-family:"Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Arial, Helvetica, sans-serif; color:#333;}
+#page-container {background:url(images/bg.png) 0 0 repeat-y; padding:0; width:920px; margin:0 auto;}
+#title {padding:0; overflow:hidden; height:150px; margin:0 10px;}
+* html #title {margin:0 5px;}
+.has-custom-banner #title {background-position: 0 0; background-repeat:repeat-x;}
+h1 {font-family:"Century Gothic", "Avant Garde", Arial, Helvetica, sans-serif; font-size:2.8em; font-weight:normal; padding: 36px 26px 0 26px; color: #FFF; margin:0; text-shadow:0 0 3px #FFF;}
+h1 a {color:#FFF; text-decoration:none;}
+#title p {font-family:"Century Gothic", "Avant Garde", Arial, Helvetica, sans-serif; padding:0 26px 0 26px; margin:0; font-size:1.2em; color:#FFF; text-shadow:0 0 2px #FFF;}
+#title img { float:right; margin:10px 10px 0 0; padding:0; }
+#page-bottom {background:url(images/footer.png) 0 0 no-repeat #333; color:#999; font-size:0.9em; clear:both; text-align:center; margin:0; padding:40px 20px 20px 20px;}
+#page-bottom a {color:#CCC;}
+#page-bottom a:link, #page-bottom a:visited {text-decoration:none;}
+#page-bottom a:hover, #page-bottom a:active {text-decoration:underline;}
+
+/* Tags, elements, classes... */
+.clear {clear: both; height: 0;}
+.hidden {display:none !important;}
+img {border:none;}
+.article img {max-width:100%;}
+.right {margin-left:20px;}
+.left {margin-right:20px;}
+.ImageElement, .center.VideoElement { text-align:center;}
+dd, dl, pre {font-family: Courier, "Courier New", monospace; font-size:1.2em;}
+pre {overflow:scroll;}
+* html pre {padding:5px 10px; width:480px;}
+table { font-size:100%;}
+table h3 {font-size:1.2em !important; padding:5px 10px !important;}
+.dli2 {width:25%;}
+
+/* Sitemenu */
+
+#sitemenu-container {font-family:"Lucida Grande", Arial, Helvetica, sans-serif; background:url(images/sitemenu.png) 0 0 no-repeat #333; height:50px; padding:0; color:#999;}
+#sitemenu ul, #sitemenu ul li, #sitemenu ul li a, #sitemenu ul li .in {line-height:50px; height:50px;}
+#sitemenu ul {text-shadow:1px 2px 1px #000; margin:0; padding:0 26px 0 36px;}
+#sitemenu ul li { display:block; float:left; margin:0; padding:0 16px 0 0; list-style-type:none;}
+#sitemenu a {display:block; cursor:pointer;}
+#sitemenu ul li ul {background-color:#333;}
+#sitemenu ul li ul li .in {padding:0 !important;}
+.hasSubmenu ul {-webkit-box-shadow:2px 2px 3px #333 !important; -moz-box-shadow:2px 2px 3px #333 !important; box-shadow:2px 2px 3px #333 !important;}
+.hasSubmenu ul li {background-color:#333; border-bottom:1px solid #666; padding-left:10px !important;}
+.hasSubmenu ul li.last { border-bottom:none;}
+.hasSubmenu ul li a {text-decoration:none !important;}
+#sitemenu ul li ul .in {border-bottom:none !important;}
+.hasSubmenu ul li.last a .in {border-bottom:none !important;}
+.currentParent ul li a:link, .currentParent ul li a:visited {color:#FFF !important;}
+
+ul li .submenu-indicator {margin-left:5px;}
+ul li ul li .submenu-indicator {top:18px !important;}
+
+/* Sidebar */
+#sidebar-container {width:274px; margin:0 0 10px 0; line-height:1.8em;}
+.pagelet ul {margin:0; padding:0 0 0 20px; }
+.pagelet li {margin:0; padding:0;}
+
+/* Main */
+#main {min-height:450px;}
+body.no-sidebar #main {padding:40px 80px;}
+body.allow-sidebar #main {width:550px;}
+#main-content {padding:0 0 20px 0;}
+#main-content h2 {font-size:2.5em; margin:0; padding:0 0 10px 0;}
+.callout-container {width:250px; float:right; padding:0 0 0 20px;}
+.article h3 {font-size:2em; margin:0; padding:30px 0 10px 0; clear:both;}
+.article h3 a:link, .article h3 a:visited {color:#333 !important; text-decoration:none !important;}
+.article h3 a:hover, .article h3 a:active {color:#333 !important; text-decoration:underline !important;}
+.article {line-height:2.1em;}
+.article-thumbnail {float:left; margin:18px 10px 0 0;}
+.timestamp {color:#999; font-family: "Monaco", Courier, "Courier New", monospace; text-align:right; margin:10px 0 20px 0; padding:0; clear:both;}
+.timestamp a {text-decoration:none;}
+
+/* Pagelets */
+.pagelet  {word-wrap:break-word; overflow:hidden; margin:0 0 20px 0;}
+#sidebar .pagelet {width:240px; padding:10px;}
+h4.pagelet-title {text-align:center; font-size:1.2em; margin-top:0;}
+.bordered {border:1px solid #CCC; padding:10px; -webkit-box-shadow: 0 2px 2px #CCC; -moz-box-shadow: 0 2px 2px #CCC; box-shadow: 0 2px 2px #CCC;}
+.bordered p:first-child {margin-top:0;}
+.bordered p:last-child {margin-bottom:0;}
+
+/* Site Map */
+.wide .sitemap a {text-decoration:none; display:block;}
+.wide .sitemap .figure-content {padding:5px 10px; margin:0;	border:1px solid #CCC; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; -webkit-transition:all 0.3s ease; -moz-transition:all 0.3s ease;	transition:all 0.3s ease;}
+.wide .sitemap .figure-content:hover {-webkit-box-shadow:3px 3px 3px #CCC; -moz-box-shadow:3px 3px 3px #CCC; box-shadow:3px 3px 3px #CCC;}
+.wide .sitemap .figure-content p {margin:5px 0;}
+.wide .sitemap ul {border:1px solid #FFF; padding:5px 10px; margin:0; list-style-type:none; -webkit-transition:all 0.3s ease; -moz-transition:all 0.3s ease; transition:all 0.3s ease; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;}
+.wide .sitemap ul:hover {border:1px solid #CCC; -webkit-box-shadow:3px 3px 3px #CCC; -moz-box-shadow:3px 3px 3px #CCC; box-shadow:3px 3px 3px #CCC;}
+
+/* Form */
+input[type=text], input[type=email], textarea {border-top:1px solid #DDD; border-left:1px solid #DDD; border-bottom:1px solid #E9E9E9; border-right:1px solid #E9E9E9; background-color:#F7F7F7; font-size:120%; padding:5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;}
+
+/* Grid */
+.gridItem {
+	float:left; position:relative; width:176px; height:188px; overflow:hidden; margin:0 4px 4px 0; text-align:center; padding: 4px 0;border:1px solid #CCC;
+	-webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;
+	-webkit-box-shadow:0 1px 1px #999; -moz-box-shadow:0 1px 1px #CCC;
+	-webkit-transition: none; -moz-transition: none; transition: none;
+}
+* html .gridItem {margin:0 2px 4px 0;}
+.gridItem a {text-decoration:none;}
+.gridItem h3 {font-size:0.9em; line-height:1.8em; font-weight:normal; padding: 0 4px; text-align:center; position:absolute; top:140px; width:168px;}
+* html .gridItem h3 {position: relative; top: 0px;}
+.gridItem img {margin: auto!important; display:block; position: absolute; top: 0; bottom: 48px; right: 0; left: 0;}
+* html .gridItem img {position: relative;}
+.gridItem:hover {
+	-webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; transition: all 0.3s ease;
+	-webkit-box-shadow: 0px 0px 6px rgba(180,180,180,0.8); -moz-box-shadow: 0px 0px 6px rgba(180,180,180,0.8); box-shadow: 0px 0px 6px rgba(180,180,180,0.8);
+}
+/* photogrid in sidebar */
+.pagelet .photogrid-index .gridItem {margin:0 auto 10px auto !important; float:none;}
+.pagelet .photogrid-index .gridItem h3 {width:160px;}
+
+
+/* Navigation */
+.collection-navigation {clear:both;}
+.text-navigation {font-size:0.9em; padding:10px 0 20px 0;}
+.text-navigation .previous-page, .text-navigation .next-page, .text-navigation .collection-index {display:block; text-align:right; border-right:4px solid #DDD; padding:2px 5px 2px 2px; margin-bottom:1px;}
+.text-navigation a:link, .text-navigation a:visited { text-decoration:none;}
+.text-navigation a:hover, .text-navigation a:active { text-decoration:underline;}
+
+.photo-navigation {width:150px; margin:10px auto 0 auto; height:35px;}
+.photo-navigation .previous-page .imageLink { background: url(images/arrows.png) -50px 0 no-repeat;}
+.photo-navigation .next-page .imageLink { background: url(images/arrows.png) 0 0 no-repeat;}
+.photo-navigation .collection-index .imageLink { background: url(images/arrows.png) -100px 0 no-repeat;}
+
+.photo-navigation .previous-page .imageLink,
+.photo-navigation .next-page .imageLink,
+.photo-navigation .collection-index .imageLink {
+		opacity:0.6;
+		-webkit-transition:all 0.3s ease; -moz-transition:all 0.3s ease; transition:all 0.3s ease;
+	}
+.photo-navigation .previous-page .imageLink:hover,
+.photo-navigation .next-page .imageLink:hover,
+.photo-navigation .collection-index .imageLink:hover {
+		opacity:1;
+	}
+.photo-navigation div, .photo-navigation a:link, .photo-navigation a:visited {
+	display:block; float:left; width:50px; height:25px; text-indent: -9999px;
+	}
+
+/* End of main.css */
+
+/* 
+-- Carbone --
+-- Right Sidebar design --
+*/
+
+/* colours */
+#page {background:url(rightSidebar/header.png) 0 0 no-repeat;}
+#sitemenu-content li a:link, #sitemenu-content li a:visited {color:#FFF; text-decoration:none;}
+#sitemenu-content li a:hover, #sitemenu-content li a:active {color:#F90; text-decoration:none;}
+#sidebar a:link, #sidebar a:visited {color:#0C5ECE; text-decoration:none;}
+#sidebar a:hover, #sidebar a:active {color:#F90; text-decoration:underline;}
+#main a:link, #main a:visited {color:#0C5ECE;}
+#main a:hover, #main a:active {color:#F90; text-decoration:none;}
+.currentParent a {color:#F90 !important;}
+
+/* floats */
+#sidebar-container {float:right; padding:30px 20px 0 0;}
+#sidebar-content {border-left:1px solid #DDD;}
+body.allow-sidebar #main {float:right; padding:40px 10px 0 30px;}
+#sidebar .pagelet {margin-left:10px;}
+
+/* form button */
+/* thanks to http://webdesignerwall.com/tutorials/css3-gradient-buttons for this nice styling */
+input[type=submit] {
+	min-width:25% !important; border: solid 1px #da7c0c;
+	-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+	background-color: #f78d1d; padding:6px; font-size:100%; font-weight:bold; color:#FFF; cursor:pointer; outline: none; text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2); box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+	background: -moz-linear-gradient(top,  #faa51a,  #f47a20);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20'); min-width:25% !important;
+}
+input[type=submit]:hover {
+	background-color: #f47c20;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f88e11), to(#f06015));
+	background: -moz-linear-gradient(top,  #f88e11,  #f06015);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f88e11', endColorstr='#f06015');
+}
+input[type=submit]:active {
+	position: relative; top: 1px; color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+.callout-container, .graphic-container { clear:right; }
+
+body.has-custom-banner #title { background-image: url("banner.png"); }
+
