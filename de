@@ -765,7 +765,7 @@ def cmd_enrich(a):
     print(f'enriched {n}; {gone} found already gone')
     return 0
 
-# ── eras and threads (the link to The Reckoner) ───────────────────────────
+# ── eras and threads (the timeline spine) ───────────────────────────────
 ERAS = [
     ('era-6',  'Era 6: Human Computers, Analog Machines & Theory', 1900, 1940),
     ('era-7',  'Era 7: The Electronic Breakthrough',               1940, 1955),
@@ -978,7 +978,7 @@ def main():
     s.add_argument('--limit', type=int)
     s.set_defaults(fn=cmd_year)
 
-    s = sub.add_parser('tag', help='place films in Reckoner eras and threads')
+    s = sub.add_parser('tag', help='place films in the timeline eras and threads')
     s.add_argument('--eras-only', action='store_true', help='only the deterministic era pass')
     s.add_argument('--apply', action='store_true', help='read back the reviewed proposals')
     s.add_argument('--all', action='store_true', help='re-propose even for already-tagged films')

@@ -11,15 +11,27 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
 <style>
 /*__THEME__*/
+.links{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule)}
+.lgrp{display:flex;flex-wrap:wrap;gap:7px;align-items:baseline;margin-bottom:9px}
+.llab{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-3);flex:0 0 100px}
+a.rel{display:inline-block;font-size:12.5px;text-decoration:none;color:var(--rubric);
+  border:1px solid var(--rule);border-radius:2px;padding:3px 9px;background:var(--paper-2);
+  line-height:1.3}
+a.rel:hover{border-color:var(--rubric);background:var(--card)}
+a.xl{color:var(--rubric);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--rubric) 35%,transparent)}
+a.xl:hover{border-bottom-color:var(--rubric)}
+@media(max-width:640px){.llab{flex-basis:100%}}
+
 .body .src{display:block;margin-top:14px;font-family:var(--mono);font-size:9.5px;
   letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
 .body .src a{color:inherit;border-bottom:1px solid var(--rule);text-decoration:none}
 .body .src a:hover{color:var(--rubric)}
 
 .cardpic{margin:0 0 20px}
-.cardpic img{width:100%;max-height:340px;object-fit:cover;display:block;
+.cardpic img{display:block;max-width:100%;max-height:420px;width:auto;margin:0 auto;
   border:1px solid var(--rule);border-radius:2px;box-shadow:var(--shadow)}
-.cardpic figcaption{font-family:var(--mono);font-size:9px;letter-spacing:.09em;
+.cardpic figcaption{text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.09em;
   color:var(--ink-3);padding:6px 1px 0;text-transform:uppercase}
 .cardpic figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 .cardpic figcaption a:hover{color:var(--brass)}
@@ -324,8 +336,14 @@ const LADDER = [
 ];
 const HOME = {
   id:"home", kind:"home", title:"Home", sub:"", cards:[
-   {t:"Welcome to The Reckoner", d:"c. 43,000 BCE \u2013 today",
-    b:"A history of computation told as a stack of linked cards \u2014 cards, stacks, links, and the freedom to wander.<br><br>The thesis: <strong>mathematics has been done by machines, and machine-like systems of people, for as long as mathematics has existed.</strong> When you practice arithmetic by hand, you are practicing a living tradition that runs from notched bones through rooms full of human computers to chips performing arithmetic at speeds no one can picture.<br><br>Walk forward with <strong>\u2192</strong>. Open <strong>Go</strong> to jump anywhere. Or press <strong>Wander</strong> and let history find you."},
+   {t:"What a dividing engine is", d:"1773",
+    b:"A <strong>dividing engine</strong> is a machine that cuts precise graduations onto scientific instruments — the marks on a sextant’s arc, a theodolite’s circle, a micrometer’s barrel. Before one existed, every graduation was scribed by hand, and every instrument was only ever as accurate as the craftsman who marked it. Accuracy lived in a pair of hands and died with them.<br><br>In 1773 <strong>Jesse Ramsden</strong> built the first that truly worked. The Board of Longitude bought the design and published it, on condition he divide other makers’ instruments cheaply. A good sextant stopped being a luxury. Ships could find their longitude. <em>Precision itself became reproducible</em> — no longer a talent, but a machine that could be copied.<br><br>It is a computer in the oldest sense. Dividing a circle into equal parts is mathematics. The dividing engine took that operation out of a skilled human hand and made it mechanical, repeatable, and better than any person could manage."},
+
+   {t:"Why not the difference engine", d:"1822",
+    b:"Because Babbage’s is the one everybody remembers, and Ramsden’s is the one that made it possible.<br><br>The <strong>difference engine</strong> computed <em>values</em> — tables of polynomials, by finite differences. The <strong>dividing engine</strong> computed <em>positions</em> — where to cut the marks on an arc. One made numbers; the other made the instruments that measure. Both are machines doing mathematics.<br><br>Babbage could attempt his engine at all because fifty years of instrument-dividing had built a precision machine-tool trade in Britain. His machinist Joseph Clement came out of that world; so did Joseph Whitworth, who worked on the engine before going on to define the thread standards that industry still rests on. And Babbage’s engine stalled partly at the limit of precision manufacture — the very limit dividing engines had spent half a century pushing back.<br><br>The famous machine failed. The obscure one shipped, and quietly made the next two centuries of instruments possible. This archive is named for the one that worked."},
+
+   {t:"Why this site exists", d:"",
+    b:"To teach the history of computing — which is to say, the history of the thing we are currently calling <strong>AI</strong>.<br><br>The thesis is simple: <strong>mathematics has been done by machines, and by machine-like systems of people, for as long as mathematics has existed.</strong> Notched bones. Counting boards. Rooms of human computers with desk calculators. Relay banks, valves, chips. A model trained on 3×10<sup>26</sup> operations. These are not separate stories with a modern climax; they are one continuous story about handing arithmetic to something that is not a mind.<br><br>Almost none of it is taught. It is too old for a computer-science course and too new for a history one, so it falls between them — and the students who most need it are the ones practising, by hand, the very operations a machine now performs a quintillion times a second.<br><br>So: every artifact here is a card. Some cards play film. Follow the links, or press <strong>Wander</strong> and let the history find you."},
    {t:"How to use this stack", b:"<strong>Eras 1\u201310</strong> are the timeline, from tally bones to frontier AI. <strong>Threads A\u2013U</strong> are themes that cut across time: human computers, secrecy, ethnomathematics, harmony, failure, memory, the hermetic current, and more.<br><br>Words like Thread J or Era 4 inside any card are links \u2014 follow them the way you'd follow a thought. <strong>Find</strong> searches every card. <strong>Back</strong> retraces your steps, and <kbd>\u2190</kbd> <kbd>\u2192</kbd> flip cards. On a phone, swipe.<br><br>There is no required order. A stack of cards, unlike a textbook, trusts you to wander."},
    {t:"Try it: the Speed Ladder", d:"the punchline", special:"ladder", b:""},
    {t:"The map", special:"map", b:""},
@@ -401,6 +419,16 @@ function renderMap(){
     <ul class="map">${thr.map(li).join("")}</ul>`;
 }
 
+function renderLinks(cd){
+  // A card is a place, not a slide: show what it points at and what points here.
+  const out = cd.out||[], inn = cd.in||[];
+  if(!out.length && !inn.length) return "";
+  const li = x => `<a class="rel" href="#${x.to}">${esc(x.t||"")}</a>`;
+  let h = '<div class="links">';
+  if(out.length) h += `<div class="lgrp"><span class="llab">Leads to</span>${out.map(li).join("")}</div>`;
+  if(inn.length) h += `<div class="lgrp"><span class="llab">Reached from</span>${inn.map(li).join("")}</div>`;
+  return h + '</div>';
+}
 function renderFilm(cd){
   const meta = [cd.by, cd.dur? fmtDur(cd.dur) : "", cd.via? "restored copy" : ""]
         .filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join("");
@@ -514,6 +542,7 @@ function render(push=true){
       `</figure>`;
     h += `<div class="body">${linkify(md(cd.b.includes("<")? cd.b : esc(cd.b)))}</div>`;
   }
+  h += renderLinks(cd);
   h += `</div>`;
   $("#content").innerHTML = h;
   if(cd.special==="ladder"){ computeLadder(); $("#secs").addEventListener("input",computeLadder); }

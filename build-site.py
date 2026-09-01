@@ -105,6 +105,113 @@ def film_card(f):
     if src.get('via'):    c['via'] = src['via']
     return c
 
+# ── cross-linking: what makes this a web rather than a slideshow ──────────
+STOP_TITLE = {'overview', 'ideas', 'machines', 'memory', 'the signal', 'home'}
+GENERIC = re.compile(r'^(the|a|an)\s+', re.I)
+
+COMMON = {'history','computer','computers','computing','machine','machines','technology',
+          'network','memory','science','data','number','numbers','system','systems',
+          'information','digital','future','world','time','work','film','video','part'}
+
+def link_terms(card):
+    """Terms that should point at this card when they appear on another one.
+
+    The full title, plus the distinctive names inside it — 'Jacquard loom
+    (1804)' should also answer to 'Jacquard', because that is how other cards
+    actually refer to it. Common words are excluded by name, and anything that
+    turns out to match much of the corpus is dropped by the frequency guard in
+    crosslink().
+    """
+    t = (card.get('t') or '').strip()
+    if not t or t.lower() in STOP_TITLE:
+        return []
+    base = re.sub(r'\s*\([^)]*\)', '', t).strip(' .,:;\'"')
+    base = re.split(r'\s+[-–—]\s+', base)[0].strip()
+    out = set()
+    if len(base) >= 9 and len(base.split()) >= 2 and base.lower() not in COMMON:
+        out.add(base)
+    # distinctive capitalised names: Jacquard, Antikythera, Pascaline, Leibniz
+    for w in re.findall(r"\b([A-Z][a-z\u00c0-\u024f]{4,}(?:['’][a-z]+)?)\b", base):
+        if w.lower() not in COMMON and not GENERIC.match(w):
+            out.add(w)
+    # a lone distinctive noun title: 'Quipus', 'Pascaline', 'Nomograms'
+    if len(base.split()) == 1 and len(base) >= 7 and base.lower() not in COMMON:
+        out.add(base)
+    return [x for x in out if len(x) >= 6]
+
+def link_label(stack, card):
+    t = (card.get('t') or '').strip()
+    if t.lower() in ('overview', ''):
+        return re.sub(r'^(Era \d+|Thread [A-Z]):\s*', '', stack['title'])
+    return t
+
+def crosslink(stacks, cap=6):
+    """Turn mentions of other cards into links, and record what points back."""
+    # Only the narrative and catalogue cards are link targets. A film title is
+    # not a concept — letting one own the word 'Telephony' produced hundreds of
+    # links that pointed at a 1956 industrial short for no reason.
+    index = []                                   # (term, stack_id, card_idx, title)
+    for s in stacks:
+        for n, c in enumerate(s['cards']):
+            if c.get('kindc') == 'film':
+                continue
+            for term in link_terms(c):
+                index.append((term, s['id'], n, link_label(s, c)))
+    # longest terms first so 'Jacquard loom' wins over 'Jacquard'
+    index.sort(key=lambda x: -len(x[0]))
+    bodies = [(c.get('b') or '') for s_ in stacks for c in s_['cards']]
+    pats = []
+    for t, sid, n, ti in index:
+        p = re.compile(r'(?<![\w-])' + re.escape(t) + r'(?![\w-])', re.I)
+        if sum(1 for b in bodies if p.search(b)) > 8:      # too generic to mean anything
+            continue
+        pats.append((p, sid, n, ti))
+
+    back = {}
+    made = 0
+    for s in stacks:
+        for n, c in enumerate(s['cards']):
+            body = c.get('b') or ''
+            if not body:
+                continue
+            # only rewrite text outside existing tags and anchors
+            parts = re.split(r'(<a\b[^>]*>.*?</a>|<[^>]+>)', body, flags=re.S)
+            hits, seen = 0, set()
+            for i, seg in enumerate(parts):
+                if not seg or seg.startswith('<'):
+                    continue
+                for pat, sid, tn, ti in pats:
+                    if hits >= cap:
+                        break
+                    if sid == s['id'] and tn == n:      # never link to itself
+                        continue
+                    key = (sid, tn)
+                    if key in seen:
+                        continue
+                    new, k = pat.subn(
+                        lambda m: f'<a class="xl" href="#{sid}/{tn}">{m.group(0)}</a>',
+                        seg, count=1)
+                    if k:
+                        seg = new; hits += 1; seen.add(key); made += 1
+                        back.setdefault(f'{sid}/{tn}', []).append(
+                            {'to': f"{s['id']}/{n}", 't': link_label(s, c)})
+                parts[i] = seg
+            if hits:
+                c['b'] = ''.join(parts)
+                c['out'] = [{'to': f'{sid}/{tn}', 't': ti} for (sid, tn) in seen
+                            for ti in [next((x[3] for x in index
+                                             if x[1] == sid and x[2] == tn), '')]]
+    for s in stacks:
+        for n, c in enumerate(s['cards']):
+            b = back.get(f"{s['id']}/{n}")
+            if b:
+                seen, uniq = set(), []
+                for x in b:
+                    if x['to'] not in seen:
+                        seen.add(x['to']); uniq.append(x)
+                c['in'] = uniq[:12]
+    return made
+
 def pic_key(stack_id, title):
     return hashlib.sha1(f'{stack_id}|{title}'.encode()).hexdigest()[:12]
 
@@ -168,6 +275,7 @@ def main():
         })
 
     n_dp = dphys_cards(stacks)
+    n_link = crosslink(stacks)
     n_pic = attach_pictures(stacks)
     n_cards = sum(len(s['cards']) for s in stacks)
     n_film  = sum(1 for s in stacks for c in s['cards'] if c.get('kindc') == 'film')
@@ -178,7 +286,8 @@ def main():
               .replace('/*__DATA__*/null', data))
     OUT.write_text(html, encoding='utf-8')
     print(f'{OUT.name}: {len(html)//1024} KB — {n_cards} cards in {len(stacks)} stacks, '
-          f'{n_film} with video, {n_pic} with a picture, {n_dp} from dataphys '
+          f'{n_film} with video, {n_pic} with a picture, {n_dp} from dataphys, '
+          f'{n_link} cross-links '
           f'({placed} dated into eras, {len(undated)} undated)')
 
 if __name__ == '__main__':

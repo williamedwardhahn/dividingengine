@@ -158,7 +158,10 @@ def test_build():
     check('no unresolved template placeholders',
           '/*__THEME__*/' not in h and '/*__DATA__*/' not in h)
     check('theme tokens are inlined', '--rubric' in h and '--brass' in h)
-    check('is branded Dividing Engine', 'Dividing Engine' in h and 'The Reckoner</b>' not in h)
+    check('is branded Dividing Engine',
+          'Dividing Engine' in h and 'The Reckoner' not in h.replace('Ready-Reckoner', ''))
+    check('the name is explained', 'Jesse Ramsden' in h and 'difference engine' in h.lower())
+    check('the mission is stated', 'history of computing' in h.lower())
     check('no read/watch split remains', 'class="halves"' not in h)
 
     m = re.search(r'const STACKS\s*=\s*(\{.*?\})\s*;?\s*\n', h, re.S) or \
@@ -182,6 +185,26 @@ def test_build():
         uncredited = [c['t'] for c in dp if 'dataphys.org' not in (c.get('b') or '')]
         check('every catalogue card credits its source', not uncredited,
               f'{len(uncredited)}: {uncredited[:2]}')
+        # the cross-link graph: this is what makes it hypermedia and not a slideshow
+        addr = {f"{s['id']}/{n}" for s in stacks for n in range(len(s['cards']))}
+        out_n = sum(len(c.get('out') or []) for c in cards)
+        check('cards cross-link to each other', out_n > 200, f'{out_n} links')
+        dangling = [x['to'] for c in cards for x in (c.get('out') or []) + (c.get('in') or [])
+                    if x['to'] not in addr]
+        check('every link points at a real card', not dangling, f'{dangling[:3]}')
+        unlabelled = [x['to'] for c in cards for x in (c.get('out') or []) + (c.get('in') or [])
+                      if not (x.get('t') or '').strip() or x.get('t') == 'Overview']
+        check('no link is labelled "Overview"', not unlabelled, f'{len(unlabelled)}')
+        filmtargets = [x['to'] for c in cards for x in (c.get('out') or [])
+                       if x['to'] in {f"{s['id']}/{n}" for s in stacks
+                                      for n, cc in enumerate(s['cards'])
+                                      if cc.get('kindc') == 'film'}]
+        check('films are not link targets', not filmtargets, f'{len(filmtargets)}')
+        hub = max((len(c.get('in') or []) for c in cards), default=0)
+        check('no card is a runaway hub', hub <= 20, f'busiest has {hub} inbound')
+        print(f'      ({out_n} cross-links; '
+              f'{sum(1 for c in cards if c.get("in"))} cards reached from others)')
+
         pics = [c for c in cards if c.get('img') and c.get('kindc') != 'film']
         print(f'      ({len(pics)} narrative cards carry a picture)')
         # a film that died before we ever fetched its thumbnail cannot have one;
