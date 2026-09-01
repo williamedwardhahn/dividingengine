@@ -209,10 +209,14 @@ def compress(raw, dest):
     if im.height > MAXW * 1.6:
         h = int(MAXW * 1.6)
         im = im.resize((round(im.width * h / im.height), h), Image.LANCZOS)
-    for q in (QUALITY, 66, 58, 50):
+    # step quality down, then width, until it fits; a few images are pathological
+    for w, q in ((im.width, QUALITY), (im.width, 66), (im.width, 56),
+                 (700, 62), (700, 52), (560, 55)):
+        pic = im if w >= im.width else im.resize(
+            (w, round(im.height * w / im.width)), Image.LANCZOS)
         buf = io.BytesIO()
-        im.save(buf, 'WEBP', quality=q, method=6)
-        if buf.tell() <= BUDGET or q == 50:
+        pic.save(buf, 'WEBP', quality=q, method=6)
+        if buf.tell() <= BUDGET or (w, q) == (560, 55):
             dest.write_bytes(buf.getvalue())
             return dest.stat().st_size
     return dest.stat().st_size
@@ -246,6 +250,7 @@ def cmd_fetch(a):
             p = v['pick']
             db[k] = {'card': v['card'], 'stack': v['stack'], 'img': v['img'],
                      'file': p.get('file', ''), 'page': p.get('page', ''),
+                     'src': p.get('url', ''),      # keep it: recompress needs a source
                      'lic': p.get('lic', ''), 'by': p.get('by', ''),
                      'via': p.get('via', '')}
             ok += 1; total += size

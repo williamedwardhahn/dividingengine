@@ -106,6 +106,12 @@ def test_pictures():
     missing = [k for k, v in have.items() if not (ROOT / v['img']).exists()]
     check('every recorded picture exists on disk', not missing,
           f'{len(missing)} missing: {missing[:3]}')
+    # An image with no recorded licence cannot legally be published — and a blank
+    # licence used to slip past the attribution check below, because it matched
+    # neither BY nor anything else.
+    nolic = [v['card'] for v in have.values() if not (v.get('lic') or '').strip()]
+    check('every picture records its licence', not nolic,
+          f'{len(nolic)}: {nolic[:3]}')
     # CC BY / BY-SA require crediting the author; an unattributed file is a bug
     noattr = [v['card'] for v in have.values()
               if re.search(r'\bBY\b', v.get('lic', ''), re.I) and not (v.get('by') or v.get('via'))]
