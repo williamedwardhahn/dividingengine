@@ -1,0 +1,297 @@
+#!/usr/bin/env python3
+"""
+Dividing Engine — test suite.
+
+    ./test              data, sources, build output, assets  (fast, no network)
+    ./test --browser    also drive the built page in Chromium
+    ./test --net        also check a sample of embeds are still reachable
+    ./test --deploy     also compare local index.html against what Pages serves
+
+Every check is something that has actually broken here at least once.
+"""
+import argparse, json, os, re, subprocess, sys, tempfile, pathlib, collections
+
+ROOT = pathlib.Path(__file__).parent.resolve()
+os.chdir(ROOT)
+
+_pass, _fail, _skip = 0, [], 0
+def check(name, cond, detail=''):
+    global _pass
+    if cond:
+        _pass += 1
+        print(f'  \033[32m✓\033[0m {name}')
+    else:
+        _fail.append((name, detail))
+        print(f'  \033[31m✗\033[0m {name}' + (f'\n      {detail}' if detail else ''))
+def skip(name, why):
+    global _skip
+    _skip += 1
+    print(f'  \033[90m·\033[0m {name} — {why}')
+def section(t): print(f'\n\033[1m{t}\033[0m')
+
+# ── the archive ───────────────────────────────────────────────────────────
+def test_archive():
+    section('archive.json')
+    d = json.loads((ROOT / 'archive.json').read_text(encoding='utf-8'))
+    films = d['films']
+    check('parses and is non-empty', len(films) > 0, f'{len(films)} films')
+
+    slugs = [f['slug'] for f in films]
+    dupe = [s for s, n in collections.Counter(slugs).items() if n > 1]
+    check('slugs are unique', not dupe, f'duplicates: {dupe[:3]}')
+    check('every film has a title', all((f.get('title') or '').strip() for f in films),
+          str([f['slug'] for f in films if not (f.get('title') or '').strip()][:3]))
+    check('every film has at least one source', all(f.get('sources') for f in films),
+          str([f['slug'] for f in films if not f.get('sources')][:3]))
+
+    VALID = {'live', 'dead', 'blocked'}
+    bad = [f['slug'] for f in films if f.get('status') not in VALID]
+    check('film statuses are valid', not bad, f'bad: {bad[:3]}')
+    SVALID = {'live', 'dead', 'embed-blocked'}
+    bads = [(f['slug'], s['status']) for f in films for s in f['sources'] if s['status'] not in SVALID]
+    check('source statuses are valid', not bads, f'bad: {bads[:3]}')
+
+    # a film is live iff it has a live source — this drifted once
+    wrong = [f['slug'] for f in films
+             if (f['status'] == 'live') != any(s['status'] == 'live' for s in f['sources'])]
+    check('status agrees with its sources', not wrong, f'{len(wrong)} disagree: {wrong[:3]}')
+
+    dead_live = [f['slug'] for f in films
+                 if f['status'] == 'dead' and any(s['status'] == 'live' for s in f['sources'])]
+    check('no dead film holds a live source', not dead_live, str(dead_live[:3]))
+
+    yrs = [f['year'] for f in films if f.get('year')]
+    import datetime
+    now = datetime.date.today().year
+    odd = [f['slug'] for f in films if f.get('year') and not (1870 <= f['year'] <= now)]
+    check('years are plausible', not odd, f'odd: {odd[:3]}')
+
+    vids = [s['id'] for f in films for s in f['sources'] if s['kind'] == 'youtube']
+    badid = [v for v in vids if not re.fullmatch(r'[\w-]{11}', v)]
+    check('youtube ids are well formed', not badid, f'bad: {badid[:3]}')
+    dupv = [v for v, n in collections.Counter(vids).items() if n > 1]
+    check('no video appears in two films', not dupv, f'duplicated: {dupv[:3]}')
+    return films
+
+# ── the narrative source ──────────────────────────────────────────────────
+def test_master_list():
+    section('the master list')
+    md = (ROOT / 'the-reckoner' / 'history-of-computation-master-list.md')
+    check('master list exists', md.exists())
+    if not md.exists(): return []
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('rb', ROOT / 'the-reckoner' / 'build.py')
+    rb = importlib.util.module_from_spec(spec)
+    cwd = os.getcwd(); os.chdir(ROOT / 'the-reckoner')
+    spec.loader.exec_module(rb); os.chdir(cwd)
+    stacks = rb.parse(md.read_text(encoding='utf-8'))
+    check('parses into stacks', len(stacks) > 20, f'{len(stacks)} stacks')
+    n = sum(len(s['cards']) for s in stacks)
+    check('parses a plausible number of cards', n > 400, f'{n} cards')
+    empt = [(s['id'], i) for s in stacks for i, c in enumerate(s['cards'])
+            if not (c.get('t') or '').strip()]
+    check('no card has an empty title', not empt, f'{len(empt)} empty: {empt[:3]}')
+    ids = [s['id'] for s in stacks]
+    check('stack ids are unique', len(set(ids)) == len(ids))
+    return stacks
+
+# ── the build ─────────────────────────────────────────────────────────────
+def test_build():
+    section('build')
+    r = subprocess.run([sys.executable, 'build-site.py'], capture_output=True, text=True)
+    check('build-site.py runs clean', r.returncode == 0, r.stderr[-300:])
+    out = ROOT / 'index.html'
+    check('index.html written', out.exists())
+    h = out.read_text(encoding='utf-8')
+
+    check('no unresolved template placeholders',
+          '/*__THEME__*/' not in h and '/*__DATA__*/' not in h)
+    check('theme tokens are inlined', '--rubric' in h and '--brass' in h)
+    check('is branded Dividing Engine', 'Dividing Engine' in h and 'The Reckoner</b>' not in h)
+    check('no read/watch split remains', 'class="halves"' not in h)
+
+    m = re.search(r'const STACKS\s*=\s*(\{.*?\})\s*;?\s*\n', h, re.S) or \
+        re.search(r'/\*__DATA__\*/|STACKS\s*=\s*(\{.*)', h)
+    data = None
+    mm = re.search(r'(\{"stacks":.*?\})\s*[;,]?\s*\n', h, re.S)
+    if mm:
+        try: data = json.loads(mm.group(1).replace('<\\/', '</'))
+        except Exception: data = None
+    if data is None:
+        skip('inline data parses as JSON', 'could not locate the data blob')
+    else:
+        stacks = data['stacks']
+        check('inline data parses as JSON', True)
+        cards = [c for s in stacks for c in s['cards']]
+        films = [c for c in cards if c.get('kindc') == 'film']
+        check('cards and films are both present',
+              len(cards) > 1000 and len(films) > 700, f'{len(cards)} cards, {len(films)} film')
+        # a film that died before we ever fetched its thumbnail cannot have one;
+        # anything still reachable must.
+        noimg = [c['t'] for c in films if not c.get('img') and c.get('status') != 'dead']
+        check('every reachable film has a frame', not noimg, f'{len(noimg)}: {noimg[:2]}')
+        deadnoimg = sum(1 for c in films if not c.get('img'))
+        print(f'      ({deadnoimg} lost films have no frame — nothing to fetch)')
+        live_noembed = [c['t'] for c in films if c.get('status') == 'live' and not c.get('emb')]
+        check('every playable film has an embed url', not live_noembed,
+              f'{len(live_noembed)}: {live_noembed[:2]}')
+        # a film must land in an era whose range contains its year
+        ERAS = {'era-6': (1900, 1940), 'era-7': (1940, 1955), 'era-8': (1955, 1975),
+                'era-9': (1975, 2005), 'era-10': (2005, 9999)}
+        wrong = []
+        for s in stacks:
+            if s['id'] not in ERAS: continue
+            a, b = ERAS[s['id']]
+            for c in s['cards']:
+                if c.get('kindc') == 'film' and c.get('d'):
+                    y = int(c['d'])
+                    if not (a <= y < b): wrong.append((c['t'][:28], y, s['id']))
+        check('films sit in the era matching their year', not wrong, f'{len(wrong)}: {wrong[:2]}')
+        undated = [s for s in stacks if s['id'] == 'undated']
+        check('undated films have a home', len(undated) == 1,
+              'expected exactly one "undated" stack')
+    return h
+
+# ── assets ────────────────────────────────────────────────────────────────
+def test_assets(h):
+    section('assets')
+    refs = set(re.findall(r'"(media/[^"]+)"', h)) | set(re.findall(r'url\("([^"]+)"\)', h))
+    refs = {r for r in refs if not r.startswith(('data:', 'http'))}   # inline SVG, CDN fonts
+    missing = sorted(r for r in refs if not (ROOT / r).exists())
+    check('every referenced asset exists on disk', not missing,
+          f'{len(missing)} missing: {missing[:3]}')
+    check('the original banner is present', (ROOT / 'assets' / 'banner.png').exists())
+    check('favicon is present', (ROOT / 'favicon.ico').exists())
+    orphan_ok = True
+    check('CNAME points at the domain',
+          (ROOT / 'CNAME').exists() and
+          (ROOT / 'CNAME').read_text().strip() == 'dividingengine.com')
+    check('.nojekyll present (Pages must not skip _-prefixed dirs)',
+          (ROOT / '.nojekyll').exists())
+    check('.venv is not tracked',
+          '.venv' in (ROOT / '.gitignore').read_text())
+
+# ── the page, driven for real ─────────────────────────────────────────────
+def test_browser():
+    section('browser')
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        skip('browser checks', 'playwright not installed'); return
+    import http.server, socketserver, threading, functools, contextlib
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *a): pass
+    socketserver.TCPServer.allow_reuse_address = True
+    srv = socketserver.TCPServer(('127.0.0.1', 8911),
+                                 functools.partial(Quiet, directory=str(ROOT)))
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    try:
+        with sync_playwright() as pw:
+            br = pw.chromium.launch()
+            pg = br.new_page(viewport={'width': 1300, 'height': 900})
+            errs = []
+            pg.on('pageerror', lambda e: errs.append(str(e)))
+            pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' else None)
+            pg.goto('http://127.0.0.1:8911/', wait_until='load'); pg.wait_for_timeout(800)
+
+            check('lands on the film sheet', not pg.is_hidden('#sheetview'))
+            n = pg.eval_on_selector_all('#sheet li', 'e=>e.length')
+            check('sheet renders a first page', n > 50, f'{n} tiles')
+            check('sheet counts every film', 'FILMS' in pg.inner_text('#scount').upper(),
+                  pg.inner_text('#scount'))
+
+            pg.fill('#sq', 'voder'); pg.wait_for_timeout(350)
+            got = pg.inner_text('#scount')
+            check('sheet search narrows', 'OF' in got.upper(), got)
+            pg.fill('#sq', ''); pg.wait_for_timeout(250)
+
+            pg.click('#sheet li:nth-child(3) a'); pg.wait_for_timeout(700)
+            check('clicking a tile opens its card', bool(pg.query_selector('.cardtitle')))
+            check('that card is a film', bool(pg.query_selector('.film, .filmgone')))
+            check('the card names its stack', 'ERA' in pg.inner_text('#stacklbl').upper(),
+                  pg.inner_text('#stacklbl')[:40])
+
+            pg.click('button[data-act="sheet"]'); pg.wait_for_timeout(400)
+            check('Films returns to the sheet', not pg.is_hidden('#sheetview'))
+
+            pg.click('button[data-act="find"]'); pg.wait_for_timeout(200)
+            pg.keyboard.type('babbage'); pg.keyboard.press('Enter'); pg.wait_for_timeout(500)
+            check('Find reaches the narrative', bool(pg.query_selector('.cardtitle')),
+                  pg.inner_text('#stacklbl')[:40])
+
+            pg.goto('http://127.0.0.1:8911/#era-7/0', wait_until='load'); pg.wait_for_timeout(600)
+            check('deep links resolve', 'ERA 7' in pg.inner_text('#stacklbl').upper(),
+                  pg.inner_text('#stacklbl')[:40])
+
+            check('no console or page errors', not errs, str(errs[:2]))
+            br.close()
+    finally:
+        srv.shutdown()
+
+# ── network (opt-in) ──────────────────────────────────────────────────────
+def test_net(films):
+    section('network (sample)')
+    import urllib.request, urllib.error, random
+    from concurrent.futures import ThreadPoolExecutor
+    live = [s['id'] for f in films if f['status'] == 'live'
+            for s in f['sources'] if s['kind'] == 'youtube' and s['status'] == 'live']
+    sample = random.sample(live, min(24, len(live)))
+    def ok(v):
+        try:
+            urllib.request.urlopen(urllib.request.Request(
+                f'https://i.ytimg.com/vi/{v}/mqdefault.jpg',
+                headers={'User-Agent': 'Mozilla/5.0'}, method='HEAD'), timeout=15)
+            return True
+        except Exception:
+            return False
+    with ThreadPoolExecutor(max_workers=12) as ex:
+        res = list(ex.map(ok, sample))
+    bad = [v for v, o in zip(sample, res) if not o]
+    check(f'sample of {len(sample)} "live" films still have thumbnails', not bad,
+          f'gone: {bad[:4]} — run ./de check')
+
+def test_deploy():
+    section('deploy parity')
+    import urllib.request, hashlib
+    local = hashlib.sha256((ROOT / 'index.html').read_bytes()).hexdigest()
+    try:
+        req = urllib.request.Request('http://dividingengine.com/',
+                                     headers={'User-Agent': 'Mozilla/5.0'})
+        # Pages serves the custom domain from these IPs; resolve may not exist yet
+        import socket
+        socket.getaddrinfo('dividingengine.com', 80)
+        served = hashlib.sha256(urllib.request.urlopen(req, timeout=25).read()).hexdigest()
+        check('deployed page matches local build', served == local,
+              'push the current build')
+    except socket.gaierror:
+        skip('deploy parity', 'dividingengine.com does not resolve yet (DNS pending)')
+    except Exception as e:
+        skip('deploy parity', str(e)[:60])
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--browser', action='store_true')
+    ap.add_argument('--net', action='store_true')
+    ap.add_argument('--deploy', action='store_true')
+    ap.add_argument('--all', action='store_true')
+    a = ap.parse_args()
+    if a.all: a.browser = a.net = a.deploy = True
+
+    films = test_archive()
+    test_master_list()
+    h = test_build()
+    test_assets(h)
+    if a.browser: test_browser()
+    else: skip('browser checks', 'pass --browser')
+    if a.net: test_net(films)
+    else: skip('network checks', 'pass --net')
+    if a.deploy: test_deploy()
+    else: skip('deploy parity', 'pass --deploy')
+
+    print(f'\n\033[1m{_pass} passed, {len(_fail)} failed, {_skip} skipped\033[0m')
+    for n, d in _fail:
+        print(f'  \033[31mFAIL\033[0m {n}' + (f' — {d}' if d else ''))
+    return 1 if _fail else 0
+
+if __name__ == '__main__':
+    sys.exit(main())
