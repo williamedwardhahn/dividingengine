@@ -217,6 +217,31 @@ def short_name(stack):
     t = re.sub(r'^(Era \d+|Thread [A-Z])\s*[:—-]\s*', '', stack['title'])
     return t.split(':')[0].strip()
 
+def timeline(stacks):
+    """Every dated card as a point in time, for the scale to draw.
+
+    Deep time is logarithmic in years-before-present: linear would spend 96% of
+    the axis on the 44,500 years before 1500, which hold about sixty cards.
+    """
+    pts = []
+    for s in stacks:
+        if s['id'] == 'home':
+            continue
+        for i, c in enumerate(s['cards']):
+            y = card_year(c)
+            if y is None:
+                continue
+            pts.append({'y': y, 'to': f"{s['id']}/{i}",
+                        't': (c.get('t') or '')[:70],
+                        'f': 1 if c.get('kindc') == 'film' else 0})
+    pts.sort(key=lambda p: p['y'])
+    undated = sum(1 for s in stacks for c in s['cards']
+                  if s['id'] != 'home' and not c.get('special') and card_year(c) is None)
+    bands = [{'id': s['id'], 'short': short_name(s), 'sub': s.get('sub', ''),
+              'n': len(s['cards'])}
+             for s in stacks if s.get('kind') == 'era' and s['id'] != 'undated']
+    return {'pts': pts, 'undated': undated, 'bands': bands}
+
 def apparatus(stacks):
     """The furniture of a book: contents, an index, and a glossary.
 
@@ -330,11 +355,23 @@ def main():
     n_cards = sum(len(s['cards']) for s in stacks)
     n_film  = sum(1 for s in stacks for c in s['cards'] if c.get('kindc') == 'film')
     app = apparatus(stacks)
+    app['time'] = timeline(stacks)
+    # Contents, Index and Glossary are stacks like any other — reachable from Go,
+    # addressable, in the Back chain. They were bolted on beside the card system;
+    # a book's apparatus belongs inside the book.
+    for sid, title, sub in (
+            ('contents', 'Contents', 'the whole archive, in order'),
+            ('index',    'Index',    'every name, alphabetically'),
+            ('glossary', 'Glossary', 'terms, as the cards define them')):
+        stacks.append({'id': sid, 'kind': 'apparatus', 'title': title, 'sub': sub,
+                       'cards': [{'t': title, 'b': '', 'special': sid}]})
     data = json.dumps({'stacks': stacks, 'app': app},
                       ensure_ascii=False).replace('</', '<\\/')
     theme = THEME.read_text(encoding='utf-8')
     print(f'  apparatus: {len(app["index"])} index entries, '
-          f'{len(app["glossary"])} glossary entries')
+          f'{len(app["glossary"])} glossary entries, '
+          f'{len(app["time"]["pts"])} points on the scale '
+          f'({app["time"]["undated"]} undated)')
     html = (TPL.read_text(encoding='utf-8')
               .replace('/*__THEME__*/', theme)
               .replace('/*__DATA__*/null', data))

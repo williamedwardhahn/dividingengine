@@ -3109,6 +3109,32 @@
    "era": "era-8"
   },
   {
+   "slug": "1980s-soviet-computer-sciences-film-w-es-pevm-ib",
+   "title": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
+   "name": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
+   "chan": "PeriscopeFilm",
+   "dur": 860,
+   "thumb": "media/yt/EbfEKucN4zU.jpg",
+   "collections": [
+    "dividing-engine"
+   ],
+   "status": "live",
+   "added": "2026-08-31",
+   "checked": "2026-08-31",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EbfEKucN4zU",
+     "url": "https://www.youtube.com/watch?v=EbfEKucN4zU",
+     "embed": "https://www.youtube-nocookie.com/embed/EbfEKucN4zU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1,
+   "raw_title": "1980s SOVIET COMPUTER SCIENCES FILM w/ ES PEVM IBM PCs MOUSE PERSONAL COMPUTER MAINFRAME XD13874"
+  },
+  {
    "slug": "isaac-asimovs-3-laws-of-robotics-horizon-past-pr",
    "title": "1965: Isaac ASIMOV's 3 laws of Robotics | Horizon | Past Predictions",
    "name": "Isaac ASIMOV's 3 laws of Robotics | Horizon | Past Predictions",
@@ -3669,6 +3695,31 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-8"
+  },
+  {
+   "slug": "1-eulerian-and-lagrangian-descriptions-in-fluid",
+   "title": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
+   "name": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
+   "chan": "Riccardo Pigazzini",
+   "dur": 1620,
+   "thumb": "media/yt/LAdNZnm-K00.jpg",
+   "collections": [
+    "dividing-engine"
+   ],
+   "status": "live",
+   "added": "2026-08-31",
+   "checked": "2026-08-31",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "LAdNZnm-K00",
+     "url": "https://www.youtube.com/watch?v=LAdNZnm-K00",
+     "embed": "https://www.youtube-nocookie.com/embed/LAdNZnm-K00?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "apprentice-engineers-aka-exhibition-of-apprentic",
@@ -4418,6 +4469,32 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-8"
+  },
+  {
+   "slug": "1980s-advances-in-robotics-computer-engineering",
+   "title": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
+   "name": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
+   "chan": "PeriscopeFilm",
+   "dur": 897,
+   "thumb": "media/yt/n44xWyX9k0g.jpg",
+   "collections": [
+    "dividing-engine"
+   ],
+   "status": "live",
+   "added": "2026-08-31",
+   "checked": "2026-08-31",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "n44xWyX9k0g",
+     "url": "https://www.youtube.com/watch?v=n44xWyX9k0g",
+     "embed": "https://www.youtube-nocookie.com/embed/n44xWyX9k0g?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1,
+   "raw_title": "1980s ADVANCES IN ROBOTICS & COMPUTER ENGINEERING EDUCATIONAL FILM 59924"
   },
   {
    "slug": "a-free-computer-blue-peter-retro-tech-bbc-archiv",
@@ -10984,32 +11061,6 @@
    "era": "era-10"
   },
   {
-   "slug": "1-eulerian-and-lagrangian-descriptions-in-fluid",
-   "title": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
-   "name": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
-   "year": null,
-   "chan": "Riccardo Pigazzini",
-   "dur": 1620,
-   "thumb": "media/yt/LAdNZnm-K00.jpg",
-   "collections": [
-    "dividing-engine"
-   ],
-   "status": "live",
-   "added": "2026-08-31",
-   "checked": "2026-08-31",
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "LAdNZnm-K00",
-     "url": "https://www.youtube.com/watch?v=LAdNZnm-K00",
-     "embed": "https://www.youtube-nocookie.com/embed/LAdNZnm-K00?rel=0",
-     "status": "live"
-    }
-   ],
-   "n_live": 1,
-   "n_total": 1
-  },
-  {
    "slug": "1960s-general-electric-co-military-computer-data",
    "title": "1960s General Electric Co. Military Computer Data Processing \"systems That Look Ahead\" 55524",
    "name": "1960s General Electric Co. Military Computer Data Processing \"systems That Look Ahead\" 55524",
@@ -11062,60 +11113,6 @@
    "n_live": 1,
    "n_total": 1,
    "raw_title": "1960s PUNCHED CARD DATA PROCESSING / KEY PUNCH MACHINE IBM 029 COMPUTER \"THE KEY PUNCH\" 62464"
-  },
-  {
-   "slug": "1980s-advances-in-robotics-computer-engineering",
-   "title": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
-   "name": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
-   "year": null,
-   "chan": "PeriscopeFilm",
-   "dur": 897,
-   "thumb": "media/yt/n44xWyX9k0g.jpg",
-   "collections": [
-    "dividing-engine"
-   ],
-   "status": "live",
-   "added": "2026-08-31",
-   "checked": "2026-08-31",
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "n44xWyX9k0g",
-     "url": "https://www.youtube.com/watch?v=n44xWyX9k0g",
-     "embed": "https://www.youtube-nocookie.com/embed/n44xWyX9k0g?rel=0",
-     "status": "live"
-    }
-   ],
-   "n_live": 1,
-   "n_total": 1,
-   "raw_title": "1980s ADVANCES IN ROBOTICS & COMPUTER ENGINEERING EDUCATIONAL FILM 59924"
-  },
-  {
-   "slug": "1980s-soviet-computer-sciences-film-w-es-pevm-ib",
-   "title": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
-   "name": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
-   "year": null,
-   "chan": "PeriscopeFilm",
-   "dur": 860,
-   "thumb": "media/yt/EbfEKucN4zU.jpg",
-   "collections": [
-    "dividing-engine"
-   ],
-   "status": "live",
-   "added": "2026-08-31",
-   "checked": "2026-08-31",
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "EbfEKucN4zU",
-     "url": "https://www.youtube.com/watch?v=EbfEKucN4zU",
-     "embed": "https://www.youtube-nocookie.com/embed/EbfEKucN4zU?rel=0",
-     "status": "live"
-    }
-   ],
-   "n_live": 1,
-   "n_total": 1,
-   "raw_title": "1980s SOVIET COMPUTER SCIENCES FILM w/ ES PEVM IBM PCs MOUSE PERSONAL COMPUTER MAINFRAME XD13874"
   },
   {
    "slug": "22-turtlemov",

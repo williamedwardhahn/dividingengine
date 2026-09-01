@@ -82,10 +82,21 @@ Mesopotamian clay tokens, water clocks, Marshall Islands stick charts — were
 dropped rather than duplicated. **No images are taken from dataphys.org**;
 those go through `./pics` like every other card.
 
+## The timeline
+
+A scale sits under the menubar on every card: 45,000 years, logarithmic in
+years-before-present, because linear would spend 96% of the axis on the 44,500
+years before 1500 that hold about sixty cards. One tick per dated card, so the
+bar is a density plot of the archive's own mass — the story visibly crowds into
+the last two centuries. A marker glides to wherever you are. Hover to read the
+nearest card, click to travel there, and the button on the right shifts between
+deep time and the filmed century. Undated cards get a band past the break.
+
 ## The book apparatus
 
-Contents, Index and Glossary sit in the menubar and are all *derived* — nothing
-is maintained twice.
+Contents, Index and Glossary are stacks like any other — reachable from **Go**,
+addressable, in the Back chain. They are *derived*, so nothing is maintained
+twice.
 
 - **Contents** — every era and thread, with dates, card counts and film counts,
   expanding to the cards themselves.
@@ -180,6 +191,7 @@ Other commands:
 ./de enrich                      backfill duration/channel for --fast adds
 ./de title [--apply]             tidy scraped YouTube titles
 ./de year  [--apply]             propose years from video descriptions
+./de date                        date the undated films by hand, fast
 ./de list [--collection C] [--status live|blocked|dead]
 ./de collections
 ./de set <slug|videoid> --year 1966 --name "Better Title"

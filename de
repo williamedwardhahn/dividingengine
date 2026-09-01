@@ -46,6 +46,7 @@ def load():
     return json.load(open(DB, encoding='utf-8'))
 
 def save(d):
+    global _LOADED_MTIME
     # A long command can take minutes. If the file moved under us, write our
     # result beside it and stop, rather than overwriting someone's work — an
     # earlier version parked the other copy and carried on, which is exactly
@@ -65,6 +66,9 @@ def save(d):
     with open(tmp, 'w', encoding='utf-8') as fh:
         json.dump(d, fh, indent=1, ensure_ascii=False)
     os.replace(tmp, DB)
+    # our own write must not look like somebody else's on the next save —
+    # a long-running command (de date) saves after every keystroke
+    _LOADED_MTIME = os.path.getmtime(DB)
 
 def index_by_vid(d):
     ix = {}
@@ -726,6 +730,171 @@ def cmd_check(a):
     print('entries:', dict(C.Counter(f['status'] for f in d['films'])))
     return 0
 
+DATE_REVIEW_HTML = """<!doctype html><meta charset="utf-8"><title>Date the films</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:wght@400;500&display=swap">
+<style>
+:root{--paper:#f2eee4;--card:#fbf9f4;--ink:#231e15;--ink3:#8b8377;--rule:#cdc4b0;
+      --rubric:#9a3b28;--brass:#9a6c2f}
+*{box-sizing:border-box} html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Spectral,Georgia,serif;
+     display:flex;flex-direction:column}
+header{flex:none;border-bottom:1px solid var(--rule);padding:14px 22px;display:flex;
+  gap:18px;align-items:baseline}
+header .t{font-size:26px;font-weight:500;flex:1;min-width:0;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+header .n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
+  color:var(--ink3);white-space:nowrap}
+#bar{flex:none;height:2px;background:var(--rule)}#fill{height:100%;background:var(--rubric);width:0;transition:width .2s}
+main{flex:1;display:flex;gap:26px;padding:20px 22px;min-height:0;align-items:center}
+#shot{flex:0 1 62%;min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
+#shot img{max-width:100%;max-height:100%;border:1px solid var(--rule);box-shadow:0 6px 22px -10px rgba(40,32,20,.4)}
+#side{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}
+#chan{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3)}
+#yr{width:100%;font-family:"IBM Plex Mono",monospace;font-size:34px;letter-spacing:.06em;
+  text-align:center;padding:12px;border:1px solid var(--rule);border-radius:3px;
+  background:var(--card);color:var(--ink)}
+#yr:focus{outline:none;border-color:var(--brass)}
+#guess{display:flex;gap:8px;flex-wrap:wrap}
+.g{background:var(--paper-2,#e9e3d5);border:1px solid var(--rule);border-radius:2px;
+  cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 11px;color:var(--brass)}
+.g:hover{border-color:var(--brass)}
+#hint{font-size:13px;color:var(--ink3);line-height:1.5;max-height:9em;overflow:auto}
+footer{flex:none;border-top:1px solid var(--rule);padding:9px 22px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);display:flex;gap:22px}
+footer b{color:var(--ink);font-weight:400} #msg{margin-left:auto}
+</style>
+<header><span class="t" id="title">…</span><span class="n"><b id="i">0</b> / <span id="tot">0</span></span></header>
+<div id="bar"><div id="fill"></div></div>
+<main>
+  <div id="shot"></div>
+  <div id="side">
+    <div id="chan"></div>
+    <input id="yr" type="text" inputmode="numeric" placeholder="year" autocomplete="off">
+    <div id="guess"></div>
+    <div id="hint"></div>
+  </div>
+</main>
+<footer><span>type a year, <b>enter</b> to save</span><span><b>s</b> skip</span>
+  <span><b>&larr;</b> back</span><span><b>o</b> open on YouTube</span><span id="msg">saves as you go</span></footer>
+<script>
+let Q=[],at=0,busy=false;
+const $=s=>document.querySelector(s);
+fetch('/data').then(r=>r.json()).then(d=>{Q=d.items;$('#tot').textContent=Q.length;show();});
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function show(){
+  if(at>=Q.length){ $('#title').textContent='Done'; $('#shot').innerHTML='';
+    $('#side').innerHTML='<p>Every film has a year. Run <b>./build</b>.</p>'; return; }
+  const v=Q[at];
+  $('#title').textContent=v.name; $('#i').textContent=at;
+  $('#fill').style.width=(at/Q.length*100)+'%';
+  $('#shot').innerHTML = v.img? `<img src="/img/${encodeURIComponent(v.img)}" alt="">` : '';
+  $('#chan').textContent=[v.chan,v.dur].filter(Boolean).join('  ·  ');
+  $('#guess').innerHTML=(v.guess||[]).map(g=>`<button class="g" data-y="${g}">${g}</button>`).join('');
+  $('#hint').textContent=v.hint||'';
+  const y=$('#yr'); y.value=''; y.focus();
+  for(let j=at+1;j<Math.min(at+3,Q.length);j++) if(Q[j].img){const im=new Image();im.src='/img/'+encodeURIComponent(Q[j].img);}
+}
+function save(year){
+  if(busy||at>=Q.length) return; busy=true;
+  fetch('/set',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({slug:Q[at].slug,year:year})})
+    .then(r=>{if(!r.ok)throw 0;return r.json();})
+    .then(()=>{at++;busy=false;show();})
+    .catch(()=>{busy=false;$('#msg').innerHTML='<b style="color:#9a3b28">NOT SAVED — restart ./de date</b>';});
+}
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-y]'); if(g) save(+g.dataset.y);
+});
+$('#yr').addEventListener('input',()=>{
+  const y=$('#yr'); const c=y.value.replace(/[^0-9-]/g,''); if(c!==y.value) y.value=c;
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){ const v=$('#yr').value.trim();
+    if(/^-?[0-9]{3,4}$/.test(v)) save(parseInt(v,10)); return; }
+  if(e.key==='s'||e.key==='S'){ e.preventDefault(); $('#yr').value=''; save(null); return; }
+  if(e.key==='o'||e.key==='O'){ e.preventDefault(); if(Q[at]) window.open(Q[at].url,'_blank'); return; }
+  if(e.key==='ArrowLeft'){ e.preventDefault(); if(at>0){at--;show();} return; }
+});
+</script>"""
+
+def cmd_date(a):
+    """A picker for the films whose year nobody knows yet."""
+    import http.server, json as J, webbrowser, urllib.parse as UP
+    d = load()
+    todo = [f for f in d['films'] if not f.get('year') and f['status'] != 'dead']
+    if a.limit:
+        todo = todo[:a.limit]
+    if not todo:
+        print('every film already has a year'); return 0
+
+    def guesses(f):
+        """Years already visible in the title, offered as one-key answers."""
+        out, t = [], f.get('title') or ''
+        for m in re.finditer(r'\b(1[89]\d\d|20[0-2]\d)\b', t):
+            y = int(m.group(1))
+            if y not in out: out.append(y)
+        for m in re.finditer(r"\b(1[89]|20)(\d)0s\b", t):
+            y = int(m.group(1) + m.group(2) + '0')
+            if y not in out: out.append(y)
+        return out[:4]
+
+    items = [{'slug': f['slug'], 'name': f.get('name') or f['title'],
+              'img': f.get('thumb') or '', 'chan': f.get('chan') or '',
+              'dur': (f'{f["dur"]//60}:{f["dur"]%60:02d}' if f.get('dur') else ''),
+              'url': (f['sources'][0].get('url') if f.get('sources') else ''),
+              'guess': guesses(f), 'hint': f.get('title') or ''}
+             for f in todo]
+    by_slug = {f['slug']: f for f in d['films']}
+    done = {'n': 0}
+
+    class H(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *a): pass
+        def _send(self, code, body, ctype='text/html; charset=utf-8'):
+            b = body.encode() if isinstance(body, str) else body
+            self.send_response(code); self.send_header('Content-Type', ctype)
+            self.send_header('Content-Length', str(len(b))); self.end_headers()
+            self.wfile.write(b)
+        def do_GET(self):
+            if self.path == '/':
+                self._send(200, DATE_REVIEW_HTML)
+            elif self.path == '/data':
+                self._send(200, J.dumps({'items': items}), 'application/json')
+            elif self.path.startswith('/img/'):
+                rel = UP.unquote(self.path[5:])
+                p = os.path.normpath(os.path.join(ROOT, rel))
+                if not p.startswith(ROOT) or not os.path.exists(p):
+                    self._send(404, b'no', 'text/plain'); return
+                ext = os.path.splitext(p)[1].lower()
+                mime = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+                        '.png': 'image/png', '.webp': 'image/webp'}.get(ext, 'application/octet-stream')
+                self._send(200, open(p, 'rb').read(), mime)
+            else:
+                self._send(404, 'no')
+        def do_POST(self):
+            n = int(self.headers.get('Content-Length', 0))
+            m = J.loads(self.rfile.read(n) or b'{}')
+            f = by_slug.get(m.get('slug'))
+            if f:
+                y = m.get('year')
+                if y:
+                    f['year'] = int(y); f['year_source'] = 'hand'
+                else:
+                    f['year_skipped'] = True
+                save(d); done['n'] += 1
+            self._send(200, '{"ok":1}', 'application/json')
+
+    srv = http.server.HTTPServer(('127.0.0.1', a.port), H)
+    print(f'{len(items)} films need a year -> http://127.0.0.1:{a.port}/')
+    print('type a year and press enter; s skips, o opens it on YouTube. Ctrl-C when done.')
+    webbrowser.open(f'http://127.0.0.1:{a.port}/')
+    try:
+        srv.serve_forever()
+    except KeyboardInterrupt:
+        print(f'\n{done["n"]} decision(s) saved. Next: ./build')
+    return 0
+
 def cmd_enrich(a):
     """Fill in duration / channel / thumbnail for records added with --fast."""
     d = load()
@@ -972,6 +1141,10 @@ def main():
     s.add_argument('--collection'); s.add_argument('--apply', action='store_true')
     s.add_argument('--all', action='store_true', help='include the hand-written originals')
     s.set_defaults(fn=cmd_title)
+
+    s = sub.add_parser('date', help='date the undated films by hand, fast')
+    s.add_argument('--port', type=int, default=8913); s.add_argument('--limit', type=int)
+    s.set_defaults(fn=cmd_date)
 
     s = sub.add_parser('year', help='backfill years from video descriptions')
     s.add_argument('--collection'); s.add_argument('--apply', action='store_true')

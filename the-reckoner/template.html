@@ -11,6 +11,43 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
 <style>
 /*__THEME__*/
+.lfind{margin:0 0 16px}
+.lfind input{width:100%;max-width:420px;background:var(--card);border:1px solid var(--rule);
+  border-radius:2px;padding:8px 12px;color:var(--ink);font:inherit;font-size:14px}
+.lfind input:focus{outline:none;border-color:var(--brass)}
+.gloss .gitem{margin:0}
+#refmenu .dropdown a{display:block;padding:6px 12px;text-decoration:none;color:var(--ink);
+  font-size:13.5px}
+#refmenu .dropdown a:hover{background:var(--paper-2);color:var(--rubric)}
+
+#scalebar{position:relative;display:flex;align-items:center;gap:12px;
+  padding:7px 22px 9px;border-bottom:1px solid var(--rule);background:var(--paper)}
+#scaleinner{position:relative;flex:1;height:38px;cursor:crosshair}
+#axis{position:absolute;left:0;right:0;top:26px;height:1px;background:var(--rule)}
+#bands{position:absolute;inset:0}
+.band{position:absolute;top:0;height:16px;border-left:1px solid var(--rule-2)}
+.band span{position:absolute;left:3px;top:1px;font-family:var(--mono);font-size:8px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.band.hot span{color:var(--rubric)}
+#ticks{position:absolute;left:0;right:0;top:20px;height:13px}
+.tk{position:absolute;bottom:0;width:1px;background:var(--ink-3);opacity:.5}
+.tk.f{background:var(--brass);opacity:.6}
+#mark{position:absolute;top:16px;width:1px;height:21px;background:var(--rubric);
+  transition:left .42s cubic-bezier(.3,.8,.3,1)}
+#mark::before{content:"";position:absolute;left:-3px;top:-4px;width:7px;height:7px;
+  border-radius:50%;background:var(--rubric)}
+#undband{position:absolute;top:22px;height:9px;background:var(--rule);border-radius:1px;
+  cursor:pointer}
+#undband:hover{background:var(--brass)}
+#stip{position:absolute;top:-4px;transform:translateX(-50%);white-space:nowrap;
+  font-family:var(--mono);font-size:10px;background:var(--card);border:1px solid var(--rule);
+  padding:2px 7px;border-radius:2px;pointer-events:none;z-index:6;box-shadow:var(--shadow)}
+#gear{flex:none;background:var(--card);border:1px solid var(--rule);border-radius:2px;
+  cursor:pointer;color:var(--ink-3);font-family:var(--mono);font-size:9px;
+  letter-spacing:.13em;text-transform:uppercase;padding:5px 9px}
+#gear:hover{color:var(--brass);border-color:var(--brass)}
+@media(max-width:640px){#scalebar{padding:6px 14px}.band span{display:none}}
+
 .tocintro{color:var(--ink-2);margin:0 0 20px}
 .toch{font-family:var(--display);font-weight:400;letter-spacing:.09em;font-size:15px;
   text-transform:uppercase;color:var(--ink-3);margin:30px 0 12px;padding-bottom:6px;
@@ -312,14 +349,22 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
     <summary class="mi">Go &#9662;</summary>
     <div class="dropdown" id="golist"></div>
   </details>
-  <button class="mi" data-act="contents">Contents</button>
-  <button class="mi" data-act="index">Index</button>
-  <button class="mi" data-act="glossary">Glossary</button>
   <button class="mi" data-act="find">Find</button>
   <button class="mi" data-act="wander">Wander</button>
-  <button class="mi" data-act="back">Back</button>
+  <button class="mi" data-act="back" title="Back" aria-label="Back">&larr;</button>
 </nav>
 <div class="gradrule"></div>
+<div id="scalebar" aria-label="Timeline">
+  <div id="scaleinner">
+    <div id="bands"></div>
+    <div id="ticks"></div>
+    <div id="axis"></div>
+    <div id="mark" hidden></div>
+    <div id="undband" hidden title="cards with no known date"></div>
+    <div id="stip" hidden></div>
+  </div>
+  <button id="gear" type="button" title="Switch scale">deep time</button>
+</div>
 
 <section id="sheetview" hidden>
   <div class="sheetbar">
@@ -475,13 +520,35 @@ function renderContents(){
     <h2 class="toch">The timeline</h2>${eras.map(grp).join("")}
     <h2 class="toch">The threads</h2>${thr.map((s,i)=>grp(s,9)).join("")}`;
 }
+function listFilter(id, ph){
+  return `<div class="lfind"><input id="${id}" type="search" placeholder="${ph}"
+    autocomplete="off" spellcheck="false"></div>`;
+}
+function wireFilter(id, sel, keyOf){
+  const inp = $("#"+id); if(!inp) return;
+  inp.addEventListener("input", ()=>{
+    const q = inp.value.trim().toLowerCase();
+    let shown = 0;
+    document.querySelectorAll(sel).forEach(el=>{
+      const hit = !q || keyOf(el).toLowerCase().includes(q);
+      el.hidden = !hit; if(hit) shown++;
+    });
+    document.querySelectorAll(".azsec, .glsec").forEach(sec=>{
+      sec.hidden = !sec.querySelector(sel.split(" ").pop()+":not([hidden])");
+    });
+    const n=$("#lfn"); if(n) n.textContent = q? `${shown} matching` : "";
+  });
+  inp.focus();
+}
 function renderIndex(){
   const ix = APP.index, keys = Object.keys(ix);
   const letter = k => { const c=k.replace(/^[^A-Za-z0-9]+/,"")[0]; return /[0-9]/.test(c)?"#":(c||"#").toUpperCase(); };
   const groups = {};
   keys.forEach(k=>{ (groups[letter(k)] = groups[letter(k)]||[]).push(k); });
   const az = Object.keys(groups).sort();
-  return `<p class="tocintro">${keys.length} entries. <span class="small">Every name the archive can point at.</span></p>
+  return `<p class="tocintro">${keys.length} entries. <span class="small">Every name the archive can point at.</span>
+      <span class="small" id="lfn"></span></p>
+    ${listFilter("ixq","Filter the index")}
     <div class="azbar">${az.map(L=>`<a href="#index-${L}" class="az">${L}</a>`).join("")}</div>
     ${az.map(L=>`<div class="azsec"><h3 id="index-${L}" class="azh">${L}</h3>
       <ul class="ixl">${groups[L].map(k=>
@@ -490,10 +557,12 @@ function renderIndex(){
 }
 function renderGlossary(){
   const g = APP.glossary;
-  return `<p class="tocintro">${g.length} entries. <span class="small">Each is the opening line of the card that defines it.</span></p>
+  return `<p class="tocintro">${g.length} entries. <span class="small">Each is the opening line of the card that defines it.</span>
+      <span class="small" id="lfn"></span></p>
+    ${listFilter("glq","Filter the glossary — term or definition")}
     <dl class="gloss">${g.map(x=>
-      `<dt><a href="#${x.to}">${esc(x.t)}</a>${x.d?`<span class="gd">${esc(x.d)}</span>`:""}</dt>
-       <dd>${esc(x.g)}</dd>`).join("")}</dl>`;
+      `<div class="gitem"><dt><a href="#${x.to}">${esc(x.t)}</a>${x.d?`<span class="gd">${esc(x.d)}</span>`:""}</dt>
+       <dd>${esc(x.g)}</dd></div>`).join("")}</dl>`;
 }
 function renderMap(){
   const eras = STACKS.filter(s=>s.kind==="era");
@@ -558,6 +627,7 @@ function sheetOn(push){
   $("#sheetview").hidden = false;
   $("#deskarea").hidden = true;
   if(push !== false && location.hash !== "#films") location.hash = "#films";
+  const _m=$("#mark"); if(_m) _m.hidden=true;
   document.title = "Dividing Engine — Technology, Science, History";
 }
 function sheetOff(){ $("#sheetview").hidden = true; $("#deskarea").hidden = false; }
@@ -609,6 +679,97 @@ function initSheet(){
   sheetFilter();
 }
 
+/* ── the scale: 45,000 years, and where you are on them ──────────────── */
+const T = (APP.time)||{pts:[],bands:[],undated:0};
+const NOW = 2026;
+let gear = "deep";                       // "deep" (log, all of it) | "century"
+const bp = y => Math.max(1, NOW - y);
+function xOf(y){
+  if(gear==="century"){
+    const a=1890, b=NOW;
+    return Math.max(0, Math.min(100, (y-a)/(b-a)*100));
+  }
+  const lo = Math.log10(bp(T.pts.length? T.pts[0].y : -43000));
+  return (Math.log10(bp(y)) - lo) / (0 - lo) * 100;
+}
+function visible(p){ return gear!=="century" || p.y>=1890; }
+function drawScale(){
+  const W = T.undated ? 88 : 100;
+  const sc = x => x*W/100;
+  let h="";
+  for(const p of T.pts){
+    if(!visible(p)) continue;
+    h += `<span class="tk${p.f?" f":""}" style="left:${sc(xOf(p.y)).toFixed(3)}%;height:${p.f?7:11}px"></span>`;
+  }
+  $("#ticks").innerHTML = h;
+  const marks = gear==="century"
+    ? [1900,1920,1940,1960,1980,2000,2020]
+    : [-40000,-10000,-3000,-500,500,1500,1800,1900,1980,NOW];
+  $("#bands").innerHTML = marks.map(y=>{
+    const lab = y<0? `${Math.abs(y)>=1000?(Math.abs(y)/1000)+"k":Math.abs(y)} BCE` : String(y);
+    return `<div class="band" style="left:${sc(xOf(y)).toFixed(3)}%"><span>${lab}</span></div>`;
+  }).join("");
+  $("#axis").style.right = T.undated ? (100-W)+"%" : "0";
+  const ub = $("#undband");
+  if(T.undated){ ub.hidden=false; ub.style.left=(W+3)+"%"; ub.style.width=(97-W-3+6)+"%"; }
+  else ub.hidden = true;
+  placeMark();
+}
+function placeMark(){
+  const st = STACKS[cur.s], cd = st && st.cards[cur.c];
+  const m = $("#mark");
+  if(!cd || $("#deskarea").hidden){ m.hidden=true; return; }
+  const y = cardYear(cd);
+  if(y===null || !visible({y})){ m.hidden=true; return; }
+  const W = T.undated ? 88 : 100;
+  m.hidden=false;
+  m.style.left = (xOf(y)*W/100).toFixed(3)+"%";
+}
+function cardYear(cd){
+  const d = cd && cd.d; if(!d) return null;
+  const bce = /BCE|BC\b/i.test(d);
+  const mm = String(d).replace(/,/g,"").match(/(-?\d{1,6})/);
+  if(!mm) return null;
+  const v = parseInt(mm[1],10);
+  return bce ? -v : v;
+}
+function nearestTo(pct){
+  const W = T.undated ? 88 : 100;
+  let best=null, bd=1e9;
+  for(const p of T.pts){
+    if(!visible(p)) continue;
+    const d = Math.abs(xOf(p.y)*W/100 - pct);
+    if(d<bd){ bd=d; best=p; }
+  }
+  return best;
+}
+function initScale(){
+  drawScale();
+  const el = $("#scaleinner");
+  el.addEventListener("mousemove", e=>{
+    const r=el.getBoundingClientRect(), pct=(e.clientX-r.left)/r.width*100;
+    const p=nearestTo(pct); const tip=$("#stip");
+    if(!p){ tip.hidden=true; return; }
+    tip.hidden=false;
+    tip.textContent = (p.y<0? Math.abs(p.y)+" BCE" : p.y)+"  "+p.t;
+    tip.style.left = Math.max(6, Math.min(94, pct))+"%";
+  });
+  el.addEventListener("mouseleave", ()=>{ $("#stip").hidden=true; });
+  el.addEventListener("click", e=>{
+    const r=el.getBoundingClientRect(), pct=(e.clientX-r.left)/r.width*100;
+    const p=nearestTo(pct); if(p) location.hash = p.to;
+  });
+  $("#undband").addEventListener("click", e=>{
+    e.stopPropagation();                 // sits inside the scale; do not travel twice
+    location.hash = "undated/0";
+  });
+  $("#gear").addEventListener("click", ()=>{
+    gear = gear==="deep" ? "century" : "deep";
+    $("#gear").textContent = gear==="deep" ? "deep time" : "the filmed century";
+    drawScale();
+  });
+}
+
 function render(push=true){
   const st = STACKS[cur.s], cd = st.cards[cur.c];
   const want = `#${st.id}/${cur.c}`;
@@ -622,8 +783,8 @@ function render(push=true){
   h += `<h1 class="cardtitle">${md(esc(cd.t))}</h1>`;
   if(cd.special==="ladder") h += renderLadder();
   else if(cd.special==="contents") h += renderContents();
-  else if(cd.special==="index") h += renderIndex();
-  else if(cd.special==="glossary") h += renderGlossary();
+  else if(cd.special==="index"){ h += renderIndex(); setTimeout(()=>wireFilter("ixq","ul.ixl li",e=>e.textContent),0); }
+  else if(cd.special==="glossary"){ h += renderGlossary(); setTimeout(()=>wireFilter("glq",".gloss .gitem",e=>e.textContent),0); }
   else if(cd.special==="map") h += renderMap();
   else if(cd.kindc==="film") h += renderFilm(cd);
   else {
@@ -637,6 +798,7 @@ function render(push=true){
   $("#content").innerHTML = h;
   if(cd.special==="ladder"){ computeLadder(); $("#secs").addEventListener("input",computeLadder); }
   $("#progfill").style.width = ((cur.c+1)/st.cards.length*100)+"%";
+  placeMark();
   $("#prevb").disabled = (cur.s===0 && cur.c===0);
   const lastStack = cur.s===STACKS.length-1, lastCard = cur.c===st.cards.length-1;
   $("#nextb").disabled = lastStack && lastCard;
@@ -652,31 +814,21 @@ function step(dir){
   else if(c>=STACKS[s].cards.length){ if(s<STACKS.length-1){s++;c=0;} else c=STACKS[s].cards.length-1; }
   go(s,c);
 }
-const APPARATUS = {
-  contents:{t:"Contents", s:"the whole archive, in order"},
-  index:{t:"Index", s:"every name, alphabetically"},
-  glossary:{t:"Glossary", s:"terms, as the cards define them"}
-};
-function openApparatus(kind){
-  const a = APPARATUS[kind];
-  const st = {id:kind, kind:"apparatus", title:a.t, sub:a.s,
-              cards:[{t:a.t, b:"", special:kind}]};
-  const i = byId[kind];
-  if(i!==undefined) STACKS[i]=st; else { byId[kind]=STACKS.length; STACKS.push(st); }
-  go(byId[kind],0);
-}
 function showSheet(){ sheetOn(); }
 function fromHash(){
   const m = location.hash.replace(/^#/,"").split("/");
   if(m[0]==="films"){ sheetOn(false); return true; }
-  if(APPARATUS[m[0]]){ openApparatus(m[0]); return true; }
   if(byId[m[0]]!==undefined){ go(byId[m[0]], +(m[1]||0), false); return true; }
   return false;
 }
 
 function buildGo(){
   const g=$("#golist");
-  let h = `<a href="#home/0">Home</a><div class="sep"></div><div class="grp">TIMELINE</div>`;
+  let h = `<a href="#home/0">Home</a><div class="sep"></div><div class="grp">REFERENCE</div>`;
+  ["contents","index","glossary"].forEach(id=>{
+    if(byId[id]!==undefined) h += `<a href="#${id}/0">${esc(STACKS[byId[id]].title)}</a>`;
+  });
+  h += `<div class="sep"></div><div class="grp">TIMELINE</div>`;
   for(const s of STACKS) if(s.kind==="era") h+=`<a href="#${s.id}/0">${esc(s.title)}</a>`;
   h += `<div class="sep"></div><div class="grp">THREADS</div>`;
   for(const s of STACKS) if(s.kind==="thread") h+=`<a href="#${s.id}/0">${esc(s.title)}</a>`;
@@ -704,7 +856,6 @@ document.addEventListener("click",e=>{
   const act=e.target.closest("[data-act]")?.dataset.act;
   if(act==="home") go(0,0);
   if(act==="sheet"){ e.preventDefault(); sheetOn(); }
-  if(act==="contents"||act==="index"||act==="glossary") openApparatus(act);
   if(act==="wander") wander();
   if(act==="back") history.back();
   if(act==="find"){ $("#finddlg").showModal(); $("#findq").select(); }
@@ -734,6 +885,7 @@ document.addEventListener("touchend",e=>{
 window.addEventListener("hashchange",()=>{ if(!fromHash()) sheetOn(false); });
 
 buildGo();
+initScale();
 initSheet();
 if(!fromHash()) sheetOn(false);   // no hash -> land on the films, as it was
 </script>

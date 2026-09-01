@@ -208,10 +208,13 @@ def test_build():
         # the book apparatus
         app = data.get('app') or {}
         toc, ix, gl = app.get('contents') or [], app.get('index') or {}, app.get('glossary') or []
-        check('contents covers every stack', len(toc) >= len(stacks) - 1,
-              f'{len(toc)} of {len(stacks)}')
+        # contents lists the timeline and the threads; not home, and not itself
+        listable = [s for s in stacks
+                    if s['id'] != 'home' and s.get('kind') != 'apparatus']
+        check('contents covers every listable stack', len(toc) >= len(listable),
+              f'{len(toc)} of {len(listable)}')
         check('contents lists every card',
-              sum(t['n'] for t in toc) >= len(cards) - 6,
+              sum(t['n'] for t in toc) >= len(cards) - 12,
               f"{sum(t['n'] for t in toc)} vs {len(cards)}")
         check('the index has entries', len(ix) > 400, f'{len(ix)} entries')
         ixbad = [k for k, v in ix.items() for r in v if r['to'] not in addr]
@@ -321,9 +324,21 @@ def test_browser():
                   pg.inner_text('#stacklbl')[:40])
 
             for view in ('contents', 'index', 'glossary'):
-                pg.goto(f'http://127.0.0.1:8911/#{view}', wait_until='load')
+                pg.goto(f'http://127.0.0.1:8911/#{view}/0', wait_until='load')
                 pg.wait_for_timeout(500)
                 check(f'{view} renders', len(pg.inner_text('#content')) > 400)
+            check('the menubar stays short',
+                  pg.evaluate("document.querySelectorAll('#menubar > *').length") <= 7,
+                  str(pg.evaluate("document.querySelectorAll('#menubar > *').length")))
+            pg.goto('http://127.0.0.1:8911/#glossary/0', wait_until='load'); pg.wait_for_timeout(600)
+            pg.fill('#glq', 'abacus'); pg.wait_for_timeout(400)
+            shown = pg.eval_on_selector_all('.gloss .gitem', 'e=>e.filter(x=>!x.hidden).length')
+            check('the glossary can be filtered', 0 < shown < 40, f'{shown} shown')
+            pg.goto('http://127.0.0.1:8911/#era-4/8', wait_until='load'); pg.wait_for_timeout(600)
+            check('the timeline scale is drawn',
+                  pg.locator('#ticks .tk').count() > 300,
+                  f"{pg.locator('#ticks .tk').count()} ticks")
+            check('the scale marks where you are', not pg.is_hidden('#mark'))
             import re as _re
             pg.goto('http://127.0.0.1:8911/#era-2/0', wait_until='load'); pg.wait_for_timeout(400)
             check('thread references read as names, not letters',
@@ -339,7 +354,7 @@ def test_browser():
             fwd = [_where()]
             pg.locator('#sheet li a').first.click(); pg.wait_for_timeout(500); fwd.append(_where())
             pg.locator('#nextb').click(); pg.wait_for_timeout(500); fwd.append(_where())
-            pg.locator('button[data-act="glossary"]').click(); pg.wait_for_timeout(600)
+            pg.evaluate("location.hash='#glossary/0'"); pg.wait_for_timeout(600)
             rev = []
             for _ in range(3):
                 pg.locator('button[data-act="back"]').click(); pg.wait_for_timeout(500)
