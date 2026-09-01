@@ -99,6 +99,12 @@ The loop is the same whatever you change:
 git add -A && git commit -m "..." && git push
 ```
 
+The domain is registered at Namecheap but was delegated to Network Solutions
+nameservers; switching to Namecheap BasicDNS and adding four `A` records on `@`
+plus a `www` CNAME is what brought it up. `--deploy` resolves GitHub's Pages
+addresses directly rather than trusting the local resolver, so a stale cache
+cannot turn a real check into a skip.
+
 `git push` runs `./test` first and refuses a failing build (`--no-verify` to
 override). The same suite runs in CI on every push and pull request.
 

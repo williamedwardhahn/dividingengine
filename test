@@ -309,22 +309,53 @@ def test_net(films):
           f'gone: {bad[:4]} — run ./de check')
 
 def test_deploy():
+    """Compare the live site against the local build.
+
+    Resolved explicitly against GitHub's Pages addresses rather than the system
+    resolver, so a stale local DNS cache cannot turn a real check into a skip.
+    """
     section('deploy parity')
-    import urllib.request, hashlib
+    import hashlib, socket, ssl
     local = hashlib.sha256((ROOT / 'index.html').read_bytes()).hexdigest()
-    try:
-        req = urllib.request.Request('http://dividingengine.com/',
-                                     headers={'User-Agent': 'Mozilla/5.0'})
-        # Pages serves the custom domain from these IPs; resolve may not exist yet
-        import socket
-        socket.getaddrinfo('dividingengine.com', 80)
-        served = hashlib.sha256(urllib.request.urlopen(req, timeout=25).read()).hexdigest()
-        check('deployed page matches local build', served == local,
-              'push the current build')
-    except socket.gaierror:
-        skip('deploy parity', 'dividingengine.com does not resolve yet (DNS pending)')
-    except Exception as e:
-        skip('deploy parity', str(e)[:60])
+    PAGES = ['185.199.108.153', '185.199.109.153', '185.199.110.153', '185.199.111.153']
+    host = 'dividingengine.com'
+
+    def fetch(ip):
+        ctx = ssl.create_default_context()
+        with socket.create_connection((ip, 443), timeout=30) as raw:
+            with ctx.wrap_socket(raw, server_hostname=host) as s_:
+                s_.sendall(f'GET / HTTP/1.1\r\nHost: {host}\r\n'
+                           f'User-Agent: de-test\r\nConnection: close\r\n\r\n'.encode())
+                buf = b''
+                while True:
+                    chunk = s_.recv(65536)
+                    if not chunk: break
+                    buf += chunk
+        head, _, body = buf.partition(b'\r\n\r\n')
+        status = int(head.split(b' ')[1])
+        if b'chunked' in head.lower():                 # de-chunk
+            out, rest = b'', body
+            while rest:
+                ln, _, rest = rest.partition(b'\r\n')
+                n = int(ln.split(b';')[0], 16)
+                if not n: break
+                out += rest[:n]; rest = rest[n + 2:]
+            body = out
+        return status, body
+
+    body = code = None
+    err = ''
+    for ip in PAGES:
+        try:
+            code, body = fetch(ip); break
+        except Exception as e:
+            err = str(e)[:60]
+    if body is None:
+        skip('deploy parity', f'could not reach Pages: {err}'); return
+    check('the live site responds 200', code == 200, f'got {code}')
+    served = hashlib.sha256(body).hexdigest()
+    check('deployed page matches the local build', served == local,
+          'the build has moved on — commit and push')
 
 def main():
     ap = argparse.ArgumentParser()
