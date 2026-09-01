@@ -401,7 +401,6 @@ const HOME = {
 const STACKS = [HOME, ...DATA.stacks];
 const byId = Object.fromEntries(STACKS.map((s,i)=>[s.id,i]));
 let cur = {s:0,c:0};
-const hist = [];
 
 const $ = s=>document.querySelector(s);
 const esc = t=>t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
@@ -555,10 +554,10 @@ STACKS.forEach((st,si)=>st.cards.forEach((cd,ci)=>{
 }));
 let sLimit = 120, sList = [];
 
-function sheetOn(){
+function sheetOn(push){
   $("#sheetview").hidden = false;
   $("#deskarea").hidden = true;
-  if(location.hash) history.replaceState(null,"",location.pathname+location.search);
+  if(push !== false && location.hash !== "#films") location.hash = "#films";
   document.title = "Dividing Engine — Technology, Science, History";
 }
 function sheetOff(){ $("#sheetview").hidden = true; $("#deskarea").hidden = false; }
@@ -612,8 +611,9 @@ function initSheet(){
 
 function render(push=true){
   const st = STACKS[cur.s], cd = st.cards[cur.c];
-  if(push) hist.push(location.hash);
-  location.hash = `${st.id}/${cur.c}`;
+  const want = `#${st.id}/${cur.c}`;
+  if(push){ if(location.hash !== want) location.hash = want; }
+  else if(location.hash !== want) history.replaceState(null,"",want);
   $("#stacklbl").textContent = st.title + (st.sub? " \u2014 "+st.sub : "");
   let h = `<div class="fade">`;
   h += `<div class="eyebrow"><span>${st.kind==="era"?"Timeline":"Stack"}</span>` +
@@ -668,6 +668,7 @@ function openApparatus(kind){
 function showSheet(){ sheetOn(); }
 function fromHash(){
   const m = location.hash.replace(/^#/,"").split("/");
+  if(m[0]==="films"){ sheetOn(false); return true; }
   if(APPARATUS[m[0]]){ openApparatus(m[0]); return true; }
   if(byId[m[0]]!==undefined){ go(byId[m[0]], +(m[1]||0), false); return true; }
   return false;
@@ -705,7 +706,7 @@ document.addEventListener("click",e=>{
   if(act==="sheet"){ e.preventDefault(); sheetOn(); }
   if(act==="contents"||act==="index"||act==="glossary") openApparatus(act);
   if(act==="wander") wander();
-  if(act==="back"){ const h=hist.pop(); if(h&&h!==location.hash){ location.hash=h; fromHash(); hist.pop(); } }
+  if(act==="back") history.back();
   if(act==="find"){ $("#finddlg").showModal(); $("#findq").select(); }
   const menu=$("#gomenu"); if(menu.open && !e.target.closest("#gomenu")) menu.open=false;
   if(e.target.closest("#golist a")) menu.open=false;
@@ -730,11 +731,11 @@ document.addEventListener("touchend",e=>{
   if(tx===null) return; const dx=e.changedTouches[0].clientX-tx; tx=null;
   if(Math.abs(dx)>60 && !$("#finddlg").open) step(dx<0?1:-1);
 },{passive:true});
-window.addEventListener("hashchange",()=>{ if(!fromHash()) sheetOn(); });
+window.addEventListener("hashchange",()=>{ if(!fromHash()) sheetOn(false); });
 
 buildGo();
 initSheet();
-if(!fromHash()) sheetOn();      // no hash -> land on the films, as it was
+if(!fromHash()) sheetOn(false);   // no hash -> land on the films, as it was
 </script>
 </body>
 </html>

@@ -329,6 +329,27 @@ def test_browser():
             check('thread references read as names, not letters',
                   not _re.search(r'\bThread [A-Z]\b', pg.inner_text('body')))
 
+            # Back must retrace the trail. It used to keep its own stack beside
+            # the browser's, which could only ever disagree with it.
+            def _where():
+                if not pg.is_hidden('#sheetview'): return 'sheet'
+                el = pg.query_selector('.cardtitle')
+                return el.inner_text()[:26] if el else 'BLANK'
+            pg.goto('http://127.0.0.1:8911/', wait_until='load'); pg.wait_for_timeout(600)
+            fwd = [_where()]
+            pg.locator('#sheet li a').first.click(); pg.wait_for_timeout(500); fwd.append(_where())
+            pg.locator('#nextb').click(); pg.wait_for_timeout(500); fwd.append(_where())
+            pg.locator('button[data-act="glossary"]').click(); pg.wait_for_timeout(600)
+            rev = []
+            for _ in range(3):
+                pg.locator('button[data-act="back"]').click(); pg.wait_for_timeout(500)
+                rev.append(_where())
+            check('Back retraces the trail', rev == list(reversed(fwd)),
+                  f'{fwd} then back {rev}')
+            check('the sheet has its own address',
+                  pg.evaluate("(()=>{document.querySelector('[data-act=sheet]').click();"
+                              "return location.hash})()") == '#films')
+
             check('no console or page errors', not errs, str(errs[:2]))
             br.close()
     finally:
