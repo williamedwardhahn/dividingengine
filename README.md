@@ -40,6 +40,48 @@ narrative cards, so Era 7 runs from the Atanasoff–Berry Computer through
 **370 films have no year** and cannot sit on a timeline. They are a stack of
 their own, *Undated Film*, until `./de year` or a hand edit dates them.
 
+## Updating it
+
+The loop is the same whatever you change:
+
+```
+# 1. change a source
+./de add https://www.youtube.com/playlist?list=PL...     # or: edit the master list
+./de sync                                               # or: ./de check
+
+# 2. rebuild and prove it
+./build
+./test
+
+# 3. ship
+git add -A && git commit -m "..." && git push
+```
+
+`git push` runs `./test` first and refuses a failing build (`--no-verify` to
+override). The same suite runs in CI on every push and pull request.
+
+### The suite
+
+```
+./test              45 checks: archive data, master list, build output, assets
+./test --browser    also drives the built page in Chromium
+./test --net        also samples whether "live" films are still reachable
+./test --deploy     also diffs the live site against the local build
+./test --all        everything
+```
+
+Every check is something that has actually broken in this project at least
+once — a film whose status disagreed with its sources, a card with an empty
+title, a `--grid` token left behind when CSS moved to the theme, a template
+placeholder that never got substituted, an asset path that broke when the page
+moved directory. Neither `--net` nor `--deploy` runs in CI, because a bad
+minute at YouTube is not a broken build.
+
+Two checks tolerate reality rather than assert against it: 54 lost films have
+no title frame, because they died before a thumbnail was ever fetched and
+YouTube no longer serves one. The suite asserts that every *reachable* film has
+a frame, and reports the 54 as a count.
+
 ## Adding films
 
 `./de` is the archive tool. It takes YouTube links — single videos or whole
