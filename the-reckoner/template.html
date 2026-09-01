@@ -681,16 +681,18 @@ function initSheet(){
 
 /* ── the scale: 45,000 years, and where you are on them ──────────────── */
 const T = (APP.time)||{pts:[],bands:[],undated:0};
-const NOW = 2026;
+// The archive ends at 2000: that is the catalogue's cutoff and where the film
+// record thins. Running the axis to the present would spend room on nothing.
+const END = 2000;
 let gear = "deep";                       // "deep" (log, all of it) | "century"
-const bp = y => Math.max(1, NOW - y);
+const bp = y => Math.max(1, END - y);
 function xOf(y){
   if(gear==="century"){
-    const a=1890, b=NOW;
+    const a=1890, b=END;
     return Math.max(0, Math.min(100, (y-a)/(b-a)*100));
   }
   const lo = Math.log10(bp(T.pts.length? T.pts[0].y : -43000));
-  return (Math.log10(bp(y)) - lo) / (0 - lo) * 100;
+  return Math.max(0, Math.min(100, (Math.log10(bp(y)) - lo) / (0 - lo) * 100));
 }
 function visible(p){ return gear!=="century" || p.y>=1890; }
 function drawScale(){
@@ -703,15 +705,15 @@ function drawScale(){
   }
   $("#ticks").innerHTML = h;
   const marks = gear==="century"
-    ? [1900,1920,1940,1960,1980,2000,2020]
-    : [-40000,-10000,-3000,-500,500,1500,1800,1900,1980,NOW];
+    ? [1900,1920,1940,1960,1980,2000]
+    : [-40000,-10000,-3000,-500,500,1500,1800,1900,1960,END];
   $("#bands").innerHTML = marks.map(y=>{
     const lab = y<0? `${Math.abs(y)>=1000?(Math.abs(y)/1000)+"k":Math.abs(y)} BCE` : String(y);
     return `<div class="band" style="left:${sc(xOf(y)).toFixed(3)}%"><span>${lab}</span></div>`;
   }).join("");
   $("#axis").style.right = T.undated ? (100-W)+"%" : "0";
   const ub = $("#undband");
-  if(T.undated){ ub.hidden=false; ub.style.left=(W+3)+"%"; ub.style.width=(97-W-3+6)+"%"; }
+  if(T.undated){ ub.hidden=false; ub.style.left=(W+4)+"%"; ub.style.width=(100-W-4)+"%"; }
   else ub.hidden = true;
   placeMark();
 }
