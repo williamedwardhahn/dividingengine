@@ -16,9 +16,13 @@
   border-radius:2px;padding:8px 12px;color:var(--ink);font:inherit;font-size:14px}
 .lfind input:focus{outline:none;border-color:var(--brass)}
 .gloss .gitem{margin:0}
-#refmenu .dropdown a{display:block;padding:6px 12px;text-decoration:none;color:var(--ink);
-  font-size:13.5px}
-#refmenu .dropdown a:hover{background:var(--paper-2);color:var(--rubric)}
+/* the panel is anchored to a narrow summary; right:0 threw it off the left edge */
+.menu .dropdown{left:0;right:auto;max-width:min(92vw,620px);
+  max-height:min(70vh,520px);overflow:auto}
+@media(max-width:700px){
+  /* too narrow to hang off a button: pin it to the viewport instead */
+  .menu .dropdown{position:fixed;left:10px;right:10px;max-width:none;top:auto}
+}
 
 #scalebar{position:relative;display:flex;align-items:center;gap:12px;
   padding:7px 22px 9px;border-bottom:1px solid var(--rule);background:var(--paper)}

@@ -327,6 +327,19 @@ def test_browser():
                 pg.goto(f'http://127.0.0.1:8911/#{view}/0', wait_until='load')
                 pg.wait_for_timeout(500)
                 check(f'{view} renders', len(pg.inner_text('#content')) > 400)
+            # the Go panel is anchored to a narrow button; it once opened 494px
+            # off the left edge of the window, working but invisible
+            for _w in (1250, 700, 420):
+                pg.set_viewport_size({'width': _w, 'height': 820})
+                pg.goto('http://127.0.0.1:8911/', wait_until='load'); pg.wait_for_timeout(450)
+                pg.click('#gomenu summary'); pg.wait_for_timeout(300)
+                _b = pg.evaluate("(()=>{const r=document.querySelector('#golist')"
+                                 ".getBoundingClientRect();return [r.left,r.right]})()")
+                check(f'the Go menu is on screen at {_w}px',
+                      _b[0] >= -1 and _b[1] <= _w + 1,
+                      f'{round(_b[0])}–{round(_b[1])} in {_w}')
+            pg.set_viewport_size({'width': 1300, 'height': 900})
+            pg.goto('http://127.0.0.1:8911/', wait_until='load'); pg.wait_for_timeout(400)
             check('the menubar stays short',
                   pg.evaluate("document.querySelectorAll('#menubar > *').length") <= 7,
                   str(pg.evaluate("document.querySelectorAll('#menubar > *').length")))
