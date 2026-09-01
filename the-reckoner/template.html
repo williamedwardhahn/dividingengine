@@ -11,6 +11,48 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
 <style>
 /*__THEME__*/
+.tocintro{color:var(--ink-2);margin:0 0 20px}
+.toch{font-family:var(--display);font-weight:400;letter-spacing:.09em;font-size:15px;
+  text-transform:uppercase;color:var(--ink-3);margin:30px 0 12px;padding-bottom:6px;
+  border-bottom:1px solid var(--rule)}
+details.toc{border-bottom:1px solid var(--rule-2);padding:9px 0}
+details.toc summary{cursor:pointer;display:flex;gap:11px;align-items:baseline;list-style:none}
+details.toc summary::-webkit-details-marker{display:none}
+details.toc summary::before{content:"▸";color:var(--ink-3);font-size:11px;flex:none;width:11px}
+details.toc[open] summary::before{content:"▾"}
+.tnum{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);flex:0 0 60px}
+.tsub{font-family:var(--mono);font-size:10px;color:var(--ink-3);flex:1}
+.tn{font-family:var(--mono);font-size:10px;color:var(--brass)}
+ol.tocl{list-style:none;margin:8px 0 6px;padding:0 0 0 71px;columns:2;column-gap:34px}
+@media(max-width:720px){ol.tocl{columns:1;padding-left:20px}}
+ol.tocl li{break-inside:avoid;padding:2px 0}
+ol.tocl a{font-size:13px;text-decoration:none;color:var(--ink)}
+ol.tocl a:hover{color:var(--rubric)}
+.td{font-family:var(--mono);font-size:10px;color:var(--brass);margin-right:7px}
+.tf{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);margin-left:6px}
+.azbar{position:sticky;top:0;background:var(--card);padding:9px 0;margin-bottom:10px;
+  border-bottom:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:3px;z-index:4}
+a.az{font-family:var(--mono);font-size:11px;text-decoration:none;color:var(--ink-3);
+  padding:2px 6px;border-radius:2px}
+a.az:hover{background:var(--paper-2);color:var(--rubric)}
+.azh{font-family:var(--display);font-size:19px;font-weight:400;color:var(--brass);
+  margin:22px 0 8px;letter-spacing:.08em}
+ul.ixl{list-style:none;margin:0;padding:0;columns:2;column-gap:34px}
+@media(max-width:720px){ul.ixl{columns:1}}
+ul.ixl li{break-inside:avoid;padding:3px 0;font-size:13px;line-height:1.45}
+.ixt{color:var(--ink)}
+a.ixr{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--rubric);text-decoration:none;margin-left:8px;white-space:nowrap}
+a.ixr:hover{border-bottom:1px solid var(--rubric)}
+dl.gloss{margin:0}
+dl.gloss dt{margin:16px 0 3px;font-weight:500}
+dl.gloss dt a{text-decoration:none;color:var(--ink)}
+dl.gloss dt a:hover{color:var(--rubric)}
+.gd{font-family:var(--mono);font-size:10px;color:var(--brass);margin-left:9px}
+dl.gloss dd{margin:0;color:var(--ink-2);font-size:14px;line-height:1.55}
+
 .links{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule)}
 .lgrp{display:flex;flex-wrap:wrap;gap:7px;align-items:baseline;margin-bottom:9px}
 .llab{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;
@@ -270,6 +312,9 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
     <summary class="mi">Go &#9662;</summary>
     <div class="dropdown" id="golist"></div>
   </details>
+  <button class="mi" data-act="contents">Contents</button>
+  <button class="mi" data-act="index">Index</button>
+  <button class="mi" data-act="glossary">Glossary</button>
   <button class="mi" data-act="find">Find</button>
   <button class="mi" data-act="wander">Wander</button>
   <button class="mi" data-act="back">Back</button>
@@ -320,6 +365,7 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
    To add cards: edit the .md, re-run build.py. Or edit this object.
    Card fields: t=title, b=body, d=date, ch=chapter. ================ */
 const DATA = /*__DATA__*/null;
+const APP = (DATA && DATA.app) || {contents:[],index:{},glossary:[]};
 
 /* ---------- hand-authored Home stack ---------- */
 const AGE_UNIVERSE_S = 4.35e17;
@@ -364,9 +410,12 @@ function md(t){
   return t.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
           .replace(/\*(.+?)\*/g,"<em>$1</em>");
 }
+const SHORT = {};
+(APP.contents||[]).forEach(s=>{ SHORT[s.id] = s.short; });
 function linkify(h){
-  h = h.replace(/Thread ([A-Z])(\d?)\b/g,(m,L)=> byId["thread-"+L]!==undefined
-      ? `<a class="x" href="#thread-${L}/0">${m}</a>` : m);
+  // "(Thread T)" is a manuscript note; a book says "The Harmony Thread".
+  h = h.replace(/\(?\bThread ([A-Z])(\d?)\b\)?/g,(m,L)=> byId["thread-"+L]!==undefined
+      ? `<a class="x" href="#thread-${L}/0">${SHORT["thread-"+L]||m}</a>` : m);
   h = h.replace(/Era (\d{1,2})\b/g,(m,n)=> byId["era-"+n]!==undefined
       ? `<a class="x" href="#era-${n}/0">${m}</a>` : m);
   return h;
@@ -408,6 +457,44 @@ function computeLadder(){
   const mult = (TRAINING_RUN/yourRate)/AGE_UNIVERSE_S;
   h += `<div class="punch">Working nonstop at your pace, one training run would take you about <strong>${fmtSci(mult)} times the age of the universe</strong>. Every one of those operations is the arithmetic you are learning. The tradition is yours; only the speed has changed.</div>`;
   $("#ladderout").innerHTML = h;
+}
+function renderContents(){
+  const eras = APP.contents.filter(s=>s.kind==="era");
+  const thr  = APP.contents.filter(s=>s.kind!=="era");
+  const grp = (s,i)=>`
+    <details class="toc"${i<2?" open":""}>
+      <summary><span class="tnum">${esc(s.id.replace('-',' '))}</span>
+        <a class="x" href="#${s.id}/0">${esc(s.short)}</a>
+        <span class="tsub">${esc(s.sub||"")}</span>
+        <span class="tn">${s.n}${s.film?` · ${s.film} film`:""}</span></summary>
+      <ol class="tocl">${s.cards.map(c=>
+        `<li><a href="#${c.to}">${c.d?`<span class="td">${esc(c.d)}</span>`:""}${esc(c.t)}${c.film?'<span class="tf">film</span>':""}</a></li>`
+      ).join("")}</ol>
+    </details>`;
+  return `<p class="tocintro">${eras.reduce((a,s)=>a+s.n,0)} cards on the timeline,
+    ${thr.reduce((a,s)=>a+s.n,0)} more along the threads.</p>
+    <h2 class="toch">The timeline</h2>${eras.map(grp).join("")}
+    <h2 class="toch">The threads</h2>${thr.map((s,i)=>grp(s,9)).join("")}`;
+}
+function renderIndex(){
+  const ix = APP.index, keys = Object.keys(ix);
+  const letter = k => { const c=k.replace(/^[^A-Za-z0-9]+/,"")[0]; return /[0-9]/.test(c)?"#":(c||"#").toUpperCase(); };
+  const groups = {};
+  keys.forEach(k=>{ (groups[letter(k)] = groups[letter(k)]||[]).push(k); });
+  const az = Object.keys(groups).sort();
+  return `<p class="tocintro">${keys.length} entries. <span class="small">Every name the archive can point at.</span></p>
+    <div class="azbar">${az.map(L=>`<a href="#index-${L}" class="az">${L}</a>`).join("")}</div>
+    ${az.map(L=>`<div class="azsec"><h3 id="index-${L}" class="azh">${L}</h3>
+      <ul class="ixl">${groups[L].map(k=>
+        `<li><span class="ixt">${esc(k)}</span>${ix[k].map(r=>
+          `<a class="ixr" href="#${r.to}">${esc(r.in)}</a>`).join("")}</li>`).join("")}</ul></div>`).join("")}`;
+}
+function renderGlossary(){
+  const g = APP.glossary;
+  return `<p class="tocintro">${g.length} entries. <span class="small">Each is the opening line of the card that defines it.</span></p>
+    <dl class="gloss">${g.map(x=>
+      `<dt><a href="#${x.to}">${esc(x.t)}</a>${x.d?`<span class="gd">${esc(x.d)}</span>`:""}</dt>
+       <dd>${esc(x.g)}</dd>`).join("")}</dl>`;
 }
 function renderMap(){
   const eras = STACKS.filter(s=>s.kind==="era");
@@ -534,6 +621,9 @@ function render(push=true){
   if(cd.d) h += `<span class="date">${esc(cd.d)}</span><br>`;
   h += `<h1 class="cardtitle">${md(esc(cd.t))}</h1>`;
   if(cd.special==="ladder") h += renderLadder();
+  else if(cd.special==="contents") h += renderContents();
+  else if(cd.special==="index") h += renderIndex();
+  else if(cd.special==="glossary") h += renderGlossary();
   else if(cd.special==="map") h += renderMap();
   else if(cd.kindc==="film") h += renderFilm(cd);
   else {
@@ -562,9 +652,23 @@ function step(dir){
   else if(c>=STACKS[s].cards.length){ if(s<STACKS.length-1){s++;c=0;} else c=STACKS[s].cards.length-1; }
   go(s,c);
 }
+const APPARATUS = {
+  contents:{t:"Contents", s:"the whole archive, in order"},
+  index:{t:"Index", s:"every name, alphabetically"},
+  glossary:{t:"Glossary", s:"terms, as the cards define them"}
+};
+function openApparatus(kind){
+  const a = APPARATUS[kind];
+  const st = {id:kind, kind:"apparatus", title:a.t, sub:a.s,
+              cards:[{t:a.t, b:"", special:kind}]};
+  const i = byId[kind];
+  if(i!==undefined) STACKS[i]=st; else { byId[kind]=STACKS.length; STACKS.push(st); }
+  go(byId[kind],0);
+}
 function showSheet(){ sheetOn(); }
 function fromHash(){
   const m = location.hash.replace(/^#/,"").split("/");
+  if(APPARATUS[m[0]]){ openApparatus(m[0]); return true; }
   if(byId[m[0]]!==undefined){ go(byId[m[0]], +(m[1]||0), false); return true; }
   return false;
 }
@@ -599,6 +703,7 @@ document.addEventListener("click",e=>{
   const act=e.target.closest("[data-act]")?.dataset.act;
   if(act==="home") go(0,0);
   if(act==="sheet"){ e.preventDefault(); sheetOn(); }
+  if(act==="contents"||act==="index"||act==="glossary") openApparatus(act);
   if(act==="wander") wander();
   if(act==="back"){ const h=hist.pop(); if(h&&h!==location.hash){ location.hash=h; fromHash(); hist.pop(); } }
   if(act==="find"){ $("#finddlg").showModal(); $("#findq").select(); }

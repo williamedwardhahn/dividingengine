@@ -212,6 +212,56 @@ def crosslink(stacks, cap=6):
                 c['in'] = uniq[:12]
     return made
 
+def short_name(stack):
+    """'Thread T: The Harmony Thread: music, myth...' -> 'The Harmony Thread'."""
+    t = re.sub(r'^(Era \d+|Thread [A-Z])\s*[:—-]\s*', '', stack['title'])
+    return t.split(':')[0].strip()
+
+def apparatus(stacks):
+    """The furniture of a book: contents, an index, and a glossary.
+
+    All three are derived, not written twice — the index comes from the same
+    terms that drive cross-linking, and each glossary entry is the opening
+    sentence of the card that defines it.
+    """
+    contents, index, glossary = [], {}, []
+    for s in stacks:
+        if s['id'] == 'home':
+            continue
+        contents.append({
+            'id': s['id'], 'kind': s.get('kind', 'thread'),
+            'title': s['title'], 'short': short_name(s), 'sub': s.get('sub', ''),
+            'n': len(s['cards']),
+            'film': sum(1 for c in s['cards'] if c.get('kindc') == 'film'),
+            'cards': [{'t': c.get('t') or '', 'd': c.get('d') or '',
+                       'to': f"{s['id']}/{i}",
+                       'film': 1 if c.get('kindc') == 'film' else 0}
+                      for i, c in enumerate(s['cards'])],
+        })
+        for i, c in enumerate(s['cards']):
+            if c.get('kindc') == 'film':
+                continue
+            for term in link_terms(c):
+                index.setdefault(term, []).append(
+                    {'to': f"{s['id']}/{i}", 'in': short_name(s)})
+            body = re.sub(r'<[^>]+>', '', c.get('b') or '').strip()
+            title = (c.get('t') or '').strip()
+            if body and len(title) > 3 and title.lower() != 'overview':
+                first = re.split(r'(?<=[.;])\s', body)[0].strip()
+                if 24 <= len(first) <= 240:
+                    glossary.append({'t': title, 'g': first,
+                                     'to': f"{s['id']}/{i}", 'd': c.get('d') or ''})
+    # index entries pointing at many cards are not index entries
+    index = {k: v for k, v in sorted(index.items(), key=lambda kv: kv[0].lower())
+             if len(v) <= 6}
+    seen, gl = set(), []
+    for g in sorted(glossary, key=lambda g: g['t'].lower()):
+        k = g['t'].lower()
+        if k in seen:
+            continue
+        seen.add(k); gl.append(g)
+    return {'contents': contents, 'index': index, 'glossary': gl}
+
 def pic_key(stack_id, title):
     return hashlib.sha1(f'{stack_id}|{title}'.encode()).hexdigest()[:12]
 
@@ -279,8 +329,12 @@ def main():
     n_pic = attach_pictures(stacks)
     n_cards = sum(len(s['cards']) for s in stacks)
     n_film  = sum(1 for s in stacks for c in s['cards'] if c.get('kindc') == 'film')
-    data = json.dumps({'stacks': stacks}, ensure_ascii=False).replace('</', '<\\/')
+    app = apparatus(stacks)
+    data = json.dumps({'stacks': stacks, 'app': app},
+                      ensure_ascii=False).replace('</', '<\\/')
     theme = THEME.read_text(encoding='utf-8')
+    print(f'  apparatus: {len(app["index"])} index entries, '
+          f'{len(app["glossary"])} glossary entries')
     html = (TPL.read_text(encoding='utf-8')
               .replace('/*__THEME__*/', theme)
               .replace('/*__DATA__*/null', data))

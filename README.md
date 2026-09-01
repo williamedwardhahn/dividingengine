@@ -82,6 +82,24 @@ Mesopotamian clay tokens, water clocks, Marshall Islands stick charts — were
 dropped rather than duplicated. **No images are taken from dataphys.org**;
 those go through `./pics` like every other card.
 
+## The book apparatus
+
+Contents, Index and Glossary sit in the menubar and are all *derived* — nothing
+is maintained twice.
+
+- **Contents** — every era and thread, with dates, card counts and film counts,
+  expanding to the cards themselves.
+- **Index** — 1,050 entries, A–Z, each naming the era or thread it lives in.
+  Built from the same terms that drive cross-linking, so anything the archive
+  can link to, it can also index. Terms appearing on more than six cards are
+  dropped: those are words, not entries.
+- **Glossary** — 561 terms, each the opening line of the card that defines it.
+  The page says so; it is an excerpt, not a written definition.
+
+Thread references render as names. A card that said `(Thread T)` now reads
+*The Harmony Thread* and links there — a cross-reference in a book, not a note
+to the author.
+
 ## Updating it
 
 The loop is the same whatever you change:

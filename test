@@ -205,6 +205,22 @@ def test_build():
         print(f'      ({out_n} cross-links; '
               f'{sum(1 for c in cards if c.get("in"))} cards reached from others)')
 
+        # the book apparatus
+        app = data.get('app') or {}
+        toc, ix, gl = app.get('contents') or [], app.get('index') or {}, app.get('glossary') or []
+        check('contents covers every stack', len(toc) >= len(stacks) - 1,
+              f'{len(toc)} of {len(stacks)}')
+        check('contents lists every card',
+              sum(t['n'] for t in toc) >= len(cards) - 6,
+              f"{sum(t['n'] for t in toc)} vs {len(cards)}")
+        check('the index has entries', len(ix) > 400, f'{len(ix)} entries')
+        ixbad = [k for k, v in ix.items() for r in v if r['to'] not in addr]
+        check('every index entry points at a real card', not ixbad, f'{ixbad[:3]}')
+        check('the glossary has entries', len(gl) > 200, f'{len(gl)} entries')
+        glbad = [g['t'] for g in gl if g['to'] not in addr or not g.get('g')]
+        check('every glossary entry resolves and has a gloss', not glbad, f'{glbad[:3]}')
+        print(f'      ({len(toc)} stacks, {len(ix)} index entries, {len(gl)} glossary entries)')
+
         pics = [c for c in cards if c.get('img') and c.get('kindc') != 'film']
         print(f'      ({len(pics)} narrative cards carry a picture)')
         # a film that died before we ever fetched its thumbnail cannot have one;
@@ -303,6 +319,15 @@ def test_browser():
             pg.goto('http://127.0.0.1:8911/#era-7/0', wait_until='load'); pg.wait_for_timeout(600)
             check('deep links resolve', 'ERA 7' in pg.inner_text('#stacklbl').upper(),
                   pg.inner_text('#stacklbl')[:40])
+
+            for view in ('contents', 'index', 'glossary'):
+                pg.goto(f'http://127.0.0.1:8911/#{view}', wait_until='load')
+                pg.wait_for_timeout(500)
+                check(f'{view} renders', len(pg.inner_text('#content')) > 400)
+            import re as _re
+            pg.goto('http://127.0.0.1:8911/#era-2/0', wait_until='load'); pg.wait_for_timeout(400)
+            check('thread references read as names, not letters',
+                  not _re.search(r'\bThread [A-Z]\b', pg.inner_text('body')))
 
             check('no console or page errors', not errs, str(errs[:2]))
             br.close()
