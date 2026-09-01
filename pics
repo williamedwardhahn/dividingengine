@@ -260,78 +260,120 @@ REVIEW_HTML = """<!doctype html><meta charset="utf-8"><title>Pick pictures</titl
 <style>
 :root{--paper:#f2eee4;--card:#fbf9f4;--ink:#231e15;--ink3:#8b8377;--rule:#cdc4b0;
       --rubric:#9a3b28;--brass:#9a6c2f}
-body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Spectral,Georgia,serif}
-header{position:sticky;top:0;z-index:9;background:var(--paper);border-bottom:1px solid var(--rule);
-  padding:12px 20px;display:flex;gap:16px;align-items:center;
-  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-header b{color:var(--brass)}
-.row{border-bottom:1px solid var(--rule);padding:16px 20px;display:flex;gap:18px;align-items:flex-start}
-.row.done{opacity:.34}
-.q{width:250px;flex:none}
-.q h3{margin:0 0 4px;font-size:15px;font-weight:500}
-.q .s{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink3)}
-.opts{display:flex;gap:12px;flex-wrap:wrap}
-.opt{width:190px;cursor:pointer;border:2px solid transparent;border-radius:2px;padding:4px;background:var(--card)}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);
+     font:15px/1.5 Spectral,Georgia,serif;display:flex;flex-direction:column}
+header{flex:none;border-bottom:1px solid var(--rule);padding:12px 22px;
+  display:flex;gap:20px;align-items:baseline;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+header .t{font-family:Spectral,Georgia,serif;font-size:21px;letter-spacing:0;
+  text-transform:none;font-weight:500;flex:1;min-width:0;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+header .d{color:var(--brass)}
+header .n{color:var(--ink3);margin-left:auto;white-space:nowrap}
+#bar{flex:none;height:2px;background:var(--rule)}
+#fill{height:100%;background:var(--rubric);width:0;transition:width .2s}
+main{flex:1;display:flex;gap:14px;padding:16px 22px;min-height:0}
+.opt{flex:1;min-width:0;display:flex;flex-direction:column;cursor:pointer;
+  border:2px solid transparent;border-radius:3px;background:var(--card);padding:6px;
+  transition:border-color .12s,transform .12s}
 .opt:hover{border-color:var(--brass)}
-.opt.sel{border-color:var(--rubric)}
-.opt img{width:100%;height:118px;object-fit:cover;display:block;background:#ddd6c6}
-.opt .m{font-family:"IBM Plex Mono",monospace;font-size:8.5px;line-height:1.35;color:var(--ink3);
-  padding:5px 2px 0;word-break:break-word}
-.skip{width:96px;height:130px;border:1px dashed var(--rule);background:none;cursor:pointer;
-  font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--ink3);border-radius:2px}
-.skip.sel{border-style:solid;border-color:var(--rubric);color:var(--rubric)}
+.opt.hot{border-color:var(--rubric);transform:translateY(-2px)}
+.opt .wrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;
+  background:#e6e0d1;border-radius:2px;overflow:hidden}
+.opt img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.opt .m{flex:none;font-family:"IBM Plex Mono",monospace;font-size:9px;line-height:1.4;
+  color:var(--ink3);padding:7px 3px 2px;word-break:break-word}
+.opt .k{position:absolute;font-family:"IBM Plex Mono",monospace}
+.num{flex:none;display:inline-block;background:var(--rubric);color:var(--paper);
+  font-family:"IBM Plex Mono",monospace;font-size:10px;padding:1px 6px;border-radius:2px;
+  margin-right:6px}
+#skip{flex:0 0 130px;border:1px dashed var(--rule);background:none;border-radius:3px;
+  cursor:pointer;color:var(--ink3);font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px}
+#skip:hover{border-style:solid;border-color:var(--rubric);color:var(--rubric)}
+footer{flex:none;border-top:1px solid var(--rule);padding:9px 22px;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);display:flex;gap:22px}
+footer b{color:var(--ink);font-weight:400}
+#msg{margin-left:auto}
+#done{display:none;flex:1;align-items:center;justify-content:center;flex-direction:column;gap:14px}
 </style>
 <header>
-  <span>Pick a picture for each card &mdash; click one, or Skip</span>
-  <span>Chosen <b id="n">0</b> / <span id="tot">0</span></span>
-  <span id="saved" style="margin-left:auto">saved automatically</span>
+  <span class="d" id="date"></span>
+  <span class="t" id="title">…</span>
+  <span class="n"><b id="i">0</b> / <span id="tot">0</span></span>
 </header>
-<div id="list"></div>
+<div id="bar"><div id="fill"></div></div>
+<main id="stage"></main>
+<footer>
+  <span><b>1</b>–<b>4</b> pick</span><span><b>S</b> or <b>space</b> skip</span>
+  <span><b>&larr;</b> back</span><span id="msg">saves as you go</span>
+</footer>
 <script>
-let DATA = null;
-fetch("/data").then(r=>r.json()).then(d=>{ DATA=d; paint(); });
-function paint(){
-  const rows = Object.entries(DATA.cands);
-  document.getElementById("tot").textContent = rows.length;
-  document.getElementById("list").innerHTML = rows.map(([k,v])=>`
-    <div class="row" id="r-${k}">
-      <div class="q"><h3>${esc(v.card)}</h3><div class="s">${esc(v.stack)}</div></div>
-      <div class="opts">
-        ${v.cands.map((c,i)=>`<div class="opt" data-k="${k}" data-i="${i}">
-            <img loading="lazy" src="${esc(c.url)}" alt="">
-            <div class="m">${esc((c.file||"").slice(5,58))}<br>${esc(c.lic||c.via||"")}</div>
-          </div>`).join("")}
-        <button class="skip" data-k="${k}" data-i="-1">Skip</button>
-      </div>
-    </div>`).join("");
-  document.body.addEventListener("click", e=>{
-    const el = e.target.closest("[data-k]"); if(!el) return;
-    const k = el.dataset.k, i = +el.dataset.i;
-    document.querySelectorAll(`[data-k="${k}"]`).forEach(x=>x.classList.remove("sel"));
-    el.classList.add("sel");
-    // Only call it done once the server confirms. Marking it first made a dead
-    // server look exactly like a working one, and lost a whole review pass.
-    fetch("/pick",{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({k,i})})
-      .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
-      .then(()=>{
-        document.getElementById("r-"+k).classList.add("done");
-        document.getElementById("n").textContent =
-          document.querySelectorAll(".row.done").length;
-        const s=document.getElementById("saved");
-        s.textContent="saved automatically"; s.style.color="";
-      })
-      .catch(()=>{
-        el.classList.remove("sel");
-        const s=document.getElementById("saved");
-        s.textContent="NOT SAVED \u2014 picker server stopped. Restart: ./pics review";
-        s.style.color="#9a3b28";
-      });
-  });
-}
+let Q=[], at=0, total=0, busy=false;
+const $=s=>document.querySelector(s);
+fetch('/data').then(r=>r.json()).then(d=>{
+  Q=Object.entries(d.cands); total=Q.length;
+  $('#tot').textContent=total; show();
+});
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function preload(n){
+  for(let j=at+1;j<Math.min(at+1+n,Q.length);j++)
+    (Q[j][1].cands||[]).forEach(c=>{const im=new Image(); im.src=c.url;});
+}
+function show(){
+  if(at>=Q.length) return finish();
+  const [k,v]=Q[at];
+  $('#date').textContent=v.stack||'';
+  $('#title').textContent=v.card||'';
+  $('#i').textContent=at;
+  $('#fill').style.width=(at/total*100)+'%';
+  $('#stage').innerHTML=(v.cands||[]).map((c,i)=>`
+    <div class="opt" data-i="${i}">
+      <div class="wrap"><img src="${esc(c.url)}" alt=""></div>
+      <div class="m"><span class="num">${i+1}</span>${esc((c.file||'').slice(5,64))}<br>${esc(c.lic||c.via||'')}</div>
+    </div>`).join('') +
+    `<button id="skip" data-i="-1"><span class="num">S</span>Skip</button>`;
+  preload(2);
+}
+function finish(){
+  $('#stage').innerHTML='';
+  $('#title').textContent='Done';
+  $('#date').textContent='';
+  $('#fill').style.width='100%';
+  $('#msg').innerHTML='all reviewed — run <b>./pics fetch</b>';
+}
+function pick(i){
+  if(busy||at>=Q.length) return;
+  busy=true;
+  const el=i<0?$('#skip'):document.querySelector(`.opt[data-i="${i}"]`);
+  if(el) el.classList.add('hot');
+  const k=Q[at][0];
+  fetch('/pick',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({k,i})})
+    .then(r=>{ if(!r.ok) throw 0; return r.json(); })
+    .then(()=>{ at++; busy=false; setTimeout(show,70); })
+    .catch(()=>{ busy=false; if(el) el.classList.remove('hot');
+      $('#msg').innerHTML='<b style="color:#9a3b28">NOT SAVED — restart ./pics review</b>'; });
+}
+function back(){
+  if(busy||at===0) return;
+  at--; busy=true;
+  fetch('/undo',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({k:Q[at][0]})}).then(()=>{busy=false;show();})
+    .catch(()=>{busy=false;show();});
+}
+document.addEventListener('click',e=>{
+  const el=e.target.closest('[data-i]'); if(el) pick(+el.dataset.i);
+});
+document.addEventListener('keydown',e=>{
+  if(e.key>='1'&&e.key<='4'){ e.preventDefault(); pick(+e.key-1); }
+  else if(e.key==='s'||e.key==='S'||e.key===' '||e.key==='0'){ e.preventDefault(); pick(-1); }
+  else if(e.key==='ArrowLeft'){ e.preventDefault(); back(); }
+});
 </script>"""
 
 def cmd_review(a):
@@ -363,6 +405,10 @@ def cmd_review(a):
             n = int(self.headers.get('Content-Length', 0))
             msg = J.loads(self.rfile.read(n) or b'{}')
             k, i = msg.get('k'), msg.get('i')
+            if self.path == '/undo':
+                if k in db:
+                    del db[k]; save(db); picked['n'] = max(0, picked['n'] - 1)
+                self._send(200, '{"ok":1}', 'application/json'); return
             if k in pending:
                 meta = pending[k]
                 if i == -1:
