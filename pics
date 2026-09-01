@@ -311,11 +311,23 @@ function paint(){
     const k = el.dataset.k, i = +el.dataset.i;
     document.querySelectorAll(`[data-k="${k}"]`).forEach(x=>x.classList.remove("sel"));
     el.classList.add("sel");
-    document.getElementById("r-"+k).classList.add("done");
+    // Only call it done once the server confirms. Marking it first made a dead
+    // server look exactly like a working one, and lost a whole review pass.
     fetch("/pick",{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({k,i})}).then(()=>{
+      body:JSON.stringify({k,i})})
+      .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+      .then(()=>{
+        document.getElementById("r-"+k).classList.add("done");
         document.getElementById("n").textContent =
           document.querySelectorAll(".row.done").length;
+        const s=document.getElementById("saved");
+        s.textContent="saved automatically"; s.style.color="";
+      })
+      .catch(()=>{
+        el.classList.remove("sel");
+        const s=document.getElementById("saved");
+        s.textContent="NOT SAVED \u2014 picker server stopped. Restart: ./pics review";
+        s.style.color="#9a3b28";
       });
   });
 }
