@@ -1,0 +1,689 @@
+{
+ "source": {
+  "name": "List of Physical Visualizations",
+  "url": "https://dataphys.org/list/",
+  "by": "Pierre Dragicevic and Yvonne Jansen",
+  "note": "Catalogue entries summarised and linked with attribution; no images taken from the source."
+ },
+ "entries": [
+  {
+   "year": -30000,
+   "title": "The Very First Sculptures",
+   "text": "While data sculptures date back from the 1990s, the very first sculptures were Venus figurines: A Venus figurine is any Upper Paleolithic statuette portraying a woman with exaggerated physical features. The oldest ones are about 35,000 years old. Also see V.S.",
+   "href": "https://dataphys.org/list/the-very-first-sculptures/",
+   "cat": "physical-model"
+  },
+  {
+   "year": -2600,
+   "title": "Quipus",
+   "text": "Quipus were complex assemblies of knotted ropes that were used in South America as a data storage device and played an important role in the Inca administration. Only a handful of specialists could use and decipher them.",
+   "href": "https://dataphys.org/list/peruvian-quipus/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": -500,
+   "title": "Pebble Voting",
+   "text": "The earliest participatory visualizations were probably voting systems. Voting in Greece was introduced in the 5th century BC.",
+   "href": "https://dataphys.org/list/visualizing-opinions-with-pebbles/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": -150,
+   "title": "Greek Orrery",
+   "text": "An orrery is a mechanical model of the solar system. The left image shows the Antikythera, the oldest known orrery. The middle image shows a virtual reconstruction. The right image shows a contemporary orrery.",
+   "href": "https://dataphys.org/list/antikythera-mechanism/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 132,
+   "title": "Chinese Seismoscope",
+   "text": "A seismoscope is a qualitative indicator of seismic activity -- as opposed to seismographs which show quantitative data, typically through line graphs. The oldest known seismoscope is Chinese and dates backs from 132.",
+   "href": "https://dataphys.org/list/houfeng-didong-yi-zhang-hengs-seismoscope/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1200,
+   "title": "Pop-Up and Movable Books",
+   "text": "While gatefold mechanisms were already used in the 1100s, one of the first movable paper mechanisms was a volvelle created by Benedictine Monk Matthew Paris to calculate the dates of Christian holidays in his book Chronica Majorca (1236-1253, see left image ab…",
+   "href": "https://dataphys.org/list/pop-up-and-movable-books/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 1500,
+   "title": "Flow Visualization",
+   "text": "Although today computer graphics is often used for doing flow visualization, a range of physical methods exist that can visualize flows in-place.",
+   "href": "https://dataphys.org/list/flow-visualization/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1500,
+   "title": "Plans-Reliefs",
+   "text": "The first terrain/city models date back from the 16th century and were created for military purposes.",
+   "href": "https://dataphys.org/list/plan-reliefs/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1660,
+   "title": "Galileo Thermometer",
+   "text": "A Galileo thermometer consists of a set of floaters immersed in a clear liquid (typically ethanol) inside a sealed glass tube. Today a floater is typically a glass sphere containing a colored liquid and to which is attached a metallic temperature tag.",
+   "href": "https://dataphys.org/list/galileo-thermometer/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1700,
+   "title": "Wearable Abacus from the Qing Dynasty",
+   "text": "A functioning abacus ring from the Qing Dynasty (1644-1912), exhibited at the Cheng Dawei Abacus Museum in Huangshan City, China.",
+   "href": "https://dataphys.org/list/wearable-abacus-from-the-qing-dynasty/",
+   "cat": "other"
+  },
+  {
+   "year": 1714,
+   "title": "Mercury Thermometer",
+   "text": "The mercury thermometer was invented by Dutch physicist Daniel Gabriel Fahrenheit in 1714. It consists of a narrow glass tube with a bulb at the bottom, containing mercury.",
+   "href": "https://dataphys.org/list/mercury-thermometer/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1750,
+   "title": "Physical Splines",
+   "text": "You may not realize that splines were once physical things. In an era prior to CAD and large-format printing, when draftsmen needed to lay out full-sized curves—for boatbuilding, airplane manufacturing and the like—this is how they did it.",
+   "href": "https://dataphys.org/list/physical-splines/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 1750,
+   "title": "George Adams' Solid Geometry Models",
+   "text": "During the 18th century, instrument maker George Adams built and sold solid 3D geometric models as educational complements to the 2D images found in Euclid's Elements of Geometry.",
+   "href": "https://dataphys.org/list/george-adams-geometric-models/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1753,
+   "title": "Barbeu-Dubourg's Machine Chronologique",
+   "text": "Before Joseph Priestley published his famous timelines, Frenchman Jacques Barbeu-Dubourg built a 16-meter long timeline showing 140 years of world history, which can be mechanically scrolled and folded for transport.",
+   "href": "https://dataphys.org/list/barbeu-dubourgs-machine-chronologique/",
+   "cat": "other"
+  },
+  {
+   "year": 1787,
+   "title": "Chladni Plates",
+   "text": "In 1787, German physicist and musician Ernst Chladni published a technique to visualize the modes of vibration of a rigid surface. Chladni's technique [...] consisted of drawing a bow over a piece of metal whose surface was lightly covered with sand.",
+   "href": "https://dataphys.org/list/chladni-plates/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1820,
+   "title": "Papier-Mâché Anatomical Models",
+   "text": "",
+   "href": "https://dataphys.org/list/papier-mache-anatomical-models/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1839,
+   "title": "Théodore Olivier's String Models",
+   "text": "Between 1839 and 1853 the French mathematician Théodore Olivier created string models to teach and demonstrate descriptive geometry, some of which could be manipulated.",
+   "href": "https://dataphys.org/list/theodore-oliviers-string-models/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1850,
+   "title": "Merryweather's Leech Barometer",
+   "text": "In 1850, British doctor and inventor George Merryweather built a barometer that uses live medicinal leeches to predict storms: The twelve leeches are kept in small bottles inside the device; when they become agitated by an approaching storm they attempt to cli…",
+   "href": "https://dataphys.org/list/merryweathers-leech-barometer/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1862,
+   "title": "De Chancourtois' Telluric Screw",
+   "text": "The French geologist Alexandre-Émile Béguyer de Chancourtois was the first scientist to see the periodicity of elements when they were arranged in order of their atomic weights.",
+   "href": "https://dataphys.org/list/telluric-screw-of-de-chancourtois/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1865,
+   "title": "Hofmann's Croquet Ball Models",
+   "text": "August Wilhelm Hofmann was the first to introduce physical representations of molecules into lectures during his Friday Evening Discourses presentation \"On the Combining Power of Atoms\" at London's Royal Institution of Great Britain in .",
+   "href": "https://dataphys.org/list/hofmanns-croquet-ball-models/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1866,
+   "title": "Kundt's Tube",
+   "text": "Kundt's tube is an apparatus invented in 1866 by German physicist August Kundt for measuring the speed of sound. It mostly consists of a transparent tube of adjustable length with powder in it.",
+   "href": "https://dataphys.org/list/kundts-tube/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1866,
+   "title": "Dewar's Brass Strip Models",
+   "text": "Mechanical arrangement adapted to illustrate structure in the non-saturated hydrocarbons by the chemist James Dewar. The model is made of bars, clamped together so as to allow free motion.",
+   "href": "https://dataphys.org/list/dewars-brass-strip-models/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1871,
+   "title": "Thermodynamic Surfaces",
+   "text": "A physical visualization by Scottish physicist James Maxwell (left), constructed over the course of about seven months, from November 1874 to July 1875, based on the descriptions of thermodynamics surfaces described in two 1873 papers by American engineer Will…",
+   "href": "https://dataphys.org/list/thermodynamic-surfaces/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1875,
+   "title": "Robert Henry Thurston’s Glyptic Models",
+   "text": "Robert Henry Thurston was an American engineer and inventor who created solid models of 3D surfaces for engineering purposes.",
+   "href": "https://dataphys.org/list/robert-henry-thurstons-glyptic-models/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1875,
+   "title": "Van't Hoff's Molecular Paper Models",
+   "text": "Van’t Hoff disseminated his stereochemical ideas to leading chemists of the day by sending them 3-D paper models of tetrahedral molecules, like these now housed in the Leiden Museum. There might be some difficulty in following my reasoning.",
+   "href": "https://dataphys.org/list/vant-hoffs-molecular-paper-models/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1880,
+   "title": "Winogradsky Columns",
+   "text": "The Winogradsky column, invented by Sergei Winogradsky, consists in a transparent cylinder for analyzing microbial life by observing how the metabolism of micro-organisms evolve over time in stratified layers.",
+   "href": "https://dataphys.org/list/winogradsky-column/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1880,
+   "title": "Klein's Mathematical Plaster Models",
+   "text": "In the 19th century, mathematicians became interested in the question how mathematical functions look like. Felix Klein, a German mathematician, had several of such physical models in his lab in Göttingen, and popularized them in America when he brought a boat…",
+   "href": "https://dataphys.org/list/plaster-models-of-mathematical-functions/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1885,
+   "title": "Ammassalik Wooden Maps",
+   "text": "These three-dimensional maps were carved by inuits from the Ammassalik Fjord in Greenland, and used as eyes-free guides for sailing. The left one shows coastline, the right one shows a sequence of offshore islands.",
+   "href": "https://dataphys.org/list/ammassalik-wooden-maps/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1887,
+   "title": "Marey's Movement Sculptures",
+   "text": "Bronze sculpture showing the phases of the flight of birds, created by French scientist Étienne-Jules Marey in 1887 based on photographs.",
+   "href": "https://dataphys.org/list/mareys-movement-sculptures/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1889,
+   "title": "Gaudí's Hanging Chain Models",
+   "text": "Spanish Catalan architect Antoni Gaudí disliked drawings and prefered to explore some of his designs — such as the unfinished Church of Colònia Güell and the Sagrada Família — using scale models made of chains or weighted strings.",
+   "href": "https://dataphys.org/list/gaudis-hanging-chain-models/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1890,
+   "title": "Polynesian Genealogical Instrument",
+   "text": "This artefact from the Marquesas Islands (French Polynesia) served as a memory aid for reciting genealogies during ceremonies. Each thread, made of woven coconut fiber, is a genealogical line and each knot is a generation.",
+   "href": "https://dataphys.org/list/polynesian-genealogical-instrument/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1893,
+   "title": "Galton Board",
+   "text": "The galton board (named after and invented by Sir Francis Galton) is a physical device consisting of a vertical board with rows of interleaved pegs.",
+   "href": "https://dataphys.org/list/galton-board/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1896,
+   "title": "James Ive's Mechanical Teaching Map",
+   "text": "The boundaries of the United States transformed during the 19th century, often through violent means. Mapmaker James Ives created this mechanical map to help people, especially students, visualize these changes.",
+   "href": "https://dataphys.org/list/james-ives-mechanical-teaching-map/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1897,
+   "title": "Stop Motion Animation",
+   "text": "Stop motion animation is the frame-by-frame capture of (generally) inanimate objects which are manipulated by increments in order to produce the illusion of motion. It was first used in movies to produce magical effects.",
+   "href": "https://dataphys.org/list/stop-motion-animation/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 1898,
+   "title": "Crookes' Vis Generatrix",
+   "text": "Model of Crookes’ \"Vis Generatrix\" made in 1898, built by his assistant, Gardiner. From: Proc. R. Soc. Lond. 63, 408. The vertical scale represents the atomic weight of the elements from H = 1 to Ur = 239. Missing elements are represented with a white circle.",
+   "href": "https://dataphys.org/list/crookes-vis-generatrix-periodic-table/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1898,
+   "title": "Tallies Used as Social Displays on Pacific Islands",
+   "text": "In the 19th century, the Torres Strait Islanders did not have a numeral system and used sticks to keep counts. Sticks were tied to a string, forming a bundle (called kupe) that could be rolled and unrolled when needed.",
+   "href": "https://dataphys.org/list/tallies-used-as-social-displays-on-pacific-islands/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1900,
+   "title": "Pearson and Lee's Height Correlation Chart",
+   "text": "The physical model on the left is a bivariate histogram showing the correlation between the heights of fathers (horizontal axis) and sons (\"vertical\" axis). This data was famously collected by Karl Pearson and Alice Lee between 1893 and 1898.",
+   "href": "https://dataphys.org/list/pearson-lee-height-correlation-chart/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1900,
+   "title": "Crum Brown's Mathematical Surface",
+   "text": "Model by Alexander Crum Brown (1838-1922) of a half-twist mathematical surface, featuring a non-Euclidean so-called Klein bottle, c. 1900.",
+   "href": "https://dataphys.org/list/browns-mathematical-surface/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1900,
+   "title": "Modern Solid Terrain Modeling",
+   "text": "The Institute of Cartography ETH Zurich published a great review of past and present techniques for doing solid terrain modeling.",
+   "href": "https://dataphys.org/list/solid-terrain-modeling-techniques/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 1901,
+   "title": "Davenport's Physical Distributions",
+   "text": "In 1901, biologist Charles Davenport \"built\" physical visualizations that show the distributions of features of objects and people. These visualizations were made out of the objects and the people themselves.",
+   "href": "https://dataphys.org/list/davenports-physical-distributions/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1905,
+   "title": "Rubens Tube",
+   "text": "A Rubens tube, also known as a standing wave flame tube, or simply flame tube, is a physics apparatus for demonstrating acoustic standing waves in a tube.",
+   "href": "https://dataphys.org/list/rubens-tube/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1907,
+   "title": "Pin Maps",
+   "text": "",
+   "href": "https://dataphys.org/list/pin-maps/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1913,
+   "title": "Frankfurt Streetcar Load",
+   "text": "Strips of woods glued on top of each other convey the average number of passengers carried between two stops. Each strip corresponds to 4,000 passengers. Shown at the 1913 International building trade exhibition in Leipzig.",
+   "href": "https://dataphys.org/list/frankfurt-streetcar-load/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1914,
+   "title": "Solid 3D Curves for Engineering",
+   "text": "In his 1914 book, Brinton discusses various techniques for building solid models of three-dimensional charts and functions for the purposes of engineering, and uses the two designs above as examples.",
+   "href": "https://dataphys.org/list/solid-3d-curves-for-engineering/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1915,
+   "title": "Wire Models of Factory Worker Movements",
+   "text": "3D wire models of hand motion paths (or chronocyclegraphs) created by Frank Gilbreth, a pioneer in the study of motion in the workplace.",
+   "href": "https://dataphys.org/list/wire-models-of-factory-worker-movements/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1920,
+   "title": "Yakama Time Ball",
+   "text": "Women from the Yakama Native American tribe used strings of hemp as personal diaries. Each major event in their life was represented by a knot, a bead or a shell. This mnemonic device is called an Ititamat, or counting-the-days ball, or simply time ball.",
+   "href": "https://dataphys.org/list/yakama-time-ball/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1926,
+   "title": "Karsten's Tridimensional Chart",
+   "text": "American economist and statistician Karl G. Karsten patented a method for creating physical visualizations of temporal data by stacking two-dimensional plates, each representing a time period.",
+   "href": "https://dataphys.org/list/karstens-tridimensional-chart/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1930,
+   "title": "Mathematical Functions Embodied in Ballistic Cams",
+   "text": "These cams are solid models of bivariate and univariate mathematical functions plotted in cylindric coordinates (left and middle images) and polar coordinates (right image).",
+   "href": "https://dataphys.org/list/mathematical-functions-embodied-in-ballistic-cams/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1933,
+   "title": "IBM's Cosmograph",
+   "text": "The left image above shows a physical flow chart (Sankey diagram) made of 1000 sheets of paper. It was not meant to be directly read, but to be photographed (see right image).",
+   "href": "https://dataphys.org/list/ibms-cosmograph/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1934,
+   "title": "Hayward's Moon Model",
+   "text": "Illustrator and model-maker Roger Hayward (1899-1979) working on a model of the lunar surface for the Griffith Planetarium, 1934.",
+   "href": "https://dataphys.org/list/haywards-moon-model/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1934,
+   "title": "Ford's Globe",
+   "text": "A large rotating relief globe showing Ford company's industrial sites around the word, exhibited at the Chicago World's Fair in 1934.",
+   "href": "https://dataphys.org/list/fords-globe/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1935,
+   "title": "3D Visualizations of Power Consumption",
+   "text": "A large 3D physical visualization made by the Detroit Edison Company showing electricity consumption for the year 1935, with a slice per day and each day split into 30 min intervals.",
+   "href": "https://dataphys.org/list/electricity-power-demand/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1939,
+   "title": "Map of Great Britain's Marine Trade",
+   "text": "A physical World map made of copper and glass showing the size of Great Britain's merchant marine and the main trade routes as 9,000 miniature ship models. Exhibited at the New York World Fair in 1939.",
+   "href": "https://dataphys.org/list/map-of-great-britains-marine-trade/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1940,
+   "title": "Stedman's 3D Periodic Table",
+   "text": "Dr. Don Stedman from the National Research Council Canada designed this 3-D periodic table in the 1940s. Stedman considered many factors and characteristics of the elements as he designed his models.",
+   "href": "https://dataphys.org/list/3d-periodic-table/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1941,
+   "title": "Traffic Flow Profiles of the Interregional Highway System",
+   "text": "2D area diagrams encoding average daily traffic as height and color are set up along their respective highways on a background map of the US. Background map seems to be a cut-out wooden panel; area diagrams potentially cardboard, or also wood veneer.",
+   "href": "https://dataphys.org/list/traffic-flow-profiles-of-the-interregional-highway-system/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1943,
+   "title": "Dymaxion Map & Folding Globe",
+   "text": "“Also know as the “Dymaxion Map,” the Fuller Projection Map is the only flat map of the entire surface of the Earth which reveals our planet as one island in one ocean, without any visually obvious distortion of the relative shapes and sizes of the land areas,…",
+   "href": "https://dataphys.org/list/dymaxion-map/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1945,
+   "title": "Electron Density Map and Molecular Model of Penicillin",
+   "text": "Electron density map and model of Penicillin created by Dorothy Crowfoot Hodgkin in 1945 based on her work on X-ray crystallography. The Penicillin molecule was the first molecule whose structure was derived entirely from X-ray data.",
+   "href": "https://dataphys.org/list/electron-density-map-and-molecular-model-of-penicillin/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1947,
+   "title": "Dorothy Hodgkin's Electron Density Contours",
+   "text": "Nobel prize winning crystallographer Dorothy Crowfoot Hodgkin created another physical visualization in the mid 1940's, showing part of the structure of penicillin. An original of this artifact is in the Oxford Museum of the History of Science.",
+   "href": "https://dataphys.org/list/electron-density-contours/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1949,
+   "title": "Mississippi River Basin Model",
+   "text": "As a response to devastating floods of the Mississippi river in the early 1900s, the US Army Corps of Engineers built a large-scale hydraulic model of the entire river system. The model, 2.",
+   "href": "https://dataphys.org/list/mississippi-river-basin-model/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1949,
+   "title": "Moniac: A Hydromechanical Machine to Teach Economics",
+   "text": "The MONIAC or Phillips machine is a hydromechanical analog computer built to teach basic economical principles using colored water flowing in transparent pipes.",
+   "href": "https://dataphys.org/list/moniac-a-hydromechanical-machine-to-teach-economics/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1951,
+   "title": "Electricity Generated or Demanded",
+   "text": "A 3D chart made out of a jagged cardboard for each year representing generated electricity and demand over time. Three-dimensional chart used by Central Electricity Generating Board planners, c.1954.",
+   "href": "https://dataphys.org/list/electricity-generated-or-demanded/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1951,
+   "title": "Microtiter Plates",
+   "text": "A microtiter plate is an array of chemical test tubes called \"wells\", invented in 1951 by a Hungarian medical doctor. They are used in a variety of experimental designs, most typically biochemistry assays.",
+   "href": "https://dataphys.org/list/microtiter-plates/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1953,
+   "title": "Watson and Crick's 3D Model of DNA",
+   "text": "In 1953, James Watson and Francis Crick suggested what is now accepted as the first correct double-helix model of DNA structure in the journal Nature.",
+   "href": "https://dataphys.org/list/watson-and-cricks-3d-model-of-dna/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1957,
+   "title": "US Army Corps of Engineers San Francisco Bay Model",
+   "text": "A working hydrodynamic model of San Francisco Bay and the surrounding waterways, with tides. It is still open to the public as a demonstration, although it is no longer used for research. <em>",
+   "href": "https://dataphys.org/list/uscae-bay-model/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1957,
+   "title": "Proteine Visualizations",
+   "text": "",
+   "href": "https://dataphys.org/list/proteine-visualizations/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1960,
+   "title": "3D Spectrogram",
+   "text": "The object on the left may be one of the first sound sculptures. It appears in a 1960 book by German acoustician and musicologist Fritz Winckel (click on the middle image to see the full page).",
+   "href": "https://dataphys.org/list/3d-spectrogram/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1961,
+   "title": "Voskhod Spacecraft 'Globus' IMP navigation instrument",
+   "text": "This device was the location indicator for Russian spacecrafts from the world's first manned spaceflight by Yuri Gagarin, 12 April 1961, until 2002.",
+   "href": "https://dataphys.org/list/voskhod-spacecraft-globus-imp-navigation-instrument/",
+   "cat": "measuring-instrument"
+  },
+  {
+   "year": 1962,
+   "title": "Lunar Models for Preparing Moon Flight",
+   "text": "Scientists studying moon phases on models in preparation for US manned flight to moon. Photograph by Fritz Goro, published in Life Magazine.",
+   "href": "https://dataphys.org/list/lunar-models-for-preparing-moon-flight/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1965,
+   "title": "Stop Motion Animation of Physical 3D Map",
+   "text": "This educational movie from the 1960s uses physical bars and stop motion animation to show the evolution of population in the Paris area between 1801 and 1961.",
+   "href": "https://dataphys.org/list/stop-motion-animation-of-physical-bar-charts/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1968,
+   "title": "Grace Hopper's Nanoseconds",
+   "text": "Grace Hopper, a computer scientist and US Navy Rear Admiral, used wire to visualise very short durations of time in computing. Each wire is cut to the maximum distance that light or electricity can travel in a nanosecond, one billionth of a second.",
+   "href": "https://dataphys.org/list/grace-hopper-nanoseconds/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1968,
+   "title": "Charles Csuri's Numeric Milling Sculpture",
+   "text": "Csuri's wooden sculpture Numeric Milling is one of the few early computer sculptures created with a computer-driven milling machine... This work made use of the Bessel function to generate the surface.",
+   "href": "https://dataphys.org/list/charles-csuris-numeric-milling-sculpture/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 1968,
+   "title": "Jacques Bertin's Reorderable Matrices",
+   "text": "The reorderable matrix is a physical device developed in the mid 1960s by French cartographer Jacques Bertin for exploring and presenting tabular data.",
+   "href": "https://dataphys.org/list/bertins-reorderable-matrices/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1970,
+   "title": "Physical Display to Study Perception",
+   "text": "Stuart Anstis, a professor of psychology at UCSD, built this device for studying perceptual illusions. I made this movie clip in the 1970’s, when I had more hair than brains.",
+   "href": "https://dataphys.org/list/physical-display-to-study-perception/",
+   "cat": "other"
+  },
+  {
+   "year": 1970,
+   "title": "Byron's Bender",
+   "text": "In the early 1970's, crystallographer Byron Rubin invented a tool that bends wires to make proteins models. The tool was popular until the 1990s. Byron Rubin became an artist who builds large-scale molecular sculptures.",
+   "href": "https://dataphys.org/list/byrons-bender/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 1970,
+   "title": "MoMA Poll: Participatory Bar Chart",
+   "text": "German-American artist Hans Haacke created a participatory physical bar chart as part of a 1970 exhibition at the Museum of Modern Art (MoMA).",
+   "href": "https://dataphys.org/list/moma-poll-haackes-participatory-bar-chart/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1970,
+   "title": "3D Sankey Diagram",
+   "text": "This physical 3D Sankey diagram shows complex energy flows and was created in the 70s by the Center for Strategic & International Studies (CSIS). Little information is available about it.",
+   "href": "https://dataphys.org/list/3d-sankey-diagram/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1973,
+   "title": "Mazamet Ville Morte",
+   "text": "In 1973, the French town of Mazamet had a population that closely matched the nationwide number of motor vehicule deaths across the previous year. A TV reporter decided to show all inhabitants lying on the floor to symbolize these deaths.",
+   "href": "https://dataphys.org/list/mazamet-ville-morte/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1977,
+   "title": "Graphical Waterfall",
+   "text": "A graphical waterfall is a display where images are formed by water droplets falling from computer-controlled nozzles. It was invented in 1977 by Stephen Pevnick, an American artist.",
+   "href": "https://dataphys.org/list/graphical-waterfall/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 1979,
+   "title": "Planetenweg Uetliberg: The Solar System as a Hiking Path",
+   "text": "Planetenweg Uetliberg is a 2h hiking path near Zurich in Switzerland. It enables people to experience the sizes and distances between the different main bodies in our solar system. The hike starts at the sun (image above).",
+   "href": "https://dataphys.org/list/planetenweg/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1979,
+   "title": "Great Polish Map of Scotland",
+   "text": "The \"Great Polish Map of Scotland\" is a 50 x 40 m concrete terrain model of Scotland. It was built by a Polish sergeant who stationed in Scotland during WWII and ended up living there.",
+   "href": "https://dataphys.org/list/great-polish-map-of-scotland/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1980,
+   "title": "People on a Giant World Map",
+   "text": "The World Game Workshop used a giant (basketball court size) world map to display population growth, distribution, and density, energy use, food and a host of other global variables and problems.",
+   "href": "https://dataphys.org/list/giant-global-map-data-visualizations/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1984,
+   "title": "Dewdney's Analog Gadgets",
+   "text": "Alexander Dewdney is a Canadian mathematician and computer scientist who authored the recreational mathematics column in the Scientific American magazine from 1984 to 1991, after Martin Gardner and Douglas Hofstadter.",
+   "href": "https://dataphys.org/list/dewdneys-analog-gadgets/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1985,
+   "title": "Using the Physical to Explain the Virtual",
+   "text": "In this 1985 video, Rick Becker from AT&T Bell Labs explains the concept of \"dynamic graphics\". Already in the early 70s, statisticians like John Tukey were starting to experiment with multidimensional data visualization on flat computers screens, including 3D…",
+   "href": "https://dataphys.org/list/using-the-physical-to-explain-the-virtual/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1987,
+   "title": "All the Submarines of the United States of America",
+   "text": "This installation from American artist Chris Burden shows the 625 submarines of the US fleet from the late 1890s to the late 1980s. The cardboard models have been suspended at different heights to look like a school of fish.",
+   "href": "https://dataphys.org/list/all-the-submarines-of-the-united-states-of-america/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1991,
+   "title": "Münster Congestion Visualization",
+   "text": "In order to encourage bus use, in 1991 the city of Münster, Germany created a poster that compares the space taken by 72 bicycles (left), 72 cars (middle), and a bus (right). This idea is not new.",
+   "href": "https://dataphys.org/list/congestion-visualization/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1992,
+   "title": "Durrell Bishop's Marble Answering Machine",
+   "text": "In 1992, Durrell Bishop, then a student at the Royal College of Art, came up with an original answering machine design that is considered as one of the first tangible user interfaces (TUIs).",
+   "href": "https://dataphys.org/list/durrell-bishops-marble-answering-machine/",
+   "cat": "active-physical-visualization"
+  },
+  {
+   "year": 1992,
+   "title": "Tactile Infographics",
+   "text": "In 1994 the American Printing House for the Blind publishes a short guidebook explaining how to convey infographics for the blind using tactile graphics (first and second images). Most of it is inspired by a 1992 book by Polly Edman.",
+   "href": "https://dataphys.org/list/tactile-infographics/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1993,
+   "title": "Slumber: Brainwave Weaving",
+   "text": "Slumber was a multi-year gallery installation/performance by artist Janine Antoni. From the website description: Performance with loom, yarn, bed, nightgown, EEG Machine and artist’s REM reading.",
+   "href": "https://dataphys.org/list/slumber-brainwave-weaving/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1995,
+   "title": "San Diego TeleManufacturing Facility",
+   "text": "In 1995, Mike Bailey from the San Diego Supercomputer Center created the SDSC TeleManufacturing Facility to help scientists visualize their data in physical form.",
+   "href": "https://dataphys.org/list/sdsc-telemanufacturing-facility/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1995,
+   "title": "Loren Madsen's Early Data Sculptures",
+   "text": "Californian artist Loren Madsen has been making data sculptures since 1995 and still continues today. CPI / Cost of Living (left image) is the first of his series: A lamination is one year.",
+   "href": "https://dataphys.org/list/cpi-cost-of-living/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1996,
+   "title": "Ned Kahn's Wind-Visualizing Facades",
+   "text": "Since 1996, Nothern California artist Ned Kahn creates large-scale installations that visualize wind patterns. The left image shows Wind veil (2000), a facade of a parking garage covered with 80,000 small aluminum panels that are hinged to move freely in the w…",
+   "href": "https://dataphys.org/list/ned-kahns-wind-visualizing-facades/",
+   "cat": "passive-physical-visualization"
+  },
+  {
+   "year": 1997,
+   "title": "Level: Hans Hemmert's Same-Height Shoes",
+   "text": "“Level” (1997), Styrodur/rubber/Velcro/measuring device, 50 pairs of platform shoes with heights of 5-43 cm, installation view at Galerie Gebauer Berlin, © Hans Hemmert and VG Bild Kunst.",
+   "href": "https://dataphys.org/list/level-hans-hemmerts-same-height-shoes/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 1999,
+   "title": "Jonathan Chertok's Mathematical Plaster Models",
+   "text": "Since 1999, independent researcher and architect Jonathan Chertok has been digitally reconstructing and 3D-printing historical plaster models from 19th-century mathematical model collections, originally hand-crafted in the 1860s and cataloged in early 20th-cen…",
+   "href": "https://dataphys.org/list/jonathan-chertoks-reproductions-of-mathematical-plaster-models/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 1999,
+   "title": "World's Largest Solid Terrain Model",
+   "text": "In 2006, a mysterious 900x700m solid terrain model with military facilities was discovered by a German Google Earth user next to the Chinese town of Huangyangtan.",
+   "href": "https://dataphys.org/list/worlds-largest-solid-terrain-model/",
+   "cat": "physical-model"
+  },
+  {
+   "year": 2000,
+   "title": "A Shape Display Appears in a Movie",
+   "text": "An imaginary ultra high-resolution 2.5D shape display appears in the 2000 movie X-Men. The rendering and animations are visually quite appealing. Notice how impossible overhangs appear at 0:27 (the bridge) and 0:33 (the torch of the Statue of Liberty).",
+   "href": "https://dataphys.org/list/a-shape-display-appears-in-a-movie/",
+   "cat": "enabling-technology"
+  },
+  {
+   "year": 2000,
+   "title": "Kanban Boards",
+   "text": "A Kanban board is a task management tool where sticky notes representing work items are moved across a board to reflect their state of advancement. The simplest form has three states: to do, in progress, and done (left image).",
+   "href": "https://dataphys.org/list/kanban-boards/",
+   "cat": "uncertain"
+  },
+  {
+   "year": 2000,
+   "title": "Graph Boards",
+   "text": "Mathematics and geometry are often taught to blind students using a cork board with raised grid lines, push pins and rubber bands.",
+   "href": "https://dataphys.org/list/graph-board/",
+   "cat": "enabling-technology"
+  }
+ ]
+}

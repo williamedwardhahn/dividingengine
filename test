@@ -95,6 +95,51 @@ def test_master_list():
     check('stack ids are unique', len(set(ids)) == len(ids))
     return stacks
 
+# ── pictures and the catalogue ────────────────────────────────────────────
+def test_pictures():
+    section('pictures')
+    p = ROOT / 'pics.json'
+    if not p.exists():
+        skip('picture archive', 'no pics.json yet'); return
+    db = json.loads(p.read_text(encoding='utf-8'))
+    have = {k: v for k, v in db.items() if v.get('img')}
+    missing = [k for k, v in have.items() if not (ROOT / v['img']).exists()]
+    check('every recorded picture exists on disk', not missing,
+          f'{len(missing)} missing: {missing[:3]}')
+    # CC BY / BY-SA require crediting the author; an unattributed file is a bug
+    noattr = [v['card'] for v in have.values()
+              if re.search(r'\bBY\b', v.get('lic', ''), re.I) and not (v.get('by') or v.get('via'))]
+    check('CC-BY pictures carry an attribution', not noattr,
+          f'{len(noattr)}: {noattr[:2]}')
+    if have:
+        sizes = [(ROOT / v['img']).stat().st_size for v in have.values()
+                 if (ROOT / v['img']).exists()]
+        big = [s for s in sizes if s > 300_000]
+        check('no picture blows the size budget', not big,
+              f'{len(big)} over 300 KB, largest {max(sizes)//1024 if sizes else 0} KB')
+        avg = sum(sizes) / max(1, len(sizes))
+        print(f'      ({len(sizes)} pictures, {avg/1024:.0f} KB average, '
+              f'{sum(sizes)/1e6:.1f} MB total)')
+
+def test_dataphys():
+    section('dataphys catalogue')
+    p = ROOT / 'dataphys.json'
+    if not p.exists():
+        skip('dataphys', 'not present'); return
+    d = json.loads(p.read_text(encoding='utf-8'))
+    src = d.get('source', {})
+    check('the source is credited', bool(src.get('by') and src.get('url')), str(src)[:80])
+    e = d['entries']
+    check('entries are present', len(e) > 50, f'{len(e)} entries')
+    check('every entry is dated no later than 2000',
+          all(x['year'] <= 2000 for x in e),
+          str([x['title'] for x in e if x['year'] > 2000][:3]))
+    check('every entry links back to its source entry',
+          all(x.get('href', '').startswith('https://dataphys.org/list/') for x in e))
+    check('no entry duplicates a master-list card',
+          not [x for x in e if x['title'] in
+               {'Ishango Bone', 'Mesopotamian Clay Tokens', 'Water Clocks'}])
+
 # ── the build ─────────────────────────────────────────────────────────────
 def test_build():
     section('build')
@@ -126,6 +171,13 @@ def test_build():
         films = [c for c in cards if c.get('kindc') == 'film']
         check('cards and films are both present',
               len(cards) > 1000 and len(films) > 700, f'{len(cards)} cards, {len(films)} film')
+        dp = [c for c in cards if c.get('kindc') == 'dataphys']
+        check('the catalogue cards made it in', len(dp) > 50, f'{len(dp)} dataphys cards')
+        uncredited = [c['t'] for c in dp if 'dataphys.org' not in (c.get('b') or '')]
+        check('every catalogue card credits its source', not uncredited,
+              f'{len(uncredited)}: {uncredited[:2]}')
+        pics = [c for c in cards if c.get('img') and c.get('kindc') != 'film']
+        print(f'      ({len(pics)} narrative cards carry a picture)')
         # a film that died before we ever fetched its thumbnail cannot have one;
         # anything still reachable must.
         noimg = [c['t'] for c in films if not c.get('img') and c.get('status') != 'dead']
@@ -279,6 +331,8 @@ def main():
 
     films = test_archive()
     test_master_list()
+    test_pictures()
+    test_dataphys()
     h = test_build()
     test_assets(h)
     if a.browser: test_browser()

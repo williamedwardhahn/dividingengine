@@ -9,3 +9,5 @@ _check.html
 _probe.html
 
 .DS_Store
+.pics-candidates.json
+pics-review.txt

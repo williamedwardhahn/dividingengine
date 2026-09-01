@@ -11,6 +11,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
 <style>
 /*__THEME__*/
+.body .src{display:block;margin-top:14px;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.body .src a{color:inherit;border-bottom:1px solid var(--rule);text-decoration:none}
+.body .src a:hover{color:var(--rubric)}
+
+.cardpic{margin:0 0 20px}
+.cardpic img{width:100%;max-height:340px;object-fit:cover;display:block;
+  border:1px solid var(--rule);border-radius:2px;box-shadow:var(--shadow)}
+.cardpic figcaption{font-family:var(--mono);font-size:9px;letter-spacing:.09em;
+  color:var(--ink-3);padding:6px 1px 0;text-transform:uppercase}
+.cardpic figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
+.cardpic figcaption a:hover{color:var(--brass)}
+
 #masthead{position:relative;text-align:center;padding:0 0 20px}
 #masthead .banner{height:150px;background-image:url("assets/banner.png");
   background-repeat:repeat-x;background-position:0 0;opacity:.85}
@@ -495,7 +508,12 @@ function render(push=true){
   if(cd.special==="ladder") h += renderLadder();
   else if(cd.special==="map") h += renderMap();
   else if(cd.kindc==="film") h += renderFilm(cd);
-  else h += `<div class="body">${linkify(md(cd.b.includes("<")? cd.b : esc(cd.b)))}</div>`;
+  else {
+    if(cd.img) h += `<figure class="cardpic"><img src="${esc(cd.img)}" alt="" loading="lazy">` +
+      (cd.cred? `<figcaption>${cd.credurl?`<a href="${esc(cd.credurl)}" target="_blank" rel="noopener">${esc(cd.cred)}</a>`:esc(cd.cred)}</figcaption>`:"") +
+      `</figure>`;
+    h += `<div class="body">${linkify(md(cd.b.includes("<")? cd.b : esc(cd.b)))}</div>`;
+  }
   h += `</div>`;
   $("#content").innerHTML = h;
   if(cd.special==="ladder"){ computeLadder(); $("#secs").addEventListener("input",computeLadder); }

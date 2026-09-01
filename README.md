@@ -16,6 +16,10 @@ the-reckoner/
 
 de                   the film tool (add / sync / check / tag / enrich)
 archive.json           the film archive — source of truth
+pics                 the picture tool (propose / review / fetch)
+pics.json              which picture belongs to which card, and its licence
+dataphys.json          catalogue entries from dataphys.org, to year 2000
+media/cards/           archived pictures, WebP, ~90 KB each
 media/                 title frames; media/yt/ holds YouTube thumbnails
 _source/               the raw Wayback pull (deletable)
 ```
@@ -39,6 +43,44 @@ narrative cards, so Era 7 runs from the Atanasoff–Berry Computer through
 
 **370 films have no year** and cannot sit on a timeline. They are a stack of
 their own, *Undated Film*, until `./de year` or a hand edit dates them.
+
+## Pictures
+
+Every card should carry an image. Films already have a title frame; the
+narrative cards get one from Wikimedia Commons and Wikipedia.
+
+```
+./pics propose      search both, gather up to 4 candidates per card
+./pics review       open a picker in the browser — click the right one, or Skip
+./pics fetch        download and compress everything chosen
+./pics status       coverage and archive size
+./pics recompress   re-encode from source at current settings
+```
+
+`review` is a local page showing every card beside its candidates as
+thumbnails. Reading 500 filenames is slow; looking at 500 pictures is not.
+Choices save as you click.
+
+Images are archived locally — never hotlinked — resized to 860px and encoded
+to WebP within a 150 KB budget, stepping quality down for the pathological
+cases. About 90 KB each.
+
+**Attribution is not optional.** Most of Commons is CC BY or CC BY-SA, which
+requires crediting the photographer. The licence and author come down with the
+file, live in `pics.json`, and render under the picture. A test fails if a
+CC-BY image has no credit — which caught one that Commons had filed under
+`Attribution` rather than `Artist`.
+
+## The physical-visualization catalogue
+
+`dataphys.json` holds 97 entries to the year 2000 from the
+[List of Physical Visualizations](https://dataphys.org/list/), maintained by
+Pierre Dragicevic and Yvonne Jansen. Each becomes a card in the era its date
+falls in, carrying a short excerpt, the source line, and a link back to the
+original entry. Six that the master list already covered — the Ishango bone,
+Mesopotamian clay tokens, water clocks, Marshall Islands stick charts — were
+dropped rather than duplicated. **No images are taken from dataphys.org**;
+those go through `./pics` like every other card.
 
 ## Updating it
 

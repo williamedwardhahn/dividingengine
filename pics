@@ -1,0 +1,432 @@
+#!/usr/bin/env python3
+"""
+pics — pictures for cards.
+
+Every card should carry an image. Films already have a title frame; the
+narrative cards do not. This finds candidates on Wikimedia Commons, lets you
+confirm them, then archives and compresses them locally.
+
+    ./pics propose [--limit N]   search Commons, write pics-review.txt
+    ./pics fetch                 download + compress everything confirmed
+    ./pics status                what has a picture and what does not
+    ./pics recompress            re-encode the archive at current settings
+
+Attribution is not optional: most of Commons is CC BY or CC BY-SA, which
+requires crediting the photographer. The licence and author come down with the
+file, are stored in pics.json, and are rendered on the card.
+"""
+import os, sys
+_V = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.venv', 'bin', 'python')
+if os.path.exists(_V) and os.path.realpath(sys.executable) != os.path.realpath(_V):
+    os.execv(_V, [_V, os.path.abspath(__file__)] + sys.argv[1:])
+
+import argparse, concurrent.futures as cf, hashlib, html, json, pathlib, re
+import threading, time, urllib.error, urllib.parse, urllib.request, warnings
+warnings.filterwarnings('ignore')
+
+ROOT   = pathlib.Path(__file__).parent.resolve()
+DB     = ROOT / 'pics.json'
+OUTDIR = ROOT / 'media' / 'cards'
+REVIEW = ROOT / 'pics-review.txt'
+UA     = ('DividingEngine/1.0 (https://dividingengine.com; history-of-computation '
+          'archive) python-urllib')
+# Cards render at ~700px; 860 covers retina. BUDGET bounds the pathological
+# cases (a close-up of knotted fibre encodes far worse than a photo of a machine).
+MAXW, QUALITY, BUDGET = 860, 74, 150_000
+OK_MIME = {'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/tiff'}
+
+warn = lambda *a: print(*a, file=sys.stderr)
+
+_throttle = threading.Semaphore(2)      # Wikimedia asks for gentle automated access
+_errors = {'n': 0}
+
+def api(url, tries=4):
+    """GET json, backing off on rate limits. A swallowed 429 looks exactly like
+    'no results', which silently halved our coverage once — so count failures."""
+    for a in range(tries):
+        try:
+            with _throttle:
+                r = urllib.request.Request(url, headers={'User-Agent': UA})
+                return json.loads(urllib.request.urlopen(r, timeout=30).read())
+        except urllib.error.HTTPError as e:
+            if e.code in (429, 503) and a < tries - 1:
+                time.sleep(2 ** a + 1); continue
+            _errors['n'] += 1; return None
+        except Exception:
+            if a < tries - 1:
+                time.sleep(1.5 * (a + 1)); continue
+            _errors['n'] += 1; return None
+    return None
+
+def load():
+    return json.loads(DB.read_text(encoding='utf-8')) if DB.exists() else {}
+def save(d):
+    DB.write_text(json.dumps(d, indent=1, ensure_ascii=False), encoding='utf-8')
+
+def key(stack_id, title):
+    return hashlib.sha1(f'{stack_id}|{title}'.encode()).hexdigest()[:12]
+
+# ── the cards that want a picture ─────────────────────────────────────────
+def all_cards():
+    """(stack_id, stack_title, card) for every card that is not a film."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('rb', ROOT / 'the-reckoner' / 'build.py')
+    rb = importlib.util.module_from_spec(spec)
+    cwd = os.getcwd(); os.chdir(ROOT / 'the-reckoner')
+    spec.loader.exec_module(rb); os.chdir(cwd)
+    md = (ROOT / 'the-reckoner' / 'history-of-computation-master-list.md').read_text(encoding='utf-8')
+    out = []
+    for s in rb.parse(md):
+        for c in s['cards']:
+            if c.get('special'): continue
+            t = (c.get('t') or '').strip()
+            if not t or t.lower() == 'overview': continue
+            out.append((s['id'], s['title'], c))
+    return out
+
+# ── Commons ───────────────────────────────────────────────────────────────
+def commons(q, n=3, fetch=12):
+    # The File namespace holds PDFs, DjVu and audio too, and `filetype:bitmap`
+    # in the query throws away most real hits — so over-fetch and filter on mime.
+    u = 'https://commons.wikimedia.org/w/api.php?' + urllib.parse.urlencode({
+        'action': 'query', 'format': 'json', 'generator': 'search',
+        'gsrsearch': q, 'gsrnamespace': '6', 'gsrlimit': fetch,
+        'prop': 'imageinfo', 'iiprop': 'url|size|mime|extmetadata', 'iiurlwidth': str(MAXW)})
+    d = api(u)
+    if d is None: return []
+    out = []
+    for p in (d.get('query', {}).get('pages') or {}).values():
+        ii = (p.get('imageinfo') or [{}])[0]
+        # allowlist, not a prefix test: DjVu is served as image/vnd.djvu
+        if (ii.get('mime') or '') not in OK_MIME: continue
+        if not ii.get('thumburl') and not ii.get('url'): continue
+        em = ii.get('extmetadata', {}) or {}
+        def g(k): return re.sub(r'<[^>]+>', '', ((em.get(k) or {}).get('value') or '')).strip()
+        # CC BY / BY-SA oblige us to credit; the credit is not always in Artist
+        by = next((g(f) for f in ('Attribution', 'Artist', 'Credit') if g(f)), '')
+        out.append({
+            'file': p.get('title', ''),
+            'url': ii.get('thumburl') or ii.get('url'),
+            'page': f"https://commons.wikimedia.org/wiki/{urllib.parse.quote(p.get('title',''))}",
+            'lic': g('LicenseShortName') or 'unknown',
+            'by': re.sub(r'\s+', ' ', by)[:90],
+            'idx': p.get('index', 99),
+        })
+    out.sort(key=lambda x: x['idx'])
+    return out[:n]
+
+def wiki_lead(q):
+    """Wikipedia's article search understands concepts; Commons only knows filenames."""
+    u = 'https://en.wikipedia.org/w/api.php?' + urllib.parse.urlencode({
+        'action': 'query', 'format': 'json', 'generator': 'search', 'gsrsearch': q,
+        'gsrlimit': 1, 'prop': 'pageimages', 'piprop': 'original|name'})
+    d = api(u)
+    if d is None: return []
+    out = []
+    for p in (d.get('query', {}).get('pages') or {}).values():
+        o = p.get('original') or {}
+        src = o.get('source')
+        if not src: continue
+        fn = urllib.parse.unquote(src.rsplit('/', 1)[-1].split('?')[0])
+        if not re.search(r'\.(jpe?g|png|gif|tiff?|webp)$', fn, re.I): continue
+        out.append({'file': 'File:' + fn, 'url': src.split('?')[0],
+                    'page': f'https://commons.wikimedia.org/wiki/File:{urllib.parse.quote(fn)}',
+                    'lic': '', 'by': '', 'via': p.get('title', ''), 'idx': 50})
+    return out
+
+def candidates(card, stack_title):
+    q = query_for(card, stack_title)
+    if not q: return []
+    out = commons(q, 3)
+    seen = {c['file'] for c in out}
+    for w in wiki_lead(q):
+        if w['file'] not in seen:
+            out.append(w); seen.add(w['file'])
+    return out[:4]
+
+STOPWORDS = re.compile(r'\b(the|a|an|of|and|in|to|for|on|at|is|as|by|with|its|from)\b', re.I)
+def query_for(card, stack_title):
+    """The searchable thing is usually the first clause of a card title."""
+    t = card.get('t') or ''
+    t = re.sub(r'\s*\([^)]*\)', ' ', t)               # drop parentheticals
+    t = re.split(r'[;:]|\s&\s|\s+and\s+|,\s', t)[0]   # first clause only
+    t = STOPWORDS.sub(' ', t)
+    t = re.sub(r'[^\w\s\'-]', ' ', t)
+    return re.sub(r'\s+', ' ', t).strip()[:70]
+
+def cmd_propose(a):
+    db = load()
+    cards = all_cards()
+    todo = [(sid, st, c) for sid, st, c in cards if key(sid, c['t']) not in db]
+    if a.limit: todo = todo[:a.limit]
+    if not todo:
+        print('every card already has a picture or a decision'); return 0
+    print(f'searching Commons for {len(todo)} cards...', flush=True)
+
+    def one(item):
+        sid, st, c = item
+        return item, candidates(c, st)
+    rows = []
+    with cf.ThreadPoolExecutor(max_workers=3) as ex:
+        for n, ((sid, st, c), res) in enumerate(ex.map(one, todo)):
+            rows.append((sid, c, res))
+            if (n + 1) % 40 == 0: print(f'  {n+1}/{len(todo)}', flush=True)
+
+    with REVIEW.open('w', encoding='utf-8') as fh:
+        fh.write('# Pictures proposed from Wikimedia Commons.\n#\n'
+                 '#   keep the "1" to accept the first candidate; change it to 2 or 3\n'
+                 '#   to pick another, or to "-" to reject and leave the card blank.\n'
+                 '#   then:  ./pics fetch\n#\n')
+        for sid, c, res in rows:
+            k = key(sid, c['t'])
+            if not res:
+                fh.write(f'-  {k}  # {c["t"][:52]}\n     (no candidates)\n\n'); continue
+            fh.write(f'1  {k}  # {sid}  {c["t"][:56]}\n')
+            for i, r in enumerate(res, 1):
+                fh.write(f'     {i}) {r["file"][5:60]:60s} {r["lic"][:16]}\n')
+            fh.write('\n')
+    json.dump({key(sid, c['t']): {'card': c['t'], 'stack': sid, 'cands': res}
+               for sid, c, res in rows},
+              (ROOT / '.pics-candidates.json').open('w', encoding='utf-8'), indent=1)
+    got = sum(1 for _s, _c, r in rows if r)
+    if _errors['n']:
+        warn(f'  ! {_errors["n"]} API call(s) failed — coverage is understated, re-run to fill in')
+    print(f'{got} of {len(rows)} cards got candidates -> {REVIEW.name}')
+    print('review it, then: ./pics fetch')
+    return 0
+
+# ── fetch + compress ──────────────────────────────────────────────────────
+def compress(raw, dest):
+    """Encode to WebP within a size budget, stepping quality down if needed."""
+    from PIL import Image
+    import io
+    im = Image.open(io.BytesIO(raw))
+    if im.mode not in ('RGB', 'L'):
+        im = im.convert('RGB')
+    if im.width > MAXW:
+        im = im.resize((MAXW, round(im.height * MAXW / im.width)), Image.LANCZOS)
+    # very tall images are usually pages or panels; cap the height too
+    if im.height > MAXW * 1.6:
+        h = int(MAXW * 1.6)
+        im = im.resize((round(im.width * h / im.height), h), Image.LANCZOS)
+    for q in (QUALITY, 66, 58, 50):
+        buf = io.BytesIO()
+        im.save(buf, 'WEBP', quality=q, method=6)
+        if buf.tell() <= BUDGET or q == 50:
+            dest.write_bytes(buf.getvalue())
+            return dest.stat().st_size
+    return dest.stat().st_size
+
+def cmd_fetch(a):
+    """Download and compress everything the picker chose but has not archived yet."""
+    db = load()
+    OUTDIR.mkdir(parents=True, exist_ok=True)
+    todo = [(k, v) for k, v in db.items()
+            if v.get('pick') and not (ROOT / v.get('img', 'x')).exists()]
+    if not todo:
+        print('nothing to fetch — every choice is already archived'); return 0
+    print(f'fetching {len(todo)} pictures...', flush=True)
+
+    def grab(item):
+        k, v = item
+        pick = v['pick']
+        dest = OUTDIR / f'{k}.webp'
+        try:
+            r = urllib.request.Request(pick['url'], headers={'User-Agent': UA})
+            raw = urllib.request.urlopen(r, timeout=90).read()
+            return k, v, compress(raw, dest), None
+        except Exception as e:
+            return k, v, 0, str(e)[:70]
+
+    ok = bad = total = 0
+    with cf.ThreadPoolExecutor(max_workers=6) as ex:
+        for n, (k, v, size, err) in enumerate(ex.map(grab, todo)):
+            if err:
+                warn(f'  ! {v["card"][:40]}: {err}'); bad += 1; continue
+            p = v['pick']
+            db[k] = {'card': v['card'], 'stack': v['stack'], 'img': v['img'],
+                     'file': p.get('file', ''), 'page': p.get('page', ''),
+                     'lic': p.get('lic', ''), 'by': p.get('by', ''),
+                     'via': p.get('via', '')}
+            ok += 1; total += size
+            if (n + 1) % 25 == 0: print(f'  {n+1}/{len(todo)}', flush=True)
+    save(db)
+    print(f'archived {ok} pictures, {total/1e6:.1f} MB '
+          f'({total/max(1,ok)/1024:.0f} KB average)' + (f'; {bad} failed' if bad else ''))
+    return 0
+
+REVIEW_HTML = """<!doctype html><meta charset="utf-8"><title>Pick pictures</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:wght@400;500&display=swap">
+<style>
+:root{--paper:#f2eee4;--card:#fbf9f4;--ink:#231e15;--ink3:#8b8377;--rule:#cdc4b0;
+      --rubric:#9a3b28;--brass:#9a6c2f}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Spectral,Georgia,serif}
+header{position:sticky;top:0;z-index:9;background:var(--paper);border-bottom:1px solid var(--rule);
+  padding:12px 20px;display:flex;gap:16px;align-items:center;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+header b{color:var(--brass)}
+.row{border-bottom:1px solid var(--rule);padding:16px 20px;display:flex;gap:18px;align-items:flex-start}
+.row.done{opacity:.34}
+.q{width:250px;flex:none}
+.q h3{margin:0 0 4px;font-size:15px;font-weight:500}
+.q .s{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3)}
+.opts{display:flex;gap:12px;flex-wrap:wrap}
+.opt{width:190px;cursor:pointer;border:2px solid transparent;border-radius:2px;padding:4px;background:var(--card)}
+.opt:hover{border-color:var(--brass)}
+.opt.sel{border-color:var(--rubric)}
+.opt img{width:100%;height:118px;object-fit:cover;display:block;background:#ddd6c6}
+.opt .m{font-family:"IBM Plex Mono",monospace;font-size:8.5px;line-height:1.35;color:var(--ink3);
+  padding:5px 2px 0;word-break:break-word}
+.skip{width:96px;height:130px;border:1px dashed var(--rule);background:none;cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink3);border-radius:2px}
+.skip.sel{border-style:solid;border-color:var(--rubric);color:var(--rubric)}
+</style>
+<header>
+  <span>Pick a picture for each card &mdash; click one, or Skip</span>
+  <span>Chosen <b id="n">0</b> / <span id="tot">0</span></span>
+  <span id="saved" style="margin-left:auto">saved automatically</span>
+</header>
+<div id="list"></div>
+<script>
+let DATA = null;
+fetch("/data").then(r=>r.json()).then(d=>{ DATA=d; paint(); });
+function paint(){
+  const rows = Object.entries(DATA.cands);
+  document.getElementById("tot").textContent = rows.length;
+  document.getElementById("list").innerHTML = rows.map(([k,v])=>`
+    <div class="row" id="r-${k}">
+      <div class="q"><h3>${esc(v.card)}</h3><div class="s">${esc(v.stack)}</div></div>
+      <div class="opts">
+        ${v.cands.map((c,i)=>`<div class="opt" data-k="${k}" data-i="${i}">
+            <img loading="lazy" src="${esc(c.url)}" alt="">
+            <div class="m">${esc((c.file||"").slice(5,58))}<br>${esc(c.lic||c.via||"")}</div>
+          </div>`).join("")}
+        <button class="skip" data-k="${k}" data-i="-1">Skip</button>
+      </div>
+    </div>`).join("");
+  document.body.addEventListener("click", e=>{
+    const el = e.target.closest("[data-k]"); if(!el) return;
+    const k = el.dataset.k, i = +el.dataset.i;
+    document.querySelectorAll(`[data-k="${k}"]`).forEach(x=>x.classList.remove("sel"));
+    el.classList.add("sel");
+    document.getElementById("r-"+k).classList.add("done");
+    fetch("/pick",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({k,i})}).then(()=>{
+        document.getElementById("n").textContent =
+          document.querySelectorAll(".row.done").length;
+      });
+  });
+}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+</script>"""
+
+def cmd_review(a):
+    """Serve a picker. Reading 500 filenames is slow; looking at 500 pictures is not."""
+    import http.server, json as J, webbrowser
+    cf_path = ROOT / '.pics-candidates.json'
+    if not cf_path.exists():
+        warn('no candidates — run ./pics propose first'); return 1
+    cands = J.loads(cf_path.read_text(encoding='utf-8'))
+    db = load()
+    pending = {k: v for k, v in cands.items() if k not in db and v.get('cands')}
+    if not pending:
+        print('nothing left to review'); return 0
+    picked = {'n': 0}
+
+    class H(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *a): pass
+        def _send(self, code, body, ctype='text/html; charset=utf-8'):
+            b = body.encode() if isinstance(body, str) else body
+            self.send_response(code); self.send_header('Content-Type', ctype)
+            self.send_header('Content-Length', str(len(b))); self.end_headers()
+            self.wfile.write(b)
+        def do_GET(self):
+            if self.path == '/':      self._send(200, REVIEW_HTML)
+            elif self.path == '/data': self._send(200, J.dumps({'cands': pending}),
+                                                  'application/json')
+            else: self._send(404, 'no')
+        def do_POST(self):
+            n = int(self.headers.get('Content-Length', 0))
+            msg = J.loads(self.rfile.read(n) or b'{}')
+            k, i = msg.get('k'), msg.get('i')
+            if k in pending:
+                meta = pending[k]
+                if i == -1:
+                    db[k] = {'skip': True, 'card': meta['card']}
+                else:
+                    c = meta['cands'][i]
+                    db[k] = {'card': meta['card'], 'stack': meta['stack'], 'pick': c,
+                             'img': f'media/cards/{k}.webp'}
+                save(db); picked['n'] += 1
+            self._send(200, '{"ok":1}', 'application/json')
+
+    srv = http.server.HTTPServer(('127.0.0.1', a.port), H)
+    print(f'{len(pending)} cards to review -> http://127.0.0.1:{a.port}/')
+    print('pick one picture per card (or Skip). Ctrl-C when done; choices save as you click.')
+    webbrowser.open(f'http://127.0.0.1:{a.port}/')
+    try:
+        srv.serve_forever()
+    except KeyboardInterrupt:
+        print(f'\n{picked["n"]} decision(s) saved. Next: ./pics fetch')
+    return 0
+
+def cmd_status(a):
+    db = load()
+    cards = all_cards()
+    have = sum(1 for sid, _st, c in cards if db.get(key(sid, c['t']), {}).get('img'))
+    skip = sum(1 for sid, _st, c in cards if db.get(key(sid, c['t']), {}).get('skip'))
+    print(f'narrative cards : {len(cards)}')
+    print(f'  with a picture: {have}')
+    print(f'  skipped       : {skip}')
+    print(f'  undecided     : {len(cards) - have - skip}')
+    if OUTDIR.exists():
+        fs = list(OUTDIR.glob('*.webp'))
+        tot = sum(f.stat().st_size for f in fs)
+        print(f'archive         : {len(fs)} files, {tot/1e6:.1f} MB, '
+              f'{tot/max(1,len(fs))/1024:.0f} KB average')
+    import collections
+    lic = collections.Counter(v.get('lic') for v in db.values() if v.get('img'))
+    if lic:
+        print('licences        :')
+        for k, v in lic.most_common(): print(f'   {v:4d}  {k}')
+    return 0
+
+def cmd_recompress(a):
+    """Re-encode the archive from source at the current settings."""
+    db = load()
+    todo = [(k, v) for k, v in db.items() if v.get('img')]
+    print(f're-fetching and re-encoding {len(todo)}...', flush=True)
+    before = sum((ROOT / v['img']).stat().st_size for _k, v in todo
+                 if (ROOT / v['img']).exists())
+    def one(item):
+        k, v = item
+        pk = v.get('pick') or v
+        url = pk.get('url') or v.get('src')
+        if not url: return 0
+        try:
+            r = urllib.request.Request(url, headers={'User-Agent': UA})
+            return compress(urllib.request.urlopen(r, timeout=90).read(),
+                            OUTDIR / f'{k}.webp')
+        except Exception:
+            return 0
+    with cf.ThreadPoolExecutor(max_workers=4) as ex:
+        after = sum(ex.map(one, todo))
+    print(f'{before/1e6:.1f} MB -> {after/1e6:.1f} MB')
+    return 0
+
+def main():
+    ap = argparse.ArgumentParser(prog='pics')
+    sub = ap.add_subparsers(dest='cmd', required=True)
+    s = sub.add_parser('propose'); s.add_argument('--limit', type=int); s.set_defaults(fn=cmd_propose)
+    s = sub.add_parser('review'); s.add_argument('--port', type=int, default=8912)
+    s.set_defaults(fn=cmd_review)
+    sub.add_parser('fetch').set_defaults(fn=cmd_fetch)
+    sub.add_parser('status').set_defaults(fn=cmd_status)
+    sub.add_parser('recompress').set_defaults(fn=cmd_recompress)
+    a = ap.parse_args()
+    return a.fn(a)
+
+if __name__ == '__main__':
+    sys.exit(main() or 0)
