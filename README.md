@@ -95,8 +95,16 @@ deep time and the filmed century. Undated cards get a band past the break.
 ## The book apparatus
 
 Contents, Index and Glossary are stacks like any other — reachable from **Go**,
-addressable, in the Back chain. They are *derived*, so nothing is maintained
-twice.
+addressable, in the Back chain.
+
+They are derived **in the browser**, not at build time. Shipping them cost
+320 KB and most of the parse budget for nothing the page did not already hold:
+all 1,337 contents titles and all 560 glossary terms are card titles that
+travel anyway. Building them on first use took the page from 1,010 KB to
+635 KB and `DOMContentLoaded` from 1,647 ms to 441 ms.
+
+Both long lists are windowed like the film sheet — a first page, then more on
+scroll — so opening the glossary no longer puts 4,358 nodes in the document.
 
 - **Contents** — every era and thread, with dates, card counts and film counts,
   expanding to the cards themselves.

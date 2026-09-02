@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
 <style>
 /*__THEME__*/
+li.ixh{break-inside:avoid;list-style:none;font-family:var(--display);font-size:17px;
+  color:var(--brass);margin:16px 0 4px;letter-spacing:.08em}
+
 .lfind{margin:0 0 16px}
 .lfind input{width:100%;max-width:420px;background:var(--card);border:1px solid var(--rule);
   border-radius:2px;padding:8px 12px;color:var(--ink);font:inherit;font-size:14px}
@@ -414,7 +417,79 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
    To add cards: edit the .md, re-run build.py. Or edit this object.
    Card fields: t=title, b=body, d=date, ch=chapter. ================ */
 const DATA = /*__DATA__*/null;
-const APP = (DATA && DATA.app) || {contents:[],index:{},glossary:[]};
+/* ── the apparatus, derived here rather than downloaded ──────────────────
+   Contents, Index, Glossary and the scale are pure functions of the cards.
+   Shipping them added 320 KB and most of the parse cost for nothing the page
+   did not already hold. Each is built once, on first use. */
+const COMMON = new Set(["history","computer","computers","computing","machine","machines",
+  "technology","network","memory","science","data","number","numbers","system","systems",
+  "information","digital","future","world","time","work","film","video","part"]);
+const STOP_TITLE = new Set(["overview","ideas","machines","memory","the signal","home",""]);
+
+function shortName(st){
+  return st.title.replace(/^(Era \d+|Thread [A-Z])\s*[:\u2014-]\s*/,"").split(":")[0].trim();
+}
+function cardYear(cd){
+  const d = cd && cd.d; if(!d) return null;
+  const bce = /BCE|BC\b/i.test(d);
+  const mm = String(d).replace(/,/g,"").match(/(-?\d{1,6})/);
+  if(!mm) return null;
+  const v = parseInt(mm[1],10);
+  return bce ? -v : v;
+}
+function linkTerms(cd){
+  const t=(cd.t||"").trim();
+  if(!t || STOP_TITLE.has(t.toLowerCase())) return [];
+  let base = t.replace(/\s*\([^)]*\)/g," ").replace(/\s+[-\u2013\u2014]\s+.*$/,"").trim()
+              .replace(/^[\s.,:;'"]+|[\s.,:;'"]+$/g,"");
+  const out=new Set();
+  if(base.length>=9 && base.split(/\s+/).length>=2 && !COMMON.has(base.toLowerCase())) out.add(base);
+  const names = base.match(/\b[A-Z][a-z\u00c0-\u024f]{4,}(?:['\u2019][a-z]+)?\b/g)||[];
+  names.forEach(w=>{ if(!COMMON.has(w.toLowerCase())) out.add(w); });
+  if(base.split(/\s+/).length===1 && base.length>=7 && !COMMON.has(base.toLowerCase())) out.add(base);
+  return [...out].filter(x=>x.length>=6);
+}
+let _app = null;
+function app(){
+  if(_app) return _app;
+  const contents=[], index={}, glossary=[], pts=[];
+  let undated=0;
+  for(const s of STACKS){
+    if(s.id==="home" || s.kind==="apparatus") { }
+    if(s.id!=="home" && s.kind!=="apparatus"){
+      contents.push({id:s.id, kind:s.kind||"thread", title:s.title, short:shortName(s),
+        sub:s.sub||"", n:s.cards.length,
+        film:s.cards.filter(c=>c.kindc==="film").length,
+        cards:s.cards.map((c,i)=>({t:c.t||"", d:c.d||"", to:`${s.id}/${i}`,
+                                   film:c.kindc==="film"?1:0}))});
+    }
+    s.cards.forEach((c,i)=>{
+      if(s.id==="home"||s.kind==="apparatus"||c.special) return;
+      const y = cardYear(c);
+      if(y===null) undated++;
+      else pts.push({y, to:`${s.id}/${i}`, t:(c.t||"").slice(0,70), f:c.kindc==="film"?1:0});
+      if(c.kindc==="film") return;
+      for(const term of linkTerms(c))
+        (index[term] = index[term]||[]).push({to:`${s.id}/${i}`, in:shortName(s)});
+      const body=(c.b||"").replace(/<[^>]+>/g,"").trim();
+      const title=(c.t||"").trim();
+      if(body && title.length>3 && title.toLowerCase()!=="overview"){
+        const first=body.split(/(?<=[.;])\s/)[0].trim();
+        if(first.length>=24 && first.length<=240)
+          glossary.push({t:title, g:first, to:`${s.id}/${i}`, d:c.d||""});
+      }
+    });
+  }
+  const ix={}, seenG=new Set(), gl=[];
+  Object.keys(index).sort((a,b)=>a.toLowerCase().localeCompare(b.toLowerCase()))
+    .forEach(k=>{ if(index[k].length<=6) ix[k]=index[k]; });
+  glossary.sort((a,b)=>a.t.toLowerCase().localeCompare(b.t.toLowerCase()))
+    .forEach(g=>{ const k=g.t.toLowerCase(); if(!seenG.has(k)){seenG.add(k); gl.push(g);} });
+  pts.sort((a,b)=>a.y-b.y);
+  _app = {contents, index:ix, glossary:gl, time:{pts, undated}};
+  return _app;
+}
+const APP = new Proxy({},{get:(_,k)=>app()[k]});
 
 /* ---------- hand-authored Home stack ---------- */
 const AGE_UNIVERSE_S = 4.35e17;
@@ -458,12 +533,15 @@ function md(t){
   return t.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
           .replace(/\*(.+?)\*/g,"<em>$1</em>");
 }
-const SHORT = {};
-(APP.contents||[]).forEach(s=>{ SHORT[s.id] = s.short; });
+let SHORT = null;
+function shortOf(id){
+  if(!SHORT){ SHORT={}; APP.contents.forEach(s=>{ SHORT[s.id]=s.short; }); }
+  return SHORT[id];
+}
 function linkify(h){
   // "(Thread T)" is a manuscript note; a book says "The Harmony Thread".
   h = h.replace(/\(?\bThread ([A-Z])(\d?)\b\)?/g,(m,L)=> byId["thread-"+L]!==undefined
-      ? `<a class="x" href="#thread-${L}/0">${SHORT["thread-"+L]||m}</a>` : m);
+      ? `<a class="x" href="#thread-${L}/0">${shortOf("thread-"+L)||m}</a>` : m);
   h = h.replace(/Era (\d{1,2})\b/g,(m,n)=> byId["era-"+n]!==undefined
       ? `<a class="x" href="#era-${n}/0">${m}</a>` : m);
   return h;
@@ -544,30 +622,83 @@ function wireFilter(id, sel, keyOf){
   });
   inp.focus();
 }
+let _page = null;                       // {items, render, limit, chunk, host}
+function paginate(hostSel, items, rowHtml, chunk){
+  _page = {items, rowHtml, chunk, limit:chunk, host:hostSel};
+  paintPage(false);
+  const s = $("#pmore");
+  if(s && "IntersectionObserver" in window){
+    new IntersectionObserver(es=>{
+      if(es[0].isIntersecting && _page && _page.limit < _page.items.length){
+        _page.limit += _page.chunk; paintPage(true);
+      }
+    },{rootMargin:"700px"}).observe(s);
+  }
+}
+function paintPage(append){
+  if(!_page) return;
+  const host = $(_page.host); if(!host) return;
+  const from = append ? host.children.length : 0;
+  const html = _page.items.slice(from, _page.limit).map(_page.rowHtml).join("");
+  if(append) host.insertAdjacentHTML("beforeend", html); else host.innerHTML = html;
+  const shown = Math.min(_page.limit, _page.items.length), s=$("#pmore");
+  if(s){ s.hidden = shown >= _page.items.length;
+         s.textContent = `showing ${shown} of ${_page.items.length} — scroll for more`; }
+}
 function renderIndex(){
-  const ix = APP.index, keys = Object.keys(ix);
-  const letter = k => { const c=k.replace(/^[^A-Za-z0-9]+/,"")[0]; return /[0-9]/.test(c)?"#":(c||"#").toUpperCase(); };
-  const groups = {};
-  keys.forEach(k=>{ (groups[letter(k)] = groups[letter(k)]||[]).push(k); });
-  const az = Object.keys(groups).sort();
+  const keys = Object.keys(APP.index);
   return `<p class="tocintro">${keys.length} entries. <span class="small">Every name the archive can point at.</span>
       <span class="small" id="lfn"></span></p>
     ${listFilter("ixq","Filter the index")}
-    <div class="azbar">${az.map(L=>`<a href="#index-${L}" class="az">${L}</a>`).join("")}</div>
-    ${az.map(L=>`<div class="azsec"><h3 id="index-${L}" class="azh">${L}</h3>
-      <ul class="ixl">${groups[L].map(k=>
-        `<li><span class="ixt">${esc(k)}</span>${ix[k].map(r=>
-          `<a class="ixr" href="#${r.to}">${esc(r.in)}</a>`).join("")}</li>`).join("")}</ul></div>`).join("")}`;
+    <ul class="ixl" id="ixhost"></ul>
+    <p class="more" id="pmore" hidden></p>`;
 }
+function wireIndex(){
+  const ix = APP.index, keys = Object.keys(ix);
+  const letter = k => { const c=k.replace(/^[^A-Za-z0-9]+/,"")[0];
+                        return /[0-9]/.test(c)?"#":(c||"#").toUpperCase(); };
+  let last = null;
+  const row = k => {
+    const L = letter(k); let head = "";
+    if(L !== last){ last = L; head = `<li class="ixh">${L}</li>`; }
+    return head + `<li><span class="ixt">${esc(k)}</span>` +
+      ix[k].map(r=>`<a class="ixr" href="#${r.to}">${esc(r.in)}</a>`).join("") + `</li>`;
+  };
+  const apply = q => {
+    last = null;
+    const items = q ? keys.filter(k=>k.toLowerCase().includes(q)) : keys;
+    paginate("#ixhost", items, row, 150);
+    $("#lfn").textContent = q ? `${items.length} matching` : "";
+  };
+  apply("");
+  const inp=$("#ixq");
+  inp.addEventListener("input", ()=>apply(inp.value.trim().toLowerCase()));
+  inp.focus();
+}
+
 function renderGlossary(){
   const g = APP.glossary;
   return `<p class="tocintro">${g.length} entries. <span class="small">Each is the opening line of the card that defines it.</span>
       <span class="small" id="lfn"></span></p>
     ${listFilter("glq","Filter the glossary — term or definition")}
-    <dl class="gloss">${g.map(x=>
-      `<div class="gitem"><dt><a href="#${x.to}">${esc(x.t)}</a>${x.d?`<span class="gd">${esc(x.d)}</span>`:""}</dt>
-       <dd>${esc(x.g)}</dd></div>`).join("")}</dl>`;
+    <dl class="gloss" id="glhost"></dl>
+    <p class="more" id="pmore" hidden></p>`;
 }
+function wireGlossary(){
+  const all = APP.glossary;
+  const row = x => `<div class="gitem"><dt><a href="#${x.to}">${esc(x.t)}</a>` +
+      `${x.d?`<span class="gd">${esc(x.d)}</span>`:""}</dt><dd>${esc(x.g)}</dd></div>`;
+  const apply = q => {
+    const items = q ? all.filter(x=>(x.t+" "+x.g).toLowerCase().includes(q)) : all;
+    paginate("#glhost", items, row, 80);
+    $("#lfn").textContent = q ? `${items.length} matching` : "";
+  };
+  apply("");
+  const inp=$("#glq");
+  inp.addEventListener("input", ()=>apply(inp.value.trim().toLowerCase()));
+  inp.focus();
+}
+
 function renderMap(){
   const eras = STACKS.filter(s=>s.kind==="era");
   const thr  = STACKS.filter(s=>s.kind==="thread");
@@ -684,7 +815,7 @@ function initSheet(){
 }
 
 /* ── the scale: 45,000 years, and where you are on them ──────────────── */
-const T = (APP.time)||{pts:[],bands:[],undated:0};
+const T = APP.time;
 // The archive ends at 2000: that is the catalogue's cutoff and where the film
 // record thins. Running the axis to the present would spend room on nothing.
 const END = 2000;
@@ -730,14 +861,6 @@ function placeMark(){
   const W = T.undated ? 88 : 100;
   m.hidden=false;
   m.style.left = (xOf(y)*W/100).toFixed(3)+"%";
-}
-function cardYear(cd){
-  const d = cd && cd.d; if(!d) return null;
-  const bce = /BCE|BC\b/i.test(d);
-  const mm = String(d).replace(/,/g,"").match(/(-?\d{1,6})/);
-  if(!mm) return null;
-  const v = parseInt(mm[1],10);
-  return bce ? -v : v;
 }
 function nearestTo(pct){
   const W = T.undated ? 88 : 100;
@@ -789,8 +912,8 @@ function render(push=true){
   h += `<h1 class="cardtitle">${md(esc(cd.t))}</h1>`;
   if(cd.special==="ladder") h += renderLadder();
   else if(cd.special==="contents") h += renderContents();
-  else if(cd.special==="index"){ h += renderIndex(); setTimeout(()=>wireFilter("ixq","ul.ixl li",e=>e.textContent),0); }
-  else if(cd.special==="glossary"){ h += renderGlossary(); setTimeout(()=>wireFilter("glq",".gloss .gitem",e=>e.textContent),0); }
+  else if(cd.special==="index"){ h += renderIndex(); setTimeout(wireIndex,0); }
+  else if(cd.special==="glossary"){ h += renderGlossary(); setTimeout(wireGlossary,0); }
   else if(cd.special==="map") h += renderMap();
   else if(cd.kindc==="film") h += renderFilm(cd);
   else {

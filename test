@@ -205,24 +205,14 @@ def test_build():
         print(f'      ({out_n} cross-links; '
               f'{sum(1 for c in cards if c.get("in"))} cards reached from others)')
 
-        # the book apparatus
-        app = data.get('app') or {}
-        toc, ix, gl = app.get('contents') or [], app.get('index') or {}, app.get('glossary') or []
-        # contents lists the timeline and the threads; not home, and not itself
-        listable = [s for s in stacks
-                    if s['id'] != 'home' and s.get('kind') != 'apparatus']
-        check('contents covers every listable stack', len(toc) >= len(listable),
-              f'{len(toc)} of {len(listable)}')
-        check('contents lists every card',
-              sum(t['n'] for t in toc) >= len(cards) - 12,
-              f"{sum(t['n'] for t in toc)} vs {len(cards)}")
-        check('the index has entries', len(ix) > 400, f'{len(ix)} entries')
-        ixbad = [k for k, v in ix.items() for r in v if r['to'] not in addr]
-        check('every index entry points at a real card', not ixbad, f'{ixbad[:3]}')
-        check('the glossary has entries', len(gl) > 200, f'{len(gl)} entries')
-        glbad = [g['t'] for g in gl if g['to'] not in addr or not g.get('g')]
-        check('every glossary entry resolves and has a gloss', not glbad, f'{glbad[:3]}')
-        print(f'      ({len(toc)} stacks, {len(ix)} index entries, {len(gl)} glossary entries)')
+        # The apparatus is derived in the browser now, so the payload must NOT
+        # carry it — that redundancy cost 320 KB and most of the parse time.
+        check('the page does not ship derived data',
+              'app' not in data and 'glossary' not in data,
+              f"payload keys: {sorted(data.keys())}")
+        kb = len(h) / 1024
+        check('the page stays under 800 KB', kb < 800, f'{kb:.0f} KB')
+        print(f'      (page {kb:.0f} KB)')
 
         pics = [c for c in cards if c.get('img') and c.get('kindc') != 'film']
         print(f'      ({len(pics)} narrative cards carry a picture)')
@@ -325,8 +315,25 @@ def test_browser():
 
             for view in ('contents', 'index', 'glossary'):
                 pg.goto(f'http://127.0.0.1:8911/#{view}/0', wait_until='load')
-                pg.wait_for_timeout(500)
-                check(f'{view} renders', len(pg.inner_text('#content')) > 400)
+                pg.wait_for_timeout(700)
+                check(f'{view} is derived and renders',
+                      len(pg.inner_text('#content')) > 400)
+            # both long lists are windowed, as the film sheet is
+            pg.goto('http://127.0.0.1:8911/#glossary/0', wait_until='load')
+            pg.wait_for_timeout(700)
+            n0 = pg.locator('.gloss .gitem').count()
+            check('the glossary renders a first page only', 40 < n0 < 200, f'{n0} rows')
+            for _ in range(3):
+                pg.evaluate("window.scrollTo(0,document.body.scrollHeight)")
+                pg.wait_for_timeout(350)
+            check('the glossary grows on scroll',
+                  pg.locator('.gloss .gitem').count() > n0,
+                  f"{n0} -> {pg.locator('.gloss .gitem').count()}")
+            nodes = pg.evaluate("document.querySelectorAll('*').length")
+            check('the glossary does not flood the DOM', nodes < 4000, f'{nodes} nodes')
+            dom = pg.evaluate("()=>{const n=performance.getEntriesByType('navigation')[0];"
+                              "return Math.round(n.domContentLoadedEventEnd)}")
+            check('the page parses quickly', dom < 900, f'{dom} ms')
             # the Go panel is anchored to a narrow button; it once opened 494px
             # off the left edge of the window, working but invisible
             for _w in (1250, 700, 420):
