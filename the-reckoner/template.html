@@ -772,7 +772,11 @@ function sheetFilter(){
   const era = $("#sera").value;
   sList = FILMS.filter(f=>{
     if(q && !((f.cd.t||"")+" "+(f.cd.d||"")+" "+(f.cd.by||"")).toLowerCase().includes(q)) return false;
-    if(era!=="all" && STACKS[f.st].id!==era) return false;
+    if(era!=="all"){
+      if(era.startsWith("coll:")){
+        if(!(f.cd.coll||[]).includes(era.slice(5))) return false;
+      } else if(STACKS[f.st].id !== era.replace(/^era:/,"")) return false;
+    }
     return true;
   });
   sLimit = 120; paintSheet(false);
@@ -798,8 +802,18 @@ function paintSheet(append){
 }
 function initSheet(){
   const eras = STACKS.map((s,i)=>({s,i})).filter(x=>x.s.kind==="era"&&x.s.cards.some(c=>c.kindc==="film"));
-  $("#sera").innerHTML = '<option value="all">All eras</option>' +
-    eras.map(x=>`<option value="${x.s.id}">${esc(x.s.title.replace(/^Era \d+: /,""))}</option>`).join("");
+  const colls = (DATA.colls)||{};
+  const used = {};
+  FILMS.forEach(f=>(f.cd.coll||[]).forEach(c=>{ used[c]=(used[c]||0)+1; }));
+  $("#sera").innerHTML =
+    '<option value="all">All 933 films</option>'.replace("933", FILMS.length) +
+    `<optgroup label="Era">` +
+      eras.map(x=>`<option value="era:${x.s.id}">${esc(x.s.title.replace(/^Era \d+: /,""))}</option>`).join("") +
+    `</optgroup>` +
+    (Object.keys(used).length ? `<optgroup label="Collection">` +
+      Object.keys(used).sort((a,b)=>used[b]-used[a]).map(c=>
+        `<option value="coll:${esc(c)}">${esc(colls[c]||c)} (${used[c]})</option>`).join("") +
+      `</optgroup>` : "");
   $("#sq").addEventListener("input", sheetFilter);
   $("#sera").addEventListener("change", sheetFilter);
   $("#sheet").addEventListener("click", e=>{

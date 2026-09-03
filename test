@@ -290,6 +290,19 @@ def test_browser():
             check('sheet counts every film', 'FILMS' in pg.inner_text('#scount').upper(),
                   pg.inner_text('#scount'))
 
+            # the sheet filters by era and by collection
+            _groups = pg.evaluate("[...document.querySelectorAll('#sera optgroup')]"
+                                  ".map(o=>o.label).join('|')")
+            check('the sheet filters by era and collection', _groups == 'Era|Collection',
+                  _groups)
+            pg.evaluate("var s=document.getElementById('sera');"
+                        "s.value='coll:att-archives';s.dispatchEvent(new Event('change'))")
+            pg.wait_for_timeout(400)
+            _c = pg.inner_text('#scount')
+            check('a collection filter narrows the sheet', ' OF ' in _c.upper(), _c)
+            pg.evaluate("var s=document.getElementById('sera');"
+                        "s.value='all';s.dispatchEvent(new Event('change'))")
+            pg.wait_for_timeout(300)
             pg.fill('#sq', 'voder'); pg.wait_for_timeout(350)
             got = pg.inner_text('#scount')
             check('sheet search narrows', 'OF' in got.upper(), got)

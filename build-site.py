@@ -103,6 +103,7 @@ def film_card(f):
     if src.get('url'):   c['url'] = src['url']
     if src.get('reason'): c['why'] = src['reason']
     if src.get('via'):    c['via'] = src['via']
+    if f.get('collections'): c['coll'] = f['collections']
     return c
 
 # ── cross-linking: what makes this a web rather than a slideshow ──────────
@@ -296,7 +297,10 @@ def main():
     # Contents, Index, Glossary and the timeline are all pure functions of the
     # cards, so the browser derives them at runtime. Shipping them cost 320 KB
     # and most of the parse time, for nothing the page did not already have.
-    data = json.dumps({'stacks': stacks}, ensure_ascii=False).replace('</', '<\\/')
+    colls = json.loads(ARCHIVE.read_text(encoding='utf-8')).get('collections', {})
+    data = json.dumps({'stacks': stacks,
+                       'colls': {k: v.get('title', k) for k, v in colls.items()}},
+                      ensure_ascii=False).replace('</', '<\\/')
     theme = THEME.read_text(encoding='utf-8')
     html = (TPL.read_text(encoding='utf-8')
               .replace('/*__THEME__*/', theme)
