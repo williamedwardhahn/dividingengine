@@ -14,7 +14,7 @@ the-reckoner/
   build.py                                markdown -> stacks (used by build-site)
   template.html                           the card UI
 
-de                   the film tool (add / sync / check / tag / enrich)
+de                   the film tool (add / sync / check / tag / enrich / thumb / rm)
 archive.json           the film archive — source of truth
 pics                 the picture tool (propose / review / fetch)
 pics.json              which picture belongs to which card, and its licence
@@ -367,3 +367,18 @@ keyboard navigation, and a verified liveness flag on every film.
 Four pages Sandvox left behind after renames (`lasers.html`, `superfluid.html`,
 `voder-speech-synthesizer.html`, `sign-language-telephone.html`) were duplicates
 of surviving entries and were dropped.
+
+## Thumbnails
+
+Every film's picture is the YouTube still saved at `media/yt/<id>.jpg`. To change one:
+
+```
+./de thumb <slug-or-id> --variant 1      # one of YouTube's three auto frames (1, 2, 3), or maxres/hq/mq/sd
+./de thumb <slug-or-id> --url https://…  # any image on the web
+./de thumb <slug-or-id> --file pic.jpg   # a picture on disk (PNG converts if Pillow is installed)
+./de thumb <slug-or-id> --at 42          # the frame 42 s into the video (needs yt-dlp + ffmpeg)
+./de thumb <slug-or-id> --reset          # back to the default fetch
+./build
+```
+
+The previous picture is kept once as `media/yt/<id>.prev.jpg`, so a change can be undone by hand.

@@ -32,37 +32,14 @@
    "title": "AT&T Archives",
    "playlist": "PLDB8B8220DEE96FD9",
    "added": "2026-09-03"
+  },
+  "japan-electronic-industry": {
+   "title": "A Video History of Japan's Electronic Industry",
+   "playlist": null,
+   "added": "2026-09-03"
   }
  },
  "films": [
-  {
-   "slug": "4k-60-fps-a-trip-through-new-york-city-in-1911",
-   "title": "A Trip Through New York City in 1911",
-   "name": "A Trip Through New York City in 1911",
-   "year": 1911,
-   "chan": "Denis Shiryaev",
-   "dur": 515,
-   "thumb": "media/yt/hZ1OgQL9_Cw.jpg",
-   "collections": [
-    "dividing-engine"
-   ],
-   "status": "live",
-   "added": "2026-08-31",
-   "checked": "2026-08-31",
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "hZ1OgQL9_Cw",
-     "url": "https://www.youtube.com/watch?v=hZ1OgQL9_Cw",
-     "embed": "https://www.youtube-nocookie.com/embed/hZ1OgQL9_Cw?rel=0",
-     "status": "live"
-    }
-   ],
-   "n_live": 1,
-   "n_total": 1,
-   "raw_title": "[4k, 60 fps] A Trip Through New York City in 1911",
-   "era": "era-6"
-  },
   {
    "slug": "making-coal-gas-and-coke",
    "title": "1922 Making Coal Gas and Coke",
@@ -11450,6 +11427,54 @@
    "n_total": 1
   },
   {
+   "slug": "birth-of-the-transistor-a-video-history-of-japan",
+   "title": "Birth of the Transistor - A Video History of Japan's electronic industry - - Re Upload",
+   "name": "Birth of the Transistor (Japan's Electronic Industry, Part 1)",
+   "year": 1991,
+   "chan": "RC286",
+   "dur": 2428,
+   "thumb": "media/yt/XLlIb_p11cM.jpg",
+   "collections": [
+    "japan-electronic-industry"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "XLlIb_p11cM",
+     "url": "https://www.youtube.com/watch?v=XLlIb_p11cM",
+     "embed": "https://www.youtube-nocookie.com/embed/XLlIb_p11cM?rel=0",
+     "status": "live"
+    }
+   ]
+  },
+  {
+   "slug": "electronic-circuits-in-stone-a-video-history-of",
+   "title": "Electronic Circuits in Stone - A Video History of Japan's electronic industry - - Re Upload",
+   "name": "Electronic Circuits in Stone (Japan's Electronic Industry, Part 2)",
+   "year": 1991,
+   "chan": "RC286",
+   "dur": 2260,
+   "thumb": "media/yt/fRCqhSONNiE.jpg",
+   "collections": [
+    "japan-electronic-industry"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "fRCqhSONNiE",
+     "url": "https://www.youtube.com/watch?v=fRCqhSONNiE",
+     "embed": "https://www.youtube-nocookie.com/embed/fRCqhSONNiE?rel=0",
+     "status": "live"
+    }
+   ]
+  },
+  {
    "slug": "kids-computers-whats-a-parent-to-do-in-1991-vpri",
    "title": "Kids & Computers: What's a parent to do? in 1991 (VPRI 0441 part 1)",
    "name": "Kids & Computers: What's a parent to do? in 1991 (VPRI 0441 part 1)",
@@ -11477,6 +11502,54 @@
    "n_total": 1,
    "raw_title": "Kids & COMPUTERS: What's a parent to do? in 1991 (VPRI 0441 part 1)",
    "era": "era-9"
+  },
+  {
+   "slug": "technological-giant-of-the-micron-world-a-video",
+   "title": "Technological Giant of the Micron World - A Video History of Japan's electronic industry",
+   "name": "Technological Giant of the Micron World (Japan's Electronic Industry, Part 4)",
+   "year": 1991,
+   "chan": "RC286",
+   "dur": 2216,
+   "thumb": "media/yt/1XjSFCZeWvE.jpg",
+   "collections": [
+    "japan-electronic-industry"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1XjSFCZeWvE",
+     "url": "https://www.youtube.com/watch?v=1XjSFCZeWvE",
+     "embed": "https://www.youtube-nocookie.com/embed/1XjSFCZeWvE?rel=0",
+     "status": "live"
+    }
+   ]
+  },
+  {
+   "slug": "the-calculator-wars-a-video-history-of-japans-el",
+   "title": "The Calculator Wars - A Video History of Japan's electronic industry - - Re Upload",
+   "name": "The Calculator Wars (Japan's Electronic Industry, Part 3)",
+   "year": 1991,
+   "chan": "RC286",
+   "dur": 2322,
+   "thumb": "media/yt/dr39TOEAbpY.jpg",
+   "collections": [
+    "japan-electronic-industry"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "dr39TOEAbpY",
+     "url": "https://www.youtube.com/watch?v=dr39TOEAbpY",
+     "embed": "https://www.youtube-nocookie.com/embed/dr39TOEAbpY?rel=0",
+     "status": "live"
+    }
+   ]
   },
   {
    "slug": "1991-the-computer-chronicle",

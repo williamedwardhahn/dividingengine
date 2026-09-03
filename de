@@ -6,6 +6,7 @@ de — the Dividing Engine archive tool.
     de sync [--collection SLUG]        re-pull tracked playlists, add what is new
     de check [--stale DAYS] [--all]    re-verify that videos still play
     de build                           regenerate index.html
+    de thumb <ref> --variant maxres|hq|1|2|3 | --url U | --file F | --at SEC | --reset
     de list / de collections / de rm / de set
 
 Source of truth is archive.json. index.html is a build artifact: one
@@ -1088,6 +1089,95 @@ def cmd_collections(a):
     if not d['collections']: print('  (none)')
     return 0
 
+def find_film(d, ref):
+    """A film by slug or by any source id."""
+    hit = [f for f in d['films']
+           if f['slug'] == ref or any(s['id'] == ref for s in f['sources'])]
+    return hit[0] if hit else None
+
+def cmd_thumb(a):
+    """Replace a film's thumbnail. Source of truth stays archive.json + media/yt/.
+
+    Four ways to say which picture:
+      --variant maxres|hq|mq|sd|1|2|3   one of YouTube's own stills (1/2/3 are the
+                                       three auto-picked frames; default fetch is hq)
+      --url URL                        any image on the web
+      --file PATH                      a picture on disk
+      --at SECONDS                     grab that frame of the video (needs yt-dlp + ffmpeg)
+      --reset                          re-fetch the default (maxres→hq→mq), overwriting
+    The file lands at media/yt/<video id>.jpg (or media/yt/<slug>.jpg if the film has
+    no YouTube source) and the film's `thumb` points at it. Run `./de build` after.
+    """
+    d = load()
+    f = find_film(d, a.ref)
+    if not f: warn(f'no film matching {a.ref}'); return 1
+    vid = next((s['id'] for s in f['sources'] if s.get('kind') == 'youtube'), None)
+    os.makedirs(YTDIR, exist_ok=True)
+    dest = os.path.join(YTDIR, f'{vid or f["slug"]}.jpg')
+    rel = os.path.relpath(dest, ROOT)
+    chosen = sum(bool(x) for x in (a.variant, a.url, a.file, a.at is not None, a.reset))
+    if chosen != 1:
+        warn('say exactly one of --variant / --url / --file / --at / --reset'); return 1
+    data = None
+    if a.reset:
+        if not vid: warn('no YouTube source to reset from'); return 1
+        got = fetch_thumb(vid, force=True)
+        if not got: warn('YouTube served no thumbnail'); return 1
+        f['thumb'] = got; save(d); print(f"{f['slug']}: thumb reset -> {got}"); return 0
+    if a.variant:
+        if not vid: warn('--variant needs a YouTube source'); return 1
+        names = {'maxres': 'maxresdefault', 'hq': 'hqdefault', 'mq': 'mqdefault',
+                 'sd': 'sddefault', '1': '1', '2': '2', '3': '3'}
+        if a.variant not in names: warn(f'variant must be one of {", ".join(names)}'); return 1
+        a.url = f'https://i.ytimg.com/vi/{vid}/{names[a.variant]}.jpg'
+    if a.url:
+        try:
+            r = urllib.request.Request(a.url, headers={'User-Agent': UA})
+            data = urllib.request.urlopen(r, timeout=30).read()
+        except Exception as e:
+            warn(f'could not fetch {a.url}: {e}'); return 1
+        if len(data) < 1500: warn('fetched image is too small to be real (YouTube placeholder?)'); return 1
+    elif a.file:
+        if not os.path.exists(a.file): warn(f'no such file: {a.file}'); return 1
+        data = open(a.file, 'rb').read()
+        if not a.file.lower().endswith(('.jpg', '.jpeg')):
+            # keep the archive uniform: convert through Pillow if present, else refuse
+            try:
+                from PIL import Image
+                import io
+                im = Image.open(io.BytesIO(data)).convert('RGB')
+                buf = io.BytesIO(); im.save(buf, 'JPEG', quality=88); data = buf.getvalue()
+            except ImportError:
+                warn('not a JPEG and Pillow is not installed; convert it first'); return 1
+    elif a.at is not None:
+        if not vid: warn('--at needs a YouTube source'); return 1
+        import shutil, subprocess, tempfile
+        ytdlp = os.path.join(ROOT, '.venv', 'bin', 'yt-dlp')
+        if not os.path.exists(ytdlp): ytdlp = shutil.which('yt-dlp')
+        ffmpeg = shutil.which('ffmpeg')
+        if not (ytdlp and ffmpeg):
+            warn('--at needs yt-dlp (in .venv) and ffmpeg on PATH; use --variant/--url/--file instead'); return 1
+        try:
+            stream = subprocess.run([ytdlp, '-g', '-f', 'best[height<=720]',
+                                     f'https://www.youtube.com/watch?v={vid}'],
+                                    capture_output=True, text=True, timeout=120).stdout.strip().splitlines()[0]
+            tmp = tempfile.NamedTemporaryFile(suffix='.jpg', delete=False).name
+            subprocess.run([ffmpeg, '-y', '-loglevel', 'error', '-ss', str(a.at), '-i', stream,
+                            '-frames:v', '1', '-q:v', '2', tmp], check=True, timeout=180)
+            data = open(tmp, 'rb').read(); os.unlink(tmp)
+        except Exception as e:
+            warn(f'frame grab failed: {e}'); return 1
+    if not data: warn('nothing to write'); return 1
+    if os.path.exists(dest):
+        # lossless: keep the previous picture beside the new one, once
+        prev = dest[:-4] + '.prev.jpg'
+        if not os.path.exists(prev): os.replace(dest, prev)
+    open(dest, 'wb').write(data)
+    f['thumb'] = rel
+    save(d)
+    print(f"{f['slug']}: thumb -> {rel} ({len(data)//1024} KB). Now: ./de build")
+    return 0
+
 def cmd_rm(a):
     d = load()
     before = len(d['films'])
@@ -1169,6 +1259,13 @@ def main():
     s = sub.add_parser('list'); s.add_argument('--collection'); s.add_argument('--status')
     s.set_defaults(fn=cmd_list)
     sub.add_parser('collections').set_defaults(fn=cmd_collections)
+    s = sub.add_parser('thumb', help='replace a film\'s thumbnail (variant, url, file, frame, or reset)')
+    s.add_argument('ref', help='film slug or YouTube id')
+    s.add_argument('--variant', help='maxres|hq|mq|sd|1|2|3 (YouTube stills)')
+    s.add_argument('--url'); s.add_argument('--file')
+    s.add_argument('--at', type=float, help='seconds into the video (needs yt-dlp + ffmpeg)')
+    s.add_argument('--reset', action='store_true', help='re-fetch the default thumbnail')
+    s.set_defaults(fn=cmd_thumb)
     s = sub.add_parser('rm'); s.add_argument('ref'); s.set_defaults(fn=cmd_rm)
     s = sub.add_parser('set'); s.add_argument('ref'); s.add_argument('--year', type=int)
     s.add_argument('--name'); s.add_argument('--add-collection'); s.set_defaults(fn=cmd_set)
