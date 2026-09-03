@@ -27,6 +27,11 @@
    "title": "Computers 101",
    "playlist": "PLWmIsQcAzRkpFcFL0SLGO8ee7qSyAQT-Y",
    "added": "2026-08-31"
+  },
+  "att-archives": {
+   "title": "AT&T Archives",
+   "playlist": "PLDB8B8220DEE96FD9",
+   "added": "2026-09-03"
   }
  },
  "films": [
@@ -107,13 +112,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -125,6 +131,32 @@
     }
    ],
    "era": "era-6"
+  },
+  {
+   "slug": "att-archives-a-desert-span-building-trunk-teleph",
+   "title": "AT&T Archives: A Desert Span, building trunk telephone lines in 1929",
+   "name": "AT&T Archives: A Desert Span, building trunk telephone lines in 1929",
+   "year": 1929,
+   "chan": "AT&T Tech Channel",
+   "dur": 501,
+   "thumb": "media/yt/Yi2uqD7nA74.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Yi2uqD7nA74",
+     "url": "https://www.youtube.com/watch?v=Yi2uqD7nA74",
+     "embed": "https://www.youtube-nocookie.com/embed/Yi2uqD7nA74?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "1930s-electronic-music-the-variophone",
@@ -192,6 +224,32 @@
     }
    ],
    "era": "era-6"
+  },
+  {
+   "slug": "phone-pioneers-talk-telephone-att-archives",
+   "title": "Phone Pioneers Talk Telephone (1930) - AT&T Archives",
+   "name": "Phone Pioneers Talk Telephone - AT&T Archives",
+   "year": 1930,
+   "chan": "AT&T Tech Channel",
+   "dur": 2234,
+   "thumb": "media/yt/2_s6Y9i-U18.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2_s6Y9i-U18",
+     "url": "https://www.youtube.com/watch?v=2_s6Y9i-U18",
+     "embed": "https://www.youtube-nocookie.com/embed/2_s6Y9i-U18?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "spectacular-new-york-lower-manhattan-waterfront",
@@ -398,6 +456,58 @@
    "era": "era-6"
   },
   {
+   "slug": "att-archives-operator-2",
+   "title": "AT&T Archives: Operator! (1938)",
+   "name": "AT&T Archives: Operator!",
+   "year": 1938,
+   "chan": "AT&T Tech Channel",
+   "dur": 1164,
+   "thumb": "media/yt/IOEOM4S6vgA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IOEOM4S6vgA",
+     "url": "https://www.youtube.com/watch?v=IOEOM4S6vgA",
+     "embed": "https://www.youtube-nocookie.com/embed/IOEOM4S6vgA?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-operator-bonus-edition",
+   "title": "AT&T Archives: Operator! (1938) (Bonus Edition)",
+   "name": "AT&T Archives: Operator! (Bonus Edition)",
+   "year": 1938,
+   "chan": "AT&T Tech Channel",
+   "dur": 1317,
+   "thumb": "media/yt/nEy7Zb1Noj8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "nEy7Zb1Noj8",
+     "url": "https://www.youtube.com/watch?v=nEy7Zb1Noj8",
+     "embed": "https://www.youtube-nocookie.com/embed/nEy7Zb1Noj8?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "more-power-to-you-1930s",
    "title": "1938 More Power to You",
    "name": "More Power to You",
@@ -548,13 +658,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -639,6 +750,32 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-7"
+  },
+  {
+   "slug": "att-archives-newfoundland-long-lines-a-wwii-film",
+   "title": "AT&T Archives: Newfoundland Long Lines, a WWII film made by the U.S. Army and AT&T, from 1943",
+   "name": "AT&T Archives: Newfoundland Long Lines, a WWII film made by the U.S. Army and AT&T, from 1943",
+   "year": 1943,
+   "chan": "AT&T Tech Channel",
+   "dur": 1275,
+   "thumb": "media/yt/zCuasSte6Nw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "zCuasSte6Nw",
+     "url": "https://www.youtube.com/watch?v=zCuasSte6Nw",
+     "embed": "https://www.youtube-nocookie.com/embed/zCuasSte6Nw?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
   },
   {
    "slug": "electronics-at-work-1943",
@@ -736,6 +873,32 @@
    "era": "era-7"
   },
   {
+   "slug": "att-archives-the-telephone-hour-the-making-of-th",
+   "title": "AT&T Archives: The Telephone Hour, The Making of the Classic Radio Program, from 1945",
+   "name": "AT&T Archives: The Telephone Hour, The Making of the Classic Radio Program, from 1945",
+   "year": 1945,
+   "chan": "AT&T Tech Channel",
+   "dur": 894,
+   "thumb": "media/yt/Ddkcx2mZHBQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Ddkcx2mZHBQ",
+     "url": "https://www.youtube.com/watch?v=Ddkcx2mZHBQ",
+     "embed": "https://www.youtube-nocookie.com/embed/Ddkcx2mZHBQ?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "election-microscope",
    "title": "Election Microscope (1946)",
    "name": "Election Microscope",
@@ -777,13 +940,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -897,6 +1061,32 @@
    "era": "era-7"
   },
   {
+   "slug": "att-archives-1948-movie-theater-newsreel",
+   "title": "AT&T Archives: 1948 Movie Theater Newsreel",
+   "name": "AT&T Archives: 1948 Movie Theater Newsreel",
+   "year": 1948,
+   "chan": "AT&T Tech Channel",
+   "dur": 617,
+   "thumb": "media/yt/EDDNBr7OCX0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EDDNBr7OCX0",
+     "url": "https://www.youtube.com/watch?v=EDDNBr7OCX0",
+     "embed": "https://www.youtube-nocookie.com/embed/EDDNBr7OCX0?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "bottle-of-magic",
    "title": "1948 Bottle of Magic",
    "name": "Bottle of Magic",
@@ -911,13 +1101,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -1050,6 +1241,32 @@
     }
    ],
    "era": "era-7"
+  },
+  {
+   "slug": "att-archives-cable-to-cuba-an-att-film-about-lay",
+   "title": "AT&T Archives: Cable to Cuba, an AT&T film about laying undersea cable in 1950",
+   "name": "AT&T Archives: Cable to Cuba, an AT&T film about laying undersea cable in 1950",
+   "year": 1950,
+   "chan": "AT&T Tech Channel",
+   "dur": 632,
+   "thumb": "media/yt/495IC6YtJ3I.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "495IC6YtJ3I",
+     "url": "https://www.youtube.com/watch?v=495IC6YtJ3I",
+     "embed": "https://www.youtube-nocookie.com/embed/495IC6YtJ3I?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "1968-early-computer-magnetic-tape-units-history",
@@ -1227,6 +1444,32 @@
     }
    ],
    "era": "era-7"
+  },
+  {
+   "slug": "the-transistor-a-1953-documentary-anticipating-i",
+   "title": "The Transistor: a 1953 documentary, anticipating its coming impact on technology",
+   "name": "The Transistor: a 1953 documentary, anticipating its coming impact on technology",
+   "year": 1953,
+   "chan": "AT&T Tech Channel",
+   "dur": 577,
+   "thumb": "media/yt/V9xUQWo4vN0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "V9xUQWo4vN0",
+     "url": "https://www.youtube.com/watch?v=V9xUQWo4vN0",
+     "embed": "https://www.youtube-nocookie.com/embed/V9xUQWo4vN0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "1953-uhf-tv",
@@ -2077,6 +2320,32 @@
    "era": "era-8"
   },
   {
+   "slug": "att-archives-cable-to-the-continent-a-1959-film",
+   "title": "AT&T Archives: Cable to the Continent, a 1959 film about the second transatlantic telephone cable",
+   "name": "AT&T Archives: Cable to the Continent, a 1959 film about the second transatlantic telephone cable",
+   "year": 1959,
+   "chan": "AT&T Tech Channel",
+   "dur": 899,
+   "thumb": "media/yt/yqRj3lvvg7Y.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "yqRj3lvvg7Y",
+     "url": "https://www.youtube.com/watch?v=yqRj3lvvg7Y",
+     "embed": "https://www.youtube-nocookie.com/embed/yqRj3lvvg7Y?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "computer-history-ibm-1401-announcement-1959-data",
    "title": "Computer History: IBM 1401 Announcement 1959 Data Processing Mainframe 7070, RAMAC Endicott, & more",
    "name": "Computer History: IBM 1401 Announcement 1959 Data Processing Mainframe 7070, RAMAC Endicott, & more",
@@ -2450,6 +2719,32 @@
    "era": "era-8"
   },
   {
+   "slug": "att-archives-the-far-sound-a-history-of-long-and",
+   "title": "AT&T Archives: The Far Sound, a History of Long and Longer Distance Communications, from 1961",
+   "name": "AT&T Archives: The Far Sound, a History of Long and Longer Distance Communications, from 1961",
+   "year": 1961,
+   "chan": "AT&T Tech Channel",
+   "dur": 1611,
+   "thumb": "media/yt/SS5X5BkIKpM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SS5X5BkIKpM",
+     "url": "https://www.youtube.com/watch?v=SS5X5BkIKpM",
+     "embed": "https://www.youtube-nocookie.com/embed/SS5X5BkIKpM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "computer-speech-synthesis",
    "title": "1961 Computer Speech Synthesis",
    "name": "Computer Speech Synthesis",
@@ -2498,13 +2793,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -2649,11 +2945,12 @@
    "thumb": "media/yt/jDQROzrFD1o.jpg",
    "collections": [
     "computers-101",
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -2762,11 +3059,12 @@
    "thumb": "media/yt/dFZecokdHLo.jpg",
    "collections": [
     "computers-101",
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -2880,6 +3178,32 @@
     }
    ],
    "era": "era-8"
+  },
+  {
+   "slug": "one-of-the-first-computer-generated-films-from-1",
+   "title": "One of the First Computer-Generated Films, from 1963 - AT&T Archives",
+   "name": "One of the First Computer-Generated Films, from 1963 - AT&T Archives",
+   "year": 1963,
+   "chan": "AT&T Tech Channel",
+   "dur": 86,
+   "thumb": "media/yt/RocLdMyUG-4.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "RocLdMyUG-4",
+     "url": "https://www.youtube.com/watch?v=RocLdMyUG-4",
+     "embed": "https://www.youtube-nocookie.com/embed/RocLdMyUG-4?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "1963-sketchpad-2",
@@ -3082,6 +3406,58 @@
    "era": "era-8"
   },
   {
+   "slug": "how-computer-generated-animations-were-made-circ",
+   "title": "How Computer-Generated Animations Were Made, Circa 1964 - AT&T Archives",
+   "name": "How Computer-Generated Animations Were Made, Circa 1964 - AT&T Archives",
+   "year": 1964,
+   "chan": "AT&T Tech Channel",
+   "dur": 961,
+   "thumb": "media/yt/_Lmi6cmrq0w.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_Lmi6cmrq0w",
+     "url": "https://www.youtube.com/watch?v=_Lmi6cmrq0w",
+     "embed": "https://www.youtube-nocookie.com/embed/_Lmi6cmrq0w?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "programming-computer-animation-in-1964-att-archi",
+   "title": "Programming Computer Animation in 1964 - AT&T Archives",
+   "name": "Programming Computer Animation in 1964 - AT&T Archives",
+   "year": 1964,
+   "chan": "AT&T Tech Channel",
+   "dur": 291,
+   "thumb": "media/yt/-5mFhDIJfNA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "-5mFhDIJfNA",
+     "url": "https://www.youtube.com/watch?v=-5mFhDIJfNA",
+     "embed": "https://www.youtube-nocookie.com/embed/-5mFhDIJfNA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "richard-feynman-murray-gell-mann-juval-neeman-st",
    "title": "Richard Feynman, Murray Gell-Mann, Juval Ne'eman: Strangeness Minus Three (BBC Horizon 1964) I",
    "name": "Richard Feynman, Murray Gell-Mann, Juval Ne'eman: Strangeness Minus Three (BBC Horizon 1964) I",
@@ -3109,30 +3485,30 @@
    "era": "era-8"
   },
   {
-   "slug": "1980s-soviet-computer-sciences-film-w-es-pevm-ib",
-   "title": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
-   "name": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
-   "chan": "PeriscopeFilm",
-   "dur": 860,
-   "thumb": "media/yt/EbfEKucN4zU.jpg",
+   "slug": "att-archives-bell-systems-electronic-switching-s",
+   "title": "AT&T Archives: Bell Systems Electronic Switching System, Central Office Debut, Succasunna, NJ, 1965",
+   "name": "AT&T Archives: Bell Systems Electronic Switching System, Central Office Debut, Succasunna, NJ, 1965",
+   "year": 1965,
+   "chan": "AT&T Tech Channel",
+   "dur": 233,
+   "thumb": "media/yt/28V4QPNCaXc.jpg",
    "collections": [
-    "dividing-engine"
+    "att-archives"
    ],
    "status": "live",
-   "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
-     "id": "EbfEKucN4zU",
-     "url": "https://www.youtube.com/watch?v=EbfEKucN4zU",
-     "embed": "https://www.youtube-nocookie.com/embed/EbfEKucN4zU?rel=0",
+     "id": "28V4QPNCaXc",
+     "url": "https://www.youtube.com/watch?v=28V4QPNCaXc",
+     "embed": "https://www.youtube-nocookie.com/embed/28V4QPNCaXc?rel=0",
      "status": "live"
     }
    ],
    "n_live": 1,
-   "n_total": 1,
-   "raw_title": "1980s SOVIET COMPUTER SCIENCES FILM w/ ES PEVM IBM PCs MOUSE PERSONAL COMPUTER MAINFRAME XD13874"
+   "n_total": 1
   },
   {
    "slug": "isaac-asimovs-3-laws-of-robotics-horizon-past-pr",
@@ -3359,13 +3735,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -3405,6 +3782,32 @@
    "n_total": 1,
    "raw_title": "1967, THE COMPUTER REVOLUTION, Isaac Kleinerman, Walter Cronkite",
    "era": "era-8"
+  },
+  {
+   "slug": "att-archives-the-astonishing-unfailing-bell-syst",
+   "title": "AT&T Archives: The Astonishing, Unfailing Bell System (1967)",
+   "name": "AT&T Archives: The Astonishing, Unfailing Bell System",
+   "year": 1967,
+   "chan": "AT&T Tech Channel",
+   "dur": 1551,
+   "thumb": "media/yt/ZAJpionUxJ8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ZAJpionUxJ8",
+     "url": "https://www.youtube.com/watch?v=ZAJpionUxJ8",
+     "embed": "https://www.youtube-nocookie.com/embed/ZAJpionUxJ8?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "fairchild-briefing-on-integ",
@@ -3697,31 +4100,6 @@
    "era": "era-8"
   },
   {
-   "slug": "1-eulerian-and-lagrangian-descriptions-in-fluid",
-   "title": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
-   "name": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
-   "chan": "Riccardo Pigazzini",
-   "dur": 1620,
-   "thumb": "media/yt/LAdNZnm-K00.jpg",
-   "collections": [
-    "dividing-engine"
-   ],
-   "status": "live",
-   "added": "2026-08-31",
-   "checked": "2026-08-31",
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "LAdNZnm-K00",
-     "url": "https://www.youtube.com/watch?v=LAdNZnm-K00",
-     "embed": "https://www.youtube-nocookie.com/embed/LAdNZnm-K00?rel=0",
-     "status": "live"
-    }
-   ],
-   "n_live": 1,
-   "n_total": 1
-  },
-  {
    "slug": "apprentice-engineers-aka-exhibition-of-apprentic",
    "title": "Apprentice Engineers Aka Exhibition Of Apprentices' Work In London (1968)",
    "name": "Apprentice Engineers Aka Exhibition Of Apprentices' Work In London",
@@ -4003,6 +4381,32 @@
    "era": "era-8"
   },
   {
+   "slug": "att-archives-operator",
+   "title": "AT&T Archives: Operator (1969)",
+   "name": "AT&T Archives: Operator",
+   "year": 1969,
+   "chan": "AT&T Tech Channel",
+   "dur": 940,
+   "thumb": "media/yt/bAC4MvP_C-I.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "bAC4MvP_C-I",
+     "url": "https://www.youtube.com/watch?v=bAC4MvP_C-I",
+     "embed": "https://www.youtube-nocookie.com/embed/bAC4MvP_C-I?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "1969-far-out",
    "title": "1969 Far Out",
    "name": "Far Out",
@@ -4209,6 +4613,32 @@
    "era": "era-8"
   },
   {
+   "slug": "att-archives-moon-orbit-communications-a-film-ab",
+   "title": "AT&T Archives: Moon Orbit Communications, a film about Apollo 8, from 1970",
+   "name": "AT&T Archives: Moon Orbit Communications, a film about Apollo 8, from 1970",
+   "year": 1970,
+   "chan": "AT&T Tech Channel",
+   "dur": 123,
+   "thumb": "media/yt/IkFAZh1tue8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IkFAZh1tue8",
+     "url": "https://www.youtube.com/watch?v=IkFAZh1tue8",
+     "embed": "https://www.youtube-nocookie.com/embed/IkFAZh1tue8?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "computers-1970-educational-film-ibm-mainframe-pu",
    "title": "Computers \" 1970 Educational Film IBM Mainframe Punchcard & Magnetic Tape Based Computers Xd11964",
    "name": "Computers \" 1970 Educational Film IBM Mainframe Punchcard & Magnetic Tape Based Computers Xd11964",
@@ -4263,6 +4693,32 @@
    "n_total": 1,
    "raw_title": "1970: Could MACHINES Become INTELLIGENT? | Horizon | Past Predictions | BBC Archive",
    "era": "era-8"
+  },
+  {
+   "slug": "debut-of-the-first-picturephone-att-archives",
+   "title": "Debut of the First Picturephone (1970) - AT&T Archives",
+   "name": "Debut of the First Picturephone - AT&T Archives",
+   "year": 1970,
+   "chan": "AT&T Tech Channel",
+   "dur": 315,
+   "thumb": "media/yt/BQMnlKMFD8M.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "BQMnlKMFD8M",
+     "url": "https://www.youtube.com/watch?v=BQMnlKMFD8M",
+     "embed": "https://www.youtube-nocookie.com/embed/BQMnlKMFD8M?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
   },
   {
    "slug": "edwin-h-land-in-the-long-walk-1970-directed-by-b",
@@ -4382,6 +4838,32 @@
    "era": "era-8"
   },
   {
+   "slug": "att-archives-learning-to-be-a-great-business-com",
+   "title": "AT&T Archives: Learning to be a Great Business Communicator (1971)",
+   "name": "AT&T Archives: Learning to be a Great Business Communicator",
+   "year": 1971,
+   "chan": "AT&T Tech Channel",
+   "dur": 1737,
+   "thumb": "media/yt/9IezKAfbuHo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9IezKAfbuHo",
+     "url": "https://www.youtube.com/watch?v=9IezKAfbuHo",
+     "embed": "https://www.youtube-nocookie.com/embed/9IezKAfbuHo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "1971-instant-insanity--",
    "title": "1971 Instant Insanity - Computer Vision & Robotics",
    "name": "Instant Insanity - Computer Vision & Robotics",
@@ -4469,32 +4951,6 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-8"
-  },
-  {
-   "slug": "1980s-advances-in-robotics-computer-engineering",
-   "title": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
-   "name": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
-   "chan": "PeriscopeFilm",
-   "dur": 897,
-   "thumb": "media/yt/n44xWyX9k0g.jpg",
-   "collections": [
-    "dividing-engine"
-   ],
-   "status": "live",
-   "added": "2026-08-31",
-   "checked": "2026-08-31",
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "n44xWyX9k0g",
-     "url": "https://www.youtube.com/watch?v=n44xWyX9k0g",
-     "embed": "https://www.youtube-nocookie.com/embed/n44xWyX9k0g?rel=0",
-     "status": "live"
-    }
-   ],
-   "n_live": 1,
-   "n_total": 1,
-   "raw_title": "1980s ADVANCES IN ROBOTICS & COMPUTER ENGINEERING EDUCATIONAL FILM 59924"
   },
   {
    "slug": "a-free-computer-blue-peter-retro-tech-bbc-archiv",
@@ -4869,6 +5325,84 @@
    "era": "era-8"
   },
   {
+   "slug": "att-archives-careers-line-worker",
+   "title": "AT&T Archives: Careers: Line Worker (1974)",
+   "name": "AT&T Archives: Careers: Line Worker",
+   "year": 1974,
+   "chan": "AT&T Tech Channel",
+   "dur": 288,
+   "thumb": "media/yt/kIdO7iwxQqA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "kIdO7iwxQqA",
+     "url": "https://www.youtube.com/watch?v=kIdO7iwxQqA",
+     "embed": "https://www.youtube-nocookie.com/embed/kIdO7iwxQqA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-careers-service-representative",
+   "title": "AT&T Archives: Careers: Service Representative (1974)",
+   "name": "AT&T Archives: Careers: Service Representative",
+   "year": 1974,
+   "chan": "AT&T Tech Channel",
+   "dur": 336,
+   "thumb": "media/yt/sptrIBK32oA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "sptrIBK32oA",
+     "url": "https://www.youtube.com/watch?v=sptrIBK32oA",
+     "embed": "https://www.youtube-nocookie.com/embed/sptrIBK32oA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-crystal-growth-morphologies-a-1974",
+   "title": "AT&T Archives: Crystal Growth Morphologies, a 1974 microscopic film study from Bell Laboratories",
+   "name": "AT&T Archives: Crystal Growth Morphologies, a 1974 microscopic film study from Bell Laboratories",
+   "year": 1974,
+   "chan": "AT&T Tech Channel",
+   "dur": 644,
+   "thumb": "media/yt/Y3GwvN5W1dE.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Y3GwvN5W1dE",
+     "url": "https://www.youtube.com/watch?v=Y3GwvN5W1dE",
+     "embed": "https://www.youtube-nocookie.com/embed/Y3GwvN5W1dE?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "faces-and-body-parts-first-talking-polygonal-hum",
    "title": "Faces and Body Parts (1974) - First talking polygonal human",
    "name": "Faces and Body Parts - First talking polygonal human",
@@ -5010,6 +5544,32 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-9"
+  },
+  {
+   "slug": "att-archives-another-look-a-1975-film-about-west",
+   "title": "AT&T Archives: Another Look, a 1975 film about Western Electric",
+   "name": "AT&T Archives: Another Look, a 1975 film about Western Electric",
+   "year": 1975,
+   "chan": "AT&T Tech Channel",
+   "dur": 315,
+   "thumb": "media/yt/w1PFfWqnFFM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "w1PFfWqnFFM",
+     "url": "https://www.youtube.com/watch?v=w1PFfWqnFFM",
+     "embed": "https://www.youtube-nocookie.com/embed/w1PFfWqnFFM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "computers",
@@ -5169,11 +5729,12 @@
    "dur": 289,
    "thumb": "media/yt/LkUrg05DzEY.jpg",
    "collections": [
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -5244,6 +5805,32 @@
    "era": "era-9"
   },
   {
+   "slug": "interview-with-authorfuturist-arthur-c-clarke-fr",
+   "title": "Interview with author/futurist Arthur C. Clarke, from an AT&T-MIT Conference, 1976",
+   "name": "Interview with author/futurist Arthur C. Clarke, from an AT&T-MIT Conference, 1976",
+   "year": 1976,
+   "chan": "AT&T Tech Channel",
+   "dur": 343,
+   "thumb": "media/yt/D1vQ_cB0f4w.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "D1vQ_cB0f4w",
+     "url": "https://www.youtube.com/watch?v=D1vQ_cB0f4w",
+     "embed": "https://www.youtube-nocookie.com/embed/D1vQ_cB0f4w?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "1976-matrix-singular-value",
    "title": "1976 Matrix Decomposition",
    "name": "Matrix Decomposition",
@@ -5305,6 +5892,84 @@
    "era": "era-9"
   },
   {
+   "slug": "att-archives-design-line-promo",
+   "title": "AT&T Archives: Design Line Promo (1977)",
+   "name": "AT&T Archives: Design Line Promo",
+   "year": 1977,
+   "chan": "AT&T Tech Channel",
+   "dur": 292,
+   "thumb": "media/yt/uLKLCsL1G_k.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uLKLCsL1G_k",
+     "url": "https://www.youtube.com/watch?v=uLKLCsL1G_k",
+     "embed": "https://www.youtube-nocookie.com/embed/uLKLCsL1G_k?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-single-sideband-a-1977-film-about-m",
+   "title": "AT&T Archives: Single Sideband, a 1977 film about microwave transmission",
+   "name": "AT&T Archives: Single Sideband, a 1977 film about microwave transmission",
+   "year": 1977,
+   "chan": "AT&T Tech Channel",
+   "dur": 169,
+   "thumb": "media/yt/ScOd3ExKFM8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ScOd3ExKFM8",
+     "url": "https://www.youtube.com/watch?v=ScOd3ExKFM8",
+     "embed": "https://www.youtube-nocookie.com/embed/ScOd3ExKFM8?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-new-york-report-dial-service-ho",
+   "title": "AT&T Archives: The New York Report, Dial Service Hotline News from 1977",
+   "name": "AT&T Archives: The New York Report, Dial Service Hotline News from 1977",
+   "year": 1977,
+   "chan": "AT&T Tech Channel",
+   "dur": 424,
+   "thumb": "media/yt/4sBskShMpbM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "4sBskShMpbM",
+     "url": "https://www.youtube.com/watch?v=4sBskShMpbM",
+     "embed": "https://www.youtube-nocookie.com/embed/4sBskShMpbM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "bell-system-1977-commercials",
    "title": "Bell System 1977 commercials",
    "name": "Bell System 1977 commercials",
@@ -5359,6 +6024,58 @@
    "era": "era-9"
   },
   {
+   "slug": "att-archives-advanced-mobile-phone-service-amps",
+   "title": "AT&T Archives: Advanced Mobile Phone Service (AMPS), a 1978 film on cell phones",
+   "name": "AT&T Archives: Advanced Mobile Phone Service (AMPS), a 1978 film on cell phones",
+   "year": 1978,
+   "chan": "AT&T Tech Channel",
+   "dur": 860,
+   "thumb": "media/yt/d6X_1PcR_gs.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "d6X_1PcR_gs",
+     "url": "https://www.youtube.com/watch?v=d6X_1PcR_gs",
+     "embed": "https://www.youtube-nocookie.com/embed/d6X_1PcR_gs?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "bell-labs-henry-feinberg-demonstrates-ways-of-us",
+   "title": "Bell Labs' Henry Feinberg Demonstrates Ways of Using Light to Transmit Sound Waves, 1978",
+   "name": "Bell Labs' Henry Feinberg Demonstrates Ways of Using Light to Transmit Sound Waves, 1978",
+   "year": 1978,
+   "chan": "AT&T Tech Channel",
+   "dur": 1606,
+   "thumb": "media/yt/gf2J3HTYUHE.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "gf2J3HTYUHE",
+     "url": "https://www.youtube.com/watch?v=gf2J3HTYUHE",
+     "embed": "https://www.youtube-nocookie.com/embed/gf2J3HTYUHE?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "the-mind-machines-arthur-c-clarke-1978",
    "title": "The Mind Machines - Arthur C. Clarke - 1978",
    "name": "The Mind Machines - Arthur C. Clarke - 1978",
@@ -5384,6 +6101,58 @@
    "n_live": 0,
    "n_total": 1,
    "era": "era-9"
+  },
+  {
+   "slug": "topes-telephone-office-planning-and-engineering",
+   "title": "TOPES: Telephone Office Planning and Engineering System, from Bell Labs, 1978",
+   "name": "TOPES: Telephone Office Planning and Engineering System, from Bell Labs, 1978",
+   "year": 1978,
+   "chan": "AT&T Tech Channel",
+   "dur": 541,
+   "thumb": "media/yt/VKbFM770dus.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "VKbFM770dus",
+     "url": "https://www.youtube.com/watch?v=VKbFM770dus",
+     "embed": "https://www.youtube-nocookie.com/embed/VKbFM770dus?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "a-tour-of-atts-network-operations-center-att-arc",
+   "title": "A tour of AT&T's Network Operations Center (1979) - AT&T Archives",
+   "name": "A tour of AT&T's Network Operations Center - AT&T Archives",
+   "year": 1979,
+   "chan": "AT&T Tech Channel",
+   "dur": 647,
+   "thumb": "media/yt/cigc3hvMyWw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "cigc3hvMyWw",
+     "url": "https://www.youtube.com/watch?v=cigc3hvMyWw",
+     "embed": "https://www.youtube-nocookie.com/embed/cigc3hvMyWw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "adventure-of-the-mind-1979-data-processing-perso",
@@ -5423,11 +6192,12 @@
    "thumb": "media/yt/iEub5U9UeX8.jpg",
    "collections": [
     "computers-101",
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -5440,6 +6210,84 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-9"
+  },
+  {
+   "slug": "att-archives-electronic-information-systems",
+   "title": "AT&T Archives: Electronic Information Systems (1979)",
+   "name": "AT&T Archives: Electronic Information Systems",
+   "year": 1979,
+   "chan": "AT&T Tech Channel",
+   "dur": 1155,
+   "thumb": "media/yt/VQubQhN4R1c.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "VQubQhN4R1c",
+     "url": "https://www.youtube.com/watch?v=VQubQhN4R1c",
+     "embed": "https://www.youtube-nocookie.com/embed/VQubQhN4R1c?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "earthquake-preparedness-film-from-1979-att-archi",
+   "title": "Earthquake Preparedness Film from 1979 - AT&T Archives",
+   "name": "Earthquake Preparedness Film from 1979 - AT&T Archives",
+   "year": 1979,
+   "chan": "AT&T Tech Channel",
+   "dur": 833,
+   "thumb": "media/yt/q_cpX-w3jLo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "q_cpX-w3jLo",
+     "url": "https://www.youtube.com/watch?v=q_cpX-w3jLo",
+     "embed": "https://www.youtube-nocookie.com/embed/q_cpX-w3jLo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "glassblowing-at-bell-labs-murray-hill-nj-1979",
+   "title": "Glassblowing at Bell Labs, Murray Hill, NJ, 1979",
+   "name": "Glassblowing at Bell Labs, Murray Hill, NJ, 1979",
+   "year": 1979,
+   "chan": "AT&T Tech Channel",
+   "dur": 167,
+   "thumb": "media/yt/uJI1dOLmaQY.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uJI1dOLmaQY",
+     "url": "https://www.youtube.com/watch?v=uJI1dOLmaQY",
+     "embed": "https://www.youtube-nocookie.com/embed/uJI1dOLmaQY?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "in-1979-this-9-yr-old-kid-was-seen-as-a-computer",
@@ -5559,11 +6407,12 @@
    "dur": 566,
    "thumb": "media/yt/uLReXtpNlbw.jpg",
    "collections": [
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -5619,13 +6468,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -5926,6 +6776,32 @@
    "era": "era-9"
   },
   {
+   "slug": "countdown-to-the-1980-winter-olympics-att-archiv",
+   "title": "Countdown to the 1980 Winter Olympics - AT&T Archives",
+   "name": "Countdown to the 1980 Winter Olympics - AT&T Archives",
+   "year": 1980,
+   "chan": "AT&T Tech Channel",
+   "dur": 613,
+   "thumb": "media/yt/RtS0OOmO-Ec.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "RtS0OOmO-Ec",
+     "url": "https://www.youtube.com/watch?v=RtS0OOmO-Ec",
+     "embed": "https://www.youtube-nocookie.com/embed/RtS0OOmO-Ec?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "documentary-predicts-the-information-age-amazing",
    "title": "1980 Documentary Predicts The Information Age. Amazing To See What They Said Back Then",
    "name": "Documentary Predicts The Information Age. Amazing To See What They Said Back Then",
@@ -5995,13 +6871,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "blocked",
    "n_live": 0,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -6063,13 +6940,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -6802,6 +7680,32 @@
    "era": "era-9"
   },
   {
+   "slug": "report-on-scarab-a-submersible-craft-for-underwa",
+   "title": "Report on SCARAB, a submersible craft for underwater cable maintenance, from Bell Labs, 1982",
+   "name": "Report on SCARAB, a submersible craft for underwater cable maintenance, from Bell Labs, 1982",
+   "year": 1982,
+   "chan": "AT&T Tech Channel",
+   "dur": 346,
+   "thumb": "media/yt/WmwcPsaZc00.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "WmwcPsaZc00",
+     "url": "https://www.youtube.com/watch?v=WmwcPsaZc00",
+     "embed": "https://www.youtube-nocookie.com/embed/WmwcPsaZc00?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "report-tries-to-explain-home-computers",
    "title": "1982 report tries to explain home computers",
    "name": "report tries to explain home computers",
@@ -6870,13 +7774,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -6888,6 +7793,32 @@
     }
    ],
    "era": "era-9"
+  },
+  {
+   "slug": "unix-making-computers-easier-to-use-att-archives",
+   "title": "UNIX: Making Computers Easier To Use -- AT&T Archives film from 1982, Bell Laboratories",
+   "name": "UNIX: Making Computers Easier To Use -- AT&T Archives film from 1982, Bell Laboratories",
+   "year": 1982,
+   "chan": "AT&T Tech Channel",
+   "dur": 1419,
+   "thumb": "media/yt/XvDZLjaCJuw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "XvDZLjaCJuw",
+     "url": "https://www.youtube.com/watch?v=XvDZLjaCJuw",
+     "embed": "https://www.youtube-nocookie.com/embed/XvDZLjaCJuw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "1982-xerox-star-2",
@@ -6940,11 +7871,12 @@
    "dur": 339,
    "thumb": "media/yt/sgYkpk9nJnE.jpg",
    "collections": [
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -7366,11 +8298,12 @@
    "dur": 257,
    "thumb": "media/yt/zi1jF3pYjEw.jpg",
    "collections": [
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -7708,6 +8641,32 @@
    "era": "era-9"
   },
   {
+   "slug": "olympic-torch-relay-documentary-att-archives",
+   "title": "1984 Olympic Torch Relay Documentary - AT&T Archives",
+   "name": "Olympic Torch Relay Documentary - AT&T Archives",
+   "year": 1984,
+   "chan": "AT&T Tech Channel",
+   "dur": 1841,
+   "thumb": "media/yt/v0GdbygXfDM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "v0GdbygXfDM",
+     "url": "https://www.youtube.com/watch?v=v0GdbygXfDM",
+     "embed": "https://www.youtube-nocookie.com/embed/v0GdbygXfDM?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "1984-richard-feynman-tiny",
    "title": "1984 Richard Feynman Tiny Machines",
    "name": "Richard Feynman Tiny Machines",
@@ -7811,6 +8770,32 @@
     }
    ],
    "era": "era-9"
+  },
+  {
+   "slug": "speedy-cutover-service-sxs-switching-cutover-to",
+   "title": "Speedy Cutover Service, SXS switching cutover to ESS filmed live at Glendale CA central office, 1984",
+   "name": "Speedy Cutover Service, SXS switching cutover to ESS filmed live at Glendale CA central office, 1984",
+   "year": 1984,
+   "chan": "AT&T Tech Channel",
+   "dur": 274,
+   "thumb": "media/yt/saRir95iIWk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "saRir95iIWk",
+     "url": "https://www.youtube.com/watch?v=saRir95iIWk",
+     "embed": "https://www.youtube-nocookie.com/embed/saRir95iIWk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "the-computer-chronicles-programming",
@@ -7921,6 +8906,32 @@
    "era": "era-9"
   },
   {
+   "slug": "att-archives-family-of-products",
+   "title": "AT&T Archives: Family of Products (1985)",
+   "name": "AT&T Archives: Family of Products",
+   "year": 1985,
+   "chan": "AT&T Tech Channel",
+   "dur": 1176,
+   "thumb": "media/yt/2wcwYBp6TPM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2wcwYBp6TPM",
+     "url": "https://www.youtube.com/watch?v=2wcwYBp6TPM",
+     "embed": "https://www.youtube-nocookie.com/embed/2wcwYBp6TPM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "coalbrookdale-origins-of-the-industrial-revoluti",
    "title": "Coalbrookdale: Origins of the Industrial Revolution - Denis Smith 1985",
    "name": "Coalbrookdale: Origins of the Industrial Revolution - Denis Smith 1985",
@@ -8001,6 +9012,32 @@
    "n_total": 1,
    "raw_title": "1985: Introducing the AMIGA | Micro Live | Retro Tech | BBC Archive",
    "era": "era-9"
+  },
+  {
+   "slug": "looking-ahead-to-the-information-age-in-1985-att",
+   "title": "Looking Ahead to the Information Age in 1985: AT&T Archives",
+   "name": "Looking Ahead to the Information Age in 1985: AT&T Archives",
+   "year": 1985,
+   "chan": "AT&T Tech Channel",
+   "dur": 1112,
+   "thumb": "media/yt/qWsC9KE-PHY.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "qWsC9KE-PHY",
+     "url": "https://www.youtube.com/watch?v=qWsC9KE-PHY",
+     "embed": "https://www.youtube-nocookie.com/embed/qWsC9KE-PHY?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "1985-richard-feynman-comput",
@@ -8198,6 +9235,32 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-9"
+  },
+  {
+   "slug": "a-1986-video-on-software-design-methods-pertaini",
+   "title": "A 1986 video on software design methods pertaining to specific systems using expert knowledge",
+   "name": "A 1986 video on software design methods pertaining to specific systems using expert knowledge",
+   "year": 1986,
+   "chan": "AT&T Tech Channel",
+   "dur": 1982,
+   "thumb": "media/yt/uMN3hVe2rm8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uMN3hVe2rm8",
+     "url": "https://www.youtube.com/watch?v=uMN3hVe2rm8",
+     "embed": "https://www.youtube-nocookie.com/embed/uMN3hVe2rm8?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "apple-iigs-sales-demo-circa-1986",
@@ -8461,13 +9524,14 @@
    },
    "pan": 0,
    "collections": [
-    "dividing-engine-original"
+    "dividing-engine-original",
+    "att-archives"
    ],
    "status": "live",
    "n_live": 1,
    "n_total": 1,
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -8709,6 +9773,32 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-9"
+  },
+  {
+   "slug": "att-archives-classroom-messaging",
+   "title": "AT&T Archives: Classroom Messaging (1987)",
+   "name": "AT&T Archives: Classroom Messaging",
+   "year": 1987,
+   "chan": "AT&T Tech Channel",
+   "dur": 442,
+   "thumb": "media/yt/R8Pq41UavJk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "R8Pq41UavJk",
+     "url": "https://www.youtube.com/watch?v=R8Pq41UavJk",
+     "embed": "https://www.youtube-nocookie.com/embed/R8Pq41UavJk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "1987-bbc-micro-live",
@@ -8981,6 +10071,32 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-9"
+  },
+  {
+   "slug": "visionaries-of-bell-labs-circa-1987-att-archives",
+   "title": "Visionaries of Bell Labs, Circa 1987 - AT&T Archives",
+   "name": "Visionaries of Bell Labs, Circa 1987 - AT&T Archives",
+   "year": 1987,
+   "chan": "AT&T Tech Channel",
+   "dur": 915,
+   "thumb": "media/yt/gSkfi7V49hM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "gSkfi7V49hM",
+     "url": "https://www.youtube.com/watch?v=gSkfi7V49hM",
+     "embed": "https://www.youtube-nocookie.com/embed/gSkfi7V49hM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "art-of-computer-animation",
@@ -9383,6 +10499,32 @@
    "era": "era-9"
   },
   {
+   "slug": "let-the-hurricane-begin-uninterrupted-telephone",
+   "title": "Let the Hurricane Begin: Uninterrupted Telephone Service maintained during 1989’s Hurricane Hugo",
+   "name": "Let the Hurricane Begin: Uninterrupted Telephone Service maintained during 1989’s Hurricane Hugo",
+   "year": 1989,
+   "chan": "AT&T Tech Channel",
+   "dur": 329,
+   "thumb": "media/yt/Pvyu5gdPHXg.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Pvyu5gdPHXg",
+     "url": "https://www.youtube.com/watch?v=Pvyu5gdPHXg",
+     "embed": "https://www.youtube-nocookie.com/embed/Pvyu5gdPHXg?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "system-technology-1960",
    "title": "1989 Megahertz Mania",
    "name": "Megahertz Mania",
@@ -9553,6 +10695,32 @@
    "era": "era-9"
   },
   {
+   "slug": "att-archives-live-from-bell-labs-3",
+   "title": "AT&T Archives: Live From Bell Labs (1991)",
+   "name": "AT&T Archives: Live From Bell Labs",
+   "year": 1991,
+   "chan": "AT&T Tech Channel",
+   "dur": 2021,
+   "thumb": "media/yt/MfiNuDmABck.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "MfiNuDmABck",
+     "url": "https://www.youtube.com/watch?v=MfiNuDmABck",
+     "embed": "https://www.youtube-nocookie.com/embed/MfiNuDmABck?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "kids-computers-whats-a-parent-to-do-in-1991-vpri",
    "title": "Kids & Computers: What's a parent to do? in 1991 (VPRI 0441 part 1)",
    "name": "Kids & Computers: What's a parent to do? in 1991 (VPRI 0441 part 1)",
@@ -9641,6 +10809,32 @@
    "n_live": 1,
    "n_total": 1,
    "era": "era-9"
+  },
+  {
+   "slug": "att-archives-live-from-bell-labs-2",
+   "title": "AT&T Archives: Live From Bell Labs (1992)",
+   "name": "AT&T Archives: Live From Bell Labs",
+   "year": 1992,
+   "chan": "AT&T Tech Channel",
+   "dur": 3205,
+   "thumb": "media/yt/vpdzk08rW7A.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "vpdzk08rW7A",
+     "url": "https://www.youtube.com/watch?v=vpdzk08rW7A",
+     "embed": "https://www.youtube-nocookie.com/embed/vpdzk08rW7A?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "computer-room-walking-tour-1992",
@@ -9821,6 +11015,58 @@
     }
    ],
    "era": "era-9"
+  },
+  {
+   "slug": "att-archives-live-from-bell-labs",
+   "title": "AT&T Archives: Live From Bell Labs (1993)",
+   "name": "AT&T Archives: Live From Bell Labs",
+   "year": 1993,
+   "chan": "AT&T Tech Channel",
+   "dur": 3469,
+   "thumb": "media/yt/CMscCYxwawI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "CMscCYxwawI",
+     "url": "https://www.youtube.com/watch?v=CMscCYxwawI",
+     "embed": "https://www.youtube-nocookie.com/embed/CMscCYxwawI?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "atts-vision-of-the-future-circa-1993-att-archive",
+   "title": "AT&T's vision of the future, circa 1993 - AT&T Archives",
+   "name": "AT&T's vision of the future, circa 1993 - AT&T Archives",
+   "year": 1993,
+   "chan": "AT&T Tech Channel",
+   "dur": 879,
+   "thumb": "media/yt/yFWCoeZjx8A.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "yFWCoeZjx8A",
+     "url": "https://www.youtube.com/watch?v=yFWCoeZjx8A",
+     "embed": "https://www.youtube-nocookie.com/embed/yFWCoeZjx8A?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "building-your-future-1993",
@@ -10953,6 +12199,32 @@
    "era": "era-9"
   },
   {
+   "slug": "att-archives-first-born-the-technology-of-2003-p",
+   "title": "AT&T Archives: First Born - The Technology of 2003, Predicted in 1991",
+   "name": "AT&T Archives: First Born - The Technology of 2003, Predicted in 1991",
+   "year": 2003,
+   "chan": "AT&T Tech Channel",
+   "dur": 551,
+   "thumb": "media/yt/1OVjVDf-Uto.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1OVjVDf-Uto",
+     "url": "https://www.youtube.com/watch?v=1OVjVDf-Uto",
+     "embed": "https://www.youtube-nocookie.com/embed/1OVjVDf-Uto?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "apple-future-concept-video-healthcare-in-2008-ma",
    "title": "Apple Future Concept Video - Healthcare in 2008 - Made in1988",
    "name": "Apple Future Concept Video - Healthcare in 2008 - Made in1988",
@@ -11061,6 +12333,31 @@
    "era": "era-10"
   },
   {
+   "slug": "1-eulerian-and-lagrangian-descriptions-in-fluid",
+   "title": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
+   "name": "1. Eulerian and Lagrangian Descriptions in Fluid Mechanics",
+   "chan": "Riccardo Pigazzini",
+   "dur": 1620,
+   "thumb": "media/yt/LAdNZnm-K00.jpg",
+   "collections": [
+    "dividing-engine"
+   ],
+   "status": "live",
+   "added": "2026-08-31",
+   "checked": "2026-08-31",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "LAdNZnm-K00",
+     "url": "https://www.youtube.com/watch?v=LAdNZnm-K00",
+     "embed": "https://www.youtube-nocookie.com/embed/LAdNZnm-K00?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "1960s-general-electric-co-military-computer-data",
    "title": "1960s General Electric Co. Military Computer Data Processing \"systems That Look Ahead\" 55524",
    "name": "1960s General Electric Co. Military Computer Data Processing \"systems That Look Ahead\" 55524",
@@ -11113,6 +12410,58 @@
    "n_live": 1,
    "n_total": 1,
    "raw_title": "1960s PUNCHED CARD DATA PROCESSING / KEY PUNCH MACHINE IBM 029 COMPUTER \"THE KEY PUNCH\" 62464"
+  },
+  {
+   "slug": "1980s-advances-in-robotics-computer-engineering",
+   "title": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
+   "name": "1980s Advances in Robotics & Computer Engineering Educational Film 59924",
+   "chan": "PeriscopeFilm",
+   "dur": 897,
+   "thumb": "media/yt/n44xWyX9k0g.jpg",
+   "collections": [
+    "dividing-engine"
+   ],
+   "status": "live",
+   "added": "2026-08-31",
+   "checked": "2026-08-31",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "n44xWyX9k0g",
+     "url": "https://www.youtube.com/watch?v=n44xWyX9k0g",
+     "embed": "https://www.youtube-nocookie.com/embed/n44xWyX9k0g?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1,
+   "raw_title": "1980s ADVANCES IN ROBOTICS & COMPUTER ENGINEERING EDUCATIONAL FILM 59924"
+  },
+  {
+   "slug": "1980s-soviet-computer-sciences-film-w-es-pevm-ib",
+   "title": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
+   "name": "1980s Soviet Computer Sciences Film w/ Es Pevm IBM PCs Mouse Personal Computer Mainframe Xd13874",
+   "chan": "PeriscopeFilm",
+   "dur": 860,
+   "thumb": "media/yt/EbfEKucN4zU.jpg",
+   "collections": [
+    "dividing-engine"
+   ],
+   "status": "live",
+   "added": "2026-08-31",
+   "checked": "2026-08-31",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EbfEKucN4zU",
+     "url": "https://www.youtube.com/watch?v=EbfEKucN4zU",
+     "embed": "https://www.youtube-nocookie.com/embed/EbfEKucN4zU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1,
+   "raw_title": "1980s SOVIET COMPUTER SCIENCES FILM w/ ES PEVM IBM PCs MOUSE PERSONAL COMPUTER MAINFRAME XD13874"
   },
   {
    "slug": "22-turtlemov",
@@ -11562,6 +12911,32 @@
    "n_total": 1
   },
   {
+   "slug": "apollo-11-astronauts-talk-with-richard-nixon-fro",
+   "title": "Apollo 11 Astronauts Talk With Richard Nixon From the Surface of the Moon - AT&T Archives",
+   "name": "Apollo 11 Astronauts Talk With Richard Nixon From the Surface of the Moon - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 206,
+   "thumb": "media/yt/ieGKIh3koAI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ieGKIh3koAI",
+     "url": "https://www.youtube.com/watch?v=ieGKIh3koAI",
+     "embed": "https://www.youtube-nocookie.com/embed/ieGKIh3koAI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "apple-presents-a-revolutionary-idea-macintosh",
    "title": "Apple Presents a Revolutionary Idea: Macintosh",
    "name": "Apple Presents a Revolutionary Idea: Macintosh",
@@ -11926,6 +13301,1384 @@
    "n_total": 1
   },
   {
+   "slug": "att-archives-mr-digit-and-the-battle-of-bubbling",
+   "title": "AT&T Archives : Mr. Digit and the Battle of Bubbling Brook",
+   "name": "AT&T Archives : Mr. Digit and the Battle of Bubbling Brook",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1041,
+   "thumb": "media/yt/EdW4FFMZrfU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EdW4FFMZrfU",
+     "url": "https://www.youtube.com/watch?v=EdW4FFMZrfU",
+     "embed": "https://www.youtube-nocookie.com/embed/EdW4FFMZrfU?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-100th-anniversary-of-the-payphone",
+   "title": "AT&T Archives: 100th Anniversary of the Payphone",
+   "name": "AT&T Archives: 100th Anniversary of the Payphone",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 277,
+   "thumb": "media/yt/3m8hPm4YqxI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3m8hPm4YqxI",
+     "url": "https://www.youtube.com/watch?v=3m8hPm4YqxI",
+     "embed": "https://www.youtube-nocookie.com/embed/3m8hPm4YqxI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-1960s-auto-safety-film",
+   "title": "AT&T Archives: 1960s Auto Safety Film",
+   "name": "AT&T Archives: 1960s Auto Safety Film",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 569,
+   "thumb": "media/yt/ncfCZX0uFZ4.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ncfCZX0uFZ4",
+     "url": "https://www.youtube.com/watch?v=ncfCZX0uFZ4",
+     "embed": "https://www.youtube-nocookie.com/embed/ncfCZX0uFZ4?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-600-million-calls-a-day",
+   "title": "AT&T Archives: 600 Million Calls A Day",
+   "name": "AT&T Archives: 600 Million Calls A Day",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 816,
+   "thumb": "media/yt/HxB8xh5LiLs.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "HxB8xh5LiLs",
+     "url": "https://www.youtube.com/watch?v=HxB8xh5LiLs",
+     "embed": "https://www.youtube-nocookie.com/embed/HxB8xh5LiLs?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-a-20-year-history-of-antiballistic",
+   "title": "AT&T Archives: A 20-year History of Antiballistic Missile Systems",
+   "name": "AT&T Archives: A 20-year History of Antiballistic Missile Systems",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 2936,
+   "thumb": "media/yt/ARx2-wRn9-Y.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ARx2-wRn9-Y",
+     "url": "https://www.youtube.com/watch?v=ARx2-wRn9-Y",
+     "embed": "https://www.youtube-nocookie.com/embed/ARx2-wRn9-Y?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-a-continent-is-bridged",
+   "title": "AT&T Archives: A Continent is Bridged",
+   "name": "AT&T Archives: A Continent is Bridged",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 648,
+   "thumb": "media/yt/OxO7-EUYpq0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "OxO7-EUYpq0",
+     "url": "https://www.youtube.com/watch?v=OxO7-EUYpq0",
+     "embed": "https://www.youtube-nocookie.com/embed/OxO7-EUYpq0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-a-microprocessor-for-the-informatio",
+   "title": "AT&T Archives: A Microprocessor for the Information Age",
+   "name": "AT&T Archives: A Microprocessor for the Information Age",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 331,
+   "thumb": "media/yt/JnSS5qI3Cwo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "JnSS5qI3Cwo",
+     "url": "https://www.youtube.com/watch?v=JnSS5qI3Cwo",
+     "embed": "https://www.youtube-nocookie.com/embed/JnSS5qI3Cwo?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-a-million-times-a-day",
+   "title": "AT&T Archives: A Million Times a Day",
+   "name": "AT&T Archives: A Million Times a Day",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 393,
+   "thumb": "media/yt/xH0n_8uJEEI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xH0n_8uJEEI",
+     "url": "https://www.youtube.com/watch?v=xH0n_8uJEEI",
+     "embed": "https://www.youtube-nocookie.com/embed/xH0n_8uJEEI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-a-model-for-living",
+   "title": "AT&T Archives: A Model for Living",
+   "name": "AT&T Archives: A Model for Living",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 879,
+   "thumb": "media/yt/ruopvlJ5aLo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ruopvlJ5aLo",
+     "url": "https://www.youtube.com/watch?v=ruopvlJ5aLo",
+     "embed": "https://www.youtube-nocookie.com/embed/ruopvlJ5aLo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-a-modern-knight",
+   "title": "AT&T Archives: A Modern Knight",
+   "name": "AT&T Archives: A Modern Knight",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1343,
+   "thumb": "media/yt/y9X2s7UgjPk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "y9X2s7UgjPk",
+     "url": "https://www.youtube.com/watch?v=y9X2s7UgjPk",
+     "embed": "https://www.youtube-nocookie.com/embed/y9X2s7UgjPk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-a-voice-for-the-farm",
+   "title": "AT&T Archives: A Voice for the Farm",
+   "name": "AT&T Archives: A Voice for the Farm",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1008,
+   "thumb": "media/yt/HO37_MvZOTM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "HO37_MvZOTM",
+     "url": "https://www.youtube.com/watch?v=HO37_MvZOTM",
+     "embed": "https://www.youtube-nocookie.com/embed/HO37_MvZOTM?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-adventure-in-telezonia",
+   "title": "AT&T Archives: Adventure In Telezonia",
+   "name": "AT&T Archives: Adventure In Telezonia",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1099,
+   "thumb": "media/yt/UlYDjv6pCCs.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "UlYDjv6pCCs",
+     "url": "https://www.youtube.com/watch?v=UlYDjv6pCCs",
+     "embed": "https://www.youtube-nocookie.com/embed/UlYDjv6pCCs?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-all-kinds-of-people",
+   "title": "AT&T Archives: All Kinds of People",
+   "name": "AT&T Archives: All Kinds of People",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1662,
+   "thumb": "media/yt/L1wCnmoUxzE.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "L1wCnmoUxzE",
+     "url": "https://www.youtube.com/watch?v=L1wCnmoUxzE",
+     "embed": "https://www.youtube-nocookie.com/embed/L1wCnmoUxzE?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-arctic-mission",
+   "title": "AT&T Archives: Arctic Mission",
+   "name": "AT&T Archives: Arctic Mission",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1149,
+   "thumb": "media/yt/JUtpE6zJJzI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "JUtpE6zJJzI",
+     "url": "https://www.youtube.com/watch?v=JUtpE6zJJzI",
+     "embed": "https://www.youtube-nocookie.com/embed/JUtpE6zJJzI?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-att-jubilee-tv-spots-for-the-100th",
+   "title": "AT&T Archives: AT&T Jubilee - TV Spots for the 100th Anniversary of the Telephone",
+   "name": "AT&T Archives: AT&T Jubilee - TV Spots for the 100th Anniversary of the Telephone",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 590,
+   "thumb": "media/yt/IsQ7vvcWGDY.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IsQ7vvcWGDY",
+     "url": "https://www.youtube.com/watch?v=IsQ7vvcWGDY",
+     "embed": "https://www.youtube-nocookie.com/embed/IsQ7vvcWGDY?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-atlantic-city-a-city-in-motion",
+   "title": "AT&T Archives: Atlantic City, a City in Motion",
+   "name": "AT&T Archives: Atlantic City, a City in Motion",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 520,
+   "thumb": "media/yt/m-lm9kretig.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "m-lm9kretig",
+     "url": "https://www.youtube.com/watch?v=m-lm9kretig",
+     "embed": "https://www.youtube-nocookie.com/embed/m-lm9kretig?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-ballad-for-the-fair",
+   "title": "AT&T Archives: Ballad for the Fair",
+   "name": "AT&T Archives: Ballad for the Fair",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 853,
+   "thumb": "media/yt/47xTOTFoTfc.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "47xTOTFoTfc",
+     "url": "https://www.youtube.com/watch?v=47xTOTFoTfc",
+     "embed": "https://www.youtube-nocookie.com/embed/47xTOTFoTfc?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-birthplace-of-the-sound-motion-pict",
+   "title": "AT&T Archives: Birthplace of the Sound Motion Picture",
+   "name": "AT&T Archives: Birthplace of the Sound Motion Picture",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 623,
+   "thumb": "media/yt/fyMaqS_rN3s.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "fyMaqS_rN3s",
+     "url": "https://www.youtube.com/watch?v=fyMaqS_rN3s",
+     "embed": "https://www.youtube-nocookie.com/embed/fyMaqS_rN3s?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-bottle-of-magic-bonus-edition",
+   "title": "AT&T Archives: Bottle of Magic (Bonus Edition)",
+   "name": "AT&T Archives: Bottle of Magic (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 908,
+   "thumb": "media/yt/Ul2cKZCz67Y.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Ul2cKZCz67Y",
+     "url": "https://www.youtube.com/watch?v=Ul2cKZCz67Y",
+     "embed": "https://www.youtube-nocookie.com/embed/Ul2cKZCz67Y?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-careers-toll-operator",
+   "title": "AT&T Archives: Careers - Toll Operator",
+   "name": "AT&T Archives: Careers - Toll Operator",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 257,
+   "thumb": "media/yt/Aw7xFtgGbPE.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Aw7xFtgGbPE",
+     "url": "https://www.youtube.com/watch?v=Aw7xFtgGbPE",
+     "embed": "https://www.youtube-nocookie.com/embed/Aw7xFtgGbPE?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-charlie-magnetico-by-jim-henson",
+   "title": "AT&T Archives: Charlie Magnetico, by Jim Henson",
+   "name": "AT&T Archives: Charlie Magnetico, by Jim Henson",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 439,
+   "thumb": "media/yt/CuLUWQRh-po.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "CuLUWQRh-po",
+     "url": "https://www.youtube.com/watch?v=CuLUWQRh-po",
+     "embed": "https://www.youtube-nocookie.com/embed/CuLUWQRh-po?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-crystal-clear",
+   "title": "AT&T Archives: Crystal Clear",
+   "name": "AT&T Archives: Crystal Clear",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 581,
+   "thumb": "media/yt/uve2ZJmV4dk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uve2ZJmV4dk",
+     "url": "https://www.youtube.com/watch?v=uve2ZJmV4dk",
+     "embed": "https://www.youtube-nocookie.com/embed/uve2ZJmV4dk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-design-line-fashions",
+   "title": "AT&T Archives: Design Line Fashions",
+   "name": "AT&T Archives: Design Line Fashions",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 539,
+   "thumb": "media/yt/CyVe3dD-1mE.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "CyVe3dD-1mE",
+     "url": "https://www.youtube.com/watch?v=CyVe3dD-1mE",
+     "embed": "https://www.youtube-nocookie.com/embed/CyVe3dD-1mE?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-dialing-the-nation",
+   "title": "AT&T Archives: Dialing the Nation",
+   "name": "AT&T Archives: Dialing the Nation",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 602,
+   "thumb": "media/yt/C7YM9Sz9wxo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "C7YM9Sz9wxo",
+     "url": "https://www.youtube.com/watch?v=C7YM9Sz9wxo",
+     "embed": "https://www.youtube-nocookie.com/embed/C7YM9Sz9wxo?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-dr-thomas-watson-and-5-grandchildre",
+   "title": "AT&T Archives: Dr. Thomas Watson and 5 Grandchildren",
+   "name": "AT&T Archives: Dr. Thomas Watson and 5 Grandchildren",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 752,
+   "thumb": "media/yt/G1RvZj7Ay1M.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "G1RvZj7Ay1M",
+     "url": "https://www.youtube.com/watch?v=G1RvZj7Ay1M",
+     "embed": "https://www.youtube-nocookie.com/embed/G1RvZj7Ay1M?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-dr-walter-brattain-on-semiconductor",
+   "title": "AT&T Archives: Dr. Walter Brattain on Semiconductor Physics",
+   "name": "AT&T Archives: Dr. Walter Brattain on Semiconductor Physics",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1753,
+   "thumb": "media/yt/Cdr89n_nf9Y.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Cdr89n_nf9Y",
+     "url": "https://www.youtube.com/watch?v=Cdr89n_nf9Y",
+     "embed": "https://www.youtube-nocookie.com/embed/Cdr89n_nf9Y?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-draw-me-a-telephone",
+   "title": "AT&T Archives: Draw Me a Telephone",
+   "name": "AT&T Archives: Draw Me a Telephone",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 751,
+   "thumb": "media/yt/38Q0mLJ7aQo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "38Q0mLJ7aQo",
+     "url": "https://www.youtube.com/watch?v=38Q0mLJ7aQo",
+     "embed": "https://www.youtube-nocookie.com/embed/38Q0mLJ7aQo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-epcot-center-opens",
+   "title": "AT&T Archives: Epcot Center Opens",
+   "name": "AT&T Archives: Epcot Center Opens",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 473,
+   "thumb": "media/yt/U-klktqttzU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "U-klktqttzU",
+     "url": "https://www.youtube.com/watch?v=U-klktqttzU",
+     "embed": "https://www.youtube-nocookie.com/embed/U-klktqttzU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-experiments",
+   "title": "AT&T Archives: Experiments",
+   "name": "AT&T Archives: Experiments",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 411,
+   "thumb": "media/yt/5Nuv_uSUjj0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "5Nuv_uSUjj0",
+     "url": "https://www.youtube.com/watch?v=5Nuv_uSUjj0",
+     "embed": "https://www.youtube-nocookie.com/embed/5Nuv_uSUjj0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-family-affair",
+   "title": "AT&T Archives: Family Affair",
+   "name": "AT&T Archives: Family Affair",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1651,
+   "thumb": "media/yt/H7BiihzcxkQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "H7BiihzcxkQ",
+     "url": "https://www.youtube.com/watch?v=H7BiihzcxkQ",
+     "embed": "https://www.youtube-nocookie.com/embed/H7BiihzcxkQ?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-far-speaking",
+   "title": "AT&T Archives: Far Speaking",
+   "name": "AT&T Archives: Far Speaking",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 661,
+   "thumb": "media/yt/EYeWvU9vnCA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EYeWvU9vnCA",
+     "url": "https://www.youtube.com/watch?v=EYeWvU9vnCA",
+     "embed": "https://www.youtube-nocookie.com/embed/EYeWvU9vnCA?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-finding-his-voice",
+   "title": "AT&T Archives: Finding His Voice",
+   "name": "AT&T Archives: Finding His Voice",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 660,
+   "thumb": "media/yt/Cg6Ndh34Nxc.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Cg6Ndh34Nxc",
+     "url": "https://www.youtube.com/watch?v=Cg6Ndh34Nxc",
+     "embed": "https://www.youtube-nocookie.com/embed/Cg6Ndh34Nxc?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-flood-waters",
+   "title": "AT&T Archives: Flood Waters",
+   "name": "AT&T Archives: Flood Waters",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 661,
+   "thumb": "media/yt/eqeseGtyxMo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "eqeseGtyxMo",
+     "url": "https://www.youtube.com/watch?v=eqeseGtyxMo",
+     "embed": "https://www.youtube-nocookie.com/embed/eqeseGtyxMo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-gateway-to-the-world",
+   "title": "AT&T Archives: Gateway to the World",
+   "name": "AT&T Archives: Gateway to the World",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 642,
+   "thumb": "media/yt/USc9dxsHCnY.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "USc9dxsHCnY",
+     "url": "https://www.youtube.com/watch?v=USc9dxsHCnY",
+     "embed": "https://www.youtube-nocookie.com/embed/USc9dxsHCnY?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-genesis-of-the-transistor",
+   "title": "AT&T Archives: Genesis of the Transistor",
+   "name": "AT&T Archives: Genesis of the Transistor",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 905,
+   "thumb": "media/yt/WiQvGRjrLnU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "WiQvGRjrLnU",
+     "url": "https://www.youtube.com/watch?v=WiQvGRjrLnU",
+     "embed": "https://www.youtube-nocookie.com/embed/WiQvGRjrLnU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-good-bye-central",
+   "title": "AT&T Archives: Good-Bye, Central",
+   "name": "AT&T Archives: Good-Bye, Central",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 464,
+   "thumb": "media/yt/7qLU_urEYVE.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "7qLU_urEYVE",
+     "url": "https://www.youtube.com/watch?v=7qLU_urEYVE",
+     "embed": "https://www.youtube-nocookie.com/embed/7qLU_urEYVE?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-how-did-you-do-that",
+   "title": "AT&T Archives: How Did You Do That?",
+   "name": "AT&T Archives: How Did You Do That?",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 466,
+   "thumb": "media/yt/rXGI0jdv5Aw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "rXGI0jdv5Aw",
+     "url": "https://www.youtube.com/watch?v=rXGI0jdv5Aw",
+     "embed": "https://www.youtube-nocookie.com/embed/rXGI0jdv5Aw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-in-the-merrimack-valley",
+   "title": "AT&T Archives: In the Merrimack Valley",
+   "name": "AT&T Archives: In the Merrimack Valley",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 756,
+   "thumb": "media/yt/5K3cDli8KYs.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "5K3cDli8KYs",
+     "url": "https://www.youtube.com/watch?v=5K3cDli8KYs",
+     "embed": "https://www.youtube-nocookie.com/embed/5K3cDli8KYs?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-incredible-machine",
+   "title": "AT&T Archives: Incredible Machine",
+   "name": "AT&T Archives: Incredible Machine",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 896,
+   "thumb": "media/yt/_iiQtdXMnBg.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_iiQtdXMnBg",
+     "url": "https://www.youtube.com/watch?v=_iiQtdXMnBg",
+     "embed": "https://www.youtube-nocookie.com/embed/_iiQtdXMnBg?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-infoquest-center",
+   "title": "AT&T Archives: Infoquest Center",
+   "name": "AT&T Archives: Infoquest Center",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 403,
+   "thumb": "media/yt/tPLpvvWcaV0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "tPLpvvWcaV0",
+     "url": "https://www.youtube.com/watch?v=tPLpvvWcaV0",
+     "embed": "https://www.youtube-nocookie.com/embed/tPLpvvWcaV0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-introduction-to-the-dial-telephone",
+   "title": "AT&T Archives: Introduction to the Dial Telephone",
+   "name": "AT&T Archives: Introduction to the Dial Telephone",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 84,
+   "thumb": "media/yt/uaQm30DDHL8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uaQm30DDHL8",
+     "url": "https://www.youtube.com/watch?v=uaQm30DDHL8",
+     "embed": "https://www.youtube-nocookie.com/embed/uaQm30DDHL8?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-inventing-the-laser-at-bell-labs",
+   "title": "AT&T Archives: Inventing the Laser at Bell Labs",
+   "name": "AT&T Archives: Inventing the Laser at Bell Labs",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 710,
+   "thumb": "media/yt/G4zMT3Mknm0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "G4zMT3Mknm0",
+     "url": "https://www.youtube.com/watch?v=G4zMT3Mknm0",
+     "embed": "https://www.youtube-nocookie.com/embed/G4zMT3Mknm0?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-invention-of-the-first-electric-com",
+   "title": "AT&T Archives: Invention of the First Electric Computer",
+   "name": "AT&T Archives: Invention of the First Electric Computer",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 479,
+   "thumb": "media/yt/a4bhZYoY3lo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "a4bhZYoY3lo",
+     "url": "https://www.youtube.com/watch?v=a4bhZYoY3lo",
+     "embed": "https://www.youtube-nocookie.com/embed/a4bhZYoY3lo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-krystallos",
+   "title": "AT&T Archives: Krystallos",
+   "name": "AT&T Archives: Krystallos",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 664,
+   "thumb": "media/yt/aXer6u49AEY.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "aXer6u49AEY",
+     "url": "https://www.youtube.com/watch?v=aXer6u49AEY",
+     "embed": "https://www.youtube-nocookie.com/embed/aXer6u49AEY?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-laser",
+   "title": "AT&T Archives: Laser",
+   "name": "AT&T Archives: Laser",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 636,
+   "thumb": "media/yt/N8dMr7sqWkI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "N8dMr7sqWkI",
+     "url": "https://www.youtube.com/watch?v=N8dMr7sqWkI",
+     "embed": "https://www.youtube-nocookie.com/embed/N8dMr7sqWkI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-lasers-unlimited",
+   "title": "AT&T Archives: Lasers Unlimited",
+   "name": "AT&T Archives: Lasers Unlimited",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 636,
+   "thumb": "media/yt/NoiZZJ2epkw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "NoiZZJ2epkw",
+     "url": "https://www.youtube.com/watch?v=NoiZZJ2epkw",
+     "embed": "https://www.youtube-nocookie.com/embed/NoiZZJ2epkw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-lasers-unlimited-bonus-edition",
+   "title": "AT&T Archives: Lasers Unlimited (Bonus Edition)",
+   "name": "AT&T Archives: Lasers Unlimited (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 786,
+   "thumb": "media/yt/SKCrOsrc8Hs.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SKCrOsrc8Hs",
+     "url": "https://www.youtube.com/watch?v=SKCrOsrc8Hs",
+     "embed": "https://www.youtube-nocookie.com/embed/SKCrOsrc8Hs?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-lightwave",
+   "title": "AT&T Archives: Lightwave",
+   "name": "AT&T Archives: Lightwave",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 627,
+   "thumb": "media/yt/FKhT4nPQ-x8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "FKhT4nPQ-x8",
+     "url": "https://www.youtube.com/watch?v=FKhT4nPQ-x8",
+     "embed": "https://www.youtube-nocookie.com/embed/FKhT4nPQ-x8?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-lightwave-video-disc-exhibit",
+   "title": "AT&T Archives: Lightwave Video Disc Exhibit",
+   "name": "AT&T Archives: Lightwave Video Disc Exhibit",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 580,
+   "thumb": "media/yt/Oiuon4YR8UI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Oiuon4YR8UI",
+     "url": "https://www.youtube.com/watch?v=Oiuon4YR8UI",
+     "embed": "https://www.youtube-nocookie.com/embed/Oiuon4YR8UI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-link-to-the-north",
+   "title": "AT&T Archives: Link to the North",
+   "name": "AT&T Archives: Link to the North",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 641,
+   "thumb": "media/yt/Nq93WNt9gxc.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Nq93WNt9gxc",
+     "url": "https://www.youtube.com/watch?v=Nq93WNt9gxc",
+     "embed": "https://www.youtube-nocookie.com/embed/Nq93WNt9gxc?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-listen-to-this",
+   "title": "AT&T Archives: Listen to This",
+   "name": "AT&T Archives: Listen to This",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 930,
+   "thumb": "media/yt/Ac1DywxXfuc.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Ac1DywxXfuc",
+     "url": "https://www.youtube.com/watch?v=Ac1DywxXfuc",
+     "embed": "https://www.youtube-nocookie.com/embed/Ac1DywxXfuc?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-matter-waves-holden-and-germer-on-w",
+   "title": "AT&T Archives: Matter Waves, Holden and Germer on Wave Nature and the Davisson-Germer Experiment",
+   "name": "AT&T Archives: Matter Waves, Holden and Germer on Wave Nature and the Davisson-Germer Experiment",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1730,
+   "thumb": "media/yt/szGJnpNowqw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "szGJnpNowqw",
+     "url": "https://www.youtube.com/watch?v=szGJnpNowqw",
+     "embed": "https://www.youtube-nocookie.com/embed/szGJnpNowqw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-microelectronics-video-disc-exhibit",
+   "title": "AT&T Archives: Microelectronics Video Disc Exhibit",
+   "name": "AT&T Archives: Microelectronics Video Disc Exhibit",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 595,
+   "thumb": "media/yt/aRTJqnXr8tM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "aRTJqnXr8tM",
+     "url": "https://www.youtube.com/watch?v=aRTJqnXr8tM",
+     "embed": "https://www.youtube-nocookie.com/embed/aRTJqnXr8tM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "att-archives-microworld",
    "title": "AT&T Archives: Microworld",
    "name": "AT&T Archives: Microworld",
@@ -11934,11 +14687,12 @@
    "dur": 884,
    "thumb": "media/yt/q2kd1B0Ybto.jpg",
    "collections": [
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -11971,6 +14725,1384 @@
      "id": "8qD9VDC-LnE",
      "url": "https://www.youtube.com/watch?v=8qD9VDC-LnE",
      "embed": "https://www.youtube-nocookie.com/embed/8qD9VDC-LnE?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-modern-caravans",
+   "title": "AT&T Archives: Modern Caravans",
+   "name": "AT&T Archives: Modern Caravans",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 591,
+   "thumb": "media/yt/XOFTThghxlA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "XOFTThghxlA",
+     "url": "https://www.youtube.com/watch?v=XOFTThghxlA",
+     "embed": "https://www.youtube-nocookie.com/embed/XOFTThghxlA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-music-in-motion",
+   "title": "AT&T Archives: Music In Motion",
+   "name": "AT&T Archives: Music In Motion",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1263,
+   "thumb": "media/yt/iPHd1d3fRCg.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "iPHd1d3fRCg",
+     "url": "https://www.youtube.com/watch?v=iPHd1d3fRCg",
+     "embed": "https://www.youtube-nocookie.com/embed/iPHd1d3fRCg?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-nassau-recycling-corp",
+   "title": "AT&T Archives: Nassau Recycling Corp",
+   "name": "AT&T Archives: Nassau Recycling Corp",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 740,
+   "thumb": "media/yt/l1Ue5qqEK1s.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "l1Ue5qqEK1s",
+     "url": "https://www.youtube.com/watch?v=l1Ue5qqEK1s",
+     "embed": "https://www.youtube-nocookie.com/embed/l1Ue5qqEK1s?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-neighborhood",
+   "title": "AT&T Archives: Neighborhood",
+   "name": "AT&T Archives: Neighborhood",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 713,
+   "thumb": "media/yt/MPdKKRYGf1U.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "MPdKKRYGf1U",
+     "url": "https://www.youtube.com/watch?v=MPdKKRYGf1U",
+     "embed": "https://www.youtube-nocookie.com/embed/MPdKKRYGf1U?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-nike-zeus-missile-program-bonus-edi",
+   "title": "AT&T Archives: Nike Zeus Missile Program (Bonus Edition)",
+   "name": "AT&T Archives: Nike Zeus Missile Program (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1048,
+   "thumb": "media/yt/wPgrHknaq08.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "wPgrHknaq08",
+     "url": "https://www.youtube.com/watch?v=wPgrHknaq08",
+     "embed": "https://www.youtube-nocookie.com/embed/wPgrHknaq08?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-nike-zeus-missile-system",
+   "title": "AT&T Archives: Nike Zeus Missile System",
+   "name": "AT&T Archives: Nike Zeus Missile System",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 925,
+   "thumb": "media/yt/IcyBBSZJURk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IcyBBSZJURk",
+     "url": "https://www.youtube.com/watch?v=IcyBBSZJURk",
+     "embed": "https://www.youtube-nocookie.com/embed/IcyBBSZJURk?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-now-you-can-dial",
+   "title": "AT&T Archives: Now You Can Dial",
+   "name": "AT&T Archives: Now You Can Dial",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 591,
+   "thumb": "media/yt/KSTOT7RBkNc.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "KSTOT7RBkNc",
+     "url": "https://www.youtube.com/watch?v=KSTOT7RBkNc",
+     "embed": "https://www.youtube-nocookie.com/embed/KSTOT7RBkNc?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-now-you-can-dial-bonus-edition",
+   "title": "AT&T Archives: Now You Can Dial (Bonus Edition)",
+   "name": "AT&T Archives: Now You Can Dial (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 684,
+   "thumb": "media/yt/1Is9s9PgQFM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1Is9s9PgQFM",
+     "url": "https://www.youtube.com/watch?v=1Is9s9PgQFM",
+     "embed": "https://www.youtube-nocookie.com/embed/1Is9s9PgQFM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-once-upon-a-honeymoon",
+   "title": "AT&T Archives: Once Upon a Honeymoon",
+   "name": "AT&T Archives: Once Upon a Honeymoon",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 875,
+   "thumb": "media/yt/ZM9CZEIg8M4.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ZM9CZEIg8M4",
+     "url": "https://www.youtube.com/watch?v=ZM9CZEIg8M4",
+     "embed": "https://www.youtube-nocookie.com/embed/ZM9CZEIg8M4?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-operation-desert-switch",
+   "title": "AT&T Archives: Operation Desert Switch",
+   "name": "AT&T Archives: Operation Desert Switch",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1024,
+   "thumb": "media/yt/8bNGi4SQuHo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "8bNGi4SQuHo",
+     "url": "https://www.youtube.com/watch?v=8bNGi4SQuHo",
+     "embed": "https://www.youtube-nocookie.com/embed/8bNGi4SQuHo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-pathways",
+   "title": "AT&T Archives: Pathways",
+   "name": "AT&T Archives: Pathways",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1415,
+   "thumb": "media/yt/B3pWpdkdUCI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "B3pWpdkdUCI",
+     "url": "https://www.youtube.com/watch?v=B3pWpdkdUCI",
+     "embed": "https://www.youtube-nocookie.com/embed/B3pWpdkdUCI?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-pollution",
+   "title": "AT&T Archives: Pollution",
+   "name": "AT&T Archives: Pollution",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 298,
+   "thumb": "media/yt/5OrdjPbfS30.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "5OrdjPbfS30",
+     "url": "https://www.youtube.com/watch?v=5OrdjPbfS30",
+     "embed": "https://www.youtube-nocookie.com/embed/5OrdjPbfS30?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-principles-of-the-optical-maser",
+   "title": "AT&T Archives: Principles of the Optical Maser",
+   "name": "AT&T Archives: Principles of the Optical Maser",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1748,
+   "thumb": "media/yt/vuORqMb481k.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "vuORqMb481k",
+     "url": "https://www.youtube.com/watch?v=vuORqMb481k",
+     "embed": "https://www.youtube-nocookie.com/embed/vuORqMb481k?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-principles-of-the-optical-maser-bon",
+   "title": "AT&T Archives: Principles of the Optical Maser (Bonus Edition)",
+   "name": "AT&T Archives: Principles of the Optical Maser (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1873,
+   "thumb": "media/yt/PusNutZMGB8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "PusNutZMGB8",
+     "url": "https://www.youtube.com/watch?v=PusNutZMGB8",
+     "embed": "https://www.youtube-nocookie.com/embed/PusNutZMGB8?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-restoring-the-spirit-of-communicati",
+   "title": "AT&T Archives: Restoring the Spirit of Communications Statue",
+   "name": "AT&T Archives: Restoring the Spirit of Communications Statue",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 432,
+   "thumb": "media/yt/8orFhs--AXU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "8orFhs--AXU",
+     "url": "https://www.youtube.com/watch?v=8orFhs--AXU",
+     "embed": "https://www.youtube-nocookie.com/embed/8orFhs--AXU?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-robot-by-jim-henson",
+   "title": "AT&T Archives: Robot, by Jim Henson",
+   "name": "AT&T Archives: Robot, by Jim Henson",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 199,
+   "thumb": "media/yt/ivJNNwTGDcw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ivJNNwTGDcw",
+     "url": "https://www.youtube.com/watch?v=ivJNNwTGDcw",
+     "embed": "https://www.youtube-nocookie.com/embed/ivJNNwTGDcw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-saul-bass-pitch-video-for-bell-syst",
+   "title": "AT&T Archives: Saul Bass Pitch Video for Bell System Logo Redesign",
+   "name": "AT&T Archives: Saul Bass Pitch Video for Bell System Logo Redesign",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1619,
+   "thumb": "media/yt/xKu2de0yCJI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xKu2de0yCJI",
+     "url": "https://www.youtube.com/watch?v=xKu2de0yCJI",
+     "embed": "https://www.youtube-nocookie.com/embed/xKu2de0yCJI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-seconds-for-survival",
+   "title": "AT&T Archives: Seconds for Survival",
+   "name": "AT&T Archives: Seconds for Survival",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1688,
+   "thumb": "media/yt/Uc23jNE51KQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Uc23jNE51KQ",
+     "url": "https://www.youtube.com/watch?v=Uc23jNE51KQ",
+     "embed": "https://www.youtube-nocookie.com/embed/Uc23jNE51KQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-similiarities-of-wave-behavior-bonu",
+   "title": "AT&T Archives: Similiarities of Wave Behavior (Bonus Edition)",
+   "name": "AT&T Archives: Similiarities of Wave Behavior (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1682,
+   "thumb": "media/yt/DovunOxlY1k.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "DovunOxlY1k",
+     "url": "https://www.youtube.com/watch?v=DovunOxlY1k",
+     "embed": "https://www.youtube-nocookie.com/embed/DovunOxlY1k?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-stepping-along-with-television",
+   "title": "AT&T Archives: Stepping Along with Television",
+   "name": "AT&T Archives: Stepping Along with Television",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 660,
+   "thumb": "media/yt/6jYm2SVZIPk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "6jYm2SVZIPk",
+     "url": "https://www.youtube.com/watch?v=6jYm2SVZIPk",
+     "embed": "https://www.youtube-nocookie.com/embed/6jYm2SVZIPk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-submarine-cable-systems-development",
+   "title": "AT&T Archives: Submarine Cable Systems Development",
+   "name": "AT&T Archives: Submarine Cable Systems Development",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1085,
+   "thumb": "media/yt/QVRL4UcT1sQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "QVRL4UcT1sQ",
+     "url": "https://www.youtube.com/watch?v=QVRL4UcT1sQ",
+     "embed": "https://www.youtube-nocookie.com/embed/QVRL4UcT1sQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-switchboards-old-and-new-bonus-edit",
+   "title": "AT&T Archives: Switchboards, Old and New (Bonus Edition)",
+   "name": "AT&T Archives: Switchboards, Old and New (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 800,
+   "thumb": "media/yt/xJ1fKFqt7qU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xJ1fKFqt7qU",
+     "url": "https://www.youtube.com/watch?v=xJ1fKFqt7qU",
+     "embed": "https://www.youtube-nocookie.com/embed/xJ1fKFqt7qU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-telephone-courtesy",
+   "title": "AT&T Archives: Telephone Courtesy",
+   "name": "AT&T Archives: Telephone Courtesy",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1468,
+   "thumb": "media/yt/UudfzQRN3GQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "UudfzQRN3GQ",
+     "url": "https://www.youtube.com/watch?v=UudfzQRN3GQ",
+     "embed": "https://www.youtube-nocookie.com/embed/UudfzQRN3GQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-telezonia",
+   "title": "AT&T Archives: Telezonia",
+   "name": "AT&T Archives: Telezonia",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1607,
+   "thumb": "media/yt/YNxJPYP-ajQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "YNxJPYP-ajQ",
+     "url": "https://www.youtube.com/watch?v=YNxJPYP-ajQ",
+     "embed": "https://www.youtube-nocookie.com/embed/YNxJPYP-ajQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-telezonia-bonus-edition",
+   "title": "AT&T Archives: Telezonia (Bonus Edition)",
+   "name": "AT&T Archives: Telezonia (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1695,
+   "thumb": "media/yt/50mGICqvkfA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "50mGICqvkfA",
+     "url": "https://www.youtube.com/watch?v=50mGICqvkfA",
+     "embed": "https://www.youtube-nocookie.com/embed/50mGICqvkfA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-telstar",
+   "title": "AT&T Archives: Telstar!",
+   "name": "AT&T Archives: Telstar!",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1643,
+   "thumb": "media/yt/uKH-GijnAGk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uKH-GijnAGk",
+     "url": "https://www.youtube.com/watch?v=uKH-GijnAGk",
+     "embed": "https://www.youtube-nocookie.com/embed/uKH-GijnAGk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-testing-the-first-public-cell-netwo",
+   "title": "AT&T Archives: Testing the First Public Cell Network",
+   "name": "AT&T Archives: Testing the First Public Cell Network",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 517,
+   "thumb": "media/yt/ecl2ZO2MnTI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ecl2ZO2MnTI",
+     "url": "https://www.youtube.com/watch?v=ecl2ZO2MnTI",
+     "embed": "https://www.youtube-nocookie.com/embed/ecl2ZO2MnTI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-that-little-big-fellow",
+   "title": "AT&T Archives: That Little Big Fellow",
+   "name": "AT&T Archives: That Little Big Fellow",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 646,
+   "thumb": "media/yt/eroI30Lfv6Q.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "eroI30Lfv6Q",
+     "url": "https://www.youtube.com/watch?v=eroI30Lfv6Q",
+     "embed": "https://www.youtube-nocookie.com/embed/eroI30Lfv6Q?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-bell-solar-battery",
+   "title": "AT&T Archives: The Bell Solar Battery",
+   "name": "AT&T Archives: The Bell Solar Battery",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 696,
+   "thumb": "media/yt/3I1JhyOahIw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3I1JhyOahIw",
+     "url": "https://www.youtube.com/watch?v=3I1JhyOahIw",
+     "embed": "https://www.youtube-nocookie.com/embed/3I1JhyOahIw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-case-of-the-missing-telephone",
+   "title": "AT&T Archives: The Case of the Missing Telephone",
+   "name": "AT&T Archives: The Case of the Missing Telephone",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1036,
+   "thumb": "media/yt/cCBFUZWqJ4I.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "cCBFUZWqJ4I",
+     "url": "https://www.youtube.com/watch?v=cCBFUZWqJ4I",
+     "embed": "https://www.youtube-nocookie.com/embed/cCBFUZWqJ4I?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-dew-line-bonus-edition",
+   "title": "AT&T Archives: The Dew Line (Bonus Edition)",
+   "name": "AT&T Archives: The Dew Line (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1818,
+   "thumb": "media/yt/q7hFJZf9fWk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "q7hFJZf9fWk",
+     "url": "https://www.youtube.com/watch?v=q7hFJZf9fWk",
+     "embed": "https://www.youtube-nocookie.com/embed/q7hFJZf9fWk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-driving-difference",
+   "title": "AT&T Archives: The Driving Difference",
+   "name": "AT&T Archives: The Driving Difference",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1043,
+   "thumb": "media/yt/NYeed-efNJk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "NYeed-efNJk",
+     "url": "https://www.youtube.com/watch?v=NYeed-efNJk",
+     "embed": "https://www.youtube-nocookie.com/embed/NYeed-efNJk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-engineer",
+   "title": "AT&T Archives: The Engineer",
+   "name": "AT&T Archives: The Engineer",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 724,
+   "thumb": "media/yt/EtC9YsFqnBo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EtC9YsFqnBo",
+     "url": "https://www.youtube.com/watch?v=EtC9YsFqnBo",
+     "embed": "https://www.youtube-nocookie.com/embed/EtC9YsFqnBo?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-first-call",
+   "title": "AT&T Archives: The First Call",
+   "name": "AT&T Archives: The First Call",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 659,
+   "thumb": "media/yt/eQd3H8AmtP0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "eQd3H8AmtP0",
+     "url": "https://www.youtube.com/watch?v=eQd3H8AmtP0",
+     "embed": "https://www.youtube-nocookie.com/embed/eQd3H8AmtP0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-first-call-bonus-edition",
+   "title": "AT&T Archives: The First Call (Bonus Edition)",
+   "name": "AT&T Archives: The First Call (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 793,
+   "thumb": "media/yt/ydQZpOALiVY.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ydQZpOALiVY",
+     "url": "https://www.youtube.com/watch?v=ydQZpOALiVY",
+     "embed": "https://www.youtube-nocookie.com/embed/ydQZpOALiVY?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-hello-machine",
+   "title": "AT&T Archives: The Hello Machine",
+   "name": "AT&T Archives: The Hello Machine",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 690,
+   "thumb": "media/yt/8uMbpaFp3i4.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "8uMbpaFp3i4",
+     "url": "https://www.youtube.com/watch?v=8uMbpaFp3i4",
+     "embed": "https://www.youtube-nocookie.com/embed/8uMbpaFp3i4?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-history-of-att-part-1",
+   "title": "AT&T Archives: The History of AT&T, Part 1",
+   "name": "AT&T Archives: The History of AT&T, Part 1",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 403,
+   "thumb": "media/yt/vKyrDPWNHN0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "vKyrDPWNHN0",
+     "url": "https://www.youtube.com/watch?v=vKyrDPWNHN0",
+     "embed": "https://www.youtube-nocookie.com/embed/vKyrDPWNHN0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-inventors-of-the-transistor-dis",
+   "title": "AT&T Archives: The Inventors of the Transistor Discuss Their Success",
+   "name": "AT&T Archives: The Inventors of the Transistor Discuss Their Success",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 684,
+   "thumb": "media/yt/TIsr5R5zuOU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "TIsr5R5zuOU",
+     "url": "https://www.youtube.com/watch?v=TIsr5R5zuOU",
+     "embed": "https://www.youtube-nocookie.com/embed/TIsr5R5zuOU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-physical-chemistry-of-polymers",
+   "title": "AT&T Archives: The Physical Chemistry of Polymers",
+   "name": "AT&T Archives: The Physical Chemistry of Polymers",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1312,
+   "thumb": "media/yt/DeRcPO5lVwQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "DeRcPO5lVwQ",
+     "url": "https://www.youtube.com/watch?v=DeRcPO5lVwQ",
+     "embed": "https://www.youtube-nocookie.com/embed/DeRcPO5lVwQ?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-step-by-step-switch",
+   "title": "AT&T Archives: The Step-By-Step Switch",
+   "name": "AT&T Archives: The Step-By-Step Switch",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 506,
+   "thumb": "media/yt/xZePwin92cI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xZePwin92cI",
+     "url": "https://www.youtube.com/watch?v=xZePwin92cI",
+     "embed": "https://www.youtube-nocookie.com/embed/xZePwin92cI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-thinking-machines-bonus-edition",
+   "title": "AT&T Archives: The Thinking Machines (Bonus Edition)",
+   "name": "AT&T Archives: The Thinking Machines (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1073,
+   "thumb": "media/yt/clud9Il8DXU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "clud9Il8DXU",
+     "url": "https://www.youtube.com/watch?v=clud9Il8DXU",
+     "embed": "https://www.youtube-nocookie.com/embed/clud9Il8DXU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-voice-of-the-city",
+   "title": "AT&T Archives: The Voice of the City",
+   "name": "AT&T Archives: The Voice of the City",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 667,
+   "thumb": "media/yt/SaWW7k5vDrI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SaWW7k5vDrI",
+     "url": "https://www.youtube.com/watch?v=SaWW7k5vDrI",
+     "embed": "https://www.youtube-nocookie.com/embed/SaWW7k5vDrI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-the-year-they-discovered-people-bon",
+   "title": "AT&T Archives: The Year They Discovered People (Bonus Edition)",
+   "name": "AT&T Archives: The Year They Discovered People (Bonus Edition)",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 939,
+   "thumb": "media/yt/pd8l7PRBpTw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "pd8l7PRBpTw",
+     "url": "https://www.youtube.com/watch?v=pd8l7PRBpTw",
+     "embed": "https://www.youtube-nocookie.com/embed/pd8l7PRBpTw?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-this-far-by-faith",
+   "title": "AT&T Archives: This Far By Faith",
+   "name": "AT&T Archives: This Far By Faith",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 3529,
+   "thumb": "media/yt/Tp_SLJGpCv0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Tp_SLJGpCv0",
+     "url": "https://www.youtube.com/watch?v=Tp_SLJGpCv0",
+     "embed": "https://www.youtube-nocookie.com/embed/Tp_SLJGpCv0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-viewtron-introduction-from-the-view",
+   "title": "AT&T Archives: Viewtron Introduction, from the Viewdata Corporation",
+   "name": "AT&T Archives: Viewtron Introduction, from the Viewdata Corporation",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 444,
+   "thumb": "media/yt/o6DVBPmo4Co.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "o6DVBPmo4Co",
+     "url": "https://www.youtube.com/watch?v=o6DVBPmo4Co",
+     "embed": "https://www.youtube-nocookie.com/embed/o6DVBPmo4Co?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-voices-from-the-deep",
+   "title": "AT&T Archives: Voices From the Deep",
+   "name": "AT&T Archives: Voices From the Deep",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 744,
+   "thumb": "media/yt/zJ_pWvv8Lik.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "zJ_pWvv8Lik",
+     "url": "https://www.youtube.com/watch?v=zJ_pWvv8Lik",
+     "embed": "https://www.youtube-nocookie.com/embed/zJ_pWvv8Lik?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-voices-in-space",
+   "title": "AT&T Archives: Voices in Space",
+   "name": "AT&T Archives: Voices in Space",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 746,
+   "thumb": "media/yt/xTCpMYcQm2k.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xTCpMYcQm2k",
+     "url": "https://www.youtube.com/watch?v=xTCpMYcQm2k",
+     "embed": "https://www.youtube-nocookie.com/embed/xTCpMYcQm2k?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-war-and-the-telephone",
+   "title": "AT&T Archives: War and the Telephone",
+   "name": "AT&T Archives: War and the Telephone",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 931,
+   "thumb": "media/yt/0TtBgbQQjEA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0TtBgbQQjEA",
+     "url": "https://www.youtube.com/watch?v=0TtBgbQQjEA",
+     "embed": "https://www.youtube-nocookie.com/embed/0TtBgbQQjEA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-we-learn-about-the-telephone-ii",
+   "title": "AT&T Archives: We Learn About the Telephone II",
+   "name": "AT&T Archives: We Learn About the Telephone II",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1557,
+   "thumb": "media/yt/Ka0pbtLYjKM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Ka0pbtLYjKM",
+     "url": "https://www.youtube.com/watch?v=Ka0pbtLYjKM",
+     "embed": "https://www.youtube-nocookie.com/embed/Ka0pbtLYjKM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-we-make-telephones",
+   "title": "AT&T Archives: We Make Telephones",
+   "name": "AT&T Archives: We Make Telephones",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 893,
+   "thumb": "media/yt/y3tZtxB0xow.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "y3tZtxB0xow",
+     "url": "https://www.youtube.com/watch?v=y3tZtxB0xow",
+     "embed": "https://www.youtube-nocookie.com/embed/y3tZtxB0xow?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-what-if",
+   "title": "AT&T Archives: What if?",
+   "name": "AT&T Archives: What if?",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1275,
+   "thumb": "media/yt/0alerZ8rt9w.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0alerZ8rt9w",
+     "url": "https://www.youtube.com/watch?v=0alerZ8rt9w",
+     "embed": "https://www.youtube-nocookie.com/embed/0alerZ8rt9w?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-what-is-the-bell-system",
+   "title": "AT&T Archives: What is the Bell System?",
+   "name": "AT&T Archives: What is the Bell System?",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 841,
+   "thumb": "media/yt/iBPTM_irIco.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "iBPTM_irIco",
+     "url": "https://www.youtube.com/watch?v=iBPTM_irIco",
+     "embed": "https://www.youtube-nocookie.com/embed/iBPTM_irIco?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "att-archives-yellow-pages-by-computer-graphics",
+   "title": "AT&T Archives: Yellow Pages by Computer Graphics",
+   "name": "AT&T Archives: Yellow Pages by Computer Graphics",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 340,
+   "thumb": "media/yt/6DzBq2qxKpU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "6DzBq2qxKpU",
+     "url": "https://www.youtube.com/watch?v=6DzBq2qxKpU",
+     "embed": "https://www.youtube-nocookie.com/embed/6DzBq2qxKpU?rel=0",
      "status": "live"
     }
    ],
@@ -12248,11 +16380,12 @@
    "dur": 257,
    "thumb": "media/yt/Pr1XXvSaVUQ.jpg",
    "collections": [
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -12588,11 +16721,12 @@
    "dur": 719,
    "thumb": "media/yt/6JUI3OC2SPs.jpg",
    "collections": [
-    "dividing-engine"
+    "dividing-engine",
+    "att-archives"
    ],
    "status": "live",
    "added": "2026-08-31",
-   "checked": "2026-08-31",
+   "checked": "2026-09-03",
    "sources": [
     {
      "kind": "youtube",
@@ -12678,6 +16812,32 @@
      "id": "g2tMcMQqSbA",
      "url": "https://www.youtube.com/watch?v=g2tMcMQqSbA",
      "embed": "https://www.youtube-nocookie.com/embed/g2tMcMQqSbA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "communications-satellites-documentary-att-archiv",
+   "title": "Communications Satellites Documentary - AT&T Archives",
+   "name": "Communications Satellites Documentary - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 516,
+   "thumb": "media/yt/3tsDqlnP0Xw.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3tsDqlnP0Xw",
+     "url": "https://www.youtube.com/watch?v=3tsDqlnP0Xw",
+     "embed": "https://www.youtube-nocookie.com/embed/3tsDqlnP0Xw?rel=0",
      "status": "live"
     }
    ],
@@ -13301,6 +17461,58 @@
    "n_total": 1
   },
   {
+   "slug": "conformal-mapping-the-joukowski-transformation-a",
+   "title": "Conformal Mapping: The Joukowski Transformation - AT&T Archives",
+   "name": "Conformal Mapping: The Joukowski Transformation - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 215,
+   "thumb": "media/yt/woBgZMtiAeI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "woBgZMtiAeI",
+     "url": "https://www.youtube.com/watch?v=woBgZMtiAeI",
+     "embed": "https://www.youtube-nocookie.com/embed/woBgZMtiAeI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "conversation-crossroads-a-surreal-look-at-teleph",
+   "title": "Conversation Crossroads, a Surreal Look at Telephone Switching - AT&T Archives",
+   "name": "Conversation Crossroads, a Surreal Look at Telephone Switching - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1022,
+   "thumb": "media/yt/EvvvLzw1XsQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EvvvLzw1XsQ",
+     "url": "https://www.youtube.com/watch?v=EvvvLzw1XsQ",
+     "embed": "https://www.youtube-nocookie.com/embed/EvvvLzw1XsQ?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "create-ai-content-generator-with-python-flask-op",
    "title": "Create AI Content Generator with Python Flask OpenAI GPT-3",
    "name": "Create AI Content Generator with Python Flask OpenAI GPT-3",
@@ -13320,6 +17532,32 @@
      "id": "JME18LJvWq4",
      "url": "https://www.youtube.com/watch?v=JME18LJvWq4",
      "embed": "https://www.youtube-nocookie.com/embed/JME18LJvWq4?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "cs-cable-queen-lays-underwater-telephone-cable-i",
+   "title": "CS Cable Queen lays underwater telephone cable in the Hudson River between Liberty and Ellis Island",
+   "name": "CS Cable Queen lays underwater telephone cable in the Hudson River between Liberty and Ellis Island",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 399,
+   "thumb": "media/yt/yqufGtTR5MQ.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "yqufGtTR5MQ",
+     "url": "https://www.youtube.com/watch?v=yqufGtTR5MQ",
+     "embed": "https://www.youtube-nocookie.com/embed/yqufGtTR5MQ?rel=0",
      "status": "live"
     }
    ],
@@ -13535,6 +17773,32 @@
    "n_total": 1
   },
   {
+   "slug": "designing-building-and-testing-the-att-trimline",
+   "title": "Designing, Building and Testing the AT&T Trimline Phone - AT&T Archives",
+   "name": "Designing, Building and Testing the AT&T Trimline Phone - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 315,
+   "thumb": "media/yt/SbGZP4LcsaI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SbGZP4LcsaI",
+     "url": "https://www.youtube.com/watch?v=SbGZP4LcsaI",
+     "embed": "https://www.youtube-nocookie.com/embed/SbGZP4LcsaI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "difference-engines-mechanical-brains-analog-comp",
    "title": "Difference Engines: Mechanical Brains, Analog Computers - STEMpunk",
    "name": "Difference Engines: Mechanical Brains, Analog Computers - STEMpunk",
@@ -13633,6 +17897,32 @@
      "id": "i5YR4VR0Azo",
      "url": "https://www.youtube.com/watch?v=i5YR4VR0Azo",
      "embed": "https://www.youtube-nocookie.com/embed/i5YR4VR0Azo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "early-computer-graphics-the-talking-computer-att",
+   "title": "Early Computer Graphics: The Talking Computer - AT&T Archives",
+   "name": "Early Computer Graphics: The Talking Computer - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 140,
+   "thumb": "media/yt/OvWeTJGrTnA.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "OvWeTJGrTnA",
+     "url": "https://www.youtube.com/watch?v=OvWeTJGrTnA",
+     "embed": "https://www.youtube-nocookie.com/embed/OvWeTJGrTnA?rel=0",
      "status": "live"
     }
    ],
@@ -14422,6 +18712,32 @@
    "n_total": 1
   },
   {
+   "slug": "george-wendt-appears-in-an-att-training-video-at",
+   "title": "George Wendt Appears in an AT&T Training Video - AT&T Archives",
+   "name": "George Wendt Appears in an AT&T Training Video - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 911,
+   "thumb": "media/yt/eyUxBf-9dyM.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "eyUxBf-9dyM",
+     "url": "https://www.youtube.com/watch?v=eyUxBf-9dyM",
+     "embed": "https://www.youtube-nocookie.com/embed/eyUxBf-9dyM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "glen-j-culler-mathematical-laboratoriesa-new-pow",
    "title": "Glen J. Culler, \"Mathematical Laboratories—A New Power for the Physical and Social Sciences",
    "name": "Glen J. Culler, \"Mathematical Laboratories—A New Power for the Physical and Social Sciences",
@@ -14495,6 +18811,32 @@
      "id": "ZR0ujwlvbkQ",
      "url": "https://www.youtube.com/watch?v=ZR0ujwlvbkQ",
      "embed": "https://www.youtube-nocookie.com/embed/ZR0ujwlvbkQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "graphic-1-a-1960s-stylus-based-graphical-display",
+   "title": "Graphic 1, a 1960s stylus-based graphical display system - AT&T Archives",
+   "name": "Graphic 1, a 1960s stylus-based graphical display system - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 566,
+   "thumb": "media/yt/llnzK2H_HZo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "llnzK2H_HZo",
+     "url": "https://www.youtube.com/watch?v=llnzK2H_HZo",
+     "embed": "https://www.youtube-nocookie.com/embed/llnzK2H_HZo?rel=0",
      "status": "live"
     }
    ],
@@ -14607,6 +18949,58 @@
      "id": "kil2Z3ij-JA",
      "url": "https://www.youtube.com/watch?v=kil2Z3ij-JA",
      "embed": "https://www.youtube-nocookie.com/embed/kil2Z3ij-JA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "historian-miles-kreuger-on-don-juans-50th-annive",
+   "title": "Historian Miles Kreuger on Don Juan’s 50th anniversary, the 1st Vitaphone feature film with sound",
+   "name": "Historian Miles Kreuger on Don Juan’s 50th anniversary, the 1st Vitaphone feature film with sound",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 436,
+   "thumb": "media/yt/3BoaiB_Gju4.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3BoaiB_Gju4",
+     "url": "https://www.youtube.com/watch?v=3BoaiB_Gju4",
+     "embed": "https://www.youtube-nocookie.com/embed/3BoaiB_Gju4?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "history-of-att-part-i-with-bonus-edition-introdu",
+   "title": "History of AT&T, Part I (with Bonus Edition Introduction) - AT&T Archives",
+   "name": "History of AT&T, Part I (with Bonus Edition Introduction) - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 554,
+   "thumb": "media/yt/YIcOGTTKWzU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "YIcOGTTKWzU",
+     "url": "https://www.youtube.com/watch?v=YIcOGTTKWzU",
+     "embed": "https://www.youtube-nocookie.com/embed/YIcOGTTKWzU?rel=0",
      "status": "live"
     }
    ],
@@ -14771,6 +19165,32 @@
    "n_total": 1
   },
   {
+   "slug": "holmdel-20th-anniversary-a-history-of-the-legend",
+   "title": "Holmdel 20th Anniversary, a history of the legendary Bell Labs facility designed by Eero Saarinen",
+   "name": "Holmdel 20th Anniversary, a history of the legendary Bell Labs facility designed by Eero Saarinen",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 834,
+   "thumb": "media/yt/BPq_ZyOvbsg.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "BPq_ZyOvbsg",
+     "url": "https://www.youtube.com/watch?v=BPq_ZyOvbsg",
+     "embed": "https://www.youtube-nocookie.com/embed/BPq_ZyOvbsg?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "how-a-steam-engine-works-fully-animated",
    "title": "How a Steam Engine works (Fully Animated)",
    "name": "How a Steam Engine works (Fully Animated)",
@@ -14820,6 +19240,58 @@
     }
    ],
    "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "how-pacific-bell-prepared-for-west-coast-earthqu",
+   "title": "How Pacific Bell Prepared for West Coast Earthquakes - AT&T Archives",
+   "name": "How Pacific Bell Prepared for West Coast Earthquakes - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1677,
+   "thumb": "media/yt/uAWo2Bo7bZU.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uAWo2Bo7bZU",
+     "url": "https://www.youtube.com/watch?v=uAWo2Bo7bZU",
+     "embed": "https://www.youtube-nocookie.com/embed/uAWo2Bo7bZU?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "how-to-install-modular-jacks-by-yourself-att-arc",
+   "title": "How to Install Modular Jacks by Yourself - AT&T Archives",
+   "name": "How to Install Modular Jacks by Yourself - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 935,
+   "thumb": "media/yt/IphPS58ZUc8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IphPS58ZUc8",
+     "url": "https://www.youtube.com/watch?v=IphPS58ZUc8",
+     "embed": "https://www.youtube-nocookie.com/embed/IphPS58ZUc8?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
    "n_total": 1
   },
   {
@@ -14921,6 +19393,32 @@
      "id": "_C5AHaS1mOA",
      "url": "https://www.youtube.com/watch?v=_C5AHaS1mOA",
      "embed": "https://www.youtube-nocookie.com/embed/_C5AHaS1mOA?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "interview-with-nobel-laureates-robert-wilson-and",
+   "title": "Interview with Nobel Laureates Robert Wilson and Arno Penzias - AT&T Archives",
+   "name": "Interview with Nobel Laureates Robert Wilson and Arno Penzias - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 921,
+   "thumb": "media/yt/RvgUuLhvVxI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "RvgUuLhvVxI",
+     "url": "https://www.youtube.com/watch?v=RvgUuLhvVxI",
+     "embed": "https://www.youtube-nocookie.com/embed/RvgUuLhvVxI?rel=0",
      "status": "live"
     }
    ],
@@ -15843,6 +20341,32 @@
    "n_total": 1
   },
   {
+   "slug": "manufacturing-1a-and-2b-ess-memory-att-archives",
+   "title": "Manufacturing 1A and 2B ESS Memory - AT&T Archives",
+   "name": "Manufacturing 1A and 2B ESS Memory - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1730,
+   "thumb": "media/yt/CJ7eWZBBnhs.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "CJ7eWZBBnhs",
+     "url": "https://www.youtube.com/watch?v=CJ7eWZBBnhs",
+     "embed": "https://www.youtube-nocookie.com/embed/CJ7eWZBBnhs?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "manufacturing-plywood-boards-then-and-now",
    "title": "Manufacturing plywood boards: then and now",
    "name": "Manufacturing plywood boards: then and now",
@@ -16405,6 +20929,58 @@
    "n_total": 1
   },
   {
+   "slug": "part-1-training-video-for-bell-labs-holmdel-comp",
+   "title": "Part 1 - Training Video for Bell Labs' Holmdel Computing Center - AT&T Archives",
+   "name": "Part 1 - Training Video for Bell Labs' Holmdel Computing Center - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 506,
+   "thumb": "media/yt/HMYiktO0D64.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "blocked",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "HMYiktO0D64",
+     "url": "https://www.youtube.com/watch?v=HMYiktO0D64",
+     "embed": "https://www.youtube-nocookie.com/embed/HMYiktO0D64?rel=0",
+     "status": "embed-blocked"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "part-2-training-video-for-bell-labs-holmdel-comp",
+   "title": "Part 2 - Training Video for Bell Labs' Holmdel Computing Center - AT&T Archives",
+   "name": "Part 2 - Training Video for Bell Labs' Holmdel Computing Center - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 310,
+   "thumb": "media/yt/V9aVOIuKVUc.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "V9aVOIuKVUc",
+     "url": "https://www.youtube.com/watch?v=V9aVOIuKVUc",
+     "embed": "https://www.youtube-nocookie.com/embed/V9aVOIuKVUc?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "pdp-10-arrives-at-james-cook-university",
    "title": "PDP 10 arrives at James Cook University",
    "name": "PDP 10 arrives at James Cook University",
@@ -16456,6 +21032,32 @@
    "n_live": 1,
    "n_total": 1,
    "raw_title": "Philipps Pianella Paganini - \"Slavonic dance nr 6\""
+  },
+  {
+   "slug": "physics-of-force-mass-and-motion-demonstrated-us",
+   "title": "Physics of Force, Mass and Motion Demonstrated Using Early Computer Graphics - AT&T Archives",
+   "name": "Physics of Force, Mass and Motion Demonstrated Using Early Computer Graphics - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 562,
+   "thumb": "media/yt/f2hbBUWpEVo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "f2hbBUWpEVo",
+     "url": "https://www.youtube.com/watch?v=f2hbBUWpEVo",
+     "embed": "https://www.youtube-nocookie.com/embed/f2hbBUWpEVo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "polyworld-natural-selection-in-artificial-life-v",
@@ -16535,6 +21137,32 @@
    "n_live": 1,
    "n_total": 1,
    "raw_title": "\" POTTED AND PRINTED CIRCUITS \" 1950s ELECTRONICS INSTRUCTIONAL FILM V-1 BUZZ BOMB XD52434"
+  },
+  {
+   "slug": "profiling-underwater-submersibles-att-archives",
+   "title": "Profiling Underwater Submersibles - AT&T Archives",
+   "name": "Profiling Underwater Submersibles - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 304,
+   "thumb": "media/yt/xlJ6C1KrRTo.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xlJ6C1KrRTo",
+     "url": "https://www.youtube.com/watch?v=xlJ6C1KrRTo",
+     "embed": "https://www.youtube-nocookie.com/embed/xlJ6C1KrRTo?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
   },
   {
    "slug": "programmed-instruction-bits-and-bytes-episode-7",
@@ -16667,6 +21295,58 @@
    "n_total": 1
   },
   {
+   "slug": "reconnecting-170000-phone-customers-in-nyc-after",
+   "title": "Reconnecting 170,000 Phone Customers in NYC After a Major Fire - AT&T Archives",
+   "name": "Reconnecting 170,000 Phone Customers in NYC After a Major Fire - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1360,
+   "thumb": "media/yt/f_AWAmGi-g8.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "f_AWAmGi-g8",
+     "url": "https://www.youtube.com/watch?v=f_AWAmGi-g8",
+     "embed": "https://www.youtube-nocookie.com/embed/f_AWAmGi-g8?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "rehearsing-for-the-bell-telephone-hour-radio-sho",
+   "title": "Rehearsing for the Bell Telephone Hour Radio Show - AT&T Archives",
+   "name": "Rehearsing for the Bell Telephone Hour Radio Show - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 1468,
+   "thumb": "media/yt/aT6BN_GnnWI.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "aT6BN_GnnWI",
+     "url": "https://www.youtube.com/watch?v=aT6BN_GnnWI",
+     "embed": "https://www.youtube-nocookie.com/embed/aT6BN_GnnWI?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "relay-computer-calculates-7-digits-of-pi",
    "title": "Relay computer calculates 7 digits of Pi",
    "name": "Relay computer calculates 7 digits of Pi",
@@ -16791,6 +21471,32 @@
      "id": "8HzQCadNya4",
      "url": "https://www.youtube.com/watch?v=8HzQCadNya4",
      "embed": "https://www.youtube-nocookie.com/embed/8HzQCadNya4?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "rock-video-promoting-att-the-right-choice-att-ar",
+   "title": "Rock video promoting AT&T - \"The Right Choice\" - AT&T Archives",
+   "name": "Rock video promoting AT&T - \"The Right Choice\" - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 158,
+   "thumb": "media/yt/Olhaquj4tM4.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Olhaquj4tM4",
+     "url": "https://www.youtube.com/watch?v=Olhaquj4tM4",
+     "embed": "https://www.youtube-nocookie.com/embed/Olhaquj4tM4?rel=0",
      "status": "live"
     }
    ],
@@ -17460,6 +22166,32 @@
    "n_total": 1
   },
   {
+   "slug": "the-bell-systems-run-a-phone-company-game-att-ar",
+   "title": "The Bell System's \"Run a Phone Company\" game - AT&T Archives",
+   "name": "The Bell System's \"Run a Phone Company\" game - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 331,
+   "thumb": "media/yt/uXf-nG7nCg0.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uXf-nG7nCg0",
+     "url": "https://www.youtube.com/watch?v=uXf-nG7nCg0",
+     "embed": "https://www.youtube-nocookie.com/embed/uXf-nG7nCg0?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "the-chua-lectures-part-1-once-over-lightly",
    "title": "The Chua Lectures - Part 1 : Once Over Lightly",
    "name": "The Chua Lectures - Part 1 : Once Over Lightly",
@@ -17827,6 +22559,32 @@
    "n_total": 1
   },
   {
+   "slug": "the-copper-trail-att-archives",
+   "title": "The Copper Trail - AT&T Archives",
+   "name": "The Copper Trail - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 307,
+   "thumb": "media/yt/0IM4MbKVjWk.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0IM4MbKVjWk",
+     "url": "https://www.youtube.com/watch?v=0IM4MbKVjWk",
+     "embed": "https://www.youtube-nocookie.com/embed/0IM4MbKVjWk?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "the-delian-mode-delia-derbyshire-documentary",
    "title": "The Delian Mode - Delia Derbyshire documentary",
    "name": "The Delian Mode - Delia Derbyshire documentary",
@@ -18088,6 +22846,32 @@
      "id": "uFQ3sajIdaM",
      "url": "https://www.youtube.com/watch?v=uFQ3sajIdaM",
      "embed": "https://www.youtube-nocookie.com/embed/uFQ3sajIdaM?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "the-l6-programming-language-rendered-in-stunning",
+   "title": "The L6 Programming Language, Rendered in Stunning Early Computer Graphics",
+   "name": "The L6 Programming Language, Rendered in Stunning Early Computer Graphics",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 937,
+   "thumb": "media/yt/4a-lVJ9wT0s.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "4a-lVJ9wT0s",
+     "url": "https://www.youtube.com/watch?v=4a-lVJ9wT0s",
+     "embed": "https://www.youtube-nocookie.com/embed/4a-lVJ9wT0s?rel=0",
      "status": "live"
     }
    ],
@@ -18567,6 +23351,32 @@
    "n_total": 1
   },
   {
+   "slug": "the-traveling-telephone-switching-machine-att-ar",
+   "title": "The Traveling Telephone Switching Machine - AT&T Archives",
+   "name": "The Traveling Telephone Switching Machine - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 470,
+   "thumb": "media/yt/TsWnidyQE9M.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "TsWnidyQE9M",
+     "url": "https://www.youtube.com/watch?v=TsWnidyQE9M",
+     "embed": "https://www.youtube-nocookie.com/embed/TsWnidyQE9M?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "the-venus-project-future-by-design",
    "title": "The Venus Project - Future By Design",
    "name": "The Venus Project - Future By Design",
@@ -18750,6 +23560,32 @@
    "n_total": 1
   },
   {
+   "slug": "to-meet-the-need-part-2-att-archives",
+   "title": "To Meet the Need, Part 2 - AT&T Archives",
+   "name": "To Meet the Need, Part 2 - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 333,
+   "thumb": "media/yt/kDPZtKhFaXc.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "kDPZtKhFaXc",
+     "url": "https://www.youtube.com/watch?v=kDPZtKhFaXc",
+     "embed": "https://www.youtube-nocookie.com/embed/kDPZtKhFaXc?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
    "slug": "tomorrows-world-oct-81",
    "title": "Tomorrow's World Oct 81",
    "name": "Tomorrow's World Oct 81",
@@ -18881,6 +23717,32 @@
    "n_total": 1
   },
   {
+   "slug": "unavailable-video-02lq5f8oydc",
+   "title": "Unavailable video (02LQ5f8oyDc)",
+   "name": "Unavailable video (02LQ5f8oyDc)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "02LQ5f8oyDc",
+     "url": "https://www.youtube.com/watch?v=02LQ5f8oyDc",
+     "embed": "https://www.youtube-nocookie.com/embed/02LQ5f8oyDc?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "unavailable-video-0cs2lzd3lyu",
    "title": "Unavailable video (0CS2lzD3LyU)",
    "name": "Unavailable video (0CS2lzD3LyU)",
@@ -18962,6 +23824,32 @@
    "n_total": 1
   },
   {
+   "slug": "unavailable-video-1vdnbk_qea8",
+   "title": "Unavailable video (1VdNbK_Qea8)",
+   "name": "Unavailable video (1VdNbK_Qea8)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1VdNbK_Qea8",
+     "url": "https://www.youtube.com/watch?v=1VdNbK_Qea8",
+     "embed": "https://www.youtube-nocookie.com/embed/1VdNbK_Qea8?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "unavailable-video-2ovd5lx53ck",
    "title": "Unavailable video (2ovD5lX53Ck)",
    "name": "Unavailable video (2ovD5lX53Ck)",
@@ -19017,6 +23905,32 @@
    "n_total": 1
   },
   {
+   "slug": "unavailable-video-7_xog5dkfra",
+   "title": "Unavailable video (7_xOG5dkFRA)",
+   "name": "Unavailable video (7_xOG5dkFRA)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "7_xOG5dkFRA",
+     "url": "https://www.youtube.com/watch?v=7_xOG5dkFRA",
+     "embed": "https://www.youtube-nocookie.com/embed/7_xOG5dkFRA?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "unavailable-video-9tutkhqwzso",
    "title": "Unavailable video (9tuTKhqWZso)",
    "name": "Unavailable video (9tuTKhqWZso)",
@@ -19038,6 +23952,32 @@
      "embed": "https://www.youtube-nocookie.com/embed/9tuTKhqWZso?rel=0",
      "status": "dead",
      "reason": "Video unavailable"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "unavailable-video-_ksb3v79kqs",
+   "title": "Unavailable video (_kSB3v79KQs)",
+   "name": "Unavailable video (_kSB3v79KQs)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_kSB3v79KQs",
+     "url": "https://www.youtube.com/watch?v=_kSB3v79KQs",
+     "embed": "https://www.youtube-nocookie.com/embed/_kSB3v79KQs?rel=0",
+     "status": "dead"
     }
    ],
    "n_live": 0,
@@ -19206,6 +24146,32 @@
    "n_total": 1
   },
   {
+   "slug": "unavailable-video-bvlje1grn-y",
+   "title": "Unavailable video (bvljE1grN-Y)",
+   "name": "Unavailable video (bvljE1grN-Y)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "bvljE1grN-Y",
+     "url": "https://www.youtube.com/watch?v=bvljE1grN-Y",
+     "embed": "https://www.youtube-nocookie.com/embed/bvljE1grN-Y?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "unavailable-video-c6ygaaefsj4",
    "title": "Unavailable video (c6YGAaEfSj4)",
    "name": "Unavailable video (c6YGAaEfSj4)",
@@ -19335,6 +24301,32 @@
      "embed": "https://www.youtube-nocookie.com/embed/DhuuOWteelc?rel=0",
      "status": "dead",
      "reason": "Video unavailable"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "unavailable-video-dqv59ekqqck",
+   "title": "Unavailable video (dqv59EkQqck)",
+   "name": "Unavailable video (dqv59EkQqck)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "dqv59EkQqck",
+     "url": "https://www.youtube.com/watch?v=dqv59EkQqck",
+     "embed": "https://www.youtube-nocookie.com/embed/dqv59EkQqck?rel=0",
+     "status": "dead"
     }
    ],
    "n_live": 0,
@@ -19497,6 +24489,32 @@
      "embed": "https://www.youtube-nocookie.com/embed/hp1Y_kVL6a0?rel=0",
      "status": "dead",
      "reason": "Video unavailable"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "unavailable-video-imxdsenxcb0",
+   "title": "Unavailable video (IMxDsEnxCb0)",
+   "name": "Unavailable video (IMxDsEnxCb0)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IMxDsEnxCb0",
+     "url": "https://www.youtube.com/watch?v=IMxDsEnxCb0",
+     "embed": "https://www.youtube-nocookie.com/embed/IMxDsEnxCb0?rel=0",
+     "status": "dead"
     }
    ],
    "n_live": 0,
@@ -19692,6 +24710,32 @@
    "n_total": 1
   },
   {
+   "slug": "unavailable-video-lgau_yz9ozc",
+   "title": "Unavailable video (LGAu_yZ9oZc)",
+   "name": "Unavailable video (LGAu_yZ9oZc)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "LGAu_yZ9oZc",
+     "url": "https://www.youtube.com/watch?v=LGAu_yZ9oZc",
+     "embed": "https://www.youtube-nocookie.com/embed/LGAu_yZ9oZc?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "unavailable-video-lqtdocyk9ds",
    "title": "Unavailable video (lQTdOcYK9Ds)",
    "name": "Unavailable video (lQTdOcYK9Ds)",
@@ -19875,6 +24919,58 @@
      "embed": "https://www.youtube-nocookie.com/embed/pdO712Cshz4?rel=0",
      "status": "dead",
      "reason": "Video unavailable"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "unavailable-video-q1zg2l3wmem",
+   "title": "Unavailable video (q1zg2l3WmeM)",
+   "name": "Unavailable video (q1zg2l3WmeM)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "q1zg2l3WmeM",
+     "url": "https://www.youtube.com/watch?v=q1zg2l3WmeM",
+     "embed": "https://www.youtube-nocookie.com/embed/q1zg2l3WmeM?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "unavailable-video-qyfujkxkpxy",
+   "title": "Unavailable video (qyfuJKXKpXY)",
+   "name": "Unavailable video (qyfuJKXKpXY)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "qyfuJKXKpXY",
+     "url": "https://www.youtube.com/watch?v=qyfuJKXKpXY",
+     "embed": "https://www.youtube-nocookie.com/embed/qyfuJKXKpXY?rel=0",
+     "status": "dead"
     }
    ],
    "n_live": 0,
@@ -20151,6 +25247,58 @@
    "n_total": 1
   },
   {
+   "slug": "unavailable-video-vq_cx4qtwbo",
+   "title": "Unavailable video (vQ_Cx4qTwBo)",
+   "name": "Unavailable video (vQ_Cx4qTwBo)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "vQ_Cx4qTwBo",
+     "url": "https://www.youtube.com/watch?v=vQ_Cx4qTwBo",
+     "embed": "https://www.youtube-nocookie.com/embed/vQ_Cx4qTwBo?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "unavailable-video-w9c1rgbvnr0",
+   "title": "Unavailable video (W9c1rGBvnR0)",
+   "name": "Unavailable video (W9c1rGBvnR0)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "W9c1rGBvnR0",
+     "url": "https://www.youtube.com/watch?v=W9c1rGBvnR0",
+     "embed": "https://www.youtube-nocookie.com/embed/W9c1rGBvnR0?rel=0",
+     "status": "dead"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
    "slug": "unavailable-video-wscuabua3xs",
    "title": "Unavailable video (wSCUaBUa3Xs)",
    "name": "Unavailable video (wSCUaBUa3Xs)",
@@ -20307,6 +25455,32 @@
      "embed": "https://www.youtube-nocookie.com/embed/zP8hfjx_zr0?rel=0",
      "status": "dead",
      "reason": "Video unavailable"
+    }
+   ],
+   "n_live": 0,
+   "n_total": 1
+  },
+  {
+   "slug": "unavailable-video-zyz3zgiywda",
+   "title": "Unavailable video (zYZ3ZgiYwDA)",
+   "name": "Unavailable video (zYZ3ZgiYwDA)",
+   "year": null,
+   "chan": "",
+   "dur": null,
+   "thumb": null,
+   "collections": [
+    "att-archives"
+   ],
+   "status": "dead",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "zYZ3ZgiYwDA",
+     "url": "https://www.youtube.com/watch?v=zYZ3ZgiYwDA",
+     "embed": "https://www.youtube-nocookie.com/embed/zYZ3ZgiYwDA?rel=0",
+     "status": "dead"
     }
    ],
    "n_live": 0,
@@ -20490,6 +25664,32 @@
      "id": "uhJWhaun7iY",
      "url": "https://www.youtube.com/watch?v=uhJWhaun7iY",
      "embed": "https://www.youtube-nocookie.com/embed/uhJWhaun7iY?rel=0",
+     "status": "live"
+    }
+   ],
+   "n_live": 1,
+   "n_total": 1
+  },
+  {
+   "slug": "visualing-poetry-with-1960s-computer-graphics-at",
+   "title": "Visualing Poetry With 1960s Computer Graphics - AT&T Archives",
+   "name": "Visualing Poetry With 1960s Computer Graphics - AT&T Archives",
+   "year": null,
+   "chan": "AT&T Tech Channel",
+   "dur": 369,
+   "thumb": "media/yt/V4agEv3Nkcs.jpg",
+   "collections": [
+    "att-archives"
+   ],
+   "status": "live",
+   "added": "2026-09-03",
+   "checked": "2026-09-03",
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "V4agEv3Nkcs",
+     "url": "https://www.youtube.com/watch?v=V4agEv3Nkcs",
+     "embed": "https://www.youtube-nocookie.com/embed/V4agEv3Nkcs?rel=0",
      "status": "live"
     }
    ],
