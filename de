@@ -428,10 +428,16 @@ def describe(vid):
 # and a wrong year puts the film at the wrong place on the scale — worse than
 # leaving it undated.
 DESC_YEAR = [
-    re.compile(r'\b(?:made|produced|released|filmed|shot|recorded|published|'
-               r'copyright|\u00a9|dated|circa)\W{0,12}(?:in\s+)?(1[89]\d\d|20[0-2]\d)\b', re.I),
+    # strongest: the description names the year as the film's own
+    re.compile(r'\b(1[89]\d\d|20[0-2]\d)\s+(?:film|movie|documentary|short|newsreel|'
+               r'commercial|promo|reel|featurette|training film)\b', re.I),
+    re.compile(r'\b(?:produced|made|filmed|shot|recorded|published|released|commissioned|'
+               r'created|copyright|\u00a9|dated|circa)\W{0,20}(?:in\s+)?'
+               r'(1[89]\d\d|20[0-2]\d)\b', re.I),
     re.compile(r'\bca?\.\s*(1[89]\d\d|20[0-2]\d)\b', re.I),
-    re.compile(r'\((1[89]\d\d|20[0-2]\d)\)\s*(?:film|movie|documentary|short)?', re.I),
+    # A bare "(1927)" is nearly always a citation of some *other* work, and an
+    # opening "In 1927, ..." introduces the subject, not the film. Both were
+    # tried and both dated films by what they were about.
 ]
 
 def year_from_desc(text):
@@ -824,6 +830,8 @@ def cmd_date(a):
     import http.server, json as J, webbrowser, urllib.parse as UP
     d = load()
     todo = [f for f in d['films'] if not f.get('year') and f['status'] != 'dead']
+    if a.collection:
+        todo = [f for f in todo if a.collection in f['collections']]
     if a.limit:
         todo = todo[:a.limit]
     if not todo:
@@ -1144,6 +1152,7 @@ def main():
 
     s = sub.add_parser('date', help='date the undated films by hand, fast')
     s.add_argument('--port', type=int, default=8913); s.add_argument('--limit', type=int)
+    s.add_argument('--collection')
     s.set_defaults(fn=cmd_date)
 
     s = sub.add_parser('year', help='backfill years from video descriptions')
