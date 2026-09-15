@@ -881,7 +881,11 @@
    "kind": "object",
    "exhibit": "x001",
    "gap": 88.0,
-   "keep": null
+   "keep": true,
+   "card": "Charles Babbage: Difference Engine",
+   "cap": "Difference Engine No. 2, to Babbage's 1847 design",
+   "web": "media/museum/56d39aa81f5f.webp",
+   "bytes": 207228
   },
   "IMG_3407": {
    "visit": "london-2026",
@@ -986,7 +990,11 @@
    "kind": "object",
    "exhibit": "x002",
    "gap": 8.0,
-   "keep": null
+   "keep": true,
+   "card": "__about:calculator__",
+   "cap": "Sinclair Cambridge pocket calculator, 1970s",
+   "web": "media/museum/c29f3069ef23.webp",
+   "bytes": 82666
   },
   "IMG_3418": {
    "visit": "london-2026",
@@ -1006,7 +1014,11 @@
    "kind": "object",
    "exhibit": "x003",
    "gap": 16.0,
-   "keep": null
+   "keep": true,
+   "card": "Napier's bones",
+   "cap": "A set of Napier's bones in its case",
+   "web": "media/museum/cf07c8c9e327.webp",
+   "bytes": 90942
   },
   "IMG_3420": {
    "visit": "london-2026",
@@ -1016,7 +1028,11 @@
    "kind": "object",
    "exhibit": "x003",
    "gap": 8.0,
-   "keep": null
+   "keep": true,
+   "card": "Morland's calculating machine",
+   "cap": "Samuel Morland's calculating machine, 1666",
+   "web": "media/museum/a62ab3831f71.webp",
+   "bytes": 167102
   },
   "IMG_3421": {
    "visit": "london-2026",
@@ -1082,7 +1098,11 @@
    "kind": "object",
    "exhibit": "x005",
    "gap": 2.0,
-   "keep": null
+   "keep": true,
+   "card": "The Enigma machine",
+   "cap": "Enigma machine, 1934",
+   "web": "media/museum/416bb296e197.webp",
+   "bytes": 209744
   },
   "IMG_3429": {
    "visit": "london-2026",
@@ -1199,7 +1219,11 @@
    "kind": "object",
    "exhibit": "x008",
    "gap": 44.0,
-   "keep": null
+   "keep": true,
+   "card": "WISARD",
+   "cap": "WISARD's wiring — Brunel University, 1981",
+   "web": "media/museum/c8473f4fc29c.webp",
+   "bytes": 222992
   },
   "IMG_3441": {
    "visit": "london-2026",
@@ -1315,7 +1339,11 @@
    "kind": "object",
    "exhibit": "x011",
    "gap": 3.0,
-   "keep": null
+   "keep": true,
+   "card": "Prinz and Mays' electrical logic machine",
+   "cap": "Electrical logic machine, 1949",
+   "web": "media/museum/e1ff06a82860.webp",
+   "bytes": 82570
   },
   "IMG_3453": {
    "visit": "london-2026",
@@ -1333,7 +1361,11 @@
    "chars": 537,
    "kind": "label",
    "exhibit": "x013",
-   "keep": null
+   "keep": true,
+   "card": "Stanhope's logical demonstrator",
+   "cap": "Stanhope's logical demonstrator, about 1805",
+   "web": "media/museum/469f2aff995c.webp",
+   "bytes": 191474
   },
   "IMG_3455": {
    "visit": "london-2026",
@@ -1352,7 +1384,11 @@
    "kind": "object",
    "exhibit": "x014",
    "gap": 2.0,
-   "keep": null
+   "keep": true,
+   "card": "The Manchester differential analyser",
+   "cap": "Differential analyser, built 1935",
+   "web": "media/museum/6cfa48d3dba6.webp",
+   "bytes": 82844
   },
   "IMG_3457": {
    "visit": "london-2026",
@@ -1400,7 +1436,11 @@
    "kind": "object",
    "exhibit": "x015",
    "gap": 6.0,
-   "keep": null
+   "keep": true,
+   "card": "Babbage: Analytical Engine",
+   "cap": "Analytical Engine trial model",
+   "web": "media/museum/546216ffa33d.webp",
+   "bytes": 153124
   },
   "IMG_3462": {
    "visit": "london-2026",
@@ -1564,7 +1604,11 @@
    "kind": "object",
    "exhibit": "x020",
    "gap": 8.0,
-   "keep": null
+   "keep": true,
+   "card": "Tide-predicting machines (Kelvin and successors)",
+   "cap": "Tide-predicting machine, 1872",
+   "web": "media/museum/417447d4a7e5.webp",
+   "bytes": 181172
   },
   "IMG_3479": {
    "visit": "london-2026",
@@ -1593,7 +1637,11 @@
    "kind": "object",
    "exhibit": "x021",
    "gap": 3.0,
-   "keep": null
+   "keep": true,
+   "card": "Jamal al-Din ibn Muqim's astrolabe (Lahore)",
+   "cap": "Astrolabe by Jamal al-Din ibn Muqim, Lahore, 1666",
+   "web": "media/museum/321721c1b8c2.webp",
+   "bytes": 185582
   },
   "IMG_3482": {
    "visit": "london-2026",
@@ -1689,7 +1737,11 @@
    "kind": "object",
    "exhibit": "x024",
    "gap": 6.0,
-   "keep": null
+   "keep": true,
+   "card": "Office machine boom",
+   "cap": "Calculating machine, about 1885",
+   "web": "media/museum/4458a499fd25.webp",
+   "bytes": 129584
   },
   "IMG_3492": {
    "visit": "london-2026",
@@ -1727,7 +1779,11 @@
    "kind": "object",
    "exhibit": "x026",
    "gap": 2.0,
-   "keep": null
+   "keep": true,
+   "card": "The London Hospital Survival Predictor",
+   "cap": "London Hospital Survival Predictor, about 1972",
+   "web": "media/museum/278a825742fd.webp",
+   "bytes": 56764
   },
   "IMG_3496": {
    "visit": "london-2026",
@@ -1823,7 +1879,11 @@
    "kind": "object",
    "exhibit": "x028",
    "gap": 13.0,
-   "keep": null
+   "keep": true,
+   "card": "Scheutz difference engine",
+   "cap": "Scheutz difference engine, 1859",
+   "web": "media/museum/8087c0efd41b.webp",
+   "bytes": 145250
   },
   "IMG_3506": {
    "visit": "london-2026",
@@ -1931,7 +1991,11 @@
    "kind": "object",
    "exhibit": "x030",
    "gap": 22.0,
-   "keep": null
+   "keep": true,
+   "card": "The Wembley tote machine",
+   "cap": "Totalisator from Wembley Greyhound Stadium, about 1955",
+   "web": "media/museum/afeaa9ce7db4.webp",
+   "bytes": 152238
   },
   "IMG_3517": {
    "visit": "london-2026",
@@ -2048,7 +2112,11 @@
    "kind": "object",
    "exhibit": "x032",
    "gap": 3.0,
-   "keep": null
+   "keep": true,
+   "card": "Dover Castle turret clock",
+   "cap": "Turret clock, 1632–40, workshop of Leonard Tennant",
+   "web": "media/museum/1f6f98771a29.webp",
+   "bytes": 76478
   },
   "IMG_3529": {
    "visit": "london-2026",
@@ -2155,7 +2223,11 @@
    "kind": "object",
    "exhibit": "x033",
    "gap": 2.0,
-   "keep": null
+   "keep": true,
+   "card": "Sutton's circular slide rule",
+   "cap": "Circular slide rule by Henry Sutton, 1663",
+   "web": "media/museum/6add03164593.webp",
+   "bytes": 107708
   },
   "IMG_3540": {
    "visit": "london-2026",
@@ -2165,7 +2237,11 @@
    "kind": "object",
    "exhibit": "x034",
    "gap": 3.0,
-   "keep": null
+   "keep": true,
+   "card": "Newton's Principia",
+   "cap": "Newton's Principia, 1687",
+   "web": "media/museum/dc25c4338cbc.webp",
+   "bytes": 100398
   },
   "IMG_3541": {
    "visit": "london-2026",
@@ -2318,7 +2394,11 @@
    "kind": "object",
    "exhibit": "x038",
    "gap": 3.0,
-   "keep": null
+   "keep": true,
+   "card": "An earl's orrery",
+   "cap": "Orrery by John Rowley, about 1712",
+   "web": "media/museum/167484ff40ad.webp",
+   "bytes": 190276
   },
   "IMG_3557": {
    "visit": "london-2026",
@@ -2633,7 +2713,11 @@
    "kind": "object",
    "exhibit": "x044",
    "gap": 3.0,
-   "keep": null
+   "keep": true,
+   "card": "The Grand Orrery",
+   "cap": "The Grand Orrery, enlarged by Thomas Wright, 1733",
+   "web": "media/museum/166a16c599d9.webp",
+   "bytes": 252274
   },
   "IMG_3589": {
    "visit": "london-2026",
@@ -2721,7 +2805,11 @@
    "kind": "object",
    "exhibit": "x045",
    "gap": 6.0,
-   "keep": null
+   "keep": true,
+   "card": "A silver universal microscope",
+   "cap": "Universal microscope by George Adams the Elder, about 1705",
+   "web": "media/museum/45ef5876995d.webp",
+   "bytes": 162858
   },
   "IMG_3598": {
    "visit": "london-2026",
@@ -3168,7 +3256,11 @@
    "kind": "object",
    "exhibit": "x051",
    "gap": 3.0,
-   "keep": null
+   "keep": true,
+   "card": "Qi Mei-lu's celestial globe",
+   "cap": "Celestial globe, made 1828 in Wuyuan",
+   "web": "media/museum/f6e7d853715f.webp",
+   "bytes": 180368
   },
   "IMG_3643": {
    "visit": "london-2026",

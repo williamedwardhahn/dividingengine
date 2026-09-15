@@ -110,6 +110,14 @@ Structure: each entry below will become a "card." Cards link across eras and acr
 - **1700s — Human computing as a profession**: observatories and navies employ rooms of people grinding out tables. Maskelyne's *Nautical Almanac* (1767) was worked out by computers scattered across England — a Yorkshire schoolmaster, a Cornish clergyman's widow — each paid by the lunar distance, each result computed twice by two people who did not know each other and reconciled by a third called the comparer. Redundancy as error-correction, a century before the phrase existed. The job title is "computer" and it belongs to a person.
 - **1790s — de Prony's logarithm project** (France): tables produced by a *pyramid of human computers* using division of labor — an assembly line for arithmetic, explicitly inspired by Adam Smith. A "computer" is a job title, not a machine.
 - **1794 — The Chappe optical telegraph** (France): semaphore towers relay coded messages Paris–Lille in minutes, growing into a ~5,000 km state network with protocols, acknowledgments, error control, and encrypted payloads its own operators couldn't read; in 1834 the Blanc brothers bribe operators to smuggle bond-market signals through it — history's first network hack (Thread M).
+- **1632–40 — Dover Castle turret clock**: a public clock from the workshop of Leonard Tennant, still carrying its original foliot balance — an escapement is a machine that counts, and the count is the point.
+- **1663 — Sutton's circular slide rule**: Henry Sutton bent the scales into circles so a long calculation never ran off the end of the rule; made with the Royal Society's John Collins, two years before the plague killed him.
+- **1666 — Morland's calculating machine**: Samuel Morland's pocket adder, dialled with a stylus, with separate wheels for farthings, pence, shillings and pounds — money, not mathematics, is what it was built to get right. Pepys saw one and called it 'very pretty, but not very useful'.
+- **1666 — Jamal al-Din ibn Muqim's astrolabe (Lahore)**: from the al-Din workshop, the most celebrated family of instrument-makers in the history of the astrolabe — an analogue computer for the sky, worked by hand.
+- **1687 — Newton's Principia**: the laws that gave the next three centuries of human computers something to compute; every fire-control table and ephemeris descends from these pages.
+- **1705 — A silver universal microscope**: made by George Adams the Elder for the future George II. The instrument trade that produced it is the same trade that produced the dividing engine.
+- **1712 — An earl's orrery**: John Rowley's clockwork planetarium for the Fourth Earl of Orrery, who gave the machine its name — a working model that computes the positions of the planets by turning.
+- **1733 — The Grand Orrery**: Queen Caroline's, enlarged by Thomas Wright, installed in her gallery at Kensington Palace — science as court instrument, and a simulation you could crank.
 
 ## Era 5 — The Industrialization of Calculation (1800 – 1900)
 
@@ -144,6 +152,8 @@ Structure: each entry below will become a "card." Cards link across eras and acr
 - **1890 — Herman Hollerith**: punched-card tabulators process the US Census in record time; his company later merges into **IBM**.
 - **1891 — Genaille–Lucas rulers**: Napier's bones perfected — multiplication by pure sight-reading, no carrying; a reminder that "calculating aids" kept evolving right up to the electronic age.
 - **1893 — The Committee of Ten** (US): secondary mathematics standardized into arithmetic → algebra → geometry → trigonometry — the course sequence most students still walk today, frozen before the airplane flew (see Thread L).
+- **c. 1805 — Stanhope's logical demonstrator**: Charles Stanhope built machines that tested whether a statement was logically valid — mechanised deduction, half a century before Boole wrote the algebra down.
+- **1828 — Qi Mei-lu's celestial globe**: made in Wuyuan and long misattributed to the Jesuit Ferdinand Verbiest; a rotating star catalogue, data stored on a sphere.
 
 ## Era 6 — Human Computers, Analog Machines & Theory (1900 – 1940)
 
@@ -166,6 +176,8 @@ Structure: each entry below will become a "card." Cards link across eras and acr
 - **1936 — Alonzo Church: lambda calculus** (with the Church–Turing thesis emerging).
 - **1937 — Claude Shannon's master's thesis**: Boolean algebra = switching circuits. Logic becomes hardware.
 - **1938–1941 — Konrad Zuse: Z1–Z3**: the Z3 (1941) is the first working programmable, fully automatic digital computer (binary, electromechanical).
+- **1934 — The Enigma machine**: rotor encryption sold first as a commercial product, then taken up by the German military — the problem that would justify building Colossus.
+- **1935 — The Manchester differential analyser**: built to solve problems from electrical power transmission onward; in the war it was turned to secret work, including calculations for the atomic bomb dropped on Hiroshima.
 
 ## Era 7 — The Electronic Breakthrough (1940 – 1955)
 
@@ -192,6 +204,7 @@ Structure: each entry below will become a "card." Cards link across eras and acr
 - **1950 — Turing's "Computing Machinery and Intelligence"**: can machines think? The imitation game.
 - **1951 — UNIVAC I**: computers go commercial; predicts the 1952 election on live TV.
 - **1952 — Grace Hopper's A-0 compiler**: programs that write programs; path to human-readable code.
+- **1949 — Prinz and Mays' electrical logic machine**: built by Dietrich Prinz, one of Turing's protégés, with the philosopher Wolfe Mays — an electrical device for testing logical statements, and an early attempt at building human-like qualities into a machine.
 
 ## Era 8 — Computation Becomes Infrastructure (1955 – 1975)
 
@@ -225,6 +238,8 @@ Structure: each entry below will become a "card." Cards link across eras and acr
 - **1971 — Intel 4004**: the microprocessor — a computer on a chip.
 - **1972 — HP-35 pocket scientific calculator**: the slide rule dies within a decade. C and Unix are born the same era.
 - **1976 — Appel & Haken prove the Four Color Theorem by computer**: the first major theorem whose proof *requires* machine computation — mathematics itself changed.
+- **c. 1955 — The Wembley tote machine**: a totalisator from the greyhound stadium, computing live odds across every bet as it was placed and driving a giant display — real-time computation as public entertainment, decades before the phrase existed.
+- **c. 1972 — The London Hospital Survival Predictor**: A machine that compared a coma patient's brain measurements against stored cases and pointed a needle between S for survive and D for die. Clinical prediction, in a box, with a dial.
 
 ## Era 9 — Personal, Symbolic & Networked (1975 – 2005)
 
@@ -255,6 +270,7 @@ Structure: each entry below will become a "card." Cards link across eras and acr
 - **1998 — Google**: computation organizes the world's information.
 - **1985–2000 — The famous failures**: Therac-25's radiation deaths, the Patriot missile's clock drift (1991), the Pentium FDIV bug (1994), Ariane 5's overflow explosion (1996), the Mars Climate Orbiter's unit mix-up (1999), and Y2K (2000) — machines compute wrong exactly as fast as they compute right (Thread N).
 - **1999 — GPU** (term coined with NVIDIA GeForce 256): graphics chips that will later, unexpectedly, power AI.
+- **1981 — WISARD**: Igor Aleksander, John Stonham and Bruce Wilkie at Brunel built one of the first working applications of an artificial neural network — a machine that recognised human faces. Its 'knowledge' is the wiring.
 
 ## Era 10 — The Age of Massive Computation & AI (2005 – present)
 

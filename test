@@ -302,8 +302,16 @@ def test_browser():
             br = pw.chromium.launch()
             pg = br.new_page(viewport={'width': 1300, 'height': 900})
             errs = []
-            pg.on('pageerror', lambda e: errs.append(str(e)))
-            pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' else None)
+            # The YouTube embed asks for permissions the page does not grant and
+            # logs about it, sometimes. That is their iframe complaining about
+            # their own policy — not our bug, and it made this check flaky.
+            THEIRS = ('compute-pressure', 'permissions policy',
+                      'feature policy', 'play() failed')
+            def mine(t):
+                return not any(k in t.lower() for k in THEIRS)
+            pg.on('pageerror', lambda e: errs.append(str(e)) if mine(str(e)) else None)
+            pg.on('console', lambda m: errs.append(m.text)
+                  if m.type == 'error' and mine(m.text) else None)
             pg.goto('http://127.0.0.1:8911/', wait_until='load'); pg.wait_for_timeout(800)
 
             check('lands on the film sheet', not pg.is_hidden('#sheetview'))

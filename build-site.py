@@ -114,6 +114,9 @@ COMMON = {
     # Generic nouns that a title-case title donates by accident: 'Salamis
     # Tablet' gave 'Tablet' to a card about the Emerald Tablet, and a
     # church building linked to Alonzo Church.
+    # 'orrery' is a common noun AND the Earl of Orrery's title, so it linked
+    # the man to the Greek machine named after him.
+    'orrery', 'orreries',
     'tablet', 'tablets', 'mathematics', 'mechanical', 'church', 'churches',
     'islands', 'island', 'engine', 'engines', 'instrument', 'instruments',
 'history','computer','computers','computing','machine','machines','technology',
@@ -341,6 +344,8 @@ ABOUT = [
        'and follow the links out.'},
 
  {'t': 'You were told not to use a calculator', 'd': '',
+  'img': 'media/museum/c29f3069ef23.webp',
+  'cred': 'Sinclair Cambridge pocket calculator, 1970s',
   'b': 'Calculators are not a modern convenience. They are <strong>four hundred years '
        'old</strong>. Schickard built one in 1623, Pascal in 1642, Leibniz in 1673. By the '
        'time you were told to put yours away, every consequential calculation on earth — '
@@ -386,6 +391,39 @@ def attach_pictures(stacks):
             n += 1
     return n
 
+
+MUSEUM = ROOT / 'museum.json'
+
+def attach_museum(stacks):
+    """Photographs taken in a museum, joined onto the cards they show.
+
+    These run after the Commons pass and overwrite it: a first-party
+    photograph of the actual object beats a stock picture of one like it,
+    and it carries no licence obligation but the one we owe ourselves —
+    saying who took it and where.
+    """
+    if not MUSEUM.exists():
+        return 0
+    db = json.loads(MUSEUM.read_text(encoding='utf-8'))
+    want = {}
+    for rec in db.get('photos', {}).values():
+        if rec.get('keep') and rec.get('web') and rec.get('card'):
+            want[rec['card'].strip().lower()] = rec
+    n = 0
+    for st in stacks:
+        for c in st['cards']:
+            if c.get('kindc') == 'film':
+                continue
+            rec = want.get((c.get('t') or '').strip().lower())
+            if not rec:
+                continue
+            c['img'] = rec['web']
+            c['cred'] = rec.get('cap') or 'Science Museum, London'
+            c.pop('credurl', None)
+            n += 1
+    return n
+
+
 def main():
     stacks = rb.parse((RECK / 'history-of-computation-master-list.md').read_text(encoding='utf-8'))
     films  = json.loads(ARCHIVE.read_text(encoding='utf-8'))['films']
@@ -427,6 +465,7 @@ def main():
                    'cards': ABOUT})
     n_link = crosslink(stacks)
     n_pic = attach_pictures(stacks)
+    n_mus = attach_museum(stacks)
     n_cards = sum(len(s['cards']) for s in stacks)
     n_film  = sum(1 for s in stacks for c in s['cards'] if c.get('kindc') == 'film')
     # Contents, Index and Glossary are stacks like any other — reachable from Go,
@@ -451,7 +490,7 @@ def main():
               .replace('/*__DATA__*/null', data))
     OUT.write_text(html, encoding='utf-8')
     print(f'{OUT.name}: {len(html)//1024} KB — {n_cards} cards in {len(stacks)} stacks, '
-          f'{n_film} with video, {n_pic} with a picture, {n_dp} from dataphys, '
+          f'{n_film} with video, {n_pic} with a picture ({n_mus} photographed), {n_dp} from dataphys, '
           f'{n_link} cross-links '
           f'({placed} dated into eras, {len(undated)} undated)')
 
