@@ -215,6 +215,18 @@ def test_build():
         print(f'      ({out_n} cross-links; '
               f'{sum(1 for c in cards if c.get("in"))} cards reached from others)')
 
+        plates = [pl for c in cards for pl in (c.get('plates') or [])]
+        check('museum plates are present', len(plates) >= 3, f'{len(plates)} plates')
+        check('every plate has a caption and alt text',
+              all(pl.get('cap') and pl.get('alt') for pl in plates),
+              f"{sum(1 for pl in plates if not (pl.get('cap') and pl.get('alt')))} without")
+        big = [pl for pl in plates
+               if (ROOT / pl['src']).exists()
+               and (ROOT / pl['src']).stat().st_size > 300_000]
+        check('no plate blows the size budget', not big, f'{len(big)} over 300 KB')
+        check('photographs are credited to the photographer',
+              all('hand' in c for c in cards if c.get('plates')))
+
         # The apparatus is derived in the browser now, so the payload must NOT
         # carry it — that redundancy cost 320 KB and most of the parse time.
         check('the page does not ship derived data',

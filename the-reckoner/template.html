@@ -124,6 +124,22 @@ a.xl:hover{border-bottom-color:var(--rubric)}
 .cardpic figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 .cardpic figcaption a:hover{color:var(--brass)}
 
+/* Photographs taken in a museum, shown as plates: the first one large, the
+   rest paired beneath it. Each carries its own caption, because a group of
+   pictures under one shared caption says nothing about any of them. */
+.plates{margin:0 0 22px}
+.plates .plate{margin:0 0 14px}
+.plates .plate img{display:block;width:100%;height:auto;
+  border:1px solid var(--rule);border-radius:2px;box-shadow:var(--shadow)}
+.plates .plate figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.055em;
+  line-height:1.55;color:var(--ink-3);padding:7px 2px 0}
+.plates .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.plates .pair .plate{margin:0}
+.plates .hand{font-family:var(--mono);font-size:9px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);text-align:right;
+  border-top:1px solid var(--rule);margin-top:2px;padding-top:6px}
+@media (max-width:620px){ .plates .pair{grid-template-columns:1fr} }
+
 #masthead{position:relative;text-align:center;padding:0 0 20px}
 #masthead .banner{height:150px;background-image:url("assets/banner.png");
   background-repeat:repeat-x;background-position:0 0;opacity:.85}
@@ -712,6 +728,18 @@ function renderMap(){
     <ul class="map">${thr.map(li).join("")}</ul>`;
 }
 
+function renderPlates(cd){
+  // First plate full width, the rest in pairs beneath it.
+  const p = cd.plates, hero = p[0], rest = p.slice(1);
+  const one = q => `<figure class="plate"><img src="${esc(q.src)}" alt="${esc(q.alt||"")}"`
+    + ` loading="lazy" decoding="async">`
+    + (q.cap? `<figcaption>${md(esc(q.cap))}</figcaption>`:"") + `</figure>`;
+  return `<div class="plates">` + one(hero)
+    + (rest.length? `<div class="pair">${rest.map(one).join("")}</div>`:"")
+    + (cd.hand? `<div class="hand">${esc(cd.hand)}</div>`:"")
+    + `</div>`;
+}
+
 function renderLinks(cd){
   // A card is a place, not a slide: show what it points at and what points here.
   const out = cd.out||[], inn = cd.in||[];
@@ -934,6 +962,7 @@ function render(push=true){
   else if(cd.special==="map") h += renderMap();
   else if(cd.kindc==="film") h += renderFilm(cd);
   else {
+    if(cd.plates) h += renderPlates(cd);
     if(cd.img) h += `<figure class="cardpic"><img src="${esc(cd.img)}" alt="" loading="lazy">` +
       (cd.cred? `<figcaption>${cd.credurl?`<a href="${esc(cd.credurl)}" target="_blank" rel="noopener">${esc(cd.cred)}</a>`:esc(cd.cred)}</figcaption>`:"") +
       `</figure>`;

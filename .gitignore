@@ -11,3 +11,6 @@ _probe.html
 .DS_Store
 .pics-candidates.json
 pics-review.txt
+
+# thumbnails + compiled OCR helper, rebuilt on demand from the originals
+.museum-cache/

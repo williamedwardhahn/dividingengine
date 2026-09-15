@@ -1,0 +1,568 @@
+#!/usr/bin/env python3
+"""
+museum — turn a folder of museum photographs into captioned cards.
+
+A visit produces hundreds of pictures and almost no notes. But the notes are
+in the pictures: you photograph the object, then you photograph the label.
+This reads the labels with the system OCR and hands each object photo the
+label that belongs to it, using when the shutter fired.
+
+    ./museum scan <folder> --visit <slug>   read times + labels, propose pairs
+    ./museum review [--visit S]             confirm the pairings in a browser
+    ./museum fetch [--visit S]              compress the confirmed ones in
+    ./museum status                         what is paired, kept, archived
+
+The pairing is a proposal, never a fact. Proximity in time is strong evidence
+and it is not proof — two exhibits stand next to each other and the camera
+cannot tell. So nothing is published until you have looked at it.
+"""
+import os, sys
+_V = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.venv', 'bin', 'python')
+if os.path.exists(_V) and os.path.realpath(sys.executable) != os.path.realpath(_V):
+    os.execv(_V, [_V, os.path.abspath(__file__)] + sys.argv[1:])
+
+import argparse, datetime, difflib, hashlib, html, json, pathlib, re
+import subprocess, shutil, tempfile, threading, webbrowser
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+ROOT   = pathlib.Path(__file__).parent.resolve()
+DB     = ROOT / 'museum.json'
+OUTDIR = ROOT / 'media' / 'museum'
+CACHE  = ROOT / '.museum-cache'
+
+# A label shot that is cropped, blurred or half out of frame still OCRs a
+# little text. Those fragments are real photographs of a label but they are
+# not usable as the anchor for an exhibit, so they do not get a vote.
+PLACARD_CHARS  = 400
+FRAGMENT_CHARS = 120
+SAME_LABEL     = 0.72      # text similarity at which two shots are one label
+WEB_WIDTH      = 1600
+WEB_BUDGET     = 260_000   # bytes
+
+
+# ── storage ───────────────────────────────────────────────────────────────
+def load():
+    if DB.exists():
+        return json.loads(DB.read_text())
+    return {'visits': {}, 'photos': {}}
+
+def save(db):
+    DB.write_text(json.dumps(db, indent=1, ensure_ascii=False) + '\n')
+
+
+# ── reading the folder ────────────────────────────────────────────────────
+def shot_times(folder, names):
+    """Capture time per file, via sips — it reads HEIC without any library."""
+    out, cur = {}, None
+    p = subprocess.run(['sips', '-g', 'creation'] + names, cwd=folder,
+                       capture_output=True, text=True)
+    for ln in p.stdout.splitlines():
+        ln = ln.rstrip()
+        if ln.startswith('/'):
+            cur = pathlib.Path(ln).stem
+        elif 'creation:' in ln and cur:
+            v = ln.split('creation:', 1)[1].strip()
+            try:
+                out[cur] = datetime.datetime.strptime(v, '%Y:%m:%d %H:%M:%S')
+            except ValueError:
+                pass
+    return out
+
+
+def ensure_ocr_binary():
+    """Compile the Vision OCR helper once. macOS ships the framework; the
+    helper is 40 lines of Swift that reads an image and prints its text."""
+    CACHE.mkdir(exist_ok=True)
+    binp = CACHE / 'ocr'
+    src  = CACHE / 'ocr.swift'
+    src.write_text(OCR_SWIFT)
+    if binp.exists() and binp.stat().st_mtime > src.stat().st_mtime:
+        return binp
+    if not shutil.which('swiftc'):
+        sys.exit('museum: needs swiftc (Xcode command line tools) for OCR')
+    r = subprocess.run(['swiftc', '-O', '-o', str(binp), str(src)],
+                       capture_output=True, text=True)
+    if r.returncode:
+        sys.exit('museum: could not build the OCR helper\n' + r.stderr[:800])
+    return binp
+
+
+OCR_SWIFT = r'''
+import Foundation
+import Vision
+import AppKit
+
+for path in CommandLine.arguments.dropFirst() {
+    guard let img = NSImage(contentsOfFile: path),
+          let cg = img.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+        print("\(path)\t-1\t"); continue
+    }
+    let req = VNRecognizeTextRequest()
+    req.recognitionLevel = .accurate
+    req.usesLanguageCorrection = true
+    do { try VNImageRequestHandler(cgImage: cg, options: [:]).perform([req]) }
+    catch { print("\(path)\t-2\t"); continue }
+    let lines = (req.results ?? []).compactMap { $0.topCandidates(1).first?.string }
+    let text = lines.joined(separator: "\u{1}")
+    print("\(path)\t\(text.count)\t\(text)")
+}
+'''
+
+
+def thumbs(folder, names, dest):
+    """640px JPEGs. The OCR is as accurate here as at full size and it is
+    twenty times faster, so the whole visit reads in under a minute."""
+    dest.mkdir(parents=True, exist_ok=True)
+    todo = [n for n in names if not (dest / (pathlib.Path(n).stem + '.jpg')).exists()]
+    for i in range(0, len(todo), 12):
+        batch = todo[i:i + 12]
+        procs = [subprocess.Popen(
+            ['sips', '-s', 'format', 'jpeg', '-Z', '640', n,
+             '--out', str(dest / (pathlib.Path(n).stem + '.jpg'))],
+            cwd=folder, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            for n in batch]
+        for p in procs:
+            p.wait()
+    return {pathlib.Path(n).stem: dest / (pathlib.Path(n).stem + '.jpg') for n in names}
+
+
+def read_text(binp, paths):
+    got = {}
+    for i in range(0, len(paths), 60):
+        batch = paths[i:i + 60]
+        r = subprocess.run([str(binp)] + [str(p) for p in batch],
+                           capture_output=True, text=True)
+        for ln in r.stdout.splitlines():
+            parts = ln.split('\t')
+            if len(parts) < 2:
+                continue
+            stem = pathlib.Path(parts[0]).stem
+            body = parts[2] if len(parts) > 2 else ''
+            got[stem] = [l.strip() for l in body.split('\x01') if l.strip()]
+    return got
+
+
+# ── what a label says ─────────────────────────────────────────────────────
+def norm(lines):
+    return re.sub(r'[^a-z0-9 ]+', ' ', ' '.join(lines).lower())[:400]
+
+SECTION = re.compile(r'^[A-Z0-9 &,\'\-\.]{4,40}$')      # SKILLS IN DEMAND
+PROV    = re.compile(r'^(made in|lent by|science museum|object no|image|'
+                     r'donated|painted by|engraved|from |photograph)', re.I)
+
+def label_title(lines):
+    """The object's name: the first real line, skipping a shouted section
+    header and any provenance. Museum cards put the name first and the
+    catalogue number last, which makes this more reliable than it sounds."""
+    out = []
+    for l in lines:
+        if not out and SECTION.fullmatch(l):
+            continue                       # section header, not the object
+        if PROV.match(l):
+            if out:
+                break
+            continue
+        out.append(l)
+        if len(' '.join(out)) > 55 or re.search(r'\b1[0-9]{3}s?\b', l):
+            break
+    return ' '.join(out)[:120].strip(' ,;:')
+
+
+def label_body(lines):
+    keep = [l for l in lines if not SECTION.fullmatch(l)]
+    return ' '.join(keep)[:900]
+
+
+# ── pairing ───────────────────────────────────────────────────────────────
+def build_exhibits(names, times, text):
+    """Group repeated shots of one label into a single exhibit with a span.
+
+    The same card is often photographed twice — once on the way in, once on
+    the way out — with the object itself shot in between. Treating those two
+    frames as one exhibit that spans the gap puts the object inside its own
+    label's span, which is exactly where it belongs. Nearest-single-frame
+    matching got this wrong: it handed the engine to whatever fragment of a
+    neighbouring card happened to be a few seconds closer.
+    """
+    anchors = [n for n in names if len(' '.join(text.get(n, []))) >= PLACARD_CHARS]
+    exhibits = []
+    for n in anchors:
+        sig = norm(text[n])
+        for e in exhibits:
+            if difflib.SequenceMatcher(None, sig, e['sig']).ratio() >= SAME_LABEL:
+                e['shots'].append(n)
+                e['t0'] = min(e['t0'], times[n])
+                e['t1'] = max(e['t1'], times[n])
+                if len(text[n]) > len(e['lines']):
+                    e['lines'], e['sig'] = text[n], sig
+                break
+        else:
+            exhibits.append({'shots': [n], 'sig': sig, 'lines': text[n],
+                             't0': times[n], 't1': times[n]})
+    for i, e in enumerate(exhibits):
+        e['id'] = f'x{i:03d}'
+        e['title'] = label_title(e['lines'])
+        e['body'] = label_body(e['lines'])
+    return exhibits
+
+
+def assign(n, times, exhibits):
+    """Inside a label's span wins outright; otherwise the nearest label, with
+    how far away it was, so review can sort the doubtful ones to the top."""
+    t = times[n]
+    inside = [e for e in exhibits if e['t0'] <= t <= e['t1']]
+    if inside:
+        return min(inside, key=lambda e: (e['t1'] - e['t0'])), 0
+    if not exhibits:
+        return None, None
+    best = min(exhibits, key=lambda e: min(abs((e['t0'] - t).total_seconds()),
+                                           abs((e['t1'] - t).total_seconds())))
+    gap = min(abs((best['t0'] - t).total_seconds()),
+              abs((best['t1'] - t).total_seconds()))
+    return best, gap
+
+
+# ── commands ──────────────────────────────────────────────────────────────
+def cmd_scan(a):
+    folder = pathlib.Path(a.folder).expanduser().resolve()
+    if not folder.is_dir():
+        sys.exit(f'museum: no such folder {folder}')
+    names = sorted(f.name for f in folder.iterdir()
+                   if f.suffix.upper() in ('.HEIC', '.JPG', '.JPEG', '.PNG'))
+    if not names:
+        sys.exit('museum: no photographs there')
+    visit = a.visit or folder.name.lower().replace(' ', '-')
+    print(f'{len(names)} photographs in {folder.name}')
+
+    times = shot_times(folder, names)
+    missing = [n for n in names if pathlib.Path(n).stem not in times]
+    if missing:
+        print(f'  {len(missing)} without a capture time — skipped')
+    names = [n for n in names if pathlib.Path(n).stem in times]
+    stems = sorted((pathlib.Path(n).stem for n in names), key=lambda s: times[s])
+
+    tdir = CACHE / visit
+    print('  rendering thumbnails…', flush=True)
+    thumb = thumbs(folder, names, tdir)
+    print('  reading labels…', flush=True)
+    text = read_text(ensure_ocr_binary(), [thumb[s] for s in stems])
+
+    exhibits = build_exhibits(stems, times, text)
+    print(f'  {len(exhibits)} distinct labels')
+
+    db = load()
+    db['visits'][visit] = {
+        'folder': str(folder), 'when': min(times.values()).isoformat(timespec='seconds'),
+        'exhibits': [{'id': e['id'], 'title': e['title'], 'body': e['body'],
+                      'shots': e['shots']} for e in exhibits],
+    }
+    kept = db['photos']
+    n_lab = 0
+    for s in stems:
+        chars = len(' '.join(text.get(s, [])))
+        rec = kept.get(s, {})
+        rec.update({'visit': visit, 'file': s, 'when': times[s].isoformat(timespec='seconds'),
+                    'chars': chars})
+        if chars >= FRAGMENT_CHARS:
+            rec['kind'] = 'label' if chars >= PLACARD_CHARS else 'label-partial'
+            rec['exhibit'] = next((e['id'] for e in exhibits if s in e['shots']), None)
+            rec.pop('gap', None)
+        else:
+            e, gap = assign(s, times, exhibits)
+            rec['kind'] = 'object'
+            rec['exhibit'] = e['id'] if e else None
+            rec['gap'] = gap
+            n_lab += 1
+        rec.setdefault('keep', None)          # None = undecided
+        kept[s] = rec
+    save(db)
+    print(f'  {n_lab} object photographs paired to a label')
+    print(f'\nnow: ./museum review --visit {visit}')
+
+
+def cmd_status(a):
+    db = load()
+    if not db['visits']:
+        print('nothing scanned yet'); return
+    for v, info in db['visits'].items():
+        ph = [p for p in db['photos'].values() if p['visit'] == v]
+        obj = [p for p in ph if p['kind'] == 'object']
+        kept = [p for p in obj if p.get('keep')]
+        done = [p for p in obj if p.get('keep') is not None]
+        arch = [p for p in kept if p.get('web')]
+        print(f'{v}  {info["when"][:10]}')
+        print(f'  {len(ph)} photographs, {len(info["exhibits"])} labels')
+        print(f'  {len(obj)} objects — {len(done)} reviewed, {len(kept)} kept, '
+              f'{len(arch)} archived')
+        far = [p for p in obj if (p.get('gap') or 0) > 45]
+        if far:
+            print(f'  {len(far)} paired across a gap over 45s — check those first')
+
+
+def web_encode(src, dst, width=WEB_WIDTH, budget=WEB_BUDGET):
+    """Down to something a page can carry, stepping quality then width so a
+    busy photograph does not blow the budget just by being detailed."""
+    from PIL import Image
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    tmp = pathlib.Path(tempfile.mkdtemp()) / 'src.jpg'
+    subprocess.run(['sips', '-s', 'format', 'jpeg', '-Z', str(width * 2), str(src),
+                    '--out', str(tmp)], stdout=subprocess.DEVNULL,
+                   stderr=subprocess.DEVNULL, check=True)
+    im = Image.open(tmp).convert('RGB')
+    for w in (width, int(width * 0.8), int(width * 0.65)):
+        for q in (82, 74, 66, 58):
+            c = im.copy()
+            if c.width > w:
+                c = c.resize((w, round(c.height * w / c.width)), Image.LANCZOS)
+            c.save(dst, 'WEBP', quality=q, method=6)
+            if dst.stat().st_size <= budget:
+                return dst.stat().st_size
+    return dst.stat().st_size
+
+
+def cmd_fetch(a):
+    db = load()
+    todo = [p for p in db['photos'].values()
+            if p.get('keep') and not p.get('web')
+            and (not a.visit or p['visit'] == a.visit)]
+    if not todo:
+        print('nothing to archive'); return
+    OUTDIR.mkdir(parents=True, exist_ok=True)
+    for i, p in enumerate(todo, 1):
+        folder = pathlib.Path(db['visits'][p['visit']]['folder'])
+        src = next((folder / (p['file'] + e) for e in ('.HEIC', '.jpg', '.JPG', '.png')
+                    if (folder / (p['file'] + e)).exists()), None)
+        if not src:
+            print(f'  [{i}/{len(todo)}] {p["file"]} — original missing'); continue
+        stem = hashlib.sha1(f'{p["visit"]}/{p["file"]}'.encode()).hexdigest()[:12]
+        dst = OUTDIR / f'{stem}.webp'
+        n = web_encode(src, dst)
+        p['web'] = f'media/museum/{stem}.webp'
+        p['bytes'] = n
+        print(f'  [{i}/{len(todo)}] {p["file"]} -> {p["web"]} ({n // 1024} KB)')
+        save(db)
+    print(f'archived {len(todo)}')
+
+
+# ── review ────────────────────────────────────────────────────────────────
+REVIEW_HTML = r"""<!doctype html><meta charset=utf-8>
+<title>museum review</title>
+<style>
+ :root{--ink:#1a1714;--pap:#f7f4ee;--rule:#d9d2c4;--red:#8c2f22}
+ *{box-sizing:border-box}
+ body{margin:0;height:100vh;overflow:hidden;background:var(--pap);color:var(--ink);
+      font:15px/1.5 -apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column}
+ header{padding:8px 16px;border-bottom:1px solid var(--rule);display:flex;
+        gap:16px;align-items:baseline;flex:0 0 auto}
+ header b{font-size:13px;letter-spacing:.08em;text-transform:uppercase}
+ #prog{margin-left:auto;font:12px ui-monospace,monospace;color:#7a7266}
+ main{flex:1 1 auto;display:flex;min-height:0}
+ #shot{flex:1 1 60%;display:flex;align-items:center;justify-content:center;
+       background:#111;min-width:0}
+ #shot img{max-width:100%;max-height:100%;object-fit:contain}
+ aside{flex:0 0 40%;padding:18px 22px;overflow:auto;border-left:1px solid var(--rule)}
+ h1{font:600 26px/1.25 Georgia,serif;margin:.1em 0 .1em}
+ .gap{display:inline-block;font:12px ui-monospace,monospace;padding:2px 8px;
+      border:1px solid var(--rule);border-radius:10px;color:#7a7266}
+ .gap.far{color:var(--red);border-color:var(--red)}
+ .body{margin-top:12px;color:#4a443c;font-size:14px;max-height:34vh;overflow:auto}
+ .fn{font:12px ui-monospace,monospace;color:#7a7266;margin-top:14px}
+ .alt{margin-top:16px;border-top:1px solid var(--rule);padding-top:12px}
+ .alt button{display:block;width:100%;text-align:left;margin:4px 0;padding:7px 10px;
+   border:1px solid var(--rule);background:#fff;border-radius:6px;cursor:pointer;
+   font:13px/1.35 inherit}
+ .alt button:hover{border-color:var(--ink)}
+ footer{flex:0 0 auto;padding:9px 16px;border-top:1px solid var(--rule);
+        font-size:13px;color:#5d564d;display:flex;gap:18px;align-items:center}
+ kbd{font:12px ui-monospace,monospace;background:#fff;border:1px solid var(--rule);
+     border-radius:4px;padding:1px 6px}
+ #save{margin-left:auto;font:12px ui-monospace,monospace}
+ .bad{color:#fff;background:var(--red);padding:2px 8px;border-radius:4px}
+</style>
+<header><b>Museum review</b><span id=vis></span><span id=prog></span></header>
+<main>
+  <div id=shot><img id=img></div>
+  <aside>
+    <span class=gap id=gap></span>
+    <h1 id=title></h1>
+    <div class=body id=body></div>
+    <div class=fn id=fn></div>
+    <div class=alt id=alt></div>
+  </aside>
+</main>
+<footer>
+  <span><kbd>K</kbd> keep</span><span><kbd>X</kbd> skip</span>
+  <span><kbd>&larr;</kbd> back</span><span><kbd>1-9</kbd> re-label</span>
+  <span id=save></span>
+</footer>
+<script>
+const D = __DATA__;
+let i = 0;
+const el = id => document.getElementById(id);
+function near(p){
+  // labels from the same visit, closest in time first — the right one is
+  // nearly always in the first three when the proposal is wrong
+  const t = new Date(p.when);
+  return D.exhibits.filter(e => e.visit === p.visit)
+    .map(e => ({e, d: Math.min(...e.shots.map(s => Math.abs(new Date(s) - t)))}))
+    .sort((a,b) => a.d - b.d).slice(0,6).map(x => x.e);
+}
+function draw(){
+  const p = D.photos[i];
+  if(!p){ el('img').removeAttribute('src');
+          el('title').textContent = 'Done — every photograph reviewed.';
+          el('body').textContent=''; el('alt').innerHTML=''; el('fn').textContent='';
+          el('gap').textContent=''; return; }
+  const e = D.byid[p.exhibit] || {title:'(no label found)', body:''};
+  el('img').src = '/img/' + p.file;
+  el('title').textContent = e.title;
+  el('body').textContent = e.body;
+  el('fn').textContent = p.file + ' · ' + p.when.replace('T',' ');
+  const g = el('gap');
+  g.textContent = p.gap === 0 ? 'inside the label’s own span'
+                 : (p.gap == null ? 'no label' : `${p.gap|0}s from the label`);
+  g.className = 'gap' + ((p.gap||0) > 45 ? ' far' : '');
+  el('prog').textContent = (i+1) + ' / ' + D.photos.length;
+  const alts = near(p).filter(x => x.id !== p.exhibit);
+  el('alt').innerHTML = '<div style="font-size:12px;color:#7a7266">'
+    + 'Wrong label? pick one:</div>' + alts.map((x,n) =>
+    `<button data-id="${x.id}"><b>${n+1}.</b> ${x.title.replace(/</g,'&lt;')}</button>`).join('');
+  [...el('alt').querySelectorAll('button')].forEach(b =>
+    b.onclick = () => relabel(b.dataset.id));
+}
+function relabel(id){ D.photos[i].exhibit = id; post({file:D.photos[i].file, exhibit:id}); draw(); }
+function decide(keep){
+  const p = D.photos[i]; if(!p) return;
+  post({file:p.file, keep:keep, exhibit:p.exhibit}, ok => { if(ok){ i++; draw(); } });
+}
+function post(body, cb){
+  el('save').textContent = 'saving…';
+  fetch('/set', {method:'POST', body:JSON.stringify(body)})
+    .then(r => { if(!r.ok) throw 0; el('save').textContent='saved'; cb && cb(true); })
+    .catch(() => { el('save').innerHTML='<span class=bad>NOT SAVED</span>'; cb && cb(false); });
+}
+addEventListener('keydown', ev => {
+  const k = ev.key.toLowerCase();
+  if(k === 'k'){ decide(true); }
+  else if(k === 'x'){ decide(false); }
+  else if(ev.key === 'ArrowLeft'){ i = Math.max(0, i-1); draw(); }
+  else if(ev.key === 'ArrowRight'){ i = Math.min(D.photos.length-1, i+1); draw(); }
+  else if(/^[1-9]$/.test(k)){
+    const b = el('alt').querySelectorAll('button')[+k-1]; if(b) b.click();
+  }
+});
+draw();
+</script>
+"""
+
+
+def cmd_review(a):
+    db = load()
+    visits = [a.visit] if a.visit else list(db['visits'])
+    if not visits or any(v not in db['visits'] for v in visits):
+        sys.exit('museum: scan a folder first')
+
+    byid, exhibits = {}, []
+    for v in visits:
+        info = db['visits'][v]
+        for e in info['exhibits']:
+            shots = [db['photos'][s]['when'] for s in e['shots'] if s in db['photos']]
+            rec = {'id': f'{v}:{e["id"]}', 'visit': v, 'title': e['title'],
+                   'body': e['body'], 'shots': shots}
+            byid[rec['id']] = rec
+            exhibits.append(rec)
+
+    photos = []
+    for p in sorted(db['photos'].values(), key=lambda p: p['when']):
+        if p['visit'] not in visits or p['kind'] != 'object':
+            continue
+        if p.get('keep') is not None and not a.all:
+            continue
+        photos.append({'file': p['file'], 'when': p['when'], 'gap': p.get('gap'),
+                       'exhibit': f'{p["visit"]}:{p["exhibit"]}' if p.get('exhibit') else None,
+                       'visit': p['visit']})
+    if not photos:
+        print('every photograph is reviewed — ./museum fetch'); return
+    # doubtful pairings first: they are the ones that need a human
+    photos.sort(key=lambda p: (-(p['gap'] or 0), p['when']))
+
+    data = {'photos': photos, 'exhibits': exhibits, 'byid': byid}
+    page = REVIEW_HTML.replace('__DATA__', json.dumps(data))
+    thumbdirs = {v: CACHE / v for v in visits}
+
+    class H(BaseHTTPRequestHandler):
+        def log_message(self, *a): pass
+
+        def do_GET(self):
+            if self.path.startswith('/img/'):
+                stem = self.path[5:]
+                for d in thumbdirs.values():
+                    f = d / (stem + '.jpg')
+                    if f.exists():
+                        b = f.read_bytes()
+                        self.send_response(200)
+                        self.send_header('Content-Type', 'image/jpeg')
+                        self.send_header('Content-Length', str(len(b)))
+                        self.end_headers(); self.wfile.write(b); return
+                self.send_error(404); return
+            b = page.encode()
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Content-Length', str(len(b)))
+            self.end_headers(); self.wfile.write(b)
+
+        def do_POST(self):
+            n = int(self.headers.get('Content-Length', 0))
+            body = json.loads(self.rfile.read(n) or b'{}')
+            cur = load()
+            rec = cur['photos'].get(body.get('file'))
+            if not rec:
+                self.send_error(404); return
+            if 'keep' in body:
+                rec['keep'] = bool(body['keep'])
+            if body.get('exhibit'):
+                rec['exhibit'] = body['exhibit'].split(':', 1)[1]
+            save(cur)
+            self.send_response(200); self.send_header('Content-Length', '2')
+            self.end_headers(); self.wfile.write(b'ok')
+
+    srv = HTTPServer(('127.0.0.1', 8931), H)
+    url = 'http://127.0.0.1:8931/'
+    print(f'{len(photos)} to review at {url}   (K keep · X skip · 1-9 re-label)')
+    print('ctrl-c when you are done')
+    threading.Timer(0.4, lambda: webbrowser.open(url)).start()
+    try:
+        srv.serve_forever()
+    except KeyboardInterrupt:
+        db = load()
+        done = sum(1 for p in db['photos'].values() if p.get('keep') is not None)
+        kept = sum(1 for p in db['photos'].values() if p.get('keep'))
+        print(f'\n{done} reviewed, {kept} kept — ./museum fetch')
+
+
+def main():
+    ap = argparse.ArgumentParser(prog='museum', description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest='cmd', required=True)
+
+    s = sub.add_parser('scan', help='read a folder of museum photographs')
+    s.add_argument('folder'); s.add_argument('--visit')
+    s.set_defaults(fn=cmd_scan)
+
+    s = sub.add_parser('review', help='confirm the pairings')
+    s.add_argument('--visit'); s.add_argument('--all', action='store_true',
+                                              help='include already-reviewed')
+    s.set_defaults(fn=cmd_review)
+
+    s = sub.add_parser('fetch', help='compress the kept photographs in')
+    s.add_argument('--visit'); s.set_defaults(fn=cmd_fetch)
+
+    s = sub.add_parser('status', help='what is paired, kept, archived')
+    s.set_defaults(fn=cmd_status)
+
+    a = ap.parse_args()
+    a.fn(a)
+
+
+if __name__ == '__main__':
+    main()

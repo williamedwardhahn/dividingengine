@@ -286,6 +286,35 @@ ABOUT = [
        'the films, the cards, the timeline — exists to make that history visible to '
        'people who were never shown it.'},
 
+ {'t': 'The machine itself', 'd': '8 September 2026',
+  'plates': [
+    {'src': 'media/museum/679a6d2c4b72.webp',
+     'alt': 'A brass and iron dividing engine on a wooden tripod frame, in a museum case',
+     'cap': 'Dividing engine for making scales on instruments, late 1700s, '
+            'modified 1800s. Made in England. Science Museum, London \u2014 object no. 1925-478.'},
+    {'src': 'media/museum/c26441cd2826.webp',
+     'alt': 'The toothed dividing plate of the engine seen from above',
+     'cap': 'The dividing plate. A sextant or octant was fixed above it, and the '
+            'engine\u2019s precision screw and ratchet stepped the divisions round.'},
+    {'src': 'media/museum/1e1fe74a57e3.webp',
+     'alt': 'Oil portrait of Jesse Ramsden seated beside a dividing engine',
+     'cap': 'Jesse Ramsden (1735\u20131800), painted by Robert Home about 1790. A '
+            'dividing engine stands at his hand. Lent by the Royal Society.'}],
+  'hand': 'Photographs \u2014 William Edward Hahn, 8 September 2026',
+  'b': 'Thirteen years after starting this archive, I stood in front of one.<br><br>'
+       'A dividing engine does a single job: it marks an accurate scale. Before it, every '
+       'degree on every sextant, octant and theodolite was stepped off by hand with '
+       'dividers, and the instrument was only ever as good as one man\u2019s eye and his '
+       'patience. The engine cut the divisions mechanically \u2014 repeatably, and finer '
+       'than a hand can hold. <strong>Jesse Ramsden</strong> built the first in London in '
+       'the 1770s, and the government\u2019s Board of Longitude paid him to hand the design '
+       'to his competitors: scales meant sextants, sextants meant navigation, and navigation '
+       'meant ships.<br><br>'
+       'It is a machine for making other machines trustworthy \u2014 the precondition for '
+       'measurement, and one almost nobody is taught.<br><br>'
+       'Half an hour earlier, in the same building, I had been photographing Babbage\u2019s '
+       'Difference Engine No. 2.'},
+
  {'t': 'Why almost none of this was taught to you', 'd': '',
   'b': 'The history of computing falls into a gap between two departments, and neither one '
        'reaches in.<br><br>'
