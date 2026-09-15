@@ -354,9 +354,20 @@ def test_browser():
                   f"{n0} -> {pg.locator('.gloss .gitem').count()}")
             nodes = pg.evaluate("document.querySelectorAll('*').length")
             check('the glossary does not flood the DOM', nodes < 4000, f'{nodes} nodes')
-            dom = pg.evaluate("()=>{const n=performance.getEntriesByType('navigation')[0];"
-                              "return Math.round(n.domContentLoadedEventEnd)}")
-            check('the page parses quickly', dom < 900, f'{dom} ms')
+            # One sample measures whatever else the machine was doing. Take the
+            # median of three cold loads of the heaviest entry point (glossary
+            # derives the whole apparatus before it can paint).
+            samples = []
+            for _ in range(3):
+                p2 = br.new_page(viewport={'width': 1300, 'height': 900})
+                p2.goto('http://127.0.0.1:8911/#glossary/0', wait_until='load')
+                p2.wait_for_timeout(300)
+                samples.append(p2.evaluate(
+                    "()=>{const n=performance.getEntriesByType('navigation')[0];"
+                    "return Math.round(n.domContentLoadedEventEnd)}"))
+                p2.close()
+            dom = sorted(samples)[1]
+            check('the page parses quickly', dom < 900, f'{dom} ms median of {samples}')
             # the Go panel is anchored to a narrow button; it once opened 494px
             # off the left edge of the window, working but invisible
             for _w in (1250, 700, 420):

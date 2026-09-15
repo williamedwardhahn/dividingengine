@@ -110,12 +110,29 @@ def film_card(f):
 STOP_TITLE = {'overview', 'ideas', 'machines', 'memory', 'the signal', 'home'}
 GENERIC = re.compile(r'^(the|a|an)\s+', re.I)
 
-COMMON = {'history','computer','computers','computing','machine','machines','technology',
+COMMON = {
+    # Generic nouns that a title-case title donates by accident: 'Salamis
+    # Tablet' gave 'Tablet' to a card about the Emerald Tablet, and a
+    # church building linked to Alonzo Church.
+    'tablet', 'tablets', 'mathematics', 'mechanical', 'church', 'churches',
+    'islands', 'island', 'engine', 'engines', 'instrument', 'instruments',
+'history','computer','computers','computing','machine','machines','technology',
           'network','memory','science','data','number','numbers','system','systems',
           'information','digital','future','world','time','work','film','video','part',
           'optical','guidance','teaching','curriculum','advantage','pioneers','overview',
           'mathematical','electronic','automatic','universal','american','national',
           'general','modern','physical','practical','personal'}
+
+# A title that opens with a function word is a sentence, not a name. 'For
+# Leibniz, binary was theology' was donating 'Leibniz' alongside the real
+# Leibniz card, and two claimants means the ambiguity guard drops the term —
+# so prose saying 'Leibniz' linked nowhere at all.
+ARTICLES = {'the', 'a', 'an', 'of', 'on', 'in', 'at', 'to', 'by', 'for', 'from',
+            'with', 'without', 'against', 'before', 'after', 'beyond', 'inside',
+            'how', 'why', 'when', 'what', 'where', 'who', 'which',
+            'and', 'but', 'or', 'not', 'no', 'it', 'its', 'this', 'that',
+            'these', 'those', 'every', 'most', 'some', 'one', 'two', 'three',
+            'early', 'first', 'new', 'late', 'other', 'another'}
 
 def link_terms(card):
     """Terms that should point at this card when they appear on another one.
@@ -137,8 +154,13 @@ def link_terms(card):
     # What prose actually says is the surname — 'Babbage', 'Oughtred', 'Napier'.
     # Taking every capitalised word made 'William Oughtred: slide rule' donate
     # 'William'; taking only the leading word gave almost nothing.
-    person = re.match(r"[A-Z][a-z\u00c0-\u024f]+\s+([A-Z][a-z\u00c0-\u024f]{3,})\b", base)
-    if person and person.group(1).lower() not in COMMON:
+    # The surname is the LAST word of the name run, not the second: taking the
+    # second made 'Gottfried Wilhelm Leibniz' donate 'Wilhelm', so prose saying
+    # 'Leibniz' linked to nothing. Articles are refused a run so 'The Analytical
+    # Engine' cannot donate 'Engine'.
+    person = re.match(r"(?:[A-Z][a-z\u00c0-\u024f]+\s+)+([A-Z][a-z\u00c0-\u024f]{3,})\b", base)
+    if person and person.group(1).lower() not in COMMON \
+       and base.split()[0].lower() not in ARTICLES:
         out.add(person.group(1))
     elif re.match(r"[A-Z][a-z\u00c0-\u024f]{8,}\b", base):
         w = re.match(r"([A-Z][a-z\u00c0-\u024f]{8,})\b", base).group(1)
@@ -154,6 +176,8 @@ def link_label(stack, card):
     if t.lower() in ('overview', ''):
         return re.sub(r'^(Era \d+|Thread [A-Z]):\s*', '', stack['title'])
     return t
+
+GENERIC_AT = int(os.environ.get('DE_GENERIC_AT', 24))
 
 def crosslink(stacks, cap=6):
     """Turn mentions of other cards into links, and record what points back."""
@@ -179,7 +203,11 @@ def crosslink(stacks, cap=6):
         # lowercase 'guidance', and 'Teaching' every 'teaching'.
         flags = 0 if ' ' not in t else re.I
         p = re.compile(r'(?<![\w-])' + re.escape(t) + r'(?![\w-])', flags)
-        if sum(1 for b in bodies if p.search(b)) > 8:      # too generic to mean anything
+        # A surname that shows up on many cards is a hub, not noise — that is
+        # what the reader most wants to follow. The guard is here for generic
+        # words, and capitalisation plus COMMON already catch those, so it sits
+        # high and the per-card cap does the rest.
+        if sum(1 for b in bodies if p.search(b)) > GENERIC_AT:
             continue
         pats.append((p, sid, n, ti))
 
