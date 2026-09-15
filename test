@@ -162,6 +162,8 @@ def test_build():
           'Dividing Engine' in h and 'The Reckoner' not in h.replace('Ready-Reckoner', ''))
     check('the name is explained', 'Jesse Ramsden' in h and 'difference engine' in h.lower())
     check('the mission is stated', 'history of computing' in h.lower())
+    check('there is an About page',
+          'William Edward Hahn' in h and 'Machine Perception' in h)
     check('no read/watch split remains', 'class="halves"' not in h)
 
     m = re.search(r'const STACKS\s*=\s*(\{.*?\})\s*;?\s*\n', h, re.S) or \
@@ -188,7 +190,15 @@ def test_build():
         # the cross-link graph: this is what makes it hypermedia and not a slideshow
         addr = {f"{s['id']}/{n}" for s in stacks for n in range(len(s['cards']))}
         out_n = sum(len(c.get('out') or []) for c in cards)
-        check('cards cross-link to each other', out_n > 200, f'{out_n} links')
+        # Precision over volume: 602 links were mostly noise ('history' pointing
+        # at a film about aluminium). These are surnames and full titles.
+        check('cards cross-link to each other', out_n > 100, f'{out_n} links')
+        nested = len(re.findall(r'<a class="xl"[^>]*><a class="xl"', h))
+        check('no nested links', nested == 0, f'{nested} nested anchors')
+        empty = sum(1 for c in cards
+                    for m in re.finditer(r'<a class="xl"[^>]*>(.*?)</a>', c.get('b') or '')
+                    if not re.sub(r'<[^>]+>', '', m.group(1)).strip())
+        check('no empty link text', empty == 0, f'{empty} empty anchors')
         dangling = [x['to'] for c in cards for x in (c.get('out') or []) + (c.get('in') or [])
                     if x['to'] not in addr]
         check('every link points at a real card', not dangling, f'{dangling[:3]}')

@@ -112,7 +112,10 @@ GENERIC = re.compile(r'^(the|a|an)\s+', re.I)
 
 COMMON = {'history','computer','computers','computing','machine','machines','technology',
           'network','memory','science','data','number','numbers','system','systems',
-          'information','digital','future','world','time','work','film','video','part'}
+          'information','digital','future','world','time','work','film','video','part',
+          'optical','guidance','teaching','curriculum','advantage','pioneers','overview',
+          'mathematical','electronic','automatic','universal','american','national',
+          'general','modern','physical','practical','personal'}
 
 def link_terms(card):
     """Terms that should point at this card when they appear on another one.
@@ -131,9 +134,15 @@ def link_terms(card):
     out = set()
     if len(base) >= 9 and len(base.split()) >= 2 and base.lower() not in COMMON:
         out.add(base)
-    # distinctive capitalised names: Jacquard, Antikythera, Pascaline, Leibniz
-    for w in re.findall(r"\b([A-Z][a-z\u00c0-\u024f]{4,}(?:['’][a-z]+)?)\b", base):
-        if w.lower() not in COMMON and not GENERIC.match(w):
+    # What prose actually says is the surname — 'Babbage', 'Oughtred', 'Napier'.
+    # Taking every capitalised word made 'William Oughtred: slide rule' donate
+    # 'William'; taking only the leading word gave almost nothing.
+    person = re.match(r"[A-Z][a-z\u00c0-\u024f]+\s+([A-Z][a-z\u00c0-\u024f]{3,})\b", base)
+    if person and person.group(1).lower() not in COMMON:
+        out.add(person.group(1))
+    elif re.match(r"[A-Z][a-z\u00c0-\u024f]{8,}\b", base):
+        w = re.match(r"([A-Z][a-z\u00c0-\u024f]{8,})\b", base).group(1)
+        if w.lower() not in COMMON:
             out.add(w)
     # a lone distinctive noun title: 'Quipus', 'Pascaline', 'Nomograms'
     if len(base.split()) == 1 and len(base) >= 7 and base.lower() not in COMMON:
@@ -163,7 +172,13 @@ def crosslink(stacks, cap=6):
     bodies = [(c.get('b') or '') for s_ in stacks for c in s_['cards']]
     pats = []
     for t, sid, n, ti in index:
-        p = re.compile(r'(?<![\w-])' + re.escape(t) + r'(?![\w-])', re.I)
+        if not t.strip():
+            continue
+        # A one-word term is only a link where it is capitalised as a name.
+        # Matching case-insensitively let a card called 'Guidance' claim every
+        # lowercase 'guidance', and 'Teaching' every 'teaching'.
+        flags = 0 if ' ' not in t else re.I
+        p = re.compile(r'(?<![\w-])' + re.escape(t) + r'(?![\w-])', flags)
         if sum(1 for b in bodies if p.search(b)) > 8:      # too generic to mean anything
             continue
         pats.append((p, sid, n, ti))
@@ -176,27 +191,41 @@ def crosslink(stacks, cap=6):
             if not body:
                 continue
             # only rewrite text outside existing tags and anchors
-            parts = re.split(r'(<a\b[^>]*>.*?</a>|<[^>]+>)', body, flags=re.S)
+            parts = re.split(r'(<a\\b[^>]*>.*?</a>|<[^>]+>)', body, flags=re.S)
             hits, seen = 0, set()
             for i, seg in enumerate(parts):
                 if not seg or seg.startswith('<'):
                     continue
-                for pat, sid, tn, ti in pats:
-                    if hits >= cap:
-                        break
-                    if sid == s['id'] and tn == n:      # never link to itself
+                # Collect every candidate first, then apply the non-overlapping
+                # ones in one pass. Substituting as we went let a second term
+                # match inside the anchor the first had just inserted, which
+                # produced nested <a><a>…</a></a> and an empty outer link.
+                cands = []
+                for rank, (pat, sid, tn, ti) in enumerate(pats):
+                    if sid == s['id'] and tn == n:
                         continue
-                    key = (sid, tn)
-                    if key in seen:
+                    if (sid, tn) in seen:
                         continue
-                    new, k = pat.subn(
-                        lambda m: f'<a class="xl" href="#{sid}/{tn}">{m.group(0)}</a>',
-                        seg, count=1)
-                    if k:
-                        seg = new; hits += 1; seen.add(key); made += 1
-                        back.setdefault(f'{sid}/{tn}', []).append(
-                            {'to': f"{s['id']}/{n}", 't': link_label(s, c)})
-                parts[i] = seg
+                    m = pat.search(seg)
+                    if m:
+                        # rank breaks ties so the sort never compares Match objects
+                        cands.append((m.start(), -(m.end() - m.start()), rank, m, sid, tn))
+                cands.sort(key=lambda x: x[:3])
+                out, last, used = [], 0, set()
+                for _start, _neg, _rank, m, sid, tn in cands:
+                    if hits >= cap or m.start() < last:
+                        continue
+                    if (sid, tn) in used:
+                        continue
+                    out.append(seg[last:m.start()])
+                    out.append(f'<a class="xl" href="#{sid}/{tn}">{m.group(0)}</a>')
+                    last = m.end()
+                    used.add((sid, tn)); seen.add((sid, tn)); hits += 1; made += 1
+                    back.setdefault(f'{sid}/{tn}', []).append(
+                        {'to': f"{s['id']}/{n}", 't': link_label(s, c)})
+                if out:
+                    out.append(seg[last:])
+                    parts[i] = ''.join(out)
             if hits:
                 c['b'] = ''.join(parts)
                 c['out'] = [{'to': f'{sid}/{tn}', 't': ti} for (sid, tn) in seen
@@ -212,6 +241,60 @@ def crosslink(stacks, cap=6):
                         seen.add(x['to']); uniq.append(x)
                 c['in'] = uniq[:12]
     return made
+
+
+ABOUT = [
+ {'t': 'About', 'd': 'since 2013',
+  'b': 'Dividing Engine is an archive of the history of computation, assembled by '
+       '<strong>William Edward Hahn, PhD</strong>, who began it in 2013 to put automation '
+       'and artificial intelligence back into historical context.<br><br>'
+       'He is an Associate Professor of Mathematical Sciences at Florida Atlantic '
+       'University, and founder and director of the <strong>Machine Perception and '
+       'Cognitive Robotics Laboratory</strong>, which he co-founded there in 2014. His '
+       'doctorate is in sparse coding and compressed sensing; before that, neural networks. '
+       'He has been collecting this material for about as long as he has been running the lab.<br><br>'
+       'The premise has not changed since the beginning: <em>you cannot see where a '
+       'technology is going without knowing where it has been.</em> Everything here — '
+       'the films, the cards, the timeline — exists to make that history visible to '
+       'people who were never shown it.'},
+
+ {'t': 'Why almost none of this was taught to you', 'd': '',
+  'b': 'The history of computing falls into a gap between two departments, and neither one '
+       'reaches in.<br><br>'
+       'It is <strong>too old for technical training</strong>, which starts at the current '
+       'framework and works forward — a course on machine learning begins at the point where '
+       'the present toolchain begins, and everything earlier is a charming anecdote if it is '
+       'mentioned at all. And it is <strong>too new to be treated as history</strong>, a '
+       'discipline still deciding what to make of the twentieth century.<br><br>'
+       'So it is taught almost nowhere. And what fell into that gap is not the footnotes. '
+       'It is most of the important ideas.'},
+
+ {'t': 'Have you heard of any of these?', 'd': '',
+  'b': 'Water computers. Machines built to simulate nerve impulses and model neurons in '
+       'brass and oil. Torpedo inertial guidance. Optical bomb sights. Fire-control gun '
+       'directors solving differential equations continuously while the ship rolled '
+       'underneath them.<br><br>'
+       'No?<br><br>'
+       'There is a reason, and it is not that these were minor. <strong>Military advantage '
+       'is not a curriculum.</strong> The computing that mattered most was, for decades, the '
+       'computing nobody was told about — and the silence outlived the secrecy that caused '
+       'it. The machines were declassified. The teaching never caught up.<br><br>'
+       'They are all in here. Start with Naval fire-control computers, Bombsight oaths, '
+       'the Torpedo Data Computer, McCulloch &amp; Pitts, or the tide-predicting machines, '
+       'and follow the links out.'},
+
+ {'t': 'You were told not to use a calculator', 'd': '',
+  'b': 'Calculators are not a modern convenience. They are <strong>four hundred years '
+       'old</strong>. Schickard built one in 1623, Pascal in 1642, Leibniz in 1673. By the '
+       'time you were told to put yours away, every consequential calculation on earth — '
+       'navigation, ballistics, actuarial tables, spaceflight — had been done by machine '
+       'for generations, and in many cases by rooms of people organised to work like one.<br><br>'
+       'The picture you were given, of mathematics as something a person does alone with a '
+       'pencil, is not a description of how mathematics has ever been done at scale. It is a '
+       'misdirection — away from the tools, away from who had them, and away from what '
+       'having them was worth.<br><br>'
+       'That is what this archive is for.'},
+]
 
 def short_name(stack):
     """'Thread T: The Harmony Thread: music, myth...' -> 'The Harmony Thread'."""
@@ -281,6 +364,10 @@ def main():
         })
 
     n_dp = dphys_cards(stacks)
+    # before crosslink: the About cards name real machines and should link to them
+    stacks.append({'id': 'about', 'kind': 'apparatus', 'title': 'About',
+                   'sub': 'what this is, and why you were not taught it',
+                   'cards': ABOUT})
     n_link = crosslink(stacks)
     n_pic = attach_pictures(stacks)
     n_cards = sum(len(s['cards']) for s in stacks)

@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;500&display=swap">
 <style>
 /*__THEME__*/
+a.mi{text-decoration:none;display:inline-flex;align-items:center}
+
 li.ixh{break-inside:avoid;list-style:none;font-family:var(--display);font-size:17px;
   color:var(--brass);margin:16px 0 4px;letter-spacing:.08em}
 
@@ -356,6 +358,7 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
     <summary class="mi">Go &#9662;</summary>
     <div class="dropdown" id="golist"></div>
   </details>
+  <a class="mi" href="#about/0">About</a>
   <button class="mi" data-act="find">Find</button>
   <button class="mi" data-act="wander">Wander</button>
   <button class="mi" data-act="back" title="Back" aria-label="Back">&larr;</button>
@@ -968,7 +971,7 @@ function fromHash(){
 function buildGo(){
   const g=$("#golist");
   let h = `<a href="#home/0">Home</a><div class="sep"></div><div class="grp">REFERENCE</div>`;
-  ["contents","index","glossary"].forEach(id=>{
+  ["about","contents","index","glossary"].forEach(id=>{
     if(byId[id]!==undefined) h += `<a href="#${id}/0">${esc(STACKS[byId[id]].title)}</a>`;
   });
   h += `<div class="sep"></div><div class="grp">TIMELINE</div>`;
