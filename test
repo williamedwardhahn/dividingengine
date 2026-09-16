@@ -227,6 +227,28 @@ def test_build():
         check('photographs are credited to the photographer',
               all('hand' in c for c in cards if c.get('plates')))
 
+        # These numbers were typed into the template once and went stale in
+        # silence: the page claimed 1,266 cards while serving 1,586.
+        desc = re.search(r'<meta name="description" content="([^"]*)"', h)
+        n_narr = sum(1 for c in cards if c.get('kindc') != 'film')
+        check('the description is generated from the data',
+              bool(desc) and re.search(r'[\d,]+ cards', desc.group(1) or '') is not None
+              and str(len(cards))[:2] in desc.group(1).replace(',', ''),
+              desc.group(1)[:66] if desc else 'missing')
+        for tag in ('og:title', 'og:description', 'og:image', 'og:url',
+                    'twitter:card', 'twitter:image'):
+            check(f'{tag} is present', tag in h)
+        check('the social card exists', (ROOT / 'assets' / 'og.png').exists())
+        sm = ROOT / 'sitemap.xml'
+        check('sitemap.xml is written', sm.exists())
+        if sm.exists():
+            import xml.etree.ElementTree as ET
+            try:
+                ET.parse(sm); ok = True
+            except Exception:
+                ok = False
+            check('sitemap.xml parses', ok)
+
         # The apparatus is derived in the browser now, so the payload must NOT
         # carry it — that redundancy cost 320 KB and most of the parse time.
         check('the page does not ship derived data',
@@ -388,6 +410,35 @@ def test_browser():
                 p2.close()
             dom = sorted(samples)[1]
             check('the page parses quickly', dom < 900, f'{dom} ms median of {samples}')
+
+            # A phone that scrolls sideways feels broken. This was true for
+            # months: a closed menu panel and an unconstrained <select> each
+            # hung ~50px past the right edge, and nothing here would say so.
+            for vw in (320, 360, 390, 768):
+                p3 = br.new_page(viewport={'width': vw, 'height': 780})
+                p3.goto('http://127.0.0.1:8911/', wait_until='load')
+                p3.wait_for_timeout(900)
+                sw = p3.evaluate("()=>document.documentElement.scrollWidth")
+                cw = p3.evaluate("()=>document.documentElement.clientWidth")
+                wide = p3.evaluate("""()=>{const W=document.documentElement.clientWidth;
+                  return [...document.querySelectorAll('body *')].filter(e=>{
+                    const b=e.getBoundingClientRect();
+                    return b.width>0&&b.height>0&&b.right>W+1;})
+                    .slice(0,3).map(e=>e.tagName+(e.id?'#'+e.id:''));}""")
+                check(f'no sideways scroll at {vw}px', sw <= cw + 1,
+                      f'scrollWidth {sw} vs {cw}; {wide}')
+                p3.close()
+
+            p4 = br.new_page(viewport={'width': 1280, 'height': 900})
+            p4.goto('http://127.0.0.1:8911/', wait_until='load'); p4.wait_for_timeout(1200)
+            tiles = p4.locator('#hstart a').count()
+            check('the front door offers a way in', tiles >= 3, f'{tiles} entry points')
+            broken_img = p4.evaluate(
+                "()=>[...document.querySelectorAll('#hstart img')]"
+                ".filter(i=>!i.getAttribute('src')).length")
+            check('every entry point has a picture', broken_img == 0,
+                  f'{broken_img} without')
+            p4.close()
             # the Go panel is anchored to a narrow button; it once opened 494px
             # off the left edge of the window, working but invisible
             for _w in (1250, 700, 420):

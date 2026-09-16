@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="A history of computation as one timeline, from 43,000 BCE to now — 1,266 cards, 734 of them archival film.">
+<!--__META__-->
 <link rel="icon" href="favicon.ico">
 <title>Dividing Engine — Technology, Science, History</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +24,17 @@ li.ixh{break-inside:avoid;list-style:none;font-family:var(--display);font-size:1
 /* the panel is anchored to a narrow summary; right:0 threw it off the left edge */
 .menu .dropdown{left:0;right:auto;max-width:min(92vw,620px);
   max-height:min(70vh,520px);overflow:auto}
+/* A closed <details> still laid its panel out, so the Go menu hung 50px past
+   the right edge and the whole page scrolled sideways on a phone. */
+.menu:not([open]) .dropdown{display:none}
 @media(max-width:700px){
-  /* too narrow to hang off a button: pin it to the viewport instead */
-  .menu .dropdown{position:fixed;left:10px;right:10px;max-width:none;top:auto}
+  /* too narrow to hang off a button: pin it to the viewport instead.
+     #menubar's backdrop-filter made it the containing block for position:fixed,
+     so "pin to the viewport" pinned to the bar. The blur is decoration; drop
+     it at this width and fixed means fixed again. */
+  #menubar{backdrop-filter:none;-webkit-backdrop-filter:none}
+  .menu .dropdown{position:fixed;left:10px;right:10px;
+    width:auto;min-width:0;max-width:none;top:auto}
 }
 
 #scalebar{position:relative;display:flex;align-items:center;gap:12px;
@@ -159,6 +167,51 @@ a.xl:hover{border-bottom-color:var(--rubric)}
 @media(max-width:640px){#masthead .banner{height:112px}#masthead .brandwrap{top:24px}}
 
 #sheetview{max-width:1280px;margin:0 auto;padding:22px 24px 40px}
+
+/* The front door. The films are the landing, by choice — but a visitor who
+   arrives at a wall of 936 thumbnails starting in 1922 has no idea what they
+   have found. This says what it is in one line and hands them four ways in. */
+#hero{padding:2px 0 16px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+#hero .hlede{font-size:20px;line-height:1.35;max-width:82ch;margin:0}
+#hero .hlede em{font-style:italic;color:var(--rubric)}
+#hero .hsub{margin:7px 0 0;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+/* the films are the landing by choice, so the way in must not push them off
+   the screen: capped width keeps these four small enough to sit above them */
+#hero .hstart{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-top:12px;max-width:880px}
+#hero .hstart a{display:block;text-decoration:none;color:inherit}
+#hero .hstart .hf{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;
+  transition:border-color .16s,transform .16s}
+#hero .hstart .hf img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.72) contrast(1.03);transition:filter .16s,transform .3s}
+#hero .hstart a:hover .hf{border-color:var(--brass);transform:translateY(-2px)}
+#hero .hstart a:hover .hf img{filter:saturate(1);transform:scale(1.035)}
+#hero .hstart .hk{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rubric);padding:6px 1px 1px}
+#hero .hstart .ht{display:block;font-size:13px;line-height:1.28}
+#hero .hstart a:hover .ht{color:var(--rubric)}
+@media(max-width:860px){
+  /* two across, and only two: four in two rows was taller than the phone
+     layout it was meant to improve on */
+  /* cap them: two columns of a 860px page made each tile taller than four
+     columns of a 1280px one */
+  #hero .hstart{grid-template-columns:repeat(2,1fr);max-width:480px}
+  #hero .hstart a:nth-child(n+3){display:none}
+  #hero .hlede{font-size:18px}
+}
+@media(max-width:700px){
+  /* forty unlabelled ticks and a button is not a timeline; it is 60px of a
+     phone screen spent saying nothing */
+  #scalebar{display:none}
+  #hero{padding:0 0 12px}
+  #hero .hlede{font-size:16.5px;line-height:1.32}
+  #hero .hsub{font-size:9.5px;margin-top:5px}
+  /* two ways in is enough on a phone; four fills the whole first screen */
+  #hero .hstart{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+  #hero .hstart .ht{font-size:12px}
+}
 .sheetbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:6px 0 18px;
   border-bottom:1px solid var(--rule)}
 .sfind{position:relative;flex:1 1 240px;min-width:200px}
@@ -167,8 +220,17 @@ a.xl:hover{border-bottom-color:var(--rubric)}
   padding:9px 12px 9px 30px;color:var(--ink);font:inherit;font-size:14px}
 .sfind input:focus{outline:none;border-color:var(--brass)}
 #sera{background:var(--card);border:1px solid var(--rule);border-radius:2px;color:var(--ink-2);
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:8px 10px}
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;padding:8px 10px;
+  /* a <select> is as wide as its widest option unless told otherwise; the
+     longest collection name was dragging it 44px past a phone screen */
+  min-width:0;max-width:100%;text-overflow:ellipsis}
 #scount{margin-left:auto}
+@media(max-width:640px){
+  .sheetbar{gap:8px}
+  .sfind{flex:1 1 100%}
+  #sera{flex:1 1 auto;max-width:60%}
+  #scount{margin-left:auto;white-space:nowrap}
+}
 #sheet{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
   gap:24px 18px;padding:26px 0 0;list-style:none;margin:0}
 #sheet li a{display:block;text-decoration:none;color:inherit}
@@ -236,6 +298,15 @@ a{color:var(--rubric)}
   padding:7px 11px;cursor:pointer;border-radius:999px;
 }
 .mi:hover,.mi:focus-visible,details.menu[open]>summary.mi{background:var(--ink);color:var(--card)}
+@media(max-width:700px){
+  /* must sit after the base #menubar rule above, or that rule wins on padding,
+     gap and flex-wrap and the seven items keep spilling onto a second row */
+  #menubar{padding:6px 8px;gap:0;flex-wrap:nowrap;overflow-x:auto;
+    scrollbar-width:none}
+  #menubar::-webkit-scrollbar{display:none}
+  .mi{font-size:13.5px;padding:6px 7px;white-space:nowrap}
+}
+@media(max-width:380px){ .mi{font-size:12.5px;padding:6px 5px} }
 details.menu{position:relative}
 details.menu>summary{list-style:none}
 details.menu>summary::-webkit-details-marker{display:none}
@@ -393,6 +464,12 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
 </div>
 
 <section id="sheetview" hidden>
+  <div id="hero">
+    <p class="hlede">The history of computation as <em>one timeline</em> —
+      from a notched bone to the machines we now call AI.</p>
+    <p class="hsub" id="hsub"></p>
+    <div class="hstart" id="hstart"></div>
+  </div>
   <div class="sheetbar">
     <div class="sfind">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -803,7 +880,9 @@ function sheetFilter(){
   const era = $("#sera").value;
   sList = FILMS.filter(f=>{
     if(q && !((f.cd.t||"")+" "+(f.cd.d||"")+" "+(f.cd.by||"")).toLowerCase().includes(q)) return false;
-    if(era!=="all"){
+    if(era==="playable"){
+      if(f.cd.status!=="live") return false;
+    } else if(era!=="all"){
       if(era.startsWith("coll:")){
         if(!(f.cd.coll||[]).includes(era.slice(5))) return false;
       } else if(STACKS[f.st].id !== era.replace(/^era:/,"")) return false;
@@ -814,6 +893,37 @@ function sheetFilter(){
   $("#scount").textContent = sList.length===FILMS.length
     ? FILMS.length+" films" : sList.length+" of "+FILMS.length+" films";
 }
+// Four ways in, chosen for range: the object the site is named after, the
+// famous failure, the secret war machine, and a neural network you can see.
+const START = [
+  {h:"about/1",   k:"The namesake"},
+  {h:"era-5/6",   k:"Babbage"},
+  {h:"era-7/7",   k:"Bletchley Park"},
+  {h:"era-9/278", k:"A neural net you can see"},
+];
+function cardAt(hash){
+  const [sid,n] = hash.split("/");
+  const si = STACKS.findIndex(s=>s.id===sid);
+  if(si<0) return null;
+  const cd = STACKS[si].cards[+n];
+  return cd ? {cd, si, ci:+n} : null;
+}
+function renderHero(){
+  const nf = FILMS.length;
+  const nc = STACKS.reduce((a,s)=>a + s.cards.filter(c=>c.kindc!=="film").length, 0);
+  $("#hsub").textContent =
+    `${nf.toLocaleString()} archival films · ${nc.toLocaleString()} cards · 45,000 years`;
+  $("#hstart").innerHTML = START.map(x=>{
+    const got = cardAt(x.h);
+    if(!got) return "";
+    // About's opening card carries plates rather than a single picture
+    const img = got.cd.img || (got.cd.plates && got.cd.plates[0] && got.cd.plates[0].src) || "";
+    return `<a href="#${x.h}"><span class="hf"><img src="${esc(img)}" alt="" loading="lazy"
+      decoding="async"></span><span class="hk">${esc(x.k)}</span>
+      <span class="ht">${esc(got.cd.t||"")}</span></a>`;
+  }).join("");
+}
+
 function paintSheet(append){
   const from = append ? $("#sheet").children.length : 0;
   const slice = sList.slice(from, sLimit);
@@ -837,7 +947,8 @@ function initSheet(){
   const used = {};
   FILMS.forEach(f=>(f.cd.coll||[]).forEach(c=>{ used[c]=(used[c]||0)+1; }));
   $("#sera").innerHTML =
-    '<option value="all">All 933 films</option>'.replace("933", FILMS.length) +
+    '<option value="all">All films</option>' +
+    `<option value="playable">Plays here (${FILMS.filter(f=>f.cd.status==="live").length})</option>` +
     `<optgroup label="Era">` +
       eras.map(x=>`<option value="era:${x.s.id}">${esc(x.s.title.replace(/^Era \d+: /,""))}</option>`).join("") +
     `</optgroup>` +
@@ -845,6 +956,7 @@ function initSheet(){
       Object.keys(used).sort((a,b)=>used[b]-used[a]).map(c=>
         `<option value="coll:${esc(c)}">${esc(colls[c]||c)} (${used[c]})</option>`).join("") +
       `</optgroup>` : "");
+  renderHero();
   $("#sq").addEventListener("input", sheetFilter);
   $("#sera").addEventListener("change", sheetFilter);
   $("#sheet").addEventListener("click", e=>{

@@ -424,6 +424,53 @@ def attach_museum(stacks):
     return n
 
 
+
+SITE = 'https://dividingengine.com'
+
+def head_meta(n_cards, n_film):
+    """Description and social card, generated from the archive.
+
+    These were typed by hand once and went stale the moment the archive grew:
+    the page claimed 1,266 cards and 734 films while serving 1,589 and 936.
+    Anything that states a number about the data belongs in the build.
+    """
+    desc = (f'The history of computation as one timeline — {n_cards:,} cards, '
+            f'{n_film:,} of them archival film, from 43,000 BCE to 2000.')
+    title = 'Dividing Engine — the history of computation'
+    img = f'{SITE}/assets/og.png'
+    esc = lambda t: (t.replace('&', '&amp;').replace('"', '&quot;')
+                      .replace('<', '&lt;').replace('>', '&gt;'))
+    tags = [
+        f'<meta name="description" content="{esc(desc)}">',
+        f'<link rel="canonical" href="{SITE}/">',
+        '<meta property="og:type" content="website">',
+        '<meta property="og:site_name" content="Dividing Engine">',
+        f'<meta property="og:title" content="{esc(title)}">',
+        f'<meta property="og:description" content="{esc(desc)}">',
+        f'<meta property="og:url" content="{SITE}/">',
+        f'<meta property="og:image" content="{img}">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        '<meta property="og:image:alt" content="Dividing Engine — the history of '
+        'computation as one timeline">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{esc(title)}">',
+        f'<meta name="twitter:description" content="{esc(desc)}">',
+        f'<meta name="twitter:image" content="{img}">',
+        '<meta name="theme-color" content="#f2eee4">',
+    ]
+    return '\n'.join(tags)
+
+
+def write_sitemap():
+    (ROOT / 'sitemap.xml').write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+        f'  <url><loc>{SITE}/</loc><changefreq>weekly</changefreq>'
+        '<priority>1.0</priority></url>\n'
+        '</urlset>\n', encoding='utf-8')
+
+
 def main():
     stacks = rb.parse((RECK / 'history-of-computation-master-list.md').read_text(encoding='utf-8'))
     films  = json.loads(ARCHIVE.read_text(encoding='utf-8'))['films']
@@ -487,8 +534,10 @@ def main():
     theme = THEME.read_text(encoding='utf-8')
     html = (TPL.read_text(encoding='utf-8')
               .replace('/*__THEME__*/', theme)
-              .replace('/*__DATA__*/null', data))
+              .replace('/*__DATA__*/null', data)
+              .replace('<!--__META__-->', head_meta(n_cards, n_film)))
     OUT.write_text(html, encoding='utf-8')
+    write_sitemap()
     print(f'{OUT.name}: {len(html)//1024} KB — {n_cards} cards in {len(stacks)} stacks, '
           f'{n_film} with video, {n_pic} with a picture ({n_mus} photographed), {n_dp} from dataphys, '
           f'{n_link} cross-links '
