@@ -443,6 +443,14 @@ def test_browser():
                 ".filter(i=>!i.getAttribute('src')).length")
             check('every entry point has a picture', broken_img == 0,
                   f'{broken_img} without')
+            # These were stack/index pairs until adding sixteen cards repointed
+            # 'a neural net you can see' at a 1992 film about a lottery.
+            want = {'The machine itself', 'Charles Babbage: Difference Engine',
+                    'Colossus (Bletchley Park)', 'WISARD'}
+            got = set(p4.evaluate(
+                "()=>[...document.querySelectorAll('#hstart .ht')].map(e=>e.textContent)"))
+            check('entry points point at the cards they name', want == got,
+                  f'missing {sorted(want - got)}, unexpected {sorted(got - want)}')
             p4.close()
             # the Go panel is anchored to a narrow button; it once opened 494px
             # off the left edge of the window, working but invisible

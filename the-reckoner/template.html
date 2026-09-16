@@ -895,18 +895,23 @@ function sheetFilter(){
 }
 // Four ways in, chosen for range: the object the site is named after, the
 // famous failure, the secret war machine, and a neural network you can see.
+// Named, not numbered. These were stack/index pairs for one afternoon, and
+// adding sixteen cards silently repointed 'a neural net you can see' at a
+// 1992 film about a lottery. A card's position is not its identity.
 const START = [
-  {h:"about/1",   k:"The namesake"},
-  {h:"era-5/6",   k:"Babbage"},
-  {h:"era-7/7",   k:"Bletchley Park"},
-  {h:"era-9/278", k:"A neural net you can see"},
+  {t:"The machine itself",                k:"The namesake"},
+  {t:"Charles Babbage: Difference Engine", k:"Babbage"},
+  {t:"Colossus (Bletchley Park)",          k:"Bletchley Park"},
+  {t:"WISARD",                             k:"A neural net you can see"},
 ];
-function cardAt(hash){
-  const [sid,n] = hash.split("/");
-  const si = STACKS.findIndex(s=>s.id===sid);
-  if(si<0) return null;
-  const cd = STACKS[si].cards[+n];
-  return cd ? {cd, si, ci:+n} : null;
+function cardByTitle(title){
+  for(let si=0; si<STACKS.length; si++){
+    const cards = STACKS[si].cards;
+    for(let ci=0; ci<cards.length; ci++){
+      if(cards[ci].kindc!=="film" && cards[ci].t===title) return {cd:cards[ci], si, ci};
+    }
+  }
+  return null;
 }
 function renderHero(){
   const nf = FILMS.length;
@@ -914,11 +919,12 @@ function renderHero(){
   $("#hsub").textContent =
     `${nf.toLocaleString()} archival films · ${nc.toLocaleString()} cards · 45,000 years`;
   $("#hstart").innerHTML = START.map(x=>{
-    const got = cardAt(x.h);
+    const got = cardByTitle(x.t);
     if(!got) return "";
     // About's opening card carries plates rather than a single picture
     const img = got.cd.img || (got.cd.plates && got.cd.plates[0] && got.cd.plates[0].src) || "";
-    return `<a href="#${x.h}"><span class="hf"><img src="${esc(img)}" alt="" loading="lazy"
+    const href = `#${STACKS[got.si].id}/${got.ci}`;
+    return `<a href="${href}"><span class="hf"><img src="${esc(img)}" alt="" loading="lazy"
       decoding="async"></span><span class="hk">${esc(x.k)}</span>
       <span class="ht">${esc(got.cd.t||"")}</span></a>`;
   }).join("");
