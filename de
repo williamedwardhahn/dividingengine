@@ -191,7 +191,10 @@ def enrich(vid):
         if not i:
             return {}
         return {'dur': i.get('duration'), 'chan': i.get('channel') or i.get('uploader') or '',
-                'upload': i.get('upload_date') or '', 'title': i.get('title') or ''}
+                'upload': i.get('upload_date') or '', 'title': i.get('title') or '',
+                # the year a film was made is almost never in its title, but
+                # archival uploaders nearly always say it in the description
+                'desc': (i.get('description') or '')[:2500]}
     except Exception as e:
         m = str(e).lower()
         gone = any(k in m for k in ('unavailable', 'terminated', 'removed', 'private',
@@ -436,19 +439,48 @@ DESC_YEAR = [
                r'created|copyright|\u00a9|dated|circa)\W{0,20}(?:in\s+)?'
                r'(1[89]\d\d|20[0-2]\d)\b', re.I),
     re.compile(r'\bca?\.\s*(1[89]\d\d|20[0-2]\d)\b', re.I),
+    # a series states its own year, and every episode inherits it: this is what
+    # dates all 45 episodes of TVOntario's Bits and Bytes at once
+    re.compile(r'\b(?:classic\s+)?(1[89]\d\d)\s+(?:television|TV|radio)\s+'
+               r'(?:series|programme|program)\b', re.I),
+    re.compile(r'\bbroadcast(?:ed)?\b[^.]{0,40}?\b(1[89]\d\d)\b', re.I),
+    re.compile(r'\bthis\s+(1[89]\d\d)\b', re.I),
     # A bare "(1927)" is nearly always a citation of some *other* work, and an
     # opening "In 1927, ..." introduces the subject, not the film. Both were
-    # tried and both dated films by what they were about.
+    # tried and both dated films by what they were about — AT&T's own
+    # "In 1927, Bell Labs physicists performed an experiment…" sits on a film
+    # made decades later.
 ]
 
+# "late 1960s film" is a real date, just an imprecise one. Placing it at the
+# head of the decade would be wrong by seven years, so each qualifier lands
+# where it actually points.
+DESC_DECADE = re.compile(
+    r'\b(early|mid|late)[- ]?(1[89]\d0)s\b[^.]{0,40}?'
+    r'\b(?:film|documentary|educational|movie|short)\b', re.I)
+DECADE_OFFSET = {'early': 2, 'mid': 5, 'late': 7}
+
+# National Archives entries head their descriptions with the span of the whole
+# series — "Date: ca. 1903 - ca. 1954" — which says nothing about the film in
+# front of you. Taking the first year dated a Ford film to the year Ford was
+# founded.
+DESC_RANGE = re.compile(r'\bca?\.\s*1[89]\d\d\s*[-\u2013\u2014]\s*(?:ca?\.\s*)?1[89]\d\d')
+
 def year_from_desc(text):
-    head = (text or '')[:900]                 # a date this late is usually not the film's
+    head = (text or '')[:1200]                # a date this late is usually not the film's
+    if DESC_RANGE.search(head):
+        return None
     now = dt.date.today().year
     for p in DESC_YEAR:
         for m in p.finditer(head):
             y = int(m.group(1))
             if 1870 <= y <= now:
                 return y
+    m = DESC_DECADE.search(head)
+    if m:
+        y = int(m.group(2)) + DECADE_OFFSET[m.group(1).lower()]
+        if 1870 <= y <= now:
+            return y
     return None
 
 def cmd_year(a):
@@ -469,6 +501,24 @@ def cmd_year(a):
         for i, (v, t) in enumerate(zip(vids, ex.map(describe, vids))):
             descs[v] = t
             if (i + 1) % 50 == 0: print(f'  {i+1}/{len(vids)}', flush=True)
+    # Keep what we fetched. Only a fraction of these descriptions state the
+    # year in a form safe to apply unattended, but every one of them is
+    # evidence a person can read in two seconds — so `de date` shows them.
+    cache_path = os.path.join(ROOT, '.desc-cache.json')
+    try:
+        with open(cache_path, encoding='utf-8') as fh:
+            cached = json.load(fh)
+    except Exception:
+        cached = {}
+    for f in todo:
+        v = f['sources'][0]['id']
+        cached.setdefault(v, {})['desc'] = (descs.get(v) or '')[:3000]
+    try:
+        with open(cache_path, 'w', encoding='utf-8') as fh:
+            json.dump(cached, fh)
+    except Exception:
+        pass
+
     found = []
     for f in todo:
         y = year_from_desc(descs.get(f['sources'][0]['id'], ''))
@@ -766,7 +816,9 @@ main{flex:1;display:flex;gap:26px;padding:20px 22px;min-height:0;align-items:cen
 .g{background:var(--paper-2,#e9e3d5);border:1px solid var(--rule);border-radius:2px;
   cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:13px;padding:5px 11px;color:var(--brass)}
 .g:hover{border-color:var(--brass)}
-#hint{font-size:13px;color:var(--ink3);line-height:1.5;max-height:9em;overflow:auto}
+#hint{font-size:13px;color:var(--ink3);line-height:1.5;max-height:15em;overflow:auto;
+  border-top:1px solid var(--rule);padding-top:10px}
+#hint mark{background:#f2e3c8;color:var(--rubric);padding:0 2px;border-radius:2px;font-weight:500}
 footer{flex:none;border-top:1px solid var(--rule);padding:9px 22px;
   font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
   text-transform:uppercase;color:var(--ink3);display:flex;gap:22px}
@@ -799,7 +851,9 @@ function show(){
   $('#shot').innerHTML = v.img? `<img src="/img/${encodeURIComponent(v.img)}" alt="">` : '';
   $('#chan').textContent=[v.chan,v.dur].filter(Boolean).join('  ·  ');
   $('#guess').innerHTML=(v.guess||[]).map(g=>`<button class="g" data-y="${g}">${g}</button>`).join('');
-  $('#hint').textContent=v.hint||'';
+  // highlight every year in the description so the eye lands on it
+  $('#hint').innerHTML = esc(v.hint||'')
+    .replace(/\b(1[89]\d\d|20[0-2]\d)\b/g,'<mark>$1</mark>');
   const y=$('#yr'); y.value=''; y.focus();
   for(let j=at+1;j<Math.min(at+3,Q.length);j++) if(Q[j].img){const im=new Image();im.src='/img/'+encodeURIComponent(Q[j].img);}
 }
@@ -838,22 +892,43 @@ def cmd_date(a):
     if not todo:
         print('every film already has a year'); return 0
 
+    # The year is almost never in the title and almost always in the
+    # description — just not in a form safe enough to apply unattended. So
+    # put every year the description mentions on a button, and the sentence
+    # around it on screen, and let the eye do in two seconds what no pattern
+    # could do safely at all.
+    descs = {}
+    cache = os.path.join(ROOT, '.desc-cache.json')
+    if os.path.exists(cache):
+        try:
+            with open(cache, encoding='utf-8') as fh:
+                descs = json.load(fh)
+        except Exception:
+            descs = {}
+
+    def desc_of(f):
+        vid = f['sources'][0]['id'] if f.get('sources') else ''
+        return (descs.get(vid) or {}).get('desc') or ''
+
     def guesses(f):
-        """Years already visible in the title, offered as one-key answers."""
-        out, t = [], f.get('title') or ''
-        for m in re.finditer(r'\b(1[89]\d\d|20[0-2]\d)\b', t):
-            y = int(m.group(1))
-            if y not in out: out.append(y)
-        for m in re.finditer(r"\b(1[89]|20)(\d)0s\b", t):
-            y = int(m.group(1) + m.group(2) + '0')
-            if y not in out: out.append(y)
-        return out[:4]
+        """Years visible in the title or the description, as one-key answers."""
+        out = []
+        def add(y):
+            if 1870 <= y <= dt.date.today().year and y not in out:
+                out.append(y)
+        for text, _w in ((f.get('title') or '', 2), (desc_of(f), 1)):
+            for m in re.finditer(r'\b(1[89]\d\d|20[0-2]\d)\b', text):
+                add(int(m.group(1)))
+            for m in re.finditer(r"\b(1[89]|20)(\d)0s\b", text):
+                add(int(m.group(1) + m.group(2) + '0'))
+        return out[:8]
 
     items = [{'slug': f['slug'], 'name': f.get('name') or f['title'],
               'img': f.get('thumb') or '', 'chan': f.get('chan') or '',
               'dur': (f'{f["dur"]//60}:{f["dur"]%60:02d}' if f.get('dur') else ''),
               'url': (f['sources'][0].get('url') if f.get('sources') else ''),
-              'guess': guesses(f), 'hint': f.get('title') or ''}
+              'guess': guesses(f),
+              'hint': (desc_of(f) or f.get('title') or '')[:900]}
              for f in todo]
     by_slug = {f['slug']: f for f in d['films']}
     done = {'n': 0}
