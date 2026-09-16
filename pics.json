@@ -2632,5 +2632,1179 @@
   "lic": "Public domain",
   "by": "Unknown authorUnknown author",
   "via": "Aztec codex"
+ },
+ "d1e6a1e33495": {
+  "skip": true,
+  "card": "Lebombo bone (Eswatini/South Africa)"
+ },
+ "a1f1e87a18d5": {
+  "skip": true,
+  "card": "Sumerian sexagesimal (base-60) system"
+ },
+ "14e6284a545f": {
+  "skip": true,
+  "card": "The incommensurability crisis"
+ },
+ "ef39e3ae62a3": {
+  "skip": true,
+  "card": "Eudoxus' theory of proportion"
+ },
+ "c79e943bd68b": {
+  "skip": true,
+  "card": "Bede's finger reckoning"
+ },
+ "0322b221285c": {
+  "skip": true,
+  "card": "Italian abbaco schools (scuole d'abbaco)"
+ },
+ "e7cc3de5199a": {
+  "skip": true,
+  "card": "Luca Pacioli codifies double-entry bookkeeping"
+ },
+ "9b89fad93b55": {
+  "card": "Gunter's scale",
+  "stack": "era-4",
+  "img": "media/cards/9b89fad93b55.webp",
+  "file": "File:Face d'une règle de Gunter (reproduction moderne).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AFace%20d%27une%20r%C3%A8gle%20de%20Gunter%20%28reproduction%20moderne%29.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Face_d%27une_r%C3%A8gle_de_Gunter_%28reproduction_moderne%29.jpg/960px-Face_d%27une_r%C3%A8gle_de_Gunter_%28reproduction_moderne%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC0",
+  "by": "Gokimines",
+  "via": ""
+ },
+ "1133a145a9b0": {
+  "skip": true,
+  "card": "Sauveur names \"acoustics\""
+ },
+ "3c90a7d86f2d": {
+  "skip": true,
+  "card": "Modern notation is invented"
+ },
+ "a066023b563a": {
+  "skip": true,
+  "card": "Dover Castle turret clock"
+ },
+ "361e86fcb900": {
+  "skip": true,
+  "card": "Sutton's circular slide rule"
+ },
+ "2c826b5e2db3": {
+  "skip": true,
+  "card": "Morland's calculating machine"
+ },
+ "0808ef5c3e87": {
+  "card": "Jamal al-Din ibn Muqim's astrolabe (Lahore)",
+  "stack": "era-4",
+  "img": "media/cards/0808ef5c3e87.webp",
+  "file": "File:Astrolabe by Jamal al-Din ibn Muqim, Lahore, 1666 AD - Science Museum, London - DSC05549.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAstrolabe%20by%20Jamal%20al-Din%20ibn%20Muqim%2C%20Lahore%2C%201666%20AD%20-%20Science%20Museum%2C%20London%20-%20DSC05549.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Astrolabe_by_Jamal_al-Din_ibn_Muqim%2C_Lahore%2C_1666_AD_-_Science_Museum%2C_London_-_DSC05549.jpg/960px-Astrolabe_by_Jamal_al-Din_ibn_Muqim%2C_Lahore%2C_1666_AD_-_Science_Museum%2C_London_-_DSC05549.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC0",
+  "by": "Daderot",
+  "via": ""
+ },
+ "e703ed39ba9f": {
+  "skip": true,
+  "card": "Newton's Principia"
+ },
+ "a726a191a47c": {
+  "card": "A silver universal microscope",
+  "stack": "era-4",
+  "img": "media/cards/a726a191a47c.webp",
+  "file": "File:Universal microscope made by George Adams the Elder, probably owned by the future King George IV, about 1763, silver - Science Museum, London - DSC05654.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AUniversal%20microscope%20made%20by%20George%20Adams%20the%20Elder%2C%20probably%20owned%20by%20the%20future%20King%20George%20IV%2C%20about%201763%2C%20silver%20-%20Science%20Museum%2C%20London%20-%20DSC05654.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Universal_microscope_made_by_George_Adams_the_Elder%2C_probably_owned_by_the_future_King_George_IV%2C_about_1763%2C_silver_-_Science_Museum%2C_London_-_DSC05654.jpg/960px-Universal_microscope_made_by_George_Adams_the_Elder%2C_probably_owned_by_the_future_King_George_IV%2C_about_1763%2C_silver_-_Science_Museum%2C_London_-_DSC05654.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC0",
+  "by": "Daderot",
+  "via": ""
+ },
+ "757d7fa083ad": {
+  "skip": true,
+  "card": "An earl's orrery"
+ },
+ "74e1bc3e9c00": {
+  "skip": true,
+  "card": "The Grand Orrery"
+ },
+ "2954d942e16e": {
+  "skip": true,
+  "card": "Stanhope's logical demonstrator"
+ },
+ "8e77d799e210": {
+  "skip": true,
+  "card": "Qi Mei-lu's celestial globe"
+ },
+ "56c60a0e997c": {
+  "skip": true,
+  "card": "Vladimir Lukyanov's water integrator (USSR)"
+ },
+ "f3c1a1ad1adb": {
+  "skip": true,
+  "card": "WPA Mathematical Tables Project"
+ },
+ "abab9263c76c": {
+  "skip": true,
+  "card": "The Enigma machine"
+ },
+ "3ee4135d0348": {
+  "skip": true,
+  "card": "The Manchester differential analyser"
+ },
+ "65a1cfdfee2b": {
+  "skip": true,
+  "card": "Grace Hopper's A-0 compiler"
+ },
+ "1f4ec992aff1": {
+  "skip": true,
+  "card": "Prinz and Mays' electrical logic machine"
+ },
+ "f61f87dae8b4": {
+  "skip": true,
+  "card": "Computer music begins"
+ },
+ "c04313064e56": {
+  "skip": true,
+  "card": "Lorenz discovers chaos"
+ },
+ "67cca6e4bb7a": {
+  "skip": true,
+  "card": "Public-key cryptography invented in secret"
+ },
+ "2622dc57a797": {
+  "skip": true,
+  "card": "Computer algebra begins (Macsyma)"
+ },
+ "a17406b5e918": {
+  "skip": true,
+  "card": "The Wembley tote machine"
+ },
+ "881553316aed": {
+  "skip": true,
+  "card": "The London Hospital Survival Predictor"
+ },
+ "f51975dc5831": {
+  "skip": true,
+  "card": "IEEE 754 floating point (Kahan)"
+ },
+ "5024d811bd7d": {
+  "skip": true,
+  "card": "Backpropagation popularized (Rumelhart, Hinton, Williams)"
+ },
+ "7d0c6dd79238": {
+  "skip": true,
+  "card": "Kaktovik numerals"
+ },
+ "3bd9bc603ffd": {
+  "skip": true,
+  "card": "WISARD"
+ },
+ "24ea3db55373": {
+  "skip": true,
+  "card": "AlphaGo defeats Lee Sedol"
+ },
+ "761ad664c8a5": {
+  "skip": true,
+  "card": "Google's Sycamore \"quantum supremacy\" claim"
+ },
+ "aa7e83e8b7db": {
+  "skip": true,
+  "card": "Frontier AI training runs (~10²⁵–10²⁶ FLOPs)"
+ },
+ "2e558e4cacba": {
+  "skip": true,
+  "card": "Single modern AI GPU"
+ },
+ "ae47529cd711": {
+  "skip": true,
+  "card": "Frontier/exascale cluster"
+ },
+ "ab69fe785220": {
+  "skip": true,
+  "card": "The punchline card"
+ },
+ "1238a4eeaf91": {
+  "skip": true,
+  "card": "Every era's mathematicians practiced the previous era's methods."
+ },
+ "37e2735b3203": {
+  "skip": true,
+  "card": "Understanding what the machine does 10²⁵ times."
+ },
+ "34468b7cb75d": {
+  "skip": true,
+  "card": "The internalization argument"
+ },
+ "d935c5fd0eb8": {
+  "skip": true,
+  "card": "Egypt — number as measure. Number lives in physical quantities"
+ },
+ "99bc93d6cb15": {
+  "skip": true,
+  "card": "Greece — number as idea. Sharp split between arithmos (a multitude…"
+ },
+ "ae5e8b7a9df0": {
+  "skip": true,
+  "card": "Payoff card for students"
+ },
+ "6b24e64b31a2": {
+  "skip": true,
+  "card": "Day-to-day arithmetic ran on pebbles (calculi) on lined counting boa…"
+ },
+ "8237d5a39b6b": {
+  "skip": true,
+  "card": "Anzan (暗算) — the internalized machine"
+ },
+ "4d4bfe65c174": {
+  "skip": true,
+  "card": "Research on expert abacus users suggests they shift arithmetic from ve…"
+ },
+ "09645970a557": {
+  "skip": true,
+  "card": "The payoff card (core to the site's thesis):"
+ },
+ "0764fdc8c8cb": {
+  "skip": true,
+  "card": "Quarter-square multiplication"
+ },
+ "4ba6708080bd": {
+  "skip": true,
+  "card": "Casting out nines"
+ },
+ "904b56bff30b": {
+  "skip": true,
+  "card": "Everyday mental tricks"
+ },
+ "8cde188c01d9": {
+  "skip": true,
+  "card": "Lukyanov's water integrator (1936)"
+ },
+ "555c24e78264": {
+  "skip": true,
+  "card": "Graphical statics (1860s)"
+ },
+ "7aba2f774fa2": {
+  "skip": true,
+  "card": "Nomography proper (d'Ocagne, 1884)"
+ },
+ "4fa4e692ce15": {
+  "skip": true,
+  "card": "GCHQ's stolen thunder"
+ },
+ "23554699675e": {
+  "skip": true,
+  "card": "Oath-bound silence"
+ },
+ "63e64a8a80a6": {
+  "skip": true,
+  "card": "Alan Bishop's six universal activities"
+ },
+ "253a7acf62e9": {
+  "skip": true,
+  "card": "Borana calendar (Kenya/Ethiopia)"
+ },
+ "6310194f8b8c": {
+  "skip": true,
+  "card": "Ethiopian peasant multiplication"
+ },
+ "58ea2799e7af": {
+  "skip": true,
+  "card": "Maya time-mathematics, quipu & yupana (cross-refs); Navajo weaving s…"
+ },
+ "dbbd98520a1a": {
+  "skip": true,
+  "card": "Kaktovik numerals (1994)"
+ },
+ "c977b1f034ec": {
+  "card": "Kolam / rangoli (Tamil Nadu and beyond)",
+  "stack": "thread-K",
+  "img": "media/cards/c977b1f034ec.webp",
+  "file": "File:A Beautiful Rangoli.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AA%20Beautiful%20Rangoli.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/A_Beautiful_Rangoli.jpg/960px-A_Beautiful_Rangoli.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC0",
+  "by": "SreeramKalyan",
+  "via": ""
+ },
+ "dbaee3ab038f": {
+  "card": "Sangaku & wasan (Era 4)",
+  "stack": "thread-K",
+  "img": "media/cards/dbaee3ab038f.webp",
+  "file": "File:Sangaku of Konnoh Hachimangu 1850.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASangaku%20of%20Konnoh%20Hachimangu%201850.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Sangaku_of_Konnoh_Hachimangu_1850.jpg/960px-Sangaku_of_Konnoh_Hachimangu_1850.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 3.0",
+  "by": "Momotarou2012",
+  "via": ""
+ },
+ "fad7cf71d509": {
+  "card": "Girih tiles (Era 3)",
+  "stack": "thread-K",
+  "img": "media/cards/fad7cf71d509.webp",
+  "file": "File:Girih tiles.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AGirih%20tiles.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Girih_tiles.jpg/960px-Girih_tiles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 4.0",
+  "by": "Vathlu",
+  "via": ""
+ },
+ "33e51310961c": {
+  "skip": true,
+  "card": "Yan tan tethera"
+ },
+ "ead07aab9695": {
+  "card": "Split tally sticks",
+  "stack": "thread-K",
+  "img": "media/cards/ead07aab9695.webp",
+  "file": "File:Medieval_tally_sticks.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Medieval_tally_sticks.jpg",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/1/17/Medieval_tally_sticks.jpg",
+  "lic": "CC BY-SA 2.0",
+  "by": "Winchester City Council Museums",
+  "via": "Tally stick"
+ },
+ "fbb5a7cb6450": {
+  "card": "Change ringing (Era 4)",
+  "stack": "thread-K",
+  "img": "media/cards/fbb5a7cb6450.webp",
+  "file": "File:Ringing Church Bells at Edinburgh Cathedral.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ARinging%20Church%20Bells%20at%20Edinburgh%20Cathedral.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Ringing_Church_Bells_at_Edinburgh_Cathedral.jpg/960px-Ringing_Church_Bells_at_Edinburgh_Cathedral.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC0",
+  "by": "Qazwsx777",
+  "via": ""
+ },
+ "0ac9896bc1cc": {
+  "skip": true,
+  "card": "Talking drums (West/Central Africa)"
+ },
+ "51574bdeba3f": {
+  "skip": true,
+  "card": "Indian tala"
+ },
+ "c6f7871d47c4": {
+  "skip": true,
+  "card": "Euclidean rhythms (Toussaint, 2004)"
+ },
+ "dfb3a5f83e31": {
+  "skip": true,
+  "card": "Nunes, Carraher & Schliemann, Brazil (1985–93)"
+ },
+ "b62b6f024899": {
+  "card": "Card thesis",
+  "stack": "thread-K",
+  "img": "media/cards/b62b6f024899.webp",
+  "file": "File:Ateneo Law School Rizal Library Rockwell Library Card catalogs.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAteneo%20Law%20School%20Rizal%20Library%20Rockwell%20Library%20Card%20catalogs.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Ateneo_Law_School_Rizal_Library_Rockwell_Library_Card_catalogs.jpg/960px-Ateneo_Law_School_Rizal_Library_Rockwell_Library_Card_catalogs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY 4.0",
+  "by": "P1898",
+  "via": ""
+ },
+ "81cb0cd40bb3": {
+  "skip": true,
+  "card": "Closing card"
+ },
+ "2dc6af32c973": {
+  "card": "The edubba (c. 2000 BCE)",
+  "stack": "thread-L",
+  "img": "media/cards/2dc6af32c973.webp",
+  "file": "File:Assyrian scribes.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAssyrian%20scribes.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Assyrian_scribes.jpg/960px-Assyrian_scribes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Unknown authorUnknown author",
+  "via": ""
+ },
+ "8eb354756f35": {
+  "card": "Scribal schools (Egypt, Babylon)",
+  "stack": "thread-L",
+  "img": "media/cards/8eb354756f35.webp",
+  "file": "File:Assyrian scribes.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAssyrian%20scribes.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Assyrian_scribes.jpg/960px-Assyrian_scribes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Unknown authorUnknown author",
+  "via": ""
+ },
+ "87a0dcbcdd43": {
+  "skip": true,
+  "card": "Greece"
+ },
+ "e4c3981caa36": {
+  "skip": true,
+  "card": "Medieval universities"
+ },
+ "13e1e0e92057": {
+  "skip": true,
+  "card": "The two-track split"
+ },
+ "ed2e9aa39094": {
+  "skip": true,
+  "card": "Vernacular revolution"
+ },
+ "3d0edc9b6bda": {
+  "skip": true,
+  "card": "The exam is invented"
+ },
+ "62bb2a7b5775": {
+  "skip": true,
+  "card": "The Prussian machine (1810s–40s)"
+ },
+ "ddbedbdbe859": {
+  "skip": true,
+  "card": "The freeze"
+ },
+ "3d0468ae4781": {
+  "skip": true,
+  "card": "Klein's Meran reforms (1905) push functions and calculus into European…"
+ },
+ "d243e3b97292": {
+  "card": "New Math (1957–58, post-Sputnik)",
+  "stack": "thread-L",
+  "img": "media/cards/d243e3b97292.webp",
+  "file": "File:Spines of New Math paperbacks from 1960s.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASpines%20of%20New%20Math%20paperbacks%20from%201960s.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Spines_of_New_Math_paperbacks_from_1960s.jpg/960px-Spines_of_New_Math_paperbacks_from_1960s.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 3.0",
+  "by": "Jengod",
+  "via": ""
+ },
+ "ef6d2a7bcd1a": {
+  "skip": true,
+  "card": "Back-to-basics (1970s) → calculator wars (1975 onward) → NCTM standard…"
+ },
+ "801d5a008884": {
+  "skip": true,
+  "card": "Pattern card"
+ },
+ "97b7766a6c40": {
+  "skip": true,
+  "card": "The arithmetic of the gap"
+ },
+ "5257ddd3e8c9": {
+  "skip": true,
+  "card": "Compounding card"
+ },
+ "befc1913cc79": {
+  "skip": true,
+  "card": "Klein's double discontinuity (1908)"
+ },
+ "a44507b3d225": {
+  "skip": true,
+  "card": "Case files"
+ },
+ "55e0008ff96c": {
+  "skip": true,
+  "card": "Curriculum as geology"
+ },
+ "6168347c82c6": {
+  "skip": true,
+  "card": "Too old for computing class"
+ },
+ "555170671c2e": {
+  "skip": true,
+  "card": "Too new for history class"
+ },
+ "0c89deb01658": {
+  "skip": true,
+  "card": "So the lineage is kept by museums, retro-computing hobbyists, and docu…"
+ },
+ "da230b308b0b": {
+  "skip": true,
+  "card": "Mathematics' own history is orphaned the same way"
+ },
+ "7a308c0f5cea": {
+  "skip": true,
+  "card": "Mission card"
+ },
+ "99d074657bde": {
+  "skip": true,
+  "card": "Sound over distance"
+ },
+ "388a3416ed98": {
+  "skip": true,
+  "card": "Light and smoke"
+ },
+ "9b27764bc770": {
+  "skip": true,
+  "card": "Relay infrastructure"
+ },
+ "f185832f31e8": {
+  "card": "Carrier pigeons",
+  "stack": "thread-M",
+  "img": "media/cards/f185832f31e8.webp",
+  "file": "File:Carrier Pigeon (PSF).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ACarrier%20Pigeon%20%28PSF%29.jpg",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Carrier_Pigeon_%28PSF%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "Public domain",
+  "by": "Pearson Scott Foresman",
+  "via": ""
+ },
+ "d069f8c79e6d": {
+  "skip": true,
+  "card": "The Chappe optical telegraph (1794, Era 4)"
+ },
+ "2cb34794de50": {
+  "skip": true,
+  "card": "Heliographs and flag semaphore"
+ },
+ "a3fca4da1a8c": {
+  "skip": true,
+  "card": "The Victorian Internet (Standage's framing)"
+ },
+ "0f77603aad61": {
+  "skip": true,
+  "card": "Codes as economics"
+ },
+ "383917a5060f": {
+  "card": "Cable mathematics",
+  "stack": "thread-M",
+  "img": "media/cards/383917a5060f.webp",
+  "file": "File:CableEquationFig.png",
+  "page": "https://commons.wikimedia.org/wiki/File%3ACableEquationFig.png",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fe/CableEquationFig.png/960px-CableEquationFig.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 4.0",
+  "by": "NeuroWiki Case",
+  "via": ""
+ },
+ "5d8bca65c4ed": {
+  "card": "Pneumatic tube networks",
+  "stack": "thread-M",
+  "img": "media/cards/5d8bca65c4ed.webp",
+  "file": "File:Groupes surpresseurs-dépresseurs à Paris-Central DSCN3056.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AGroupes%20surpresseurs-d%C3%A9presseurs%20%C3%A0%20Paris-Central%20DSCN3056.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Groupes_surpresseurs-d%C3%A9presseurs_%C3%A0_Paris-Central_DSCN3056.jpg/960px-Groupes_surpresseurs-d%C3%A9presseurs_%C3%A0_Paris-Central_DSCN3056.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 4.0",
+  "by": "Jérome Ferri",
+  "via": ""
+ },
+ "ea8e59738daa": {
+  "skip": true,
+  "card": "The paper-tape lineage"
+ },
+ "4dfc0e03426e": {
+  "card": "The telephone era",
+  "stack": "thread-M",
+  "img": "media/cards/4dfc0e03426e.webp",
+  "file": "File:Telephone of Taisho Era - Niigata Prefectural Museum of History.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ATelephone%20of%20Taisho%20Era%20-%20Niigata%20Prefectural%20Museum%20of%20History.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Telephone_of_Taisho_Era_-_Niigata_Prefectural_Museum_of_History.jpg/960px-Telephone_of_Taisho_Era_-_Niigata_Prefectural_Museum_of_History.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 2.0",
+  "by": "inazakira",
+  "via": ""
+ },
+ "9cd7cf14b4c0": {
+  "skip": true,
+  "card": "Fax before phones"
+ },
+ "196dd0da7ab1": {
+  "skip": true,
+  "card": "The photophone (Bell, 1880)"
+ },
+ "77a652d9e6a4": {
+  "skip": true,
+  "card": "Radio"
+ },
+ "16318f2665b2": {
+  "card": "Satellites",
+  "stack": "thread-M",
+  "img": "media/cards/16318f2665b2.webp",
+  "file": "File:Soyuz TMA-16 approaching ISS.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ASoyuz%20TMA-16%20approaching%20ISS.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Soyuz_TMA-16_approaching_ISS.jpg/960px-Soyuz_TMA-16_approaching_ISS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Expedition 20 Crew, NASA",
+  "via": ""
+ },
+ "0dfe55fd722a": {
+  "card": "Shannon (1948)",
+  "stack": "thread-M",
+  "img": "media/cards/0dfe55fd722a.webp",
+  "file": "File:ClaudeShannon MFO3807.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AClaudeShannon%20MFO3807.jpg",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/99/ClaudeShannon_MFO3807.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "CC BY-SA 2.0 de",
+  "by": "Jacobs, Konrad",
+  "via": ""
+ },
+ "56acaf988f6f": {
+  "skip": true,
+  "card": "Error correction"
+ },
+ "b8adbcd52139": {
+  "skip": true,
+  "card": "Packet switching → ARPANET → TCP/IP → the Web (Eras 8–9)"
+ },
+ "173eae5ab6f4": {
+  "card": "Fiber",
+  "stack": "thread-M",
+  "img": "media/cards/173eae5ab6f4.webp",
+  "file": "File:Carbon fiber.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ACarbon%20fiber.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Carbon_fiber.jpg/960px-Carbon_fiber.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Cjp24",
+  "via": ""
+ },
+ "ac1db9ce2be5": {
+  "skip": true,
+  "card": "Convergence"
+ },
+ "c4d45223c34b": {
+  "skip": true,
+  "card": "Twins, not neighbors"
+ },
+ "314b292fd7c4": {
+  "skip": true,
+  "card": "Numbers travel first"
+ },
+ "eedb18a63bf4": {
+  "skip": true,
+  "card": "The latency ladder (companion to Thread A's speed ladder)"
+ },
+ "4ae9de305ec9": {
+  "skip": true,
+  "card": "Pedagogy card"
+ },
+ "ddca9c9357d5": {
+  "skip": true,
+  "card": "The opening card is Babbage's motive"
+ },
+ "678ef89bc7ba": {
+  "skip": true,
+  "card": "Therac-25 (1985–87)"
+ },
+ "92fe5dff83ac": {
+  "card": "Patriot missile (1991)",
+  "stack": "thread-N",
+  "img": "media/cards/92fe5dff83ac.webp",
+  "file": "File:Flickr - Government Press Office (GPO) - Patriot missiles being launched to intercept an Iraqi Scud missile.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AFlickr%20-%20Government%20Press%20Office%20%28GPO%29%20-%20Patriot%20missiles%20being%20launched%20to%20intercept%20an%20Iraqi%20Scud%20missile.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Flickr_-_Government_Press_Office_%28GPO%29_-_Patriot_missiles_being_launched_to_intercept_an_Iraqi_Scud_missile.jpg/960px-Flickr_-_Government_Press_Office_%28GPO%29_-_Patriot_missiles_being_launched_to_intercept_an_Iraqi_Scud_missile.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 3.0",
+  "by": "Government Press Office (Israel)",
+  "via": ""
+ },
+ "6c47f98ea4bf": {
+  "card": "Pentium FDIV (1994)",
+  "stack": "thread-N",
+  "img": "media/cards/6c47f98ea4bf.webp",
+  "file": "File:KL Intel Pentium A80501.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AKL%20Intel%20Pentium%20A80501.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/KL_Intel_Pentium_A80501.jpg/960px-KL_Intel_Pentium_A80501.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 3.0",
+  "by": "Konstantin Lanzet",
+  "via": ""
+ },
+ "4cf08da289d8": {
+  "card": "Ariane 5 (1996)",
+  "stack": "thread-N",
+  "img": "media/cards/4cf08da289d8.webp",
+  "file": "File:Ariane 5 EPS Upper Stage.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAriane%205%20EPS%20Upper%20Stage.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Ariane_5_EPS_Upper_Stage.jpg/960px-Ariane_5_EPS_Upper_Stage.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY 4.0",
+  "by": "SkywalkerPL",
+  "via": ""
+ },
+ "cb56abad1941": {
+  "card": "Mars Climate Orbiter (1999)",
+  "stack": "thread-N",
+  "img": "media/cards/cb56abad1941.webp",
+  "file": "File:Mars Climate Orbiter 2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AMars%20Climate%20Orbiter%202.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Mars_Climate_Orbiter_2.jpg/960px-Mars_Climate_Orbiter_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "NASA/JPL/Corby Waste",
+  "via": ""
+ },
+ "4430e33af3b4": {
+  "card": "Y2K (2000)",
+  "stack": "thread-N",
+  "img": "media/cards/4430e33af3b4.webp",
+  "file": "File:Bug de l'an 2000.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABug%20de%20l%27an%202000.jpg",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Bug_de_l%27an_2000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "CC BY-SA 3.0",
+  "by": "Bug de l'an 2000",
+  "via": ""
+ },
+ "8b1fd6f4f8b4": {
+  "card": "Reinhart–Rogoff (2013)",
+  "stack": "thread-N",
+  "img": "media/cards/8b1fd6f4f8b4.webp",
+  "file": "File:Exchange rate regime of EU countries according to Reinhart and Rogoff.png",
+  "page": "https://commons.wikimedia.org/wiki/File%3AExchange%20rate%20regime%20of%20EU%20countries%20according%20to%20Reinhart%20and%20Rogoff.png",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Exchange_rate_regime_of_EU_countries_according_to_Reinhart_and_Rogoff.png/960px-Exchange_rate_regime_of_EU_countries_according_to_Reinhart_and_Rogoff.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 3.0",
+  "by": "ShuBraque",
+  "via": ""
+ },
+ "1358f4eb039a": {
+  "skip": true,
+  "card": "Lorenz (1963)"
+ },
+ "55bbd9c8e924": {
+  "card": "Gödel & the halting problem",
+  "stack": "thread-N",
+  "img": "media/cards/55bbd9c8e924.webp",
+  "file": "File:Young Kurt Gödel as a student in 1925.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AYoung%20Kurt%20G%C3%B6del%20as%20a%20student%20in%201925.jpg",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Young_Kurt_G%C3%B6del_as_a_student_in_1925.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "Public domain",
+  "by": "Unknown authorUnknown author",
+  "via": ""
+ },
+ "61caa8135149": {
+  "skip": true,
+  "card": "Closing card"
+ },
+ "f15224e42966": {
+  "skip": true,
+  "card": "Before machines"
+ },
+ "86f71728e292": {
+  "skip": true,
+  "card": "Bits as echoes"
+ },
+ "0f42aa0be29e": {
+  "card": "Core memory (1950s–70s)",
+  "stack": "thread-O",
+  "img": "media/cards/0f42aa0be29e.webp",
+  "file": "File:Museo de Informática Histórica (MIH) – UNIZAR – Magnetic-core memory 8k x 12 bit H-212 – close up.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AMuseo%20de%20Inform%C3%A1tica%20Hist%C3%B3rica%20%28MIH%29%20%E2%80%93%20UNIZAR%20%E2%80%93%20Magnetic-core%20memory%208k%20x%2012%20bit%20H-212%20%E2%80%93%20close%20up.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_%E2%80%93_UNIZAR_%E2%80%93_Magnetic-core_memory_8k_x_12_bit_H-212_%E2%80%93_close_up.jpg/960px-Museo_de_Inform%C3%A1tica_Hist%C3%B3rica_%28MIH%29_%E2%80%93_UNIZAR_%E2%80%93_Magnetic-core_memory_8k_x_12_bit_H-212_%E2%80%93_close_up.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 4.0",
+  "by": "José Luis Briz Velasco",
+  "via": ""
+ },
+ "ccb393f372de": {
+  "card": "Core rope & Apollo",
+  "stack": "thread-O",
+  "img": "media/cards/ccb393f372de.webp",
+  "file": "File:Apollo guidiance computer ferrit core memory.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AApollo%20guidiance%20computer%20ferrit%20core%20memory.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Apollo_guidiance_computer_ferrit_core_memory.jpg/960px-Apollo_guidiance_computer_ferrit_core_memory.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 3.0",
+  "by": "Nova13",
+  "via": ""
+ },
+ "6bb2a3a0b68d": {
+  "skip": true,
+  "card": "The magnetic era"
+ },
+ "133375015980": {
+  "card": "Optical & solid state",
+  "stack": "thread-O",
+  "img": "media/cards/133375015980.webp",
+  "file": "File:Optical fibres modes vs wavelength.gif",
+  "page": "https://commons.wikimedia.org/wiki/File%3AOptical%20fibres%20modes%20vs%20wavelength.gif",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Optical_fibres_modes_vs_wavelength.gif?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "CC0",
+  "by": "Jacopo Bertolotti",
+  "via": ""
+ },
+ "1c31dfb73ed2": {
+  "skip": true,
+  "card": "The price-of-a-bit ladder (companion to Thread A)"
+ },
+ "89d2c519fa95": {
+  "skip": true,
+  "card": "Theme card"
+ },
+ "61b8b23bcce3": {
+  "skip": true,
+  "card": "Born at the gambling table and the plague ledger"
+ },
+ "bd68151dc350": {
+  "skip": true,
+  "card": "Bayes and Laplace"
+ },
+ "063e32acd3bc": {
+  "skip": true,
+  "card": "Gauss"
+ },
+ "3f8027781756": {
+  "skip": true,
+  "card": "The picture-makers"
+ },
+ "2c25357bb1c1": {
+  "skip": true,
+  "card": "The uncomfortable card"
+ },
+ "814cf8b55ec0": {
+  "skip": true,
+  "card": "\"Statistics\" contains \"state\""
+ },
+ "287ea0130dda": {
+  "skip": true,
+  "card": "Closing card"
+ },
+ "72b35514c00b": {
+  "skip": true,
+  "card": "The Turk, twice"
+ },
+ "095c622169ba": {
+  "card": "The Luddites, corrected (1811)",
+  "stack": "thread-Q",
+  "img": "media/cards/095c622169ba.webp",
+  "file": "File:Luddite.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ALuddite.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/73/Luddite.jpg/960px-Luddite.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Unknown. 195 years since publication, copyright extinguished",
+  "via": ""
+ },
+ "8518807cd2e0": {
+  "skip": true,
+  "card": "The computing proletariat"
+ },
+ "624d3985582a": {
+  "skip": true,
+  "card": "The contests as ritual"
+ },
+ "ad7565f58ab4": {
+  "skip": true,
+  "card": "Honest closing card"
+ },
+ "6bfddf2238d8": {
+  "skip": true,
+  "card": "Writing was invented by accountants"
+ },
+ "45c96c7b098a": {
+  "skip": true,
+  "card": "Pacioli's mirror (1494)"
+ },
+ "9dcda976027e": {
+  "skip": true,
+  "card": "The infrastructure of trust"
+ },
+ "7cc2b1ebfacc": {
+  "skip": true,
+  "card": "Speed is money"
+ },
+ "3bbece19118e": {
+  "skip": true,
+  "card": "The retail stack"
+ },
+ "17ac767a0a93": {
+  "skip": true,
+  "card": "The tally stick reborn"
+ },
+ "60b070f7f967": {
+  "skip": true,
+  "card": "Theme card"
+ },
+ "9be98d88a392": {
+  "skip": true,
+  "card": "Alexandria's Pinakes (Era 2)"
+ },
+ "83f9a13b236e": {
+  "skip": true,
+  "card": "Monks as search engines"
+ },
+ "04f91f945158": {
+  "skip": true,
+  "card": "Cards take over"
+ },
+ "b015be883f54": {
+  "card": "Otlet's Mundaneum (1910)",
+  "stack": "thread-S",
+  "img": "media/cards/b015be883f54.webp",
+  "file": "File:Mundaneum Mons.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AMundaneum%20Mons.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Mundaneum_Mons.jpg/960px-Mundaneum_Mons.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 4.0",
+  "by": "Mr N",
+  "via": ""
+ },
+ "b4ff6d7b7adb": {
+  "skip": true,
+  "card": "The lineage of the dream"
+ },
+ "83ec55944381": {
+  "card": "HyperCard (1987)",
+  "stack": "thread-S",
+  "img": "media/cards/83ec55944381.webp",
+  "file": "File:PowerBook 550c (2373696262).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3APowerBook%20550c%20%282373696262%29.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/PowerBook_550c_%282373696262%29.jpg/960px-PowerBook_550c_%282373696262%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY 2.0",
+  "by": "osaMu",
+  "via": ""
+ },
+ "d72e8f0ee956": {
+  "skip": true,
+  "card": "The Web (1991)"
+ },
+ "83f65ff62936": {
+  "skip": true,
+  "card": "Mission card"
+ },
+ "6c693284ed99": {
+  "skip": true,
+  "card": "The monochord (Era 2)"
+ },
+ "1cc4699a3d0f": {
+  "skip": true,
+  "card": "Musica universalis"
+ },
+ "ce931d7f3cc7": {
+  "skip": true,
+  "card": "Kepler's wager (1619)"
+ },
+ "df0b5483c40e": {
+  "skip": true,
+  "card": "The metaphor that never died"
+ },
+ "860fa8bff8c7": {
+  "card": "*Harmonie universelle* (1636)",
+  "stack": "thread-T",
+  "img": "media/cards/860fa8bff8c7.webp",
+  "file": "File:Marin Mersenne - Harmonie universelle 1636 (page de titre).png",
+  "page": "https://commons.wikimedia.org/wiki/File%3AMarin%20Mersenne%20-%20Harmonie%20universelle%201636%20%28page%20de%20titre%29.png",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Marin_Mersenne_-_Harmonie_universelle_1636_%28page_de_titre%29.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "Public domain",
+  "by": "Marin Mersenne, publié à Paris en 1636",
+  "via": ""
+ },
+ "3a2ec9d9c0d5": {
+  "skip": true,
+  "card": "The string laws"
+ },
+ "1f98cf4ee789": {
+  "skip": true,
+  "card": "Counting sound itself"
+ },
+ "949aa2fb3123": {
+  "skip": true,
+  "card": "The harmonic-series puzzle"
+ },
+ "c8e08d0b5a1e": {
+  "card": "Consonance as coincidence",
+  "stack": "thread-T",
+  "img": "media/cards/c8e08d0b5a1e.webp",
+  "file": "File:Perfect_octave_on_C.png",
+  "page": "https://commons.wikimedia.org/wiki/File:Perfect_octave_on_C.png",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Perfect_octave_on_C.png",
+  "lic": "Public domain",
+  "by": "Hyacinth (talk)",
+  "via": "Consonance and dissonance"
+ },
+ "7d492038b928": {
+  "skip": true,
+  "card": "Computing equal temperament"
+ },
+ "b6450fb5e327": {
+  "skip": true,
+  "card": "The combinatorics of song"
+ },
+ "d5eb2ec9334f": {
+  "skip": true,
+  "card": "The human internet hub"
+ },
+ "e0387b038e15": {
+  "skip": true,
+  "card": "Still in the machine"
+ },
+ "073f93d25232": {
+  "card": "The Tower of Babel",
+  "stack": "thread-T",
+  "img": "media/cards/073f93d25232.webp",
+  "file": "File:Pieter Bruegel the Elder - The Tower of Babel (Vienna) - Google Art Project - edited.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3APieter%20Bruegel%20the%20Elder%20-%20The%20Tower%20of%20Babel%20%28Vienna%29%20-%20Google%20Art%20Project%20-%20edited.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fc/Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project_-_edited.jpg/960px-Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel_%28Vienna%29_-_Google_Art_Project_-_edited.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Pieter Brueghel the Elder",
+  "via": ""
+ },
+ "3a316af8dfcb": {
+  "skip": true,
+  "card": "The 17th-century projects"
+ },
+ "60017e4a189e": {
+  "skip": true,
+  "card": "Babel answered sideways"
+ },
+ "68e61ba98bff": {
+  "skip": true,
+  "card": "Musical and constructed tongues"
+ },
+ "2b40f74cb286": {
+  "skip": true,
+  "card": "The mythic tongue"
+ },
+ "ae4237a3aa04": {
+  "skip": true,
+  "card": "From myth to data"
+ },
+ "9fedf6a506b1": {
+  "skip": true,
+  "card": "The modern research program"
+ },
+ "d63ded3c5484": {
+  "card": "Cross-links",
+  "stack": "thread-T",
+  "img": "media/cards/d63ded3c5484.webp",
+  "file": "File:Structures of macromolecules.png",
+  "page": "https://commons.wikimedia.org/wiki/File%3AStructures%20of%20macromolecules.png",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Structures_of_macromolecules.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "CC BY-SA 3.0",
+  "by": "Cjp24",
+  "via": ""
+ },
+ "7d2647aa8ae8": {
+  "skip": true,
+  "card": "Notation is a program"
+ },
+ "66803a90dc2f": {
+  "skip": true,
+  "card": "Algorithmic composition, four centuries deep"
+ },
+ "9b4f016271c2": {
+  "skip": true,
+  "card": "Fourier closes Mersenne's case (1822)"
+ },
+ "957b6d3f504f": {
+  "skip": true,
+  "card": "The hearing sciences"
+ },
+ "f331bc0f5c1b": {
+  "skip": true,
+  "card": "Theme card"
+ },
+ "d274cba6a187": {
+  "card": "The Emerald Tablet and the Corpus Hermeticum",
+  "stack": "thread-U",
+  "img": "media/cards/d274cba6a187.webp",
+  "file": "File:Emerald Tablet, Rosicrucian Alchemy Exhibit.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AEmerald%20Tablet%2C%20Rosicrucian%20Alchemy%20Exhibit.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Emerald_Tablet%2C_Rosicrucian_Alchemy_Exhibit.jpg/960px-Emerald_Tablet%2C_Rosicrucian_Alchemy_Exhibit.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "CC BY-SA 4.0",
+  "by": "The wub",
+  "via": ""
+ },
+ "f43a9278523d": {
+  "skip": true,
+  "card": "The Renaissance magi"
+ },
+ "5a2a6eeb7580": {
+  "card": "John Dee (Era 4)",
+  "stack": "thread-U",
+  "img": "media/cards/5a2a6eeb7580.webp",
+  "file": "File:John Dee Ashmolean.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AJohn%20Dee%20Ashmolean.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/John_Dee_Ashmolean.jpg/960px-John_Dee_Ashmolean.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Unidentified painter",
+  "via": ""
+ },
+ "88079bf46eca": {
+  "skip": true,
+  "card": "the turn"
+ },
+ "7d8bdda95fb1": {
+  "skip": true,
+  "card": "Newton translated the Emerald Tablet into English with commentary…"
+ },
+ "5ce09a7ba8ec": {
+  "skip": true,
+  "card": "The Keynes verdict (1936)"
+ },
+ "f9aae3c84242": {
+  "skip": true,
+  "card": "The productive irony"
+ },
+ "b955e9803fad": {
+  "skip": true,
+  "card": "Computing doomsday"
+ },
+ "262bcd23ed58": {
+  "skip": true,
+  "card": "Still being decrypted"
+ },
+ "272a2ee5b938": {
+  "skip": true,
+  "card": "For Leibniz, binary was theology"
+ },
+ "f33af2d3bff6": {
+  "skip": true,
+  "card": "1701–03"
+ },
+ "b90a6d72e3ba": {
+  "skip": true,
+  "card": "The Kabbalist cousin"
+ },
+ "d6b6b90a5284": {
+  "card": "Athanasius Kircher, S.J. (1602–1680)",
+  "stack": "thread-U",
+  "img": "media/cards/d6b6b90a5284.webp",
+  "file": "File:Athanasius Kircher.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AAthanasius%20Kircher.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Athanasius_Kircher.jpg/960px-Athanasius_Kircher.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Cornelis Bloemaert",
+  "via": ""
+ },
+ "96b318ea5002": {
+  "skip": true,
+  "card": "The media inventor"
+ },
+ "579be82f8f31": {
+  "card": "The knowledge engines",
+  "stack": "thread-U",
+  "img": "media/cards/579be82f8f31.webp",
+  "file": "File:Google Knowledge Panel.png",
+  "page": "https://commons.wikimedia.org/wiki/File%3AGoogle%20Knowledge%20Panel.png",
+  "src": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Google_Knowledge_Panel.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+  "lic": "CC BY-SA 3.0",
+  "by": "Google",
+  "via": ""
+ },
+ "32392bf40661": {
+  "card": "The data network",
+  "stack": "thread-U",
+  "img": "media/cards/32392bf40661.webp",
+  "file": "File:Defense Data Network as envisioned by the Defense Science Board, December 1982.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ADefense%20Data%20Network%20as%20envisioned%20by%20the%20Defense%20Science%20Board%2C%20December%201982.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Defense_Data_Network_as_envisioned_by_the_Defense_Science_Board%2C_December_1982.jpg/960px-Defense_Data_Network_as_envisioned_by_the_Defense_Science_Board%2C_December_1982.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "Defense Science Board",
+  "via": ""
+ },
+ "b48c15ba629e": {
+  "skip": true,
+  "card": "The lucky wrongness"
+ },
+ "45bcda29b6cb": {
+  "skip": true,
+  "card": "The rival hub"
+ },
+ "2da80ae72480": {
+  "skip": true,
+  "card": "Research programs harden into science"
+ },
+ "a3083f5881b1": {
+  "skip": true,
+  "card": "Astrology fed astronomy"
+ },
+ "71325389be9e": {
+  "skip": true,
+  "card": "Secrecy's training ground"
+ },
+ "356dd14a51db": {
+  "skip": true,
+  "card": "The honest-history card"
+ },
+ "006608333360": {
+  "card": "The Yates card",
+  "stack": "thread-U",
+  "img": "media/cards/006608333360.webp",
+  "file": "File:Legion of Merit – Yates, Donald N.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ALegion%20of%20Merit%20%E2%80%93%20Yates%2C%20Donald%20N.jpg",
+  "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Legion_of_Merit_%E2%80%93_Yates%2C_Donald_N.jpg/960px-Legion_of_Merit_%E2%80%93_Yates%2C_Donald_N.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "lic": "Public domain",
+  "by": "U.S. Army Air Forces",
+  "via": ""
  }
 }

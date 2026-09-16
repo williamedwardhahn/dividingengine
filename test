@@ -112,6 +112,11 @@ def test_pictures():
     nolic = [v['card'] for v in have.values() if not (v.get('lic') or '').strip()]
     check('every picture records its licence', not nolic,
           f'{len(nolic)}: {nolic[:3]}')
+    # 'unknown' is not a licence. It passed the blank check above while telling
+    # us nothing about whether we may publish the file at all.
+    unk = [v['card'] for v in have.values()
+           if (v.get('lic') or '').strip().lower() == 'unknown']
+    check('no picture has an unknown licence', not unk, f'{len(unk)}: {unk[:3]}')
     # CC BY / BY-SA require crediting the author; an unattributed file is a bug
     noattr = [v['card'] for v in have.values()
               if re.search(r'\bBY\b', v.get('lic', ''), re.I) and not (v.get('by') or v.get('via'))]

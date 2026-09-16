@@ -129,10 +129,32 @@ def wiki_lead(q):
         if not src: continue
         fn = urllib.parse.unquote(src.rsplit('/', 1)[-1].split('?')[0])
         if not re.search(r'\.(jpe?g|png|gif|tiff?|webp)$', fn, re.I): continue
+        # Wikipedia's pageimages tells you the file and nothing about the terms
+        # you may use it under. Leaving that blank is how 67 pictures once got
+        # archived with no licence at all; ask Commons before proposing it.
+        lic, by = commons_terms('File:' + fn)
         out.append({'file': 'File:' + fn, 'url': src.split('?')[0],
                     'page': f'https://commons.wikimedia.org/wiki/File:{urllib.parse.quote(fn)}',
-                    'lic': '', 'by': '', 'via': p.get('title', ''), 'idx': 50})
+                    'lic': lic or 'unknown', 'by': by,
+                    'via': p.get('title', ''), 'idx': 50})
     return out
+
+
+def commons_terms(title):
+    """Licence and author for one Commons file."""
+    u = 'https://commons.wikimedia.org/w/api.php?' + urllib.parse.urlencode({
+        'action': 'query', 'format': 'json', 'prop': 'imageinfo',
+        'iiprop': 'extmetadata', 'titles': title})
+    d = api(u)
+    if d is None:
+        return '', ''
+    for p in (d.get('query', {}).get('pages') or {}).values():
+        ii = (p.get('imageinfo') or [{}])[0]
+        em = ii.get('extmetadata', {}) or {}
+        g = lambda k: re.sub(r'<[^>]+>', '', ((em.get(k) or {}).get('value') or '')).strip()
+        by = next((g(f) for f in ('Attribution', 'Artist', 'Credit') if g(f)), '')
+        return g('LicenseShortName'), re.sub(r'\s+', ' ', by)[:90]
+    return '', ''
 
 def candidates(card, stack_title):
     q = query_for(card, stack_title)
@@ -436,6 +458,47 @@ def cmd_review(a):
         print(f'\n{picked["n"]} decision(s) saved. Next: ./pics fetch')
     return 0
 
+
+def cmd_apply(a):
+    """Read the decisions back out of pics-review.txt.
+
+    The file has always told you to edit the number and then run ./pics fetch,
+    and nothing ever read it — the browser picker was the only path in, so the
+    instructions printed at the top of the file were false. They are true now,
+    which also makes the text file usable for bulk passes where a picker is
+    slower than an editor.
+    """
+    cf_path = ROOT / '.pics-candidates.json'
+    if not REVIEW.exists() or not cf_path.exists():
+        warn('run ./pics propose first'); return 1
+    cands = json.loads(cf_path.read_text(encoding='utf-8'))
+    db = load()
+    line = re.compile(r'^(\d|-)\s+([0-9a-f]{12})\s+#')
+    took = skipped = unknown = 0
+    for ln in REVIEW.read_text(encoding='utf-8').splitlines():
+        m = line.match(ln)
+        if not m:
+            continue
+        pick, k = m.group(1), m.group(2)
+        meta = cands.get(k)
+        if not meta:
+            unknown += 1; continue
+        if pick == '-':
+            db[k] = {'skip': True, 'card': meta['card']}; skipped += 1
+            continue
+        i = int(pick) - 1
+        if not (0 <= i < len(meta.get('cands') or [])):
+            unknown += 1; continue
+        db[k] = {'card': meta['card'], 'stack': meta['stack'],
+                 'pick': meta['cands'][i], 'img': f'media/cards/{k}.webp'}
+        took += 1
+    save(db)
+    print(f'{took} picked, {skipped} skipped'
+          + (f', {unknown} unrecognised' if unknown else ''))
+    print('next: ./pics fetch')
+    return 0
+
+
 def cmd_status(a):
     db = load()
     cards = all_cards()
@@ -486,6 +549,7 @@ def main():
     s = sub.add_parser('propose'); s.add_argument('--limit', type=int); s.set_defaults(fn=cmd_propose)
     s = sub.add_parser('review'); s.add_argument('--port', type=int, default=8912)
     s.set_defaults(fn=cmd_review)
+    sub.add_parser('apply').set_defaults(fn=cmd_apply)
     sub.add_parser('fetch').set_defaults(fn=cmd_fetch)
     sub.add_parser('status').set_defaults(fn=cmd_status)
     sub.add_parser('recompress').set_defaults(fn=cmd_recompress)
