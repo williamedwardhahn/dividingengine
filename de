@@ -122,6 +122,41 @@ ORPHAN_QUOTE = re.compile(r'^([^"\u201c\u201d]{6,}?)\s*["\u201c\u201d]\s+\S')
 # Broadcasters append the strand and the slot: 'Alan Turing's Machines |
 # Mathematics in Action'. The first field is the programme.
 PIPE_TAIL = re.compile(r'^([^|]{12,}?)\s*\|')
+# Balanced quotes with a keyword list after them: '"MAIN BATTERY FIRE CONTROL
+# PROCEDURES" 1954 U.S. NAVY TRAINING FILM NAVAL GUNNERY'. The film's name is
+# what is inside the quotes; the rest is for search.
+LEADING_QUOTE = re.compile(r'^\s*["\u201c]\s*(.{6,}?)\s*["\u201d]\s+\S')
+
+# Titles that arrive shouting. Acronyms keep their case; everything else is
+# title-cased, because a grid of capitals is unreadable.
+KEEP_CAPS = {
+ 'IBM','UNIVAC','RCA','NCR','MIT','CBS','NBC','ABC','BBC','USA','USSR','U.S.',
+ 'WWII','WWI','AT&T','DEC','PDP','SAGE','ENIAC','EDVAC','EDSAC','NASA','TV',
+ 'RAND','GE','AC','DC','CPU','LSI','VLSI','ASCC','CPC','MK','MOD','ESS','SXS',
+ 'AN/FSQ-7','BINAC','SSEC','CAM','RAMAC','III','II','IV','I','A','B','C','D',
+ 'XD81325','US','UK','PBS','ARPA','MOS','FM','AM','HF','VHF','UHF','RPM'}
+SMALL = {'a','an','and','as','at','but','by','for','from','in','of','on','or',
+         'the','to','with','w/','vs'}
+
+def is_shouting(t, floor=10):
+    letters = [c for c in t if c.isalpha()]
+    return len(letters) > floor and sum(1 for c in letters if c.isupper()) / len(letters) > .75
+
+def title_case(t):
+    out = []
+    for i, w in enumerate(t.split()):
+        bare = w.strip('"\u201c\u201d()[],.:;!?-')
+        # 'U.S.' and 'M.I.T.' are acronyms whichever way you strip them
+        dotted = w.count('.') >= 2 and w.replace('.', '').isupper()
+        if (dotted or bare.upper() in KEEP_CAPS
+                or (bare.isupper() and any(ch.isdigit() for ch in bare))):
+            out.append(w)
+        elif bare.lower() in SMALL and i:
+            out.append(w.lower())
+        else:
+            out.append(w[:1].upper() + w[1:].lower() if w[:1].isalpha() else w.capitalize())
+    return ' '.join(out)
+
 # and some uploaders sign their work in the title
 UPLOADER_SIG = re.compile(
     r'\s*[\-\u2013]\s*\S*(?:Archives?|Films?|Channel|Media|TV|Reel)\s*$')
@@ -139,9 +174,22 @@ def clean_title(t):
         m = ORPHAN_QUOTE.match(t)
         if m and len(m.group(1)) >= 6:
             t = m.group(1)
+    m = LEADING_QUOTE.match(t)
+    if m and len(m.group(1)) >= 6:
+        # Only when what follows the quote is a keyword list. '"ACCESS" —
+        # Overview of Digital Computer Technology' has a real subtitle after
+        # the quote and taking only the quoted word threw the meaning away.
+        rest = t[m.end(1):].lstrip('"\u201d ')
+        if is_shouting(rest, floor=6) or re.search(
+                r'\b(film|promo|promotional|training|educational|industrial)\b', rest, re.I):
+            t = m.group(1)
+            if is_shouting(t, floor=4):
+                t = title_case(t)
     m = PIPE_TAIL.match(t)
     if m:
         t = m.group(1)
+    if is_shouting(t):
+        t = title_case(t)
     stripped = CHANNEL_SUFFIX.sub('', CHANNEL_PREFIX.sub('', t))
     # only if something survives: a film actually called 'AT&T Archives' would
     # otherwise be left with nothing. Four characters is enough — one of these
