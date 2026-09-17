@@ -78,6 +78,24 @@ def test_archive():
     prefixed = [f['name'] for f in films if chan_label.search(f.get('name') or '')]
     check('no title repeats its channel', not prefixed,
           f'{len(prefixed)}: {prefixed[:2]}')
+    # Noise an uploader adds for search, which is not the film's name.
+    noise = {
+        'stock catalogue number': re.compile(r'\b\d{5,6}\b'),
+        'a filename':             re.compile(r'\.(mov|mp4|avi|wmv|flv|m4v)\b', re.I),
+        'a broadcast strand':     re.compile(r'\|'),
+        'a playlist number':      re.compile(r'^\s*\d{1,2}\s*[\.\)]\s'),
+    }
+    for what, pat in noise.items():
+        hits = [f['name'] for f in films if pat.search(f.get('name') or '')]
+        check(f'no title carries {what}', not hits, f'{len(hits)}: {hits[:2]}')
+    # 'Tools of Telephony" 1956 Western Electric …' — the opening quote is lost
+    # upstream and everything after the survivor is a keyword list
+    odd = [f['name'] for f in films
+           if ((f.get('name') or '').count('"')
+               + (f.get('name') or '').count('\u201c')
+               + (f.get('name') or '').count('\u201d')) % 2]
+    check('no title has an unclosed quote', not odd, f'{len(odd)}: {odd[:2]}')
+
     # the source title is the record; only the display name is tidied
     kept = sum(1 for f in films
                if re.search(r'AT&T', f.get('title') or '', re.I))

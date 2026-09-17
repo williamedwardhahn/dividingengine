@@ -106,16 +106,48 @@ CHANNEL_SUFFIX = re.compile(
     r'\s*[\-\u2013:,]\s*(?:AT&T\s*(?:Archives|Tech\s*Channel)|Periscope\s*Film)\s*$',
     re.I)
 
+# Stock-footage houses end a title with their catalogue number, uploaders end
+# one with the filename, and playlist exports number them. None of it is the
+# film's name.
+STOCK_ID  = re.compile(r'[\s\-\u2013,]*\b\d{5,6}\b\s*$')
+FILE_EXT  = re.compile(r'\.(?:mov|mp4|avi|wmv|flv|m4v|mpg|mpeg)\s*$', re.I)
+LIST_NUM  = re.compile(r'^\s*\d{1,2}\s*[\.\)]\s+')
+
+# Stock-footage uploads keep the film's real name in quotes and then bolt a
+# keyword list onto the end for search — and the opening quote is usually lost
+# somewhere upstream, leaving 'Tools of Telephony" 1956 Western Electric
+# Telephone System Promo Film Bell System'. Everything after the stray quote
+# is the keyword list.
+ORPHAN_QUOTE = re.compile(r'^([^"\u201c\u201d]{6,}?)\s*["\u201c\u201d]\s+\S')
+# Broadcasters append the strand and the slot: 'Alan Turing's Machines |
+# Mathematics in Action'. The first field is the programme.
+PIPE_TAIL = re.compile(r'^([^|]{12,}?)\s*\|')
+# and some uploaders sign their work in the title
+UPLOADER_SIG = re.compile(
+    r'\s*[\-\u2013]\s*\S*(?:Archives?|Films?|Channel|Media|TV|Reel)\s*$')
+
 def clean_title(t):
     t = html.unescape(t or '').strip()
     t = NOISE.sub('', t)
+    for p in (STOCK_ID, FILE_EXT, LIST_NUM, UPLOADER_SIG):
+        stripped = p.sub('', t)
+        if len(stripped) >= 4:
+            t = stripped
+    # only when the quote is unbalanced: 'CBS "the Search" Documentary …' has
+    # both of its quotes and is a different problem
+    if t.count('"') + t.count('\u201c') + t.count('\u201d') == 1:
+        m = ORPHAN_QUOTE.match(t)
+        if m and len(m.group(1)) >= 6:
+            t = m.group(1)
+    m = PIPE_TAIL.match(t)
+    if m:
+        t = m.group(1)
     stripped = CHANNEL_SUFFIX.sub('', CHANNEL_PREFIX.sub('', t))
     # only if something survives: a film actually called 'AT&T Archives' would
     # otherwise be left with nothing. Four characters is enough — one of these
     # films is called 'Laser'.
     if len(stripped) >= 4:
         t = stripped
-    t = re.sub(r'\s*\|\s*[^|]{0,40}$', '', t) if t.count('|') == 1 and len(t) > 46 else t
     return re.sub(r'\s{2,}', ' ', t).strip(' -–—|·')
 
 YEAR_PATS = [
