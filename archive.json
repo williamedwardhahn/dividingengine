@@ -845,8 +845,8 @@
     }
    ],
    "era": "era-7",
-   "approved": true,
-   "found_by": "punch card · @ComputerHistoryArchivesProject"
+   "found_by": "punch card · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "electronics-at-work-1943",
@@ -994,8 +994,8 @@
     }
    ],
    "era": "era-7",
-   "approved": true,
-   "found_by": "tabulating machine · @ComputerHistoryArchivesProject"
+   "found_by": "tabulating machine · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "slide-rule-proportion-percentage-squares-and-squ",
@@ -1021,8 +1021,8 @@
     }
    ],
    "era": "era-7",
-   "approved": true,
-   "found_by": "slide rule instructional film"
+   "found_by": "slide rule instructional film",
+   "approved": true
   },
   {
    "slug": "conquest-of-the-night",
@@ -2042,32 +2042,6 @@
    "era": "era-7"
   },
   {
-   "slug": "us-navy-training-film-basic-mechanisms-in-fire-c",
-   "title": "U.S. Navy Training Film - Basic Mechanisms in Fire Control Computers (MN-6783a/b, 1953)",
-   "name": "U.S. Navy Training Film - Basic Mechanisms in Fire Control Computers (MN-6783a/b, 1953)",
-   "year": 1953,
-   "chan": "Nick Honko",
-   "dur": 2495,
-   "thumb": "media/yt/bOwKh9XLO1c.jpg",
-   "collections": [
-    "advantage"
-   ],
-   "status": "live",
-   "added": "2026-09-17",
-   "checked": null,
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "bOwKh9XLO1c",
-     "url": "https://www.youtube.com/watch?v=bOwKh9XLO1c",
-     "embed": "https://www.youtube-nocookie.com/embed/bOwKh9XLO1c?rel=0",
-     "status": "live"
-    }
-   ],
-   "era": "era-7",
-   "found_by": "mechanical computer Navy training film basic mechanisms"
-  },
-  {
    "slug": "1953-uhf-tv",
    "title": "1953 UHF TV",
    "name": "UHF TV",
@@ -2186,7 +2160,8 @@
     }
    ],
    "era": "era-7",
-   "found_by": "rangekeeper naval gun fire control film"
+   "found_by": "rangekeeper naval gun fire control film",
+   "approved": true
   },
   {
    "slug": "polymers-man-made-miracles",
@@ -2490,7 +2465,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "tabulating machine · @PeriscopeFilm"
+   "found_by": "tabulating machine · @PeriscopeFilm",
+   "approved": true
   },
   {
    "slug": "1956-john-von-neumann-inter",
@@ -2551,7 +2527,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "tabulating machine · @ComputerHistoryArchivesProject"
+   "found_by": "tabulating machine · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "1956-our-mr-sun",
@@ -2822,7 +2799,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "slide rule instructional film"
+   "found_by": "slide rule instructional film",
+   "approved": true
   },
   {
    "slug": "1957-the-strange-case-of",
@@ -3362,7 +3340,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "punch card · @ComputerHistoryArchivesProject"
+   "found_by": "punch card · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "1960s-sperry-rand-univac-nasa-apollo-computer-hi",
@@ -3388,7 +3367,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "computer · @ComputerHistoryArchivesProject"
+   "found_by": "computer · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "att-archives-1960s-auto-safety-film",
@@ -3442,7 +3422,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "computer · @PeriscopeFilm"
+   "found_by": "computer · @PeriscopeFilm",
+   "approved": true
   },
   {
    "slug": "ivan-sutherland-virtual-reality-in-the-1960s",
@@ -3987,7 +3968,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "gyroscope · @ComputerHistoryArchivesProject"
+   "found_by": "gyroscope · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "att-archives-the-far-sound-a-history-of-long-and",
@@ -4187,7 +4169,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "fire control computer · @ComputerHistoryArchivesProject"
+   "found_by": "fire control computer · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "digital-computer-techniques-programming-att-arch",
@@ -4736,7 +4719,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "analog computer · @PeriscopeFilm"
+   "found_by": "analog computer · @PeriscopeFilm",
+   "approved": true
   },
   {
    "slug": "att-archives-bell-systems-electronic-switching-s",
@@ -4789,7 +4773,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "telephone switching · @ComputerHistoryArchivesProject"
+   "found_by": "telephone switching · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "att-archives-genesis-of-the-transistor",
@@ -5330,34 +5315,8 @@
    ],
    "year_source": "description",
    "era": "era-8",
-   "found_by": "punched card machine IBM training film"
-  },
-  {
-   "slug": "punched-card-data-processing-introduction-ibm-02",
-   "title": "PUNCHED CARD DATA PROCESSING INTRODUCTION IBM 029 COMPUTER",
-   "name": "Punched Card Data Processing Introduction IBM 029 Computer",
-   "year": 1967,
-   "chan": "PeriscopeFilm",
-   "dur": 850,
-   "thumb": "media/yt/etu-cH-nkIA.jpg",
-   "collections": [
-    "advantage"
-   ],
-   "status": "live",
-   "added": "2026-09-17",
-   "checked": null,
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "etu-cH-nkIA",
-     "url": "https://www.youtube.com/watch?v=etu-cH-nkIA",
-     "embed": "https://www.youtube-nocookie.com/embed/etu-cH-nkIA?rel=0",
-     "status": "live"
-    }
-   ],
-   "year_source": "description",
-   "era": "era-8",
-   "found_by": "punched card machine IBM training film"
+   "found_by": "punched card machine IBM training film",
+   "approved": true
   },
   {
    "slug": "1960s-general-electric-co-military-computer-data",
@@ -5831,7 +5790,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "cryptography · @ComputerHistoryArchivesProject"
+   "found_by": "cryptography · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "miss-honeywell",
@@ -5938,7 +5898,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "Mark 1 fire control computer Navy training film"
+   "found_by": "Mark 1 fire control computer Navy training film",
+   "approved": true
   },
   {
    "slug": "visualing-poetry-with-1960s-computer-graphics-at",
@@ -6309,7 +6270,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "navigation · @ComputerHistoryArchivesProject"
+   "found_by": "navigation · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "computers-1970-educational-film-ibm-mainframe-pu",
@@ -6535,7 +6497,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "analog computer · @ComputerHistoryArchivesProject"
+   "found_by": "analog computer · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "reading-and-sorting-mail-automatically",
@@ -6788,7 +6751,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "punch card · @ComputerHistoryArchivesProject"
+   "found_by": "punch card · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "future-shock-1972",
@@ -7411,7 +7375,8 @@
     }
    ],
    "era": "era-8",
-   "found_by": "fire control computer · @PeriscopeFilm"
+   "found_by": "fire control computer · @PeriscopeFilm",
+   "approved": true
   },
   {
    "slug": "4mfmiecqa98",
@@ -8497,7 +8462,8 @@
     }
    ],
    "era": "era-9",
-   "found_by": "fire control computer · @ComputerHistoryArchivesProject"
+   "found_by": "fire control computer · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "processing-integrated-circuits-at-bell-labs-att",
@@ -12302,7 +12268,8 @@
    ],
    "year_source": "description",
    "era": "era-9",
-   "found_by": "analog computer · @PeriscopeFilm"
+   "found_by": "analog computer · @PeriscopeFilm",
+   "approved": true
   },
   {
    "slug": "the-computer-chronicles-programming",
@@ -16259,7 +16226,8 @@
    ],
    "year_source": "upload (modern commentary)",
    "era": "era-10",
-   "found_by": "analog computer · @ComputerHistoryArchivesProject"
+   "found_by": "analog computer · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "the-1890-us-census-and-the-history-of-punchcard",
@@ -16286,7 +16254,8 @@
    ],
    "year_source": "upload (modern commentary)",
    "era": "era-10",
-   "found_by": "Hollerith census tabulating machine 1890"
+   "found_by": "Hollerith census tabulating machine 1890",
+   "approved": true
   },
   {
    "slug": "sheridan-simon-talk-2021-william-hahn",
@@ -16340,7 +16309,8 @@
    ],
    "year_source": "upload (modern commentary)",
    "era": "era-10",
-   "found_by": "tabulating machine · @ComputerHistoryArchivesProject"
+   "found_by": "tabulating machine · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "1980s-advances-in-robotics-computer-engineering",
@@ -17592,7 +17562,8 @@
      "status": "live"
     }
    ],
-   "found_by": "MONIAC Phillips hydraulic computer economy"
+   "found_by": "MONIAC Phillips hydraulic computer economy",
+   "approved": true
   },
   {
    "slug": "binary-and-the-jacquard-mechanism-demonstration",
@@ -17617,7 +17588,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Jacquard loom weaving punch card"
+   "found_by": "Jacquard loom weaving punch card",
+   "approved": true
   },
   {
    "slug": "birth-of-basic",
@@ -17749,7 +17721,8 @@
      "status": "live"
     }
    ],
-   "found_by": "bombardier training film bombsight"
+   "found_by": "bombardier training film bombsight",
+   "approved": true
   },
   {
    "slug": "att-archives-bottle-of-magic-bonus-edition",
@@ -18087,7 +18060,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Shannon Theseus maze mouse"
+   "found_by": "Shannon Theseus maze mouse",
+   "approved": true
   },
   {
    "slug": "cmm1wmv",
@@ -20063,7 +20037,8 @@
      "status": "live"
     }
    ],
-   "found_by": "inertial guidance system training film 1950s"
+   "found_by": "inertial guidance system training film 1950s",
+   "approved": true
   },
   {
    "slug": "guinness-collection-of-automatic-musical-instrum",
@@ -20141,7 +20116,8 @@
      "status": "live"
     }
    ],
-   "found_by": "mathematics · @ComputerHistoryArchivesProject"
+   "found_by": "mathematics · @ComputerHistoryArchivesProject",
+   "approved": true
   },
   {
    "slug": "history-of-computer-animation",
@@ -20270,7 +20246,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Hollerith census tabulating machine 1890"
+   "found_by": "Hollerith census tabulating machine 1890",
+   "approved": true
   },
   {
    "slug": "holmdel-20th-anniversary-a-history-of-the-legend",
@@ -20399,7 +20376,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Curta calculator mechanical"
+   "found_by": "Curta calculator mechanical",
+   "approved": true
   },
   {
    "slug": "how-to-install-modular-jacks-by-yourself-att-arc",
@@ -20450,7 +20428,8 @@
      "status": "live"
     }
    ],
-   "found_by": "slide rule instructional film"
+   "found_by": "slide rule instructional film",
+   "approved": true
   },
   {
    "slug": "i-built-a-computer-in-magic-the-gathering",
@@ -20501,7 +20480,8 @@
      "status": "live"
     }
    ],
-   "found_by": "cryptography · @PeriscopeFilm"
+   "found_by": "cryptography · @PeriscopeFilm",
+   "approved": true
   },
   {
    "slug": "ibm-computer-card-model-82-sorting-machine-1960s",
@@ -20605,7 +20585,8 @@
      "status": "live"
     }
    ],
-   "found_by": "SAGE air defense computer film"
+   "found_by": "SAGE air defense computer film",
+   "approved": true
   },
   {
    "slug": "att-archives-infoquest-center",
@@ -20656,7 +20637,8 @@
      "status": "live"
     }
    ],
-   "found_by": "McCulloch Pitts neural network history"
+   "found_by": "McCulloch Pitts neural network history",
+   "approved": true
   },
   {
    "slug": "interview-with-nobel-laureates-robert-wilson-and",
@@ -21467,7 +21449,8 @@
      "status": "live"
     }
    ],
-   "found_by": "MONIAC Phillips hydraulic computer economy"
+   "found_by": "MONIAC Phillips hydraulic computer economy",
+   "approved": true
   },
   {
    "slug": "managing-the-micro-s01e01-thinking-small",
@@ -22054,7 +22037,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Norden bombsight training film WWII"
+   "found_by": "Norden bombsight training film WWII",
+   "approved": true
   },
   {
    "slug": "att-archives-now-you-can-dial",
@@ -22236,7 +22220,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Norden bombsight training film WWII"
+   "found_by": "Norden bombsight training film WWII",
+   "approved": true
   },
   {
    "slug": "orad-virtual-set-technologies",
@@ -22548,32 +22533,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Norden bombsight training film WWII"
-  },
-  {
-   "slug": "principles-of-operation-of-the-norden-bombsight",
-   "title": "PRINCIPLES OF OPERATION OF THE NORDEN BOMBSIGHT RESTRICTED WWII BOMBARDIER TRAINING FILM",
-   "name": "Principles of Operation of the Norden Bombsight Restricted WWII Bombardier Training Film",
-   "year": null,
-   "chan": "PeriscopeFilm",
-   "dur": 1239,
-   "thumb": "media/yt/143vi97a4tY.jpg",
-   "collections": [
-    "advantage"
-   ],
-   "status": "live",
-   "added": "2026-09-17",
-   "checked": null,
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "143vi97a4tY",
-     "url": "https://www.youtube.com/watch?v=143vi97a4tY",
-     "embed": "https://www.youtube-nocookie.com/embed/143vi97a4tY?rel=0",
-     "status": "live"
-    }
-   ],
-   "found_by": "Norden bombsight training film WWII"
+   "found_by": "Norden bombsight training film WWII",
+   "approved": true
   },
   {
    "slug": "profiling-underwater-submersibles-att-archives",
@@ -23338,7 +23299,8 @@
      "status": "live"
     }
    ],
-   "found_by": "bombardier training film bombsight"
+   "found_by": "bombardier training film bombsight",
+   "approved": true
   },
   {
    "slug": "att-archives-stepping-along-with-television",
@@ -24387,7 +24349,8 @@
      "status": "live"
     }
    ],
-   "found_by": "McCulloch Pitts neural network history"
+   "found_by": "McCulloch Pitts neural network history",
+   "approved": true
   },
   {
    "slug": "the-future-of-technology-1970s-film-96252",
@@ -24464,7 +24427,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Harvard computers women astronomy"
+   "found_by": "Harvard computers women astronomy",
+   "approved": true
   },
   {
    "slug": "att-archives-the-hello-machine",
@@ -24754,31 +24718,6 @@
    "n_total": 1
   },
   {
-   "slug": "the-mechanical-integrator-a-machine-that-does-ca",
-   "title": "The Mechanical Integrator - a machine that does calculus",
-   "name": "The Mechanical Integrator - a machine that does calculus",
-   "year": null,
-   "chan": "Jack Monaco",
-   "dur": 622,
-   "thumb": "media/yt/s-y_lnzWQjk.jpg",
-   "collections": [
-    "advantage"
-   ],
-   "status": "live",
-   "added": "2026-09-17",
-   "checked": null,
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "s-y_lnzWQjk",
-     "url": "https://www.youtube.com/watch?v=s-y_lnzWQjk",
-     "embed": "https://www.youtube-nocookie.com/embed/s-y_lnzWQjk?rel=0",
-     "status": "live"
-    }
-   ],
-   "found_by": "differential analyzer film"
-  },
-  {
    "slug": "the-moment-in-time-the-manhattan-project",
    "title": "The Moment in Time: The Manhattan Project",
    "name": "The Moment in Time: The Manhattan Project",
@@ -24828,7 +24767,8 @@
      "status": "live"
     }
    ],
-   "found_by": "MONIAC Phillips hydraulic computer economy"
+   "found_by": "MONIAC Phillips hydraulic computer economy",
+   "approved": true
   },
   {
    "slug": "att-archives-the-physical-chemistry-of-polymers",
@@ -25013,31 +24953,6 @@
    "n_live": 1,
    "n_total": 1,
    "raw_title": "The Story of Virtuality | Nostalgia Nerd"
-  },
-  {
-   "slug": "the-story-of-whirlwind-computer-operator-joe-tho",
-   "title": "The Story of Whirlwind Computer Operator Joe Thompson",
-   "name": "The Story of Whirlwind Computer Operator Joe Thompson",
-   "year": null,
-   "chan": "Computer History Museum",
-   "dur": 327,
-   "thumb": "media/yt/-bNLO9yaMrk.jpg",
-   "collections": [
-    "advantage"
-   ],
-   "status": "live",
-   "added": "2026-09-17",
-   "checked": null,
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "-bNLO9yaMrk",
-     "url": "https://www.youtube.com/watch?v=-bNLO9yaMrk",
-     "embed": "https://www.youtube-nocookie.com/embed/-bNLO9yaMrk?rel=0",
-     "status": "live"
-    }
-   ],
-   "found_by": "computer · @ComputerHistory"
   },
   {
    "slug": "att-archives-the-thinking-machines-bonus-edition",
@@ -25427,7 +25342,8 @@
      "status": "live"
     }
    ],
-   "found_by": "calculating machine · @PeriscopeFilm"
+   "found_by": "calculating machine · @PeriscopeFilm",
+   "approved": true
   },
   {
    "slug": "us-navy-basic-mechanisms-of-fire-control-compute",
@@ -25452,7 +25368,8 @@
      "status": "live"
     }
    ],
-   "found_by": "Mark 1 fire control computer Navy training film"
+   "found_by": "Mark 1 fire control computer Navy training film",
+   "approved": true
   },
   {
    "slug": "unavailable-video-02lq5f8oydc",
@@ -27797,31 +27714,6 @@
    ],
    "n_live": 1,
    "n_total": 1
-  },
-  {
-   "slug": "women-in-astronomy-episode-1-harvard-computers",
-   "title": "Women in Astronomy Episode 1 - Harvard Computers",
-   "name": "Women in Astronomy Episode 1 - Harvard Computers",
-   "year": null,
-   "chan": "PARI",
-   "dur": 446,
-   "thumb": "media/yt/JuGBvPCiTc8.jpg",
-   "collections": [
-    "advantage"
-   ],
-   "status": "live",
-   "added": "2026-09-17",
-   "checked": null,
-   "sources": [
-    {
-     "kind": "youtube",
-     "id": "JuGBvPCiTc8",
-     "url": "https://www.youtube.com/watch?v=JuGBvPCiTc8",
-     "embed": "https://www.youtube-nocookie.com/embed/JuGBvPCiTc8?rel=0",
-     "status": "live"
-    }
-   ],
-   "found_by": "Harvard computers women astronomy"
   },
   {
    "slug": "att-archives-yellow-pages-by-computer-graphics",
