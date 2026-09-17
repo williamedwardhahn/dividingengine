@@ -1351,6 +1351,191 @@ def cmd_thumb(a):
     print(f"{f['slug']}: thumb -> {rel} ({len(data)//1024} KB). Now: ./de build")
     return 0
 
+
+APPROVE_HTML = r"""<!doctype html><meta charset="utf-8"><title>Approve films</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:wght@400;500&display=swap">
+<style>
+:root{--paper:#f2eee4;--card:#fbf9f4;--ink:#231e15;--ink2:#57514a;--ink3:#8b8377;
+      --rule:#cdc4b0;--rubric:#9a3b28;--brass:#9a6c2f}
+*{box-sizing:border-box} html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Spectral,Georgia,serif;
+     display:flex;flex-direction:column}
+header{flex:none;border-bottom:1px solid var(--rule);padding:12px 22px;display:flex;
+  gap:16px;align-items:baseline}
+header b{font:500 13px/1 "IBM Plex Mono",monospace;letter-spacing:.14em;text-transform:uppercase}
+header .n{margin-left:auto;font:11px "IBM Plex Mono",monospace;letter-spacing:.12em;color:var(--ink3)}
+#bar{flex:none;height:2px;background:var(--rule)}
+#fill{height:100%;background:var(--rubric);width:0;transition:width .2s}
+main{flex:1;display:flex;gap:24px;padding:20px 22px;min-height:0;align-items:center}
+#shot{flex:0 1 58%;min-width:0;height:100%;display:flex;align-items:center;justify-content:center}
+#shot img{max-width:100%;max-height:100%;border:1px solid var(--rule);
+  box-shadow:0 8px 26px -12px rgba(40,32,20,.45)}
+#side{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px}
+h1{font:500 25px/1.25 Spectral,Georgia,serif;margin:0}
+.meta{font:10.5px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+.why{font-size:13.5px;color:var(--ink2);border-top:1px solid var(--rule);padding-top:10px}
+.why b{color:var(--rubric);font-weight:500}
+.btns{display:flex;gap:10px;margin-top:6px}
+button{font:inherit;font-size:14px;padding:9px 18px;border:1px solid var(--rule);
+  background:var(--card);border-radius:3px;cursor:pointer}
+button:hover{border-color:var(--ink)}
+button.no{color:var(--rubric)}
+footer{flex:none;border-top:1px solid var(--rule);padding:9px 22px;
+  font:10px "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink3);display:flex;gap:20px;align-items:center}
+footer i{color:var(--ink);font-style:normal}
+#msg{margin-left:auto}
+.bad{background:var(--rubric);color:#fff;padding:2px 8px;border-radius:3px}
+</style>
+<header><b>Approve new films</b><span id="coll"></span>
+  <span class="n"><i id="i">0</i> / <span id="tot">0</span> &nbsp; kept <i id="k">0</i> &nbsp; dropped <i id="d">0</i></span></header>
+<div id="bar"><div id="fill"></div></div>
+<main>
+  <div id="shot"></div>
+  <div id="side">
+    <h1 id="title">…</h1>
+    <div class="meta" id="meta"></div>
+    <div class="why" id="why"></div>
+    <div class="btns">
+      <button id="keep">Keep</button>
+      <button id="drop" class="no">Drop</button>
+      <button id="open">Watch &nearr;</button>
+    </div>
+  </div>
+</main>
+<footer><span><i>K</i> keep</span><span><i>X</i> drop</span><span><i>&larr;</i> back</span>
+  <span><i>O</i> watch on YouTube</span><span id="msg">decisions save as you go</span></footer>
+<script>
+let Q=[],at=0,busy=false,kept=0,dropped=0;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('/data').then(r=>r.json()).then(d=>{Q=d.items;$('#tot').textContent=Q.length;
+  $('#coll').textContent=d.label||'';show();});
+function show(){
+  if(at>=Q.length){ $('#shot').innerHTML='';
+    $('#side').innerHTML='<h1>Done</h1><p>'+kept+' kept, '+dropped+
+      ' dropped. Close this window; dropped films are removed and the page rebuilt.</p>'; return; }
+  const v=Q[at];
+  $('#title').textContent=v.name;
+  $('#i').textContent=at; $('#fill').style.width=(at/Q.length*100)+'%';
+  $('#shot').innerHTML = v.img? `<img src="/img/${encodeURIComponent(v.img)}" alt="">` : '';
+  $('#meta').textContent=[v.year||'undated', v.dur, v.chan].filter(Boolean).join('  ·  ');
+  $('#why').innerHTML = v.why? `<b>found by</b> ${esc(v.why)}` : '';
+}
+function decide(keep){
+  if(busy||at>=Q.length) return; busy=true;
+  fetch('/set',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({slug:Q[at].slug,keep:keep})})
+    .then(r=>{if(!r.ok)throw 0;return r.json();})
+    .then(()=>{ if(keep){kept++;$('#k').textContent=kept;} else {dropped++;$('#d').textContent=dropped;}
+      $('#msg').textContent='saved'; at++; busy=false; show(); })
+    .catch(()=>{busy=false;$('#msg').innerHTML='<span class="bad">NOT SAVED</span>';});
+}
+$('#keep').onclick=()=>decide(true);
+$('#drop').onclick=()=>decide(false);
+$('#open').onclick=()=>{ if(Q[at]) window.open(Q[at].url,'_blank'); };
+document.addEventListener('keydown',e=>{
+  const k=e.key.toLowerCase();
+  if(k==='k'){e.preventDefault();decide(true);}
+  else if(k==='x'){e.preventDefault();decide(false);}
+  else if(k==='o'){e.preventDefault(); if(Q[at]) window.open(Q[at].url,'_blank');}
+  else if(e.key==='ArrowLeft'){e.preventDefault(); if(at>0){at--;show();}}
+});
+</script>"""
+
+
+def cmd_approve(a):
+    """Walk the films added by a discovery pass and keep or drop each one.
+
+    Discovery can propose; it cannot judge. Anything found by searching gets
+    looked at once by a person before it stays, and a drop here removes the
+    film from the archive rather than hiding it.
+    """
+    import http.server, json as J, threading, webbrowser, urllib.parse as UP
+    d = load()
+    coll = a.collection
+    todo = [f for f in d['films']
+            if (not coll or coll in (f.get('collections') or []))
+            and not f.get('approved')]
+    if a.limit:
+        todo = todo[:a.limit]
+    if not todo:
+        print('nothing waiting for approval'); return 0
+    items = [{'slug': f['slug'], 'name': f.get('name') or f.get('title'),
+              'img': f.get('thumb') or '', 'chan': f.get('chan') or '',
+              'year': f.get('year') or '',
+              'dur': (f'{f["dur"]//60}:{f["dur"]%60:02d}' if f.get('dur') else ''),
+              'url': (f['sources'][0].get('url') if f.get('sources') else ''),
+              # the search that turned it up, so a reviewer can see why it
+              # was proposed rather than only what it is
+              'why': f.get('found_by') or ', '.join(f.get('collections') or [])}
+             for f in todo]
+    dropped = {'n': 0}
+
+    class H(http.server.BaseHTTPRequestHandler):
+        def log_message(self, *a): pass
+
+        def _send(self, code, body, ctype='text/html; charset=utf-8'):
+            b = body.encode() if isinstance(body, str) else body
+            self.send_response(code); self.send_header('Content-Type', ctype)
+            self.send_header('Content-Length', str(len(b)))
+            self.end_headers(); self.wfile.write(b)
+
+        def do_GET(self):
+            if self.path == '/':
+                self._send(200, APPROVE_HTML)
+            elif self.path == '/data':
+                self._send(200, J.dumps({'items': items, 'label': coll or 'all'}),
+                           'application/json')
+            elif self.path.startswith('/img/'):
+                rel = UP.unquote(self.path[5:])
+                fp = os.path.join(ROOT, rel)
+                if os.path.isfile(fp) and os.path.abspath(fp).startswith(ROOT):
+                    with open(fp, 'rb') as fh:
+                        self._send(200, fh.read(), 'image/jpeg')
+                else:
+                    self._send(404, 'no')
+            else:
+                self._send(404, 'no')
+
+        def do_POST(self):
+            n = int(self.headers.get('Content-Length', 0))
+            msg = J.loads(self.rfile.read(n) or b'{}')
+            cur = load()
+            hit = next((f for f in cur['films'] if f['slug'] == msg.get('slug')), None)
+            if not hit:
+                self._send(404, 'no'); return
+            if msg.get('keep'):
+                hit['approved'] = True
+            else:
+                # Removing is the one irreversible thing this tool does, so it
+                # checks its own arithmetic: exactly one film should go.
+                before = len(cur['films'])
+                cur['films'] = [f for f in cur['films'] if f['slug'] != msg['slug']]
+                gone = before - len(cur['films'])
+                if gone != 1:
+                    warn(f'refusing to drop {msg["slug"]}: would remove {gone} films')
+                    self._send(409, J.dumps({'error': f'{gone} films matched'}),
+                               'application/json')
+                    return
+                dropped['n'] += 1
+            save(cur)
+            self._send(200, '{"ok":1}', 'application/json')
+
+    srv = http.server.HTTPServer(('127.0.0.1', a.port), H)
+    url = f'http://127.0.0.1:{a.port}/'
+    print(f'{len(items)} film(s) to approve -> {url}')
+    print('K keep · X drop · O watch · ctrl-c when done')
+    threading.Timer(0.4, lambda: webbrowser.open(url)).start()
+    try:
+        srv.serve_forever()
+    except KeyboardInterrupt:
+        cur = load()
+        kept = sum(1 for f in cur['films'] if f.get('approved'))
+        print(f'\n{kept} approved, {dropped["n"]} dropped. Run ./build.')
+    return 0
+
+
 def cmd_rm(a):
     d = load()
     before = len(d['films'])
@@ -1439,6 +1624,9 @@ def main():
     s.add_argument('--at', type=float, help='seconds into the video (needs yt-dlp + ffmpeg)')
     s.add_argument('--reset', action='store_true', help='re-fetch the default thumbnail')
     s.set_defaults(fn=cmd_thumb)
+    s = sub.add_parser('approve', help='keep or drop the films a search proposed')
+    s.add_argument('--collection'); s.add_argument('--limit', type=int)
+    s.add_argument('--port', type=int, default=8915); s.set_defaults(fn=cmd_approve)
     s = sub.add_parser('rm'); s.add_argument('ref'); s.set_defaults(fn=cmd_rm)
     s = sub.add_parser('set'); s.add_argument('ref'); s.add_argument('--year', type=int)
     s.add_argument('--name'); s.add_argument('--add-collection'); s.set_defaults(fn=cmd_set)
