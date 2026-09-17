@@ -168,85 +168,65 @@ a.xl:hover{border-bottom-color:var(--rubric)}
 
 #sheetview{max-width:1280px;margin:0 auto;padding:22px 24px 40px}
 
-/* The front door. The films are the landing, by choice — but a visitor who
-   arrives at a wall of 936 thumbnails starting in 1922 has no idea what they
-   have found. This says what it is in one line and hands them four ways in. */
-#hero{padding:2px 0 16px;border-bottom:1px solid var(--rule);margin-bottom:4px}
-#hero .hlede{font-size:20px;line-height:1.35;max-width:82ch;margin:0}
-#hero .hlede em{font-style:italic;color:var(--rubric)}
-#hero .hsub{margin:7px 0 0;font-family:var(--mono);font-size:10.5px;
+/* Where to start — the ways in, and the ten chosen films. This lived on the
+   landing for a while and pushed the films down; the films are the landing,
+   so it belongs on the About page where somebody has asked what this is. */
+.startcard .slede{font-size:19px;line-height:1.4;margin:0 0 4px}
+.startcard .slede em{font-style:italic;color:var(--rubric)}
+.startcard .ssub{margin:8px 0 22px;font-family:var(--mono);font-size:10.5px;
   letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
-/* the films are the landing by choice, so the way in must not push them off
-   the screen: capped width keeps these four small enough to sit above them */
-#hero .hstart{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
-  margin-top:12px;max-width:880px}
-#hero .hstart a{display:block;text-decoration:none;color:inherit}
-#hero .hstart .hf{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;
-  background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;
-  transition:border-color .16s,transform .16s}
-#hero .hstart .hf img{width:100%;height:100%;object-fit:cover;display:block;
-  filter:saturate(.72) contrast(1.03);transition:filter .16s,transform .3s}
-#hero .hstart a:hover .hf{border-color:var(--brass);transform:translateY(-2px)}
-#hero .hstart a:hover .hf img{filter:saturate(1);transform:scale(1.035)}
-#hero .hstart .hk{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--rubric);padding:6px 1px 1px}
-#hero .hstart .ht{display:block;font-size:13px;line-height:1.28}
+.startcard h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--rubric);font-weight:500;
+  margin:0 0 4px;padding-top:6px}
+.startcard .snote{font-size:13.5px;color:var(--ink-3);margin:0 0 14px}
 
-/* Ten films, chosen. An archive with no opinion about its own contents is a
-   card catalogue; this is the shelf. One row that scrolls, so having a view
-   costs height once rather than per film. */
-#picks{padding:18px 0 4px;border-bottom:1px solid var(--rule)}
-#picks .ph{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
-#picks .ph b{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--rubric);font-weight:500}
-#picks .ph span{font-size:13.5px;color:var(--ink-3)}
-#picks .shelf{display:grid;grid-auto-flow:column;grid-auto-columns:230px;gap:16px;
-  overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px;
-  scrollbar-width:thin}
-#picks .shelf::-webkit-scrollbar{height:7px}
-#picks .shelf::-webkit-scrollbar-thumb{background:var(--rule);border-radius:4px}
-#picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
-#picks .pf{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;
+.startgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:0 0 26px}
+.startgrid a{display:block;text-decoration:none;color:inherit}
+.startgrid .hf{display:block;position:relative;aspect-ratio:16/9;overflow:hidden;
   background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;
   transition:border-color .16s,transform .16s}
-#picks .pf img{width:100%;height:100%;object-fit:cover;display:block;
+.startgrid .hf img{width:100%;height:100%;object-fit:cover;display:block;
   filter:saturate(.72) contrast(1.03);transition:filter .16s,transform .3s}
-#picks a:hover .pf{border-color:var(--brass);transform:translateY(-2px)}
-#picks a:hover .pf img{filter:saturate(1);transform:scale(1.035)}
-#picks .pd{position:absolute;right:0;bottom:0;font-family:var(--mono);font-size:9px;
+.startgrid a:hover .hf{border-color:var(--brass);transform:translateY(-2px)}
+.startgrid a:hover .hf img{filter:saturate(1);transform:scale(1.035)}
+.startgrid .hk{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--rubric);padding:7px 1px 1px}
+.startgrid .ht{display:block;font-size:13.5px;line-height:1.3}
+.startgrid a:hover .ht{color:var(--rubric)}
+
+/* one row that scrolls, so having a view costs height once, not per film */
+/* sized so the next film always peeks past the edge — three fitted the card
+   exactly, which left nothing to say the row scrolls */
+.shelf{display:grid;grid-auto-flow:column;grid-auto-columns:196px;gap:14px;
+  overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:12px;
+  scrollbar-width:thin;margin:0 0 6px}
+.shelf::-webkit-scrollbar{height:7px}
+.shelf::-webkit-scrollbar-thumb{background:var(--rule);border-radius:4px}
+.shelf a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+.shelf .pf{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;
+  transition:border-color .16s,transform .16s}
+.shelf .pf img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.72) contrast(1.03);transition:filter .16s,transform .3s}
+.shelf a:hover .pf{border-color:var(--brass);transform:translateY(-2px)}
+.shelf a:hover .pf img{filter:saturate(1);transform:scale(1.035)}
+.shelf .pd{position:absolute;right:0;bottom:0;font-family:var(--mono);font-size:9px;
   letter-spacing:.06em;background:rgba(20,16,10,.74);color:#fff;padding:2px 5px}
-#picks .pn{display:block;font-size:13.5px;line-height:1.3;padding:8px 1px 3px}
-#picks a:hover .pn{color:var(--rubric)}
-#picks .pw{display:block;font-size:12.5px;line-height:1.45;color:var(--ink-2)}
-#picks .py{font-family:var(--mono);font-size:10px;color:var(--brass);
+.shelf .pn{display:block;font-size:13px;line-height:1.3;padding:8px 1px 3px}
+.shelf a:hover .pn{color:var(--rubric)}
+.shelf .pw{display:block;font-size:12.5px;line-height:1.45;color:var(--ink-2)}
+.shelf .py{font-family:var(--mono);font-size:10px;color:var(--brass);
   letter-spacing:.06em;margin-right:5px}
-.allfilms{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--ink-3);padding:16px 0 0}
-@media(max-width:700px){
-  #picks .shelf{grid-auto-columns:75vw;gap:12px}
-  #picks{padding-top:12px}
-}
-#hero .hstart a:hover .ht{color:var(--rubric)}
-@media(max-width:860px){
-  /* two across, and only two: four in two rows was taller than the phone
-     layout it was meant to improve on */
-  /* cap them: two columns of a 860px page made each tile taller than four
-     columns of a 1280px one */
-  #hero .hstart{grid-template-columns:repeat(2,1fr);max-width:480px}
-  #hero .hstart a:nth-child(n+3){display:none}
-  #hero .hlede{font-size:18px}
+@media(max-width:620px){
+  .startgrid{grid-template-columns:1fr;gap:12px}
+  .shelf{grid-auto-columns:74vw;gap:12px}
 }
 @media(max-width:700px){
   /* forty unlabelled ticks and a button is not a timeline; it is 60px of a
      phone screen spent saying nothing */
   #scalebar{display:none}
-  #hero{padding:0 0 12px}
-  #hero .hlede{font-size:16.5px;line-height:1.32}
-  #hero .hsub{font-size:9.5px;margin-top:5px}
-  /* two ways in is enough on a phone; four fills the whole first screen */
-  #hero .hstart{grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
-  #hero .hstart .ht{font-size:12px}
 }
+
 .sheetbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:6px 0 18px;
   border-bottom:1px solid var(--rule)}
 .sfind{position:relative;flex:1 1 240px;min-width:200px}
@@ -499,18 +479,6 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
 </div>
 
 <section id="sheetview" hidden>
-  <div id="hero">
-    <p class="hlede">The history of computation as <em>one timeline</em> —
-      from a notched bone to the machines we now call AI.</p>
-    <p class="hsub" id="hsub"></p>
-    <div class="hstart" id="hstart"></div>
-  </div>
-  <div id="picks" hidden>
-    <div class="ph"><b>Ten films to start with</b>
-      <span>short, and not where a history of computing usually begins</span></div>
-    <div class="shelf" id="shelf"></div>
-  </div>
-  <p class="allfilms" id="allfilms"></p>
   <div class="sheetbar">
     <div class="sfind">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -959,34 +927,41 @@ function cardByTitle(title){
   }
   return null;
 }
-function renderPicks(){
-  const P = (DATA.picks||[]);
-  if(!P.length) return;
-  $("#picks").hidden = false;
-  $("#shelf").innerHTML = P.map(p=>`
-    <a href="#${p.to}"><span class="pf">${p.dur?`<span class="pd">${fmtDur(p.dur)}</span>`:""}
-      <img src="${esc(p.img||"")}" alt="" loading="lazy" decoding="async"></span>
-      <span class="pn">${p.d?`<span class="py">${esc(p.d)}</span>`:""}${esc(p.t)}</span>
-      <span class="pw">${esc(p.why||"")}</span></a>`).join("");
-  $("#allfilms").textContent = `All ${FILMS.length.toLocaleString()} films`;
-}
-
-function renderHero(){
+function renderStart(){
   const nf = FILMS.length;
   const nc = STACKS.reduce((a,s)=>a + s.cards.filter(c=>c.kindc!=="film").length, 0);
-  $("#hsub").textContent =
-    `${nf.toLocaleString()} archival films · ${nc.toLocaleString()} cards · 45,000 years`;
-  $("#hstart").innerHTML = START.map(x=>{
+  let h = `<div class="startcard">
+    <p class="slede">The history of computation as <em>one timeline</em> —
+      from a notched bone to the machines we now call AI.</p>
+    <p class="ssub">${nf.toLocaleString()} archival films · ${nc.toLocaleString()} cards · 45,000 years</p>`;
+
+  const ways = START.map(x=>{
     const got = cardByTitle(x.t);
     if(!got) return "";
-    // About's opening card carries plates rather than a single picture
+    // the opening About card carries plates rather than a single picture
     const img = got.cd.img || (got.cd.plates && got.cd.plates[0] && got.cd.plates[0].src) || "";
-    const href = `#${STACKS[got.si].id}/${got.ci}`;
-    return `<a href="${href}"><span class="hf"><img src="${esc(img)}" alt="" loading="lazy"
-      decoding="async"></span><span class="hk">${esc(x.k)}</span>
+    return `<a href="#${STACKS[got.si].id}/${got.ci}"><span class="hf"><img src="${esc(img)}"
+      alt="" loading="lazy" decoding="async"></span><span class="hk">${esc(x.k)}</span>
       <span class="ht">${esc(got.cd.t||"")}</span></a>`;
   }).join("");
+  if(ways) h += `<h3>Four ways in</h3>
+    <p class="snote">the machine this is named for, and three of the best things here</p>
+    <div class="startgrid">${ways}</div>`;
+
+  const P = (DATA.picks||[]);
+  if(P.length) h += `<h3>Ten films to start with</h3>
+    <p class="snote">short, and not where a history of computing usually begins</p>
+    <div class="shelf">${P.map(p=>`
+      <a href="#${p.to}"><span class="pf">${p.dur?`<span class="pd">${fmtDur(p.dur)}</span>`:""}
+        <img src="${esc(p.img||"")}" alt="" loading="lazy" decoding="async"></span>
+        <span class="pn">${p.d?`<span class="py">${esc(p.d)}</span>`:""}${esc(p.t)}</span>
+        <span class="pw">${esc(p.why||"")}</span></a>`).join("")}</div>
+    <p class="snote"><a class="x" href="#films">All ${nf.toLocaleString()} films &rarr;</a></p>`;
+
+  return h + `</div>`;
 }
+
+
 
 function paintSheet(append){
   const from = append ? $("#sheet").children.length : 0;
@@ -1020,8 +995,6 @@ function initSheet(){
       Object.keys(used).sort((a,b)=>used[b]-used[a]).map(c=>
         `<option value="coll:${esc(c)}">${esc(colls[c]||c)} (${used[c]})</option>`).join("") +
       `</optgroup>` : "");
-  renderHero();
-  renderPicks();
   $("#sq").addEventListener("input", sheetFilter);
   $("#sera").addEventListener("change", sheetFilter);
   $("#sheet").addEventListener("click", e=>{
@@ -1139,6 +1112,7 @@ function render(push=true){
   else if(cd.special==="index"){ h += renderIndex(); setTimeout(wireIndex,0); }
   else if(cd.special==="glossary"){ h += renderGlossary(); setTimeout(wireGlossary,0); }
   else if(cd.special==="map") h += renderMap();
+  else if(cd.special==="start") h += renderStart();
   else if(cd.kindc==="film") h += renderFilm(cd);
   else {
     if(cd.plates) h += renderPlates(cd);

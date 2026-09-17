@@ -356,6 +356,8 @@ ABOUT = [
        'misdirection — away from the tools, away from who had them, and away from what '
        'having them was worth.<br><br>'
        'That is what this archive is for.'},
+
+ {'t': 'Where to start', 'd': '', 'special': 'start', 'b': ''},
 ]
 
 def short_name(stack):

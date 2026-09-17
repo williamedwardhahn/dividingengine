@@ -464,12 +464,28 @@ def test_browser():
                       f'scrollWidth {sw} vs {cw}; {wide}')
                 p3.close()
 
+            # The landing is the films and nothing else, as it was built to be.
             p4 = br.new_page(viewport={'width': 1280, 'height': 900})
             p4.goto('http://127.0.0.1:8911/', wait_until='load'); p4.wait_for_timeout(1200)
-            tiles = p4.locator('#hstart a').count()
-            check('the front door offers a way in', tiles >= 3, f'{tiles} entry points')
-            broken_img = p4.evaluate(
-                "()=>[...document.querySelectorAll('#hstart img')]"
+            check('the landing is the films',
+                  p4.locator('.startgrid a').count() == 0
+                  and p4.locator('.shelf a').count() == 0,
+                  'curation should live on About, not the landing')
+            first = p4.evaluate(
+                "()=>{const e=document.querySelector('#sheet li');"
+                "return e?Math.round(e.getBoundingClientRect().top+scrollY):9999}")
+            check('films start near the top', first < 520, f'first film at y={first}')
+            p4.close()
+
+            # ...and the ways in live on the About page, where somebody has
+            # asked what this is.
+            p5 = br.new_page(viewport={'width': 1280, 'height': 900})
+            p5.goto('http://127.0.0.1:8911/#about/5', wait_until='load')
+            p5.wait_for_timeout(1400)
+            tiles = p5.locator('.startgrid a').count()
+            check('Where to start offers a way in', tiles >= 3, f'{tiles} entry points')
+            broken_img = p5.evaluate(
+                "()=>[...document.querySelectorAll('.startgrid img,.shelf img')]"
                 ".filter(i=>!i.getAttribute('src')).length")
             check('every entry point has a picture', broken_img == 0,
                   f'{broken_img} without')
@@ -477,11 +493,17 @@ def test_browser():
             # 'a neural net you can see' at a 1992 film about a lottery.
             want = {'The machine itself', 'Charles Babbage: Difference Engine',
                     'Colossus (Bletchley Park)', 'WISARD'}
-            got = set(p4.evaluate(
-                "()=>[...document.querySelectorAll('#hstart .ht')].map(e=>e.textContent)"))
+            got = set(p5.evaluate(
+                "()=>[...document.querySelectorAll('.startgrid .ht')].map(e=>e.textContent)"))
             check('entry points point at the cards they name', want == got,
                   f'missing {sorted(want - got)}, unexpected {sorted(got - want)}')
-            p4.close()
+            check('the ten films are on the About page',
+                  p5.locator('.shelf a').count() == 10,
+                  f'{p5.locator(".shelf a").count()} on the shelf')
+            check('the shelf can be scrolled to the rest', p5.evaluate(
+                "()=>{const s=document.querySelector('.shelf');"
+                "return s.scrollWidth > s.clientWidth + 4}"))
+            p5.close()
             # the Go panel is anchored to a narrow button; it once opened 494px
             # off the left edge of the window, working but invisible
             for _w in (1250, 700, 420):
