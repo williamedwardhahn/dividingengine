@@ -189,6 +189,17 @@ def test_build():
     r = subprocess.run([sys.executable, 'build-site.py'], capture_output=True, text=True)
     check('build-site.py runs clean', r.returncode == 0, r.stderr[-300:])
     out = ROOT / 'index.html'
+    # Two builds of identical sources must produce identical bytes. They did
+    # not: the cross-link list was assembled by iterating a set, and Python
+    # randomises string hashing per process, so every build churned the file.
+    import hashlib
+    first = hashlib.sha1((ROOT / 'index.html').read_bytes()).hexdigest()
+    subprocess.run([sys.executable, 'build-site.py'], cwd=ROOT,
+                   capture_output=True, text=True)
+    second = hashlib.sha1((ROOT / 'index.html').read_bytes()).hexdigest()
+    check('the build is reproducible', first == second,
+          f'{first[:12]} then {second[:12]}')
+
     check('index.html written', out.exists())
     h = out.read_text(encoding='utf-8')
 

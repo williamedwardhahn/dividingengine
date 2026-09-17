@@ -172,7 +172,11 @@ def link_terms(card):
     # a lone distinctive noun title: 'Quipus', 'Pascaline', 'Nomograms'
     if len(base.split()) == 1 and len(base) >= 7 and base.lower() not in COMMON:
         out.add(base)
-    return [x for x in out if len(x) >= 6]
+    # sorted, not set order: Python randomises string hashing per process, so
+    # returning the set directly made the term list — and therefore which
+    # cross-link won a tie — different on every build. Two builds of identical
+    # sources produced different bytes.
+    return sorted(x for x in out if len(x) >= 6)
 
 def link_label(stack, card):
     t = (card.get('t') or '').strip()
@@ -223,7 +227,10 @@ def crosslink(stacks, cap=6):
                 continue
             # only rewrite text outside existing tags and anchors
             parts = re.split(r'(<a\\b[^>]*>.*?</a>|<[^>]+>)', body, flags=re.S)
-            hits, seen = 0, set()
+            # `seen` dedupes; `order` remembers the sequence the links appear
+            # in, which is both what a reader expects and what makes the build
+            # reproducible — iterating the set gave a different order per run.
+            hits, seen, order = 0, set(), []
             for i, seg in enumerate(parts):
                 if not seg or seg.startswith('<'):
                     continue
@@ -251,7 +258,9 @@ def crosslink(stacks, cap=6):
                     out.append(seg[last:m.start()])
                     out.append(f'<a class="xl" href="#{sid}/{tn}">{m.group(0)}</a>')
                     last = m.end()
-                    used.add((sid, tn)); seen.add((sid, tn)); hits += 1; made += 1
+                    used.add((sid, tn)); hits += 1; made += 1
+                    if (sid, tn) not in seen:
+                        seen.add((sid, tn)); order.append((sid, tn))
                     back.setdefault(f'{sid}/{tn}', []).append(
                         {'to': f"{s['id']}/{n}", 't': link_label(s, c)})
                 if out:
@@ -259,7 +268,7 @@ def crosslink(stacks, cap=6):
                     parts[i] = ''.join(out)
             if hits:
                 c['b'] = ''.join(parts)
-                c['out'] = [{'to': f'{sid}/{tn}', 't': ti} for (sid, tn) in seen
+                c['out'] = [{'to': f'{sid}/{tn}', 't': ti} for (sid, tn) in order
                             for ti in [next((x[3] for x in index
                                              if x[1] == sid and x[2] == tn), '')]]
     for s in stacks:
