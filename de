@@ -94,9 +94,27 @@ NOISE = re.compile(
     r'remastered|restored|colou?ri[sz]ed|reupload|part\s*\d+|pt\.?\s*\d+)\s*[\])]',
     re.I)
 
+# An uploader's shelf label is not part of the film's name. 140 titles began
+# 'AT&T Archives: ', which is the channel — already shown beside the film and
+# already a collection you can filter by — repeated in every headline.
+CHANNEL_PREFIX = re.compile(
+    r'^\s*(?:AT&T\s*(?:Archives|Tech\s*Channel)|Periscope\s*Film)\s*[:\-\u2013]\s*',
+    re.I)
+# and 43 more wore it as a tail: 'Programming Computer Animation in 1964 - AT&T
+# Archives'. Same label, same redundancy, other end of the line.
+CHANNEL_SUFFIX = re.compile(
+    r'\s*[\-\u2013:,]\s*(?:AT&T\s*(?:Archives|Tech\s*Channel)|Periscope\s*Film)\s*$',
+    re.I)
+
 def clean_title(t):
     t = html.unescape(t or '').strip()
     t = NOISE.sub('', t)
+    stripped = CHANNEL_SUFFIX.sub('', CHANNEL_PREFIX.sub('', t))
+    # only if something survives: a film actually called 'AT&T Archives' would
+    # otherwise be left with nothing. Four characters is enough — one of these
+    # films is called 'Laser'.
+    if len(stripped) >= 4:
+        t = stripped
     t = re.sub(r'\s*\|\s*[^|]{0,40}$', '', t) if t.count('|') == 1 and len(t) > 46 else t
     return re.sub(r'\s{2,}', ' ', t).strip(' -–—|·')
 
@@ -787,7 +805,7 @@ def cmd_check(a):
     print('entries:', dict(C.Counter(f['status'] for f in d['films'])))
     return 0
 
-DATE_REVIEW_HTML = """<!doctype html><meta charset="utf-8"><title>Date the films</title>
+DATE_REVIEW_HTML = r"""<!doctype html><meta charset="utf-8"><title>Date the films</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Spectral:wght@400;500&display=swap">
 <style>
 :root{--paper:#f2eee4;--card:#fbf9f4;--ink:#231e15;--ink3:#8b8377;--rule:#cdc4b0;

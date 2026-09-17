@@ -70,6 +70,20 @@ def test_archive():
     badid = [v for v in vids if not re.fullmatch(r'[\w-]{11}', v)]
     check('youtube ids are well formed', not badid, f'bad: {badid[:3]}')
     dupv = [v for v, n in collections.Counter(vids).items() if n > 1]
+    # The channel is shown beside every film and is a collection you can filter
+    # by; repeating it at the front of 140 headlines was just noise.
+    chan_label = re.compile(
+        r'^\s*(AT&T\s*(Archives|Tech)|PeriscopeFilm)\s*[:\-\u2013]'
+        r'|[\-\u2013:,]\s*(AT&T\s*(Archives|Tech\s*Channel)|PeriscopeFilm)\s*$', re.I)
+    prefixed = [f['name'] for f in films if chan_label.search(f.get('name') or '')]
+    check('no title repeats its channel', not prefixed,
+          f'{len(prefixed)}: {prefixed[:2]}')
+    # the source title is the record; only the display name is tidied
+    kept = sum(1 for f in films
+               if re.search(r'AT&T', f.get('title') or '', re.I))
+    check('the original titles are still recorded', kept > 100,
+          f'{kept} films keep their source title')
+
     check('no video appears in two films', not dupv, f'duplicated: {dupv[:3]}')
     return films
 
