@@ -471,10 +471,89 @@ def write_sitemap():
         '</urlset>\n', encoding='utf-8')
 
 
+
+# ── ten films to start with ───────────────────────────────────────────────
+# An archive of 865 films with no opinion about any of them is a card
+# catalogue. These ten are an opinion: short where possible, weighted toward
+# the machines the About page says nobody was taught, and ordered so that the
+# first thing a visitor meets is 2,000 years old and the last went to the Moon.
+PICKS = [
+ ('antikythera-mechanism-the-ancient-computer-that',
+  'The Antikythera Mechanism',
+  'Geared bronze from a Greek shipwreck that predicted eclipses. '
+  'The first computer is about two thousand years older than you were told.'),
+ ('jaquet-droz-the-writer-automaton-from-1774-in-ac',
+  'The Writer, an automaton of 1774',
+  'A clockwork boy from 1774 dips his pen and writes any sentence you set '
+  'on his cam stack. A program, and its storage, in brass.'),
+ ('mk-57-gun-director',
+  'Mk 57 Gun Director',
+  'How a warship hit a moving target from a moving platform in a moving sea: '
+  'a mechanical computer solving the problem continuously, while under fire.'),
+ ('the-torpedo-data-computer-tdc',
+  'The Torpedo Data Computer',
+  'The firing triangle, solved without pause inside a submarine hull. '
+  'Analogue computing with lives on both ends of the answer.'),
+ ('navy-fire-control-computers',
+  'Navy Fire Control Computers',
+  'Differential equations, integrated by gears and cams, in a steel box. '
+  'This is the computing that mattered most and was taught least.'),
+ ('see-it-now-jay-w-forrester-and-the-whirlwind-com',
+  'Murrow meets Whirlwind',
+  'Edward R. Murrow visits Whirlwind in 1951 and asks what it is for. '
+  'Core memory, real-time control, and live network television.'),
+ ('perceptron',
+  'Perceptron',
+  'One minute of 1957 film showing the first neural network learning. '
+  'Everything now called AI starts in this room.'),
+ ('the-thinking-machine',
+  'The Thinking Machine',
+  'MIT, 1961, asking on camera whether a machine can think \u2014 '
+  'sixty years before the question became a product category.'),
+ ('impulse-propagtion-in-a',
+  'Impulse Propagation in a Nerve Fiber',
+  'A nerve impulse, filmed and explained as a signal problem. '
+  'The neuron modelled as a circuit, which is how the metaphor began.'),
+ ('computer-for-apollo',
+  'Computer for Apollo',
+  'The guidance computer that flew to the Moon, explained by the people who '
+  'built it. Less memory than this page, and it did not fail.'),
+]
+
+
+def resolve_picks(stacks):
+    """Locate each chosen film and hand the page its address and its reason."""
+    where = {}
+    for s in stacks:
+        for n, c in enumerate(s['cards']):
+            if c.get('kindc') == 'film' and c.get('slug'):
+                where.setdefault(c['slug'], (s['id'], n, c))
+    out, missing = [], []
+    for slug, short, why in PICKS:
+        hit = where.get(slug)
+        if not hit:
+            missing.append(slug); continue
+        sid, n, c = hit
+        if c.get('status') != 'live':
+            missing.append(slug + ' (not playable)'); continue
+        out.append({'to': f'{sid}/{n}', 't': short or c.get('t', ''), 'why': why,
+                    'img': c.get('img', ''), 'dur': c.get('dur'), 'd': c.get('d', '')})
+    if missing:
+        print('  ! picks not placed: ' + ', '.join(missing))
+    return out
+
+
 def main():
     stacks = rb.parse((RECK / 'history-of-computation-master-list.md').read_text(encoding='utf-8'))
     films  = json.loads(ARCHIVE.read_text(encoding='utf-8'))['films']
     by_id  = {s['id']: s for s in stacks}
+
+    # A film whose source is gone is still a record worth keeping — it stays in
+    # archive.json so ./de can re-check it and so we know what was lost — but it
+    # is not worth a reader's click. Blocked films are a different case: they
+    # play perfectly well, just on YouTube's page rather than ours.
+    lost = [f for f in films if f.get('status') == 'dead']
+    films = [f for f in films if f.get('status') != 'dead']
 
     placed, undated = 0, []
     for f in films:
@@ -495,15 +574,15 @@ def main():
         st['cards'].insert(pos, card)
         placed += 1
 
+    undated_stack = None
     if undated:
         undated.sort(key=lambda c: (c['t'] or '').lower())
-        i = max((n for n, s in enumerate(stacks) if s.get('kind') == 'era'), default=len(stacks)-1)
-        stacks.insert(i + 1, {
-            'id': 'undated', 'kind': 'era',
+        undated_stack = {
+            'id': 'undated', 'kind': 'undated',
             'title': 'Undated Film',
             'sub': f'{len(undated)} films whose year is not yet known',
             'cards': undated,
-        })
+        }
 
     n_dp = dphys_cards(stacks)
     # before crosslink: the About cards name real machines and should link to them
@@ -513,8 +592,6 @@ def main():
     n_link = crosslink(stacks)
     n_pic = attach_pictures(stacks)
     n_mus = attach_museum(stacks)
-    n_cards = sum(len(s['cards']) for s in stacks)
-    n_film  = sum(1 for s in stacks for c in s['cards'] if c.get('kindc') == 'film')
     # Contents, Index and Glossary are stacks like any other — reachable from Go,
     # addressable, in the Back chain. They were bolted on beside the card system;
     # a book's apparatus belongs inside the book.
@@ -524,11 +601,18 @@ def main():
             ('glossary', 'Glossary', 'terms, as the cards define them')):
         stacks.append({'id': sid, 'kind': 'apparatus', 'title': title, 'sub': sub,
                        'cards': [{'t': title, 'b': '', 'special': sid}]})
+    # Last, and deliberately: these films are not on the timeline, and sitting
+    # them between era 10 and the threads implied that they were.
+    if undated_stack:
+        stacks.append(undated_stack)
+    n_cards = sum(len(s['cards']) for s in stacks)
+    n_film  = sum(1 for s in stacks for c in s['cards'] if c.get('kindc') == 'film')
     # Contents, Index, Glossary and the timeline are all pure functions of the
     # cards, so the browser derives them at runtime. Shipping them cost 320 KB
     # and most of the parse time, for nothing the page did not already have.
     colls = json.loads(ARCHIVE.read_text(encoding='utf-8')).get('collections', {})
     data = json.dumps({'stacks': stacks,
+                       'picks': resolve_picks(stacks),
                        'colls': {k: v.get('title', k) for k, v in colls.items()}},
                       ensure_ascii=False).replace('</', '<\\/')
     theme = THEME.read_text(encoding='utf-8')
@@ -541,7 +625,8 @@ def main():
     print(f'{OUT.name}: {len(html)//1024} KB — {n_cards} cards in {len(stacks)} stacks, '
           f'{n_film} with video, {n_pic} with a picture ({n_mus} photographed), {n_dp} from dataphys, '
           f'{n_link} cross-links '
-          f'({placed} dated into eras, {len(undated)} undated)')
+          f'({placed} dated into eras, {len(undated)} undated, '
+          f'{len(lost)} lost films withheld)')
 
 if __name__ == '__main__':
     main()

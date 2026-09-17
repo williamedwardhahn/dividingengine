@@ -220,6 +220,36 @@ def test_build():
         print(f'      ({out_n} cross-links; '
               f'{sum(1 for c in cards if c.get("in"))} cards reached from others)')
 
+        # A film whose source is gone is a record worth keeping and not worth a
+        # reader's click. Blocked films still play, on YouTube's page.
+        shown_dead = [c.get('t') for c in cards if c.get('status') == 'dead']
+        check('no lost film reaches the page', not shown_dead,
+              f'{len(shown_dead)}: {shown_dead[:2]}')
+        arch = json.loads((ROOT / 'archive.json').read_text())['films']
+        n_dead = sum(1 for f in arch if f.get('status') == 'dead')
+        check('lost films are kept in the archive', n_dead > 0,
+              f'{n_dead} held back from the page but not deleted')
+
+        # 415 films whose defining property is being off the timeline had been
+        # sitting inside it, between era 10 and the threads.
+        ids = [st['id'] for st in data['stacks']]
+        if 'undated' in ids:
+            check('undated film comes last', ids[-1] == 'undated',
+                  f'last stack is {ids[-1]}')
+            und = next(st for st in data['stacks'] if st['id'] == 'undated')
+            check('the undated stack is not called a timeline',
+                  und.get('kind') == 'undated', f"kind={und.get('kind')}")
+
+        picks = data.get('picks') or []
+        check('ten films are chosen', len(picks) == 10, f'{len(picks)} picks')
+        check('every pick gives a reason',
+              all((p.get('why') or '').strip() for p in picks))
+        byhash = {f"{st['id']}/{n}": c
+                  for st in data['stacks'] for n, c in enumerate(st['cards'])}
+        badpick = [p['t'] for p in picks
+                   if byhash.get(p['to'], {}).get('status') != 'live']
+        check('every pick actually plays', not badpick, f'{badpick[:2]}')
+
         plates = [pl for c in cards for pl in (c.get('plates') or [])]
         check('museum plates are present', len(plates) >= 3, f'{len(plates)} plates')
         check('every plate has a caption and alt text',

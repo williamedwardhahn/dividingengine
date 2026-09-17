@@ -191,6 +191,41 @@ a.xl:hover{border-bottom-color:var(--rubric)}
 #hero .hstart .hk{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--rubric);padding:6px 1px 1px}
 #hero .hstart .ht{display:block;font-size:13px;line-height:1.28}
+
+/* Ten films, chosen. An archive with no opinion about its own contents is a
+   card catalogue; this is the shelf. One row that scrolls, so having a view
+   costs height once rather than per film. */
+#picks{padding:18px 0 4px;border-bottom:1px solid var(--rule)}
+#picks .ph{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+#picks .ph b{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--rubric);font-weight:500}
+#picks .ph span{font-size:13.5px;color:var(--ink-3)}
+#picks .shelf{display:grid;grid-auto-flow:column;grid-auto-columns:230px;gap:16px;
+  overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:10px;
+  scrollbar-width:thin}
+#picks .shelf::-webkit-scrollbar{height:7px}
+#picks .shelf::-webkit-scrollbar-thumb{background:var(--rule);border-radius:4px}
+#picks a{scroll-snap-align:start;text-decoration:none;color:inherit;display:block}
+#picks .pf{display:block;position:relative;aspect-ratio:16/10;overflow:hidden;
+  background:var(--paper-2);border:1px solid var(--rule);border-radius:2px;
+  transition:border-color .16s,transform .16s}
+#picks .pf img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.72) contrast(1.03);transition:filter .16s,transform .3s}
+#picks a:hover .pf{border-color:var(--brass);transform:translateY(-2px)}
+#picks a:hover .pf img{filter:saturate(1);transform:scale(1.035)}
+#picks .pd{position:absolute;right:0;bottom:0;font-family:var(--mono);font-size:9px;
+  letter-spacing:.06em;background:rgba(20,16,10,.74);color:#fff;padding:2px 5px}
+#picks .pn{display:block;font-size:13.5px;line-height:1.3;padding:8px 1px 3px}
+#picks a:hover .pn{color:var(--rubric)}
+#picks .pw{display:block;font-size:12.5px;line-height:1.45;color:var(--ink-2)}
+#picks .py{font-family:var(--mono);font-size:10px;color:var(--brass);
+  letter-spacing:.06em;margin-right:5px}
+.allfilms{font-family:var(--mono);font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-3);padding:16px 0 0}
+@media(max-width:700px){
+  #picks .shelf{grid-auto-columns:75vw;gap:12px}
+  #picks{padding-top:12px}
+}
 #hero .hstart a:hover .ht{color:var(--rubric)}
 @media(max-width:860px){
   /* two across, and only two: four in two rows was taller than the phone
@@ -470,6 +505,12 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
     <p class="hsub" id="hsub"></p>
     <div class="hstart" id="hstart"></div>
   </div>
+  <div id="picks" hidden>
+    <div class="ph"><b>Ten films to start with</b>
+      <span>short, and not where a history of computing usually begins</span></div>
+    <div class="shelf" id="shelf"></div>
+  </div>
+  <p class="allfilms" id="allfilms"></p>
   <div class="sheetbar">
     <div class="sfind">
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
@@ -682,7 +723,8 @@ function computeLadder(){
 }
 function renderContents(){
   const eras = APP.contents.filter(s=>s.kind==="era");
-  const thr  = APP.contents.filter(s=>s.kind!=="era");
+  const thr  = APP.contents.filter(s=>s.kind!=="era" && s.kind!=="undated");
+  const und  = APP.contents.filter(s=>s.kind==="undated");
   const grp = (s,i)=>`
     <details class="toc"${i<2?" open":""}>
       <summary><span class="tnum">${esc(s.id.replace('-',' '))}</span>
@@ -696,7 +738,8 @@ function renderContents(){
   return `<p class="tocintro">${eras.reduce((a,s)=>a+s.n,0)} cards on the timeline,
     ${thr.reduce((a,s)=>a+s.n,0)} more along the threads.</p>
     <h2 class="toch">The timeline</h2>${eras.map(grp).join("")}
-    <h2 class="toch">The threads</h2>${thr.map((s,i)=>grp(s,9)).join("")}`;
+    <h2 class="toch">The threads</h2>${thr.map((s,i)=>grp(s,9)).join("")}`
+    + (und.length? `<h2 class="toch">Not yet dated</h2>${und.map((s,i)=>grp(s,9)).join("")}`:"");
 }
 function listFilter(id, ph){
   return `<div class="lfind"><input id="${id}" type="search" placeholder="${ph}"
@@ -798,11 +841,14 @@ function wireGlossary(){
 function renderMap(){
   const eras = STACKS.filter(s=>s.kind==="era");
   const thr  = STACKS.filter(s=>s.kind==="thread");
+  const und  = STACKS.filter(s=>s.kind==="undated");
   const li = s=>`<li><a class="x" href="#${s.id}/0">${esc(s.title)}</a><span class="small">${s.cards.length}</span></li>`;
   return `<p><strong>The timeline</strong> \u2014 ${eras.reduce((a,s)=>a+s.cards.length,0)} cards:</p>
     <ul class="map">${eras.map(li).join("")}</ul>
     <p><strong>The threads</strong> \u2014 ${thr.reduce((a,s)=>a+s.cards.length,0)} cards:</p>
-    <ul class="map">${thr.map(li).join("")}</ul>`;
+    <ul class="map">${thr.map(li).join("")}</ul>`
+    + (und.length? `<p><strong>Not yet dated</strong> \u2014 ${und.reduce((a,s)=>a+s.cards.length,0)} films:</p>
+    <ul class="map">${und.map(li).join("")}</ul>`:"");
 }
 
 function renderPlates(cd){
@@ -913,6 +959,18 @@ function cardByTitle(title){
   }
   return null;
 }
+function renderPicks(){
+  const P = (DATA.picks||[]);
+  if(!P.length) return;
+  $("#picks").hidden = false;
+  $("#shelf").innerHTML = P.map(p=>`
+    <a href="#${p.to}"><span class="pf">${p.dur?`<span class="pd">${fmtDur(p.dur)}</span>`:""}
+      <img src="${esc(p.img||"")}" alt="" loading="lazy" decoding="async"></span>
+      <span class="pn">${p.d?`<span class="py">${esc(p.d)}</span>`:""}${esc(p.t)}</span>
+      <span class="pw">${esc(p.why||"")}</span></a>`).join("");
+  $("#allfilms").textContent = `All ${FILMS.length.toLocaleString()} films`;
+}
+
 function renderHero(){
   const nf = FILMS.length;
   const nc = STACKS.reduce((a,s)=>a + s.cards.filter(c=>c.kindc!=="film").length, 0);
@@ -963,6 +1021,7 @@ function initSheet(){
         `<option value="coll:${esc(c)}">${esc(colls[c]||c)} (${used[c]})</option>`).join("") +
       `</optgroup>` : "");
   renderHero();
+  renderPicks();
   $("#sq").addEventListener("input", sheetFilter);
   $("#sera").addEventListener("change", sheetFilter);
   $("#sheet").addEventListener("click", e=>{
@@ -1069,7 +1128,9 @@ function render(push=true){
   else if(location.hash !== want) history.replaceState(null,"",want);
   $("#stacklbl").textContent = st.title + (st.sub? " \u2014 "+st.sub : "");
   let h = `<div class="fade">`;
-  h += `<div class="eyebrow"><span>${st.kind==="era"?"Timeline":"Stack"}</span>` +
+  const kindWord = st.kind==="era" ? "Timeline"
+                 : st.kind==="undated" ? "Not yet dated" : "Stack";
+  h += `<div class="eyebrow"><span>${kindWord}</span>` +
        (cd.ch? `<span class="ch">${esc(cd.ch)}</span>`:"") + `</div>`;
   if(cd.d) h += `<span class="date">${esc(cd.d)}</span><br>`;
   h += `<h1 class="cardtitle">${md(esc(cd.t))}</h1>`;
