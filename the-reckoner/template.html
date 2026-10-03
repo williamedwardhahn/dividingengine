@@ -131,6 +131,7 @@ a.xl:hover{border-bottom-color:var(--rubric)}
   color:var(--ink-3);padding:6px 1px 0;text-transform:uppercase}
 .cardpic figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 .cardpic figcaption a:hover{color:var(--brass)}
+.filmsyn{margin:2px 0 16px}
 
 /* Photographs taken in a museum, shown as plates: the first one large, the
    rest paired beneath it. Each carries its own caption, because a group of
@@ -841,20 +842,37 @@ function renderLinks(cd){
   if(inn.length) h += `<div class="lgrp"><span class="llab">Reached from</span>${inn.map(li).join("")}</div>`;
   return h + '</div>';
 }
+// YouTube films ship only their video id; the two URLs are boilerplate.
+const ytEmbed = v => `https://www.youtube-nocookie.com/embed/${v}?rel=0`;
+const ytWatch = v => `https://www.youtube.com/watch?v=${v}`;
+const filmEmbed = cd => cd.emb || (cd.v ? ytEmbed(cd.v) : "");
+const filmUrl   = cd => cd.url || (cd.v ? ytWatch(cd.v) : "");
+
 function renderFilm(cd){
   const meta = [cd.by, cd.dur? fmtDur(cd.dur) : "", cd.via? "restored copy" : ""]
         .filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join("");
   let h = meta? `<div class="filmmeta">${meta}</div>` : "";
-  if(cd.status==="live" && cd.emb){
-    h += `<div class="film"><iframe src="${esc(cd.emb)}" title="${esc(cd.t)}" loading="lazy"
+  // Most films carry no prose. The ones that do — the BBC archive supplies a
+  // synopsis — were shipping it and never showing it.
+  if(cd.b) h += `<div class="body filmsyn">${linkify(md(cd.b.includes("<")? cd.b : esc(cd.b)))}</div>`;
+  if(cd.status==="live" && filmEmbed(cd)){
+    h += `<div class="film"><iframe src="${esc(filmEmbed(cd))}" title="${esc(cd.t)}" loading="lazy"
           allowfullscreen allow="accelerometer; encrypted-media; picture-in-picture"></iframe></div>`;
-    if(cd.via) h += `<p class="small">Restored copy — <a href="${esc(cd.url)}" target="_blank"
+    if(cd.via) h += `<p class="small">Restored copy — <a href="${esc(filmUrl(cd))}" target="_blank"
           rel="noopener">${esc(cd.via)} on YouTube &nearr;</a></p>`;
+  } else if(cd.status==="offsite"){
+    // Held by someone else's archive. We index it and send you there; we do
+    // not restream their video from this domain.
+    if(cd.img) h += `<figure class="filmshot"><img src="${esc(cd.img)}" alt=""></figure>`;
+    h += `<div class="filmgone"><span class="hd">Held by ${esc(cd.holder||"another archive")}</span>
+          <p>This programme is preserved and streamed by its own archive, which is
+          where it should be watched.</p>
+          <a class="chip" href="${esc(filmUrl(cd))}" target="_blank" rel="noopener">Watch it there &nearr;</a></div>`;
   } else if(cd.status==="blocked"){
     if(cd.img) h += `<figure class="filmshot"><img src="${esc(cd.img)}" alt=""></figure>`;
     h += `<div class="filmgone"><span class="hd">Will not embed</span>
           <p>Still on YouTube, but the rights holder blocks playback elsewhere.</p>
-          <a class="chip" href="${esc(cd.url)}" target="_blank" rel="noopener">Watch there &nearr;</a></div>`;
+          <a class="chip" href="${esc(filmUrl(cd))}" target="_blank" rel="noopener">Watch there &nearr;</a></div>`;
   } else {
     if(cd.img) h += `<figure class="filmshot"><img src="${esc(cd.img)}" alt=""></figure>`;
     const q = encodeURIComponent(cd.t||"");

@@ -44,10 +44,10 @@ def test_archive():
     check('every film has at least one source', all(f.get('sources') for f in films),
           str([f['slug'] for f in films if not f.get('sources')][:3]))
 
-    VALID = {'live', 'dead', 'blocked'}
+    VALID = {'live', 'dead', 'blocked', 'offsite'}
     bad = [f['slug'] for f in films if f.get('status') not in VALID]
     check('film statuses are valid', not bad, f'bad: {bad[:3]}')
-    SVALID = {'live', 'dead', 'embed-blocked'}
+    SVALID = {'live', 'dead', 'embed-blocked', 'offsite'}
     bads = [(f['slug'], s['status']) for f in films for s in f['sources'] if s['status'] not in SVALID]
     check('source statuses are valid', not bads, f'bad: {bads[:3]}')
 
@@ -344,7 +344,9 @@ def test_build():
         check('every reachable film has a frame', not noimg, f'{len(noimg)}: {noimg[:2]}')
         deadnoimg = sum(1 for c in films if not c.get('img'))
         print(f'      ({deadnoimg} lost films have no frame — nothing to fetch)')
-        live_noembed = [c['t'] for c in films if c.get('status') == 'live' and not c.get('emb')]
+        # YouTube films ship only `v`; the page builds the embed from it
+        live_noembed = [c['t'] for c in films
+                        if c.get('status') == 'live' and not (c.get('emb') or c.get('v'))]
         check('every playable film has an embed url', not live_noembed,
               f'{len(live_noembed)}: {live_noembed[:2]}')
         # a film must land in an era whose range contains its year

@@ -89,9 +89,14 @@ def film_card(f):
     src = (f.get('sources') or [{}])[0]
     c = {
         't': f.get('name') or f.get('title'),
-        'b': '',
+        # most films carry no prose; the BBC archive supplies a synopsis and
+        # it is worth showing, and worth cross-linking like any other text
+        'b': f.get('syn') or '',
         'kindc': 'film',
-        'slug': f['slug'],
+        # The slug is the archive's key and the page never reads it — 57 KB of
+        # payload doing nothing. It is kept under an underscore so the build
+        # can still resolve the chosen films, and stripped before serialising.
+        '_slug': f['slug'],
         'status': f.get('status', 'live'),
     }
     if f.get('year'):  c['d'] = str(f['year'])
@@ -99,11 +104,16 @@ def film_card(f):
     if f.get('dur'):   c['dur'] = f['dur']
     if f.get('chan'):  c['by'] = f['chan']
     if src.get('id'):  c['v'] = src['id']
-    if src.get('embed'): c['emb'] = src['embed']
-    if src.get('url'):   c['url'] = src['url']
+    # A YouTube embed and watch URL are both the video id with boilerplate
+    # round it — 131 KB of the payload was that boilerplate, repeated. The page
+    # builds them from `v`. Anything not on YouTube still carries its own URL.
+    if src.get('kind') != 'youtube':
+        if src.get('embed'): c['emb'] = src['embed']
+        if src.get('url'):   c['url'] = src['url']
     if src.get('reason'): c['why'] = src['reason']
     if src.get('via'):    c['via'] = src['via']
     if f.get('collections'): c['coll'] = f['collections']
+    if f.get('holder'):      c['holder'] = f['holder']
     return c
 
 # ── cross-linking: what makes this a web rather than a slideshow ──────────
@@ -537,8 +547,8 @@ def resolve_picks(stacks):
     where = {}
     for s in stacks:
         for n, c in enumerate(s['cards']):
-            if c.get('kindc') == 'film' and c.get('slug'):
-                where.setdefault(c['slug'], (s['id'], n, c))
+            if c.get('kindc') == 'film' and c.get('_slug'):
+                where.setdefault(c['_slug'], (s['id'], n, c))
     out, missing = [], []
     for slug, short, why in PICKS:
         hit = where.get(slug)
@@ -622,8 +632,12 @@ def main():
     # cards, so the browser derives them at runtime. Shipping them cost 320 KB
     # and most of the parse time, for nothing the page did not already have.
     colls = json.loads(ARCHIVE.read_text(encoding='utf-8')).get('collections', {})
+    picks = resolve_picks(stacks)          # needs _slug, so before the strip
+    for st in stacks:
+        for c in st['cards']:
+            c.pop('_slug', None)
     data = json.dumps({'stacks': stacks,
-                       'picks': resolve_picks(stacks),
+                       'picks': picks,
                        'colls': {k: v.get('title', k) for k, v in colls.items()}},
                       ensure_ascii=False).replace('</', '<\\/')
     theme = THEME.read_text(encoding='utf-8')
