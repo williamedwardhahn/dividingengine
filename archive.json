@@ -47,6 +47,11 @@
    "title": "Vintage Cg",
    "playlist": null,
    "added": "2026-10-02"
+  },
+  "computer-chronicles": {
+   "title": "Computer Chronicles",
+   "playlist": null,
+   "added": "2026-10-02"
   }
  },
  "films": [
@@ -13020,6 +13025,156 @@
    "era": "era-9"
   },
   {
+   "slug": "the-computer-chronicles-computer-music",
+   "title": "The Computer Chronicles - Computer Music (1983)",
+   "name": "The Computer Chronicles - Computer Music",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1382,
+   "thumb": "media/yt/1LEn94TF1tg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1LEn94TF1tg",
+     "url": "https://www.youtube.com/watch?v=1LEn94TF1tg",
+     "embed": "https://www.youtube-nocookie.com/embed/1LEn94TF1tg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-in-education",
+   "title": "The Computer Chronicles - Computers in Education (1983)",
+   "name": "The Computer Chronicles - Computers in Education",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1426,
+   "thumb": "media/yt/-UFjGssUvgo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "-UFjGssUvgo",
+     "url": "https://www.youtube.com/watch?v=-UFjGssUvgo",
+     "embed": "https://www.youtube-nocookie.com/embed/-UFjGssUvgo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-mainframes-to-minis-to-m",
+   "title": "The Computer Chronicles - Mainframes to Minis to Micros (1983)",
+   "name": "The Computer Chronicles - Mainframes to Minis to Micros",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1406,
+   "thumb": "media/yt/wpXnqBfgvPM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "wpXnqBfgvPM",
+     "url": "https://www.youtube.com/watch?v=wpXnqBfgvPM",
+     "embed": "https://www.youtube-nocookie.com/embed/wpXnqBfgvPM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-microchip-technology",
+   "title": "The Computer Chronicles - Microchip Technology (1983)",
+   "name": "The Computer Chronicles - Microchip Technology",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1391,
+   "thumb": "media/yt/LYE4g9N4kCs.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "LYE4g9N4kCs",
+     "url": "https://www.youtube.com/watch?v=LYE4g9N4kCs",
+     "embed": "https://www.youtube-nocookie.com/embed/LYE4g9N4kCs?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-printers",
+   "title": "The Computer Chronicles - Printers (1983)",
+   "name": "The Computer Chronicles - Printers",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1390,
+   "thumb": "media/yt/ilo7j24xe5I.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ilo7j24xe5I",
+     "url": "https://www.youtube.com/watch?v=ilo7j24xe5I",
+     "embed": "https://www.youtube-nocookie.com/embed/ilo7j24xe5I?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-robotics",
+   "title": "The Computer Chronicles - Robotics (1983)",
+   "name": "The Computer Chronicles - Robotics",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1695,
+   "thumb": "media/yt/VxQXBebHrc4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "VxQXBebHrc4",
+     "url": "https://www.youtube.com/watch?v=VxQXBebHrc4",
+     "embed": "https://www.youtube-nocookie.com/embed/VxQXBebHrc4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "the-computer-chronicles-simulator-software",
    "title": "The Computer Chronicles - Simulator Software (1983)",
    "name": "The Computer Chronicles - Simulator Software",
@@ -13044,6 +13199,56 @@
    ],
    "n_live": 1,
    "n_total": 1,
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-storage-devices",
+   "title": "The Computer Chronicles - Storage Devices (1983)",
+   "name": "The Computer Chronicles - Storage Devices",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1420,
+   "thumb": "media/yt/WqsZJjqCXlI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "WqsZJjqCXlI",
+     "url": "https://www.youtube.com/watch?v=WqsZJjqCXlI",
+     "embed": "https://www.youtube-nocookie.com/embed/WqsZJjqCXlI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-word-processing",
+   "title": "The Computer Chronicles - Word Processing (1983)",
+   "name": "The Computer Chronicles - Word Processing",
+   "year": 1983,
+   "chan": "The Computer Chronicles",
+   "dur": 1439,
+   "thumb": "media/yt/Jt0OoXluC8g.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Jt0OoXluC8g",
+     "url": "https://www.youtube.com/watch?v=Jt0OoXluC8g",
+     "embed": "https://www.youtube-nocookie.com/embed/Jt0OoXluC8g?rel=0",
+     "status": "live"
+    }
+   ],
    "era": "era-9"
   },
   {
@@ -14616,6 +14821,381 @@
    "approved": true
   },
   {
+   "slug": "the-computer-chronicles-artificial-intelligence",
+   "title": "The Computer Chronicles - Artificial Intelligence (1984)",
+   "name": "The Computer Chronicles - Artificial Intelligence",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1720,
+   "thumb": "media/yt/_S3m0V_ZF_Q.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_S3m0V_ZF_Q",
+     "url": "https://www.youtube.com/watch?v=_S3m0V_ZF_Q",
+     "embed": "https://www.youtube-nocookie.com/embed/_S3m0V_ZF_Q?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-application-sof",
+   "title": "The Computer Chronicles - Business Application Software (1984)",
+   "name": "The Computer Chronicles - Business Application Software",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1702,
+   "thumb": "media/yt/EGJFk1lOpN8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EGJFk1lOpN8",
+     "url": "https://www.youtube.com/watch?v=EGJFk1lOpN8",
+     "embed": "https://www.youtube-nocookie.com/embed/EGJFk1lOpN8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-entrepreneurs",
+   "title": "The Computer Chronicles - Computer Entrepreneurs (1984)",
+   "name": "The Computer Chronicles - Computer Entrepreneurs",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1730,
+   "thumb": "media/yt/H07xxyfLySA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "H07xxyfLySA",
+     "url": "https://www.youtube.com/watch?v=H07xxyfLySA",
+     "embed": "https://www.youtube-nocookie.com/embed/H07xxyfLySA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-ergonomics-2",
+   "title": "The Computer Chronicles - Computer Ergonomics (1984)",
+   "name": "The Computer Chronicles - Computer Ergonomics",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1740,
+   "thumb": "media/yt/OxLqWu23zFE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "OxLqWu23zFE",
+     "url": "https://www.youtube.com/watch?v=OxLqWu23zFE",
+     "embed": "https://www.youtube-nocookie.com/embed/OxLqWu23zFE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-games-4",
+   "title": "The Computer Chronicles - Computer Games (1984)",
+   "name": "The Computer Chronicles - Computer Games",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1733,
+   "thumb": "media/yt/KdRH9Sm_4-0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "KdRH9Sm_4-0",
+     "url": "https://www.youtube.com/watch?v=KdRH9Sm_4-0",
+     "embed": "https://www.youtube-nocookie.com/embed/KdRH9Sm_4-0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-graphics-2",
+   "title": "The Computer Chronicles - Computer Graphics (1984)",
+   "name": "The Computer Chronicles - Computer Graphics",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1333,
+   "thumb": "media/yt/cmhtRHw_Bv0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "cmhtRHw_Bv0",
+     "url": "https://www.youtube.com/watch?v=cmhtRHw_Bv0",
+     "embed": "https://www.youtube-nocookie.com/embed/cmhtRHw_Bv0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-security",
+   "title": "The Computer Chronicles - Computer Security (1984)",
+   "name": "The Computer Chronicles - Computer Security",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1737,
+   "thumb": "media/yt/DGBLzYyHBJk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "DGBLzYyHBJk",
+     "url": "https://www.youtube.com/watch?v=DGBLzYyHBJk",
+     "embed": "https://www.youtube-nocookie.com/embed/DGBLzYyHBJk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-in-communicati",
+   "title": "The Computer Chronicles - Computers in Communications (1984)",
+   "name": "The Computer Chronicles - Computers in Communications",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1712,
+   "thumb": "media/yt/9UFCR3lrvO4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9UFCR3lrvO4",
+     "url": "https://www.youtube.com/watch?v=9UFCR3lrvO4",
+     "embed": "https://www.youtube-nocookie.com/embed/9UFCR3lrvO4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-database-software",
+   "title": "The Computer Chronicles - Database Software (1984)",
+   "name": "The Computer Chronicles - Database Software",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1355,
+   "thumb": "media/yt/10b6RYxt2pg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "10b6RYxt2pg",
+     "url": "https://www.youtube.com/watch?v=10b6RYxt2pg",
+     "embed": "https://www.youtube-nocookie.com/embed/10b6RYxt2pg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-decision-support-systems",
+   "title": "The Computer Chronicles - Decision Support Systems (1984)",
+   "name": "The Computer Chronicles - Decision Support Systems",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1722,
+   "thumb": "media/yt/IzjTZQIpGVU.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IzjTZQIpGVU",
+     "url": "https://www.youtube.com/watch?v=IzjTZQIpGVU",
+     "embed": "https://www.youtube-nocookie.com/embed/IzjTZQIpGVU?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-fifth-generation-compute",
+   "title": "The Computer Chronicles - Fifth Generation Computers (1984)",
+   "name": "The Computer Chronicles - Fifth Generation Computers",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1696,
+   "thumb": "media/yt/Mu8zyHh4vTg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Mu8zyHh4vTg",
+     "url": "https://www.youtube.com/watch?v=Mu8zyHh4vTg",
+     "embed": "https://www.youtube-nocookie.com/embed/Mu8zyHh4vTg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-japanese-pcs",
+   "title": "The Computer Chronicles - Japanese PCs (1984)",
+   "name": "The Computer Chronicles - Japanese PCs",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1689,
+   "thumb": "media/yt/rbh1XP4kCT4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "rbh1XP4kCT4",
+     "url": "https://www.youtube.com/watch?v=rbh1XP4kCT4",
+     "embed": "https://www.youtube-nocookie.com/embed/rbh1XP4kCT4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-lasers-and-computers",
+   "title": "The Computer Chronicles - Lasers and Computers (1984)",
+   "name": "The Computer Chronicles - Lasers and Computers",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1725,
+   "thumb": "media/yt/0_q1N3Ww0P8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0_q1N3Ww0P8",
+     "url": "https://www.youtube.com/watch?v=0_q1N3Ww0P8",
+     "embed": "https://www.youtube-nocookie.com/embed/0_q1N3Ww0P8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-local-area-networks",
+   "title": "The Computer Chronicles - Local Area Networks (1984)",
+   "name": "The Computer Chronicles - Local Area Networks",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1678,
+   "thumb": "media/yt/E25R8Txrmf8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "E25R8Txrmf8",
+     "url": "https://www.youtube.com/watch?v=E25R8Txrmf8",
+     "embed": "https://www.youtube-nocookie.com/embed/E25R8Txrmf8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-operating-systems",
+   "title": "The Computer Chronicles - Operating Systems (1984)",
+   "name": "The Computer Chronicles - Operating Systems",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1732,
+   "thumb": "media/yt/V5S8kFvXpo4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "V5S8kFvXpo4",
+     "url": "https://www.youtube.com/watch?v=V5S8kFvXpo4",
+     "embed": "https://www.youtube-nocookie.com/embed/V5S8kFvXpo4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "the-computer-chronicles-programming",
    "title": "The Computer Chronicles - Programming (1984)",
    "name": "The Computer Chronicles - Programming",
@@ -14640,6 +15220,31 @@
    ],
    "n_live": 1,
    "n_total": 1,
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-super-computers-2",
+   "title": "The Computer Chronicles - Super Computers (1984)",
+   "name": "The Computer Chronicles - Super Computers",
+   "year": 1984,
+   "chan": "The Computer Chronicles",
+   "dur": 1437,
+   "thumb": "media/yt/6Dn6vLCN4F0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "6Dn6vLCN4F0",
+     "url": "https://www.youtube.com/watch?v=6Dn6vLCN4F0",
+     "embed": "https://www.youtube-nocookie.com/embed/6Dn6vLCN4F0?rel=0",
+     "status": "live"
+    }
+   ],
    "era": "era-9"
   },
   {
@@ -15717,6 +16322,706 @@
    ],
    "n_live": 1,
    "n_total": 1,
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-amiga-and-atari",
+   "title": "The Computer Chronicles - Amiga and Atari (1985)",
+   "name": "The Computer Chronicles - Amiga and Atari",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1759,
+   "thumb": "media/yt/kX5N8lWpqLM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "kX5N8lWpqLM",
+     "url": "https://www.youtube.com/watch?v=kX5N8lWpqLM",
+     "embed": "https://www.youtube-nocookie.com/embed/kX5N8lWpqLM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-artificial-intelligence-2",
+   "title": "The Computer Chronicles - Artificial Intelligence (1985)",
+   "name": "The Computer Chronicles - Artificial Intelligence",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1764,
+   "thumb": "media/yt/7Uz3HYfCIGc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "7Uz3HYfCIGc",
+     "url": "https://www.youtube.com/watch?v=7Uz3HYfCIGc",
+     "embed": "https://www.youtube-nocookie.com/embed/7Uz3HYfCIGc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-applications-2",
+   "title": "The Computer Chronicles - Business Applications (1985)",
+   "name": "The Computer Chronicles - Business Applications",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1741,
+   "thumb": "media/yt/Q4NMc7TAP-c.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Q4NMc7TAP-c",
+     "url": "https://www.youtube.com/watch?v=Q4NMc7TAP-c",
+     "embed": "https://www.youtube-nocookie.com/embed/Q4NMc7TAP-c?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-christmas-buyers-guide-2",
+   "title": "The Computer Chronicles - Christmas Buyer's Guide (1985)",
+   "name": "The Computer Chronicles - Christmas Buyer's Guide",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1742,
+   "thumb": "media/yt/9UHp-4CW8jM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9UHp-4CW8jM",
+     "url": "https://www.youtube.com/watch?v=9UHp-4CW8jM",
+     "embed": "https://www.youtube-nocookie.com/embed/9UHp-4CW8jM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-games-2",
+   "title": "The Computer Chronicles - Computer Games (1985)",
+   "name": "The Computer Chronicles - Computer Games",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1769,
+   "thumb": "media/yt/7PH7ifJKJpU.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "7PH7ifJKJpU",
+     "url": "https://www.youtube.com/watch?v=7PH7ifJKJpU",
+     "embed": "https://www.youtube-nocookie.com/embed/7PH7ifJKJpU?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-graphics",
+   "title": "The Computer Chronicles - Computer Graphics (1985)",
+   "name": "The Computer Chronicles - Computer Graphics",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1721,
+   "thumb": "media/yt/bdVNwyhJN8s.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "bdVNwyhJN8s",
+     "url": "https://www.youtube.com/watch?v=bdVNwyhJN8s",
+     "embed": "https://www.youtube-nocookie.com/embed/bdVNwyhJN8s?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-networks",
+   "title": "The Computer Chronicles - Computer Networks (1985)",
+   "name": "The Computer Chronicles - Computer Networks",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1741,
+   "thumb": "media/yt/illGtdeI6uo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "illGtdeI6uo",
+     "url": "https://www.youtube.com/watch?v=illGtdeI6uo",
+     "embed": "https://www.youtube-nocookie.com/embed/illGtdeI6uo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-medicine",
+   "title": "The Computer Chronicles - Computers & Medicine (1985)",
+   "name": "The Computer Chronicles - Computers & Medicine",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1763,
+   "thumb": "media/yt/uTK21NhN8HQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "uTK21NhN8HQ",
+     "url": "https://www.youtube.com/watch?v=uTK21NhN8HQ",
+     "embed": "https://www.youtube-nocookie.com/embed/uTK21NhN8HQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-politics",
+   "title": "The Computer Chronicles - Computers and Politics (1985)",
+   "name": "The Computer Chronicles - Computers and Politics",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1757,
+   "thumb": "media/yt/s3ugxpjCk_g.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "s3ugxpjCk_g",
+     "url": "https://www.youtube.com/watch?v=s3ugxpjCk_g",
+     "embed": "https://www.youtube-nocookie.com/embed/s3ugxpjCk_g?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-the-disabl-2",
+   "title": "The Computer Chronicles - Computers and the Disabled (1985)",
+   "name": "The Computer Chronicles - Computers and the Disabled",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1727,
+   "thumb": "media/yt/udIId8WNrqA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "udIId8WNrqA",
+     "url": "https://www.youtube.com/watch?v=udIId8WNrqA",
+     "embed": "https://www.youtube-nocookie.com/embed/udIId8WNrqA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-the-media",
+   "title": "The Computer Chronicles - Computers and the Media (1985)",
+   "name": "The Computer Chronicles - Computers and the Media",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1704,
+   "thumb": "media/yt/_9qhbFm3vak.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_9qhbFm3vak",
+     "url": "https://www.youtube.com/watch?v=_9qhbFm3vak",
+     "embed": "https://www.youtube-nocookie.com/embed/_9qhbFm3vak?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-in-law-enforce",
+   "title": "The Computer Chronicles - Computers in Law Enforcement (1985)",
+   "name": "The Computer Chronicles - Computers in Law Enforcement",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1748,
+   "thumb": "media/yt/dYlYZ8G_wdM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "dYlYZ8G_wdM",
+     "url": "https://www.youtube.com/watch?v=dYlYZ8G_wdM",
+     "embed": "https://www.youtube-nocookie.com/embed/dYlYZ8G_wdM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-in-sports",
+   "title": "The Computer Chronicles - Computers in Sports (1985)",
+   "name": "The Computer Chronicles - Computers in Sports",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1706,
+   "thumb": "media/yt/n5W4u27FRAE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "n5W4u27FRAE",
+     "url": "https://www.youtube.com/watch?v=n5W4u27FRAE",
+     "embed": "https://www.youtube-nocookie.com/embed/n5W4u27FRAE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-hard-disk-storage",
+   "title": "The Computer Chronicles - Hard Disk Storage (1985)",
+   "name": "The Computer Chronicles - Hard Disk Storage",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1735,
+   "thumb": "media/yt/PBsKakmW0fs.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "PBsKakmW0fs",
+     "url": "https://www.youtube.com/watch?v=PBsKakmW0fs",
+     "embed": "https://www.youtube-nocookie.com/embed/PBsKakmW0fs?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-ibm-clones",
+   "title": "The Computer Chronicles - IBM Clones (1985)",
+   "name": "The Computer Chronicles - IBM Clones",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1777,
+   "thumb": "media/yt/Iw8tvpHq5MA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Iw8tvpHq5MA",
+     "url": "https://www.youtube.com/watch?v=Iw8tvpHq5MA",
+     "embed": "https://www.youtube-nocookie.com/embed/Iw8tvpHq5MA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-low-end-computers",
+   "title": "The Computer Chronicles - Low End Computers (1985)",
+   "name": "The Computer Chronicles - Low End Computers",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1776,
+   "thumb": "media/yt/KGvsIVlbngA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "KGvsIVlbngA",
+     "url": "https://www.youtube.com/watch?v=KGvsIVlbngA",
+     "embed": "https://www.youtube-nocookie.com/embed/KGvsIVlbngA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-modems-bulletin-boards",
+   "title": "The Computer Chronicles - Modems & Bulletin Boards (1985)",
+   "name": "The Computer Chronicles - Modems & Bulletin Boards",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1752,
+   "thumb": "media/yt/Pb7te_HZyiA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Pb7te_HZyiA",
+     "url": "https://www.youtube.com/watch?v=Pb7te_HZyiA",
+     "embed": "https://www.youtube-nocookie.com/embed/Pb7te_HZyiA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-optical-storage-devices",
+   "title": "The Computer Chronicles - Optical Storage Devices (1985)",
+   "name": "The Computer Chronicles - Optical Storage Devices",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1765,
+   "thumb": "media/yt/5TcsOgy9weg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "5TcsOgy9weg",
+     "url": "https://www.youtube.com/watch?v=5TcsOgy9weg",
+     "embed": "https://www.youtube-nocookie.com/embed/5TcsOgy9weg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-personal-finance-softwar",
+   "title": "The Computer Chronicles - Personal Finance Software (1985)",
+   "name": "The Computer Chronicles - Personal Finance Software",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1716,
+   "thumb": "media/yt/KmIMoVq3ZJQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "KmIMoVq3ZJQ",
+     "url": "https://www.youtube.com/watch?v=KmIMoVq3ZJQ",
+     "embed": "https://www.youtube-nocookie.com/embed/KmIMoVq3ZJQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-portable-computers",
+   "title": "The Computer Chronicles - Portable Computers (1985)",
+   "name": "The Computer Chronicles - Portable Computers",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1750,
+   "thumb": "media/yt/NY7AR_xmcQ8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "NY7AR_xmcQ8",
+     "url": "https://www.youtube.com/watch?v=NY7AR_xmcQ8",
+     "embed": "https://www.youtube-nocookie.com/embed/NY7AR_xmcQ8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-printers-and-business-gr",
+   "title": "The Computer Chronicles - Printers and Business Graphics (1985)",
+   "name": "The Computer Chronicles - Printers and Business Graphics",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1720,
+   "thumb": "media/yt/wbkWVx4lv-8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "wbkWVx4lv-8",
+     "url": "https://www.youtube.com/watch?v=wbkWVx4lv-8",
+     "embed": "https://www.youtube-nocookie.com/embed/wbkWVx4lv-8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-profile-of-big-blue-ibm",
+   "title": "The Computer Chronicles - Profile of Big Blue - IBM (1985)",
+   "name": "The Computer Chronicles - Profile of Big Blue - IBM",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1752,
+   "thumb": "media/yt/PWRKKbkwgL0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "PWRKKbkwgL0",
+     "url": "https://www.youtube.com/watch?v=PWRKKbkwgL0",
+     "embed": "https://www.youtube-nocookie.com/embed/PWRKKbkwgL0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-slowdown-in-silicon-vall-2",
+   "title": "The Computer Chronicles - Slowdown in Silicon Valley #2 (1985)",
+   "name": "The Computer Chronicles - Slowdown in Silicon Valley #2",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1693,
+   "thumb": "media/yt/jfFCaWCwDhY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "jfFCaWCwDhY",
+     "url": "https://www.youtube.com/watch?v=jfFCaWCwDhY",
+     "embed": "https://www.youtube-nocookie.com/embed/jfFCaWCwDhY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-slowdown-in-silicon-vall",
+   "title": "The Computer Chronicles - Slowdown in Silicon Valley 1 (1985)",
+   "name": "The Computer Chronicles - Slowdown in Silicon Valley 1",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1732,
+   "thumb": "media/yt/8REddtaRG3E.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "8REddtaRG3E",
+     "url": "https://www.youtube.com/watch?v=8REddtaRG3E",
+     "embed": "https://www.youtube-nocookie.com/embed/8REddtaRG3E?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-software-piracy",
+   "title": "The Computer Chronicles - Software Piracy (1985)",
+   "name": "The Computer Chronicles - Software Piracy",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1766,
+   "thumb": "media/yt/n-M7FJKfR7k.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "n-M7FJKfR7k",
+     "url": "https://www.youtube.com/watch?v=n-M7FJKfR7k",
+     "embed": "https://www.youtube-nocookie.com/embed/n-M7FJKfR7k?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-the-macintosh-computer",
+   "title": "The Computer Chronicles - The Macintosh Computer (1985)",
+   "name": "The Computer Chronicles - The Macintosh Computer",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1773,
+   "thumb": "media/yt/Nrg9VVkZQb4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Nrg9VVkZQb4",
+     "url": "https://www.youtube.com/watch?v=Nrg9VVkZQb4",
+     "embed": "https://www.youtube-nocookie.com/embed/Nrg9VVkZQb4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-unix",
+   "title": "The Computer Chronicles - UNIX (1985)",
+   "name": "The Computer Chronicles - UNIX",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1692,
+   "thumb": "media/yt/0DdoGPav3fc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0DdoGPav3fc",
+     "url": "https://www.youtube.com/watch?v=0DdoGPav3fc",
+     "embed": "https://www.youtube-nocookie.com/embed/0DdoGPav3fc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-women-in-computing",
+   "title": "The Computer Chronicles - Women in Computing (1985)",
+   "name": "The Computer Chronicles - Women in Computing",
+   "year": 1985,
+   "chan": "The Computer Chronicles",
+   "dur": 1779,
+   "thumb": "media/yt/vMMAlmF2dv0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "vMMAlmF2dv0",
+     "url": "https://www.youtube.com/watch?v=vMMAlmF2dv0",
+     "embed": "https://www.youtube-nocookie.com/embed/vMMAlmF2dv0?rel=0",
+     "status": "live"
+    }
+   ],
    "era": "era-9"
   },
   {
@@ -17464,6 +18769,331 @@
    "era": "era-9"
   },
   {
+   "slug": "the-computer-chronicles-astronomy-software",
+   "title": "The Computer Chronicles - Astronomy Software (1986)",
+   "name": "The Computer Chronicles - Astronomy Software",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1734,
+   "thumb": "media/yt/H7K20wm5GA8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "H7K20wm5GA8",
+     "url": "https://www.youtube.com/watch?v=H7K20wm5GA8",
+     "embed": "https://www.youtube-nocookie.com/embed/H7K20wm5GA8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-careers-in-computing",
+   "title": "The Computer Chronicles - Careers in Computing (1986)",
+   "name": "The Computer Chronicles - Careers in Computing",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1758,
+   "thumb": "media/yt/-jWHq2eGiUM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "-jWHq2eGiUM",
+     "url": "https://www.youtube.com/watch?v=-jWHq2eGiUM",
+     "embed": "https://www.youtube-nocookie.com/embed/-jWHq2eGiUM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-christmas-buyers-guide",
+   "title": "The Computer Chronicles - Christmas Buyer's Guide (1986)",
+   "name": "The Computer Chronicles - Christmas Buyer's Guide",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1691,
+   "thumb": "media/yt/2ce3XUTt3W0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2ce3XUTt3W0",
+     "url": "https://www.youtube.com/watch?v=2ce3XUTt3W0",
+     "embed": "https://www.youtube-nocookie.com/embed/2ce3XUTt3W0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-comdex-3",
+   "title": "The Computer Chronicles - Comdex (1986)",
+   "name": "The Computer Chronicles - Comdex",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1742,
+   "thumb": "media/yt/gI4c7G7SVHs.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "gI4c7G7SVHs",
+     "url": "https://www.youtube.com/watch?v=gI4c7G7SVHs",
+     "embed": "https://www.youtube-nocookie.com/embed/gI4c7G7SVHs?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-the-pentag-2",
+   "title": "The Computer Chronicles - Computers and the Pentagon Part 1 (1986)",
+   "name": "The Computer Chronicles - Computers and the Pentagon Part 1",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1681,
+   "thumb": "media/yt/oGPag8Nilq4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "oGPag8Nilq4",
+     "url": "https://www.youtube.com/watch?v=oGPag8Nilq4",
+     "embed": "https://www.youtube-nocookie.com/embed/oGPag8Nilq4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-the-pentag",
+   "title": "The Computer Chronicles - Computers and the Pentagon Part 2 (1986)",
+   "name": "The Computer Chronicles - Computers and the Pentagon Part 2",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1739,
+   "thumb": "media/yt/2N6uBwcuz6Y.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2N6uBwcuz6Y",
+     "url": "https://www.youtube.com/watch?v=2N6uBwcuz6Y",
+     "embed": "https://www.youtube-nocookie.com/embed/2N6uBwcuz6Y?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-desktop-publishing-part",
+   "title": "The Computer Chronicles - Desktop Publishing Part 1 (1986)",
+   "name": "The Computer Chronicles - Desktop Publishing Part 1",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1746,
+   "thumb": "media/yt/lk1xrbwjni8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "lk1xrbwjni8",
+     "url": "https://www.youtube.com/watch?v=lk1xrbwjni8",
+     "embed": "https://www.youtube-nocookie.com/embed/lk1xrbwjni8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-desktop-publishing-part-2",
+   "title": "The Computer Chronicles - Desktop Publishing Part 2 (1986)",
+   "name": "The Computer Chronicles - Desktop Publishing Part 2",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1755,
+   "thumb": "media/yt/deP1YntadRQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "deP1YntadRQ",
+     "url": "https://www.youtube.com/watch?v=deP1YntadRQ",
+     "embed": "https://www.youtube-nocookie.com/embed/deP1YntadRQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-educational-software",
+   "title": "The Computer Chronicles - Educational Software (1986)",
+   "name": "The Computer Chronicles - Educational Software",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1759,
+   "thumb": "media/yt/SesI65X5QOo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SesI65X5QOo",
+     "url": "https://www.youtube.com/watch?v=SesI65X5QOo",
+     "embed": "https://www.youtube-nocookie.com/embed/SesI65X5QOo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-educational-software-par",
+   "title": "The Computer Chronicles - Educational Software Part 2 (1986)",
+   "name": "The Computer Chronicles - Educational Software Part 2",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1726,
+   "thumb": "media/yt/2buTEbaNcbY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2buTEbaNcbY",
+     "url": "https://www.youtube.com/watch?v=2buTEbaNcbY",
+     "embed": "https://www.youtube-nocookie.com/embed/2buTEbaNcbY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-guide-to-macros",
+   "title": "The Computer Chronicles - Guide to Macros (1986)",
+   "name": "The Computer Chronicles - Guide to Macros",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1702,
+   "thumb": "media/yt/xqvSJU-8fyk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xqvSJU-8fyk",
+     "url": "https://www.youtube.com/watch?v=xqvSJU-8fyk",
+     "embed": "https://www.youtube-nocookie.com/embed/xqvSJU-8fyk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-investment-software",
+   "title": "The Computer Chronicles - Investment Software (1986)",
+   "name": "The Computer Chronicles - Investment Software",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1756,
+   "thumb": "media/yt/sM62coZbv1Q.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "sM62coZbv1Q",
+     "url": "https://www.youtube.com/watch?v=sM62coZbv1Q",
+     "embed": "https://www.youtube-nocookie.com/embed/sM62coZbv1Q?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-midi-music",
+   "title": "The Computer Chronicles - MIDI Music (1986)",
+   "name": "The Computer Chronicles - MIDI Music",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1757,
+   "thumb": "media/yt/eitBQT8zOIg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "eitBQT8zOIg",
+     "url": "https://www.youtube.com/watch?v=eitBQT8zOIg",
+     "embed": "https://www.youtube-nocookie.com/embed/eitBQT8zOIg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "the-computer-chronicles-parallel-processing",
    "title": "The Computer Chronicles - Parallel Processing (1986)",
    "name": "The Computer Chronicles - Parallel Processing",
@@ -17491,6 +19121,81 @@
    "era": "era-9"
   },
   {
+   "slug": "the-computer-chronicles-project-management-softw",
+   "title": "The Computer Chronicles - Project Management Software (1986)",
+   "name": "The Computer Chronicles - Project Management Software",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1712,
+   "thumb": "media/yt/4cnxrNzOR0Q.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "4cnxrNzOR0Q",
+     "url": "https://www.youtube.com/watch?v=4cnxrNzOR0Q",
+     "embed": "https://www.youtube-nocookie.com/embed/4cnxrNzOR0Q?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-psychological-software",
+   "title": "The Computer Chronicles - Psychological Software (1986)",
+   "name": "The Computer Chronicles - Psychological Software",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1756,
+   "thumb": "media/yt/PVsQd4MwOdc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "PVsQd4MwOdc",
+     "url": "https://www.youtube.com/watch?v=PVsQd4MwOdc",
+     "embed": "https://www.youtube-nocookie.com/embed/PVsQd4MwOdc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-ram-resident-software",
+   "title": "The Computer Chronicles - RAM Resident Software (1986)",
+   "name": "The Computer Chronicles - RAM Resident Software",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1757,
+   "thumb": "media/yt/xV2rxImyGYE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xV2rxImyGYE",
+     "url": "https://www.youtube.com/watch?v=xV2rxImyGYE",
+     "embed": "https://www.youtube-nocookie.com/embed/xV2rxImyGYE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "the-computer-chronicles-reduced-instruction-set",
    "title": "The Computer Chronicles - Reduced Instruction Set Computer (RISC) (1986)",
    "name": "The Computer Chronicles - Reduced Instruction Set Computer (RISC)",
@@ -17515,6 +19220,56 @@
    ],
    "n_live": 1,
    "n_total": 1,
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-second-hand-computers",
+   "title": "The Computer Chronicles - Second Hand Computers (1986)",
+   "name": "The Computer Chronicles - Second Hand Computers",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1765,
+   "thumb": "media/yt/_WsFrVld5_8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_WsFrVld5_8",
+     "url": "https://www.youtube.com/watch?v=_WsFrVld5_8",
+     "embed": "https://www.youtube-nocookie.com/embed/_WsFrVld5_8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-utilities",
+   "title": "The Computer Chronicles - Utilities (1986)",
+   "name": "The Computer Chronicles - Utilities",
+   "year": 1986,
+   "chan": "The Computer Chronicles",
+   "dur": 1722,
+   "thumb": "media/yt/lyHm8u_AR30.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "lyHm8u_AR30",
+     "url": "https://www.youtube.com/watch?v=lyHm8u_AR30",
+     "embed": "https://www.youtube-nocookie.com/embed/lyHm8u_AR30?rel=0",
+     "status": "live"
+    }
+   ],
    "era": "era-9"
   },
   {
@@ -18887,6 +20642,331 @@
    "era": "era-9"
   },
   {
+   "slug": "the-computer-chronicles-asian-clones",
+   "title": "The Computer Chronicles - Asian Clones (1987)",
+   "name": "The Computer Chronicles - Asian Clones",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1720,
+   "thumb": "media/yt/VLM12igHTX4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "VLM12igHTX4",
+     "url": "https://www.youtube.com/watch?v=VLM12igHTX4",
+     "embed": "https://www.youtube-nocookie.com/embed/VLM12igHTX4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-applications",
+   "title": "The Computer Chronicles - Business Applications (1987)",
+   "name": "The Computer Chronicles - Business Applications",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1724,
+   "thumb": "media/yt/jinq5NLWyw0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "jinq5NLWyw0",
+     "url": "https://www.youtube.com/watch?v=jinq5NLWyw0",
+     "embed": "https://www.youtube-nocookie.com/embed/jinq5NLWyw0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-applications-3",
+   "title": "The Computer Chronicles - Business Applications (1987)",
+   "name": "The Computer Chronicles - Business Applications",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1773,
+   "thumb": "media/yt/2aPCgdy83wE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2aPCgdy83wE",
+     "url": "https://www.youtube.com/watch?v=2aPCgdy83wE",
+     "embed": "https://www.youtube-nocookie.com/embed/2aPCgdy83wE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-applications-pa",
+   "title": "The Computer Chronicles - Business Applications Part 2 (1987)",
+   "name": "The Computer Chronicles - Business Applications Part 2",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1744,
+   "thumb": "media/yt/w1IhmvmmedQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "w1IhmvmmedQ",
+     "url": "https://www.youtube.com/watch?v=w1IhmvmmedQ",
+     "embed": "https://www.youtube-nocookie.com/embed/w1IhmvmmedQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-applications-pa-2",
+   "title": "The Computer Chronicles - Business Applications Part 4 (1987)",
+   "name": "The Computer Chronicles - Business Applications Part 4",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1673,
+   "thumb": "media/yt/ptJ4q5K-aN8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ptJ4q5K-aN8",
+     "url": "https://www.youtube.com/watch?v=ptJ4q5K-aN8",
+     "embed": "https://www.youtube-nocookie.com/embed/ptJ4q5K-aN8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-software-for-th",
+   "title": "The Computer Chronicles - Business Software for the Mac (1987)",
+   "name": "The Computer Chronicles - Business Software for the Mac",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1702,
+   "thumb": "media/yt/M-Nys92zX5Y.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "M-Nys92zX5Y",
+     "url": "https://www.youtube.com/watch?v=M-Nys92zX5Y",
+     "embed": "https://www.youtube-nocookie.com/embed/M-Nys92zX5Y?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-comdex-1987",
+   "title": "The Computer Chronicles - Comdex 1987 (1987)",
+   "name": "The Computer Chronicles - Comdex 1987",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1763,
+   "thumb": "media/yt/lcIaWo6kFLQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "lcIaWo6kFLQ",
+     "url": "https://www.youtube.com/watch?v=lcIaWo6kFLQ",
+     "embed": "https://www.youtube-nocookie.com/embed/lcIaWo6kFLQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-buyers-guide",
+   "title": "The Computer Chronicles - Computer Buyer's Guide (1987)",
+   "name": "The Computer Chronicles - Computer Buyer's Guide",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1596,
+   "thumb": "media/yt/cTDlRb79q1k.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "cTDlRb79q1k",
+     "url": "https://www.youtube.com/watch?v=cTDlRb79q1k",
+     "embed": "https://www.youtube-nocookie.com/embed/cTDlRb79q1k?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-games-3",
+   "title": "The Computer Chronicles - Computer Games (1987)",
+   "name": "The Computer Chronicles - Computer Games",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1656,
+   "thumb": "media/yt/L4MZEoYtET0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "L4MZEoYtET0",
+     "url": "https://www.youtube.com/watch?v=L4MZEoYtET0",
+     "embed": "https://www.youtube-nocookie.com/embed/L4MZEoYtET0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-kids",
+   "title": "The Computer Chronicles - Computer Kids (1987)",
+   "name": "The Computer Chronicles - Computer Kids",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1751,
+   "thumb": "media/yt/wmMY76ffftc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "wmMY76ffftc",
+     "url": "https://www.youtube.com/watch?v=wmMY76ffftc",
+     "embed": "https://www.youtube-nocookie.com/embed/wmMY76ffftc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-illiteracy",
+   "title": "The Computer Chronicles - Computers & Illiteracy (1987)",
+   "name": "The Computer Chronicles - Computers & Illiteracy",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1746,
+   "thumb": "media/yt/FOxDXMl9Jxo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "FOxDXMl9Jxo",
+     "url": "https://www.youtube.com/watch?v=FOxDXMl9Jxo",
+     "embed": "https://www.youtube-nocookie.com/embed/FOxDXMl9Jxo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-gambling",
+   "title": "The Computer Chronicles - Computers and Gambling (1987)",
+   "name": "The Computer Chronicles - Computers and Gambling",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1703,
+   "thumb": "media/yt/m86oc6cR6k4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "m86oc6cR6k4",
+     "url": "https://www.youtube.com/watch?v=m86oc6cR6k4",
+     "embed": "https://www.youtube-nocookie.com/embed/m86oc6cR6k4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-the-arts",
+   "title": "The Computer Chronicles - Computers and the Arts (1987)",
+   "name": "The Computer Chronicles - Computers and the Arts",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1652,
+   "thumb": "media/yt/quqKYrlFPwE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "quqKYrlFPwE",
+     "url": "https://www.youtube.com/watch?v=quqKYrlFPwE",
+     "embed": "https://www.youtube-nocookie.com/embed/quqKYrlFPwE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "the-computer-chronicles-hypercard",
    "title": "The Computer Chronicles - Hypercard (1987)",
    "name": "The Computer Chronicles - Hypercard",
@@ -18941,6 +21021,206 @@
    "era": "era-9"
   },
   {
+   "slug": "the-computer-chronicles-ibm-personal-system-2-ps",
+   "title": "The Computer Chronicles - IBM Personal System 2 (PS/2) (1987)",
+   "name": "The Computer Chronicles - IBM Personal System 2 (PS/2)",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1751,
+   "thumb": "media/yt/yoAH1aHmwR0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "yoAH1aHmwR0",
+     "url": "https://www.youtube.com/watch?v=yoAH1aHmwR0",
+     "embed": "https://www.youtube-nocookie.com/embed/yoAH1aHmwR0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-intel-386-the-fast-lane",
+   "title": "The Computer Chronicles - Intel 386 - The Fast Lane (1987)",
+   "name": "The Computer Chronicles - Intel 386 - The Fast Lane",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1770,
+   "thumb": "media/yt/VsE0BwQ3l8U.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "VsE0BwQ3l8U",
+     "url": "https://www.youtube.com/watch?v=VsE0BwQ3l8U",
+     "embed": "https://www.youtube-nocookie.com/embed/VsE0BwQ3l8U?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-intelligent-buildings",
+   "title": "The Computer Chronicles - Intelligent Buildings (1987)",
+   "name": "The Computer Chronicles - Intelligent Buildings",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1723,
+   "thumb": "media/yt/AJFzPc469SU.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "AJFzPc469SU",
+     "url": "https://www.youtube.com/watch?v=AJFzPc469SU",
+     "embed": "https://www.youtube-nocookie.com/embed/AJFzPc469SU?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-laser-printers",
+   "title": "The Computer Chronicles - Laser Printers (1987)",
+   "name": "The Computer Chronicles - Laser Printers",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1689,
+   "thumb": "media/yt/6bSqlPJ61I4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "6bSqlPJ61I4",
+     "url": "https://www.youtube.com/watch?v=6bSqlPJ61I4",
+     "embed": "https://www.youtube-nocookie.com/embed/6bSqlPJ61I4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-on-line-databases-2",
+   "title": "The Computer Chronicles - On-Line Databases 2 (1987)",
+   "name": "The Computer Chronicles - On-Line Databases 2",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1731,
+   "thumb": "media/yt/QaUbbwTe9ZQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "QaUbbwTe9ZQ",
+     "url": "https://www.youtube.com/watch?v=QaUbbwTe9ZQ",
+     "embed": "https://www.youtube-nocookie.com/embed/QaUbbwTe9ZQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-online-services-part-1",
+   "title": "The Computer Chronicles - Online Services Part 1 (1987)",
+   "name": "The Computer Chronicles - Online Services Part 1",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1732,
+   "thumb": "media/yt/WWXBjCevVIE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "WWXBjCevVIE",
+     "url": "https://www.youtube.com/watch?v=WWXBjCevVIE",
+     "embed": "https://www.youtube-nocookie.com/embed/WWXBjCevVIE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-portable-computers-2",
+   "title": "The Computer Chronicles - Portable Computers (1987)",
+   "name": "The Computer Chronicles - Portable Computers",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1738,
+   "thumb": "media/yt/xSueEm2Cw28.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xSueEm2Cw28",
+     "url": "https://www.youtube.com/watch?v=xSueEm2Cw28",
+     "embed": "https://www.youtube-nocookie.com/embed/xSueEm2Cw28?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-speech-recognition-and-s",
+   "title": "The Computer Chronicles - Speech Recognition and Synthesis (1987)",
+   "name": "The Computer Chronicles - Speech Recognition and Synthesis",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1741,
+   "thumb": "media/yt/BK8SE6UBBkk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "BK8SE6UBBkk",
+     "url": "https://www.youtube.com/watch?v=BK8SE6UBBkk",
+     "embed": "https://www.youtube-nocookie.com/embed/BK8SE6UBBkk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "the-computer-chronicles-super-computers",
    "title": "The Computer Chronicles - Super Computers (1987)",
    "name": "The Computer Chronicles - Super Computers",
@@ -18965,6 +21245,56 @@
    ],
    "n_live": 1,
    "n_total": 1,
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-tax-preparation-software-3",
+   "title": "The Computer Chronicles - Tax Preparation Software (1987)",
+   "name": "The Computer Chronicles - Tax Preparation Software",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1726,
+   "thumb": "media/yt/ffXQAHp4a0c.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ffXQAHp4a0c",
+     "url": "https://www.youtube.com/watch?v=ffXQAHp4a0c",
+     "embed": "https://www.youtube-nocookie.com/embed/ffXQAHp4a0c?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-the-new-macs",
+   "title": "The Computer Chronicles - The New Macs (1987)",
+   "name": "The Computer Chronicles - The New Macs",
+   "year": 1987,
+   "chan": "The Computer Chronicles",
+   "dur": 1738,
+   "thumb": "media/yt/JjHzPuGi5Js.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "JjHzPuGi5Js",
+     "url": "https://www.youtube.com/watch?v=JjHzPuGi5Js",
+     "embed": "https://www.youtube-nocookie.com/embed/JjHzPuGi5Js?rel=0",
+     "status": "live"
+    }
+   ],
    "era": "era-9"
   },
   {
@@ -19924,6 +22254,606 @@
    "approved": true
   },
   {
+   "slug": "the-computer-chronicles-add-on-boards",
+   "title": "The Computer Chronicles - Add-On Boards (1988)",
+   "name": "The Computer Chronicles - Add-On Boards",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1686,
+   "thumb": "media/yt/awt0lbfTrzU.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "awt0lbfTrzU",
+     "url": "https://www.youtube.com/watch?v=awt0lbfTrzU",
+     "embed": "https://www.youtube-nocookie.com/embed/awt0lbfTrzU?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-apple-ii-forever",
+   "title": "The Computer Chronicles - Apple II Forever (1988)",
+   "name": "The Computer Chronicles - Apple II Forever",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1719,
+   "thumb": "media/yt/OcwKZbVE2Fg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "OcwKZbVE2Fg",
+     "url": "https://www.youtube.com/watch?v=OcwKZbVE2Fg",
+     "embed": "https://www.youtube-nocookie.com/embed/OcwKZbVE2Fg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-bus-wars",
+   "title": "The Computer Chronicles - BUS Wars (1988)",
+   "name": "The Computer Chronicles - BUS Wars",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1758,
+   "thumb": "media/yt/aYt4ZPxVkSs.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "aYt4ZPxVkSs",
+     "url": "https://www.youtube.com/watch?v=aYt4ZPxVkSs",
+     "embed": "https://www.youtube-nocookie.com/embed/aYt4ZPxVkSs?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-graphics-for-th-2",
+   "title": "The Computer Chronicles - Business Graphics for the Mac (1988)",
+   "name": "The Computer Chronicles - Business Graphics for the Mac",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1697,
+   "thumb": "media/yt/MhTBQhAO7Os.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "MhTBQhAO7Os",
+     "url": "https://www.youtube.com/watch?v=MhTBQhAO7Os",
+     "embed": "https://www.youtube-nocookie.com/embed/MhTBQhAO7Os?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-business-graphics-for-th",
+   "title": "The Computer Chronicles - Business Graphics for the PC (1988)",
+   "name": "The Computer Chronicles - Business Graphics for the PC",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1681,
+   "thumb": "media/yt/3PGiYvYUk2M.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3PGiYvYUk2M",
+     "url": "https://www.youtube.com/watch?v=3PGiYvYUk2M",
+     "embed": "https://www.youtube-nocookie.com/embed/3PGiYvYUk2M?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-cd-roms-2",
+   "title": "The Computer Chronicles - CD ROMs (1988)",
+   "name": "The Computer Chronicles - CD ROMs",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1735,
+   "thumb": "media/yt/9NU_XI7fguI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9NU_XI7fguI",
+     "url": "https://www.youtube.com/watch?v=9NU_XI7fguI",
+     "embed": "https://www.youtube-nocookie.com/embed/9NU_XI7fguI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-comdex-2",
+   "title": "The Computer Chronicles - Comdex (1988)",
+   "name": "The Computer Chronicles - Comdex",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1703,
+   "thumb": "media/yt/u4ldS0n649M.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "u4ldS0n649M",
+     "url": "https://www.youtube.com/watch?v=u4ldS0n649M",
+     "embed": "https://www.youtube-nocookie.com/embed/u4ldS0n649M?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-commodore-64",
+   "title": "The Computer Chronicles - Commodore 64 (1988)",
+   "name": "The Computer Chronicles - Commodore 64",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1712,
+   "thumb": "media/yt/lL70gLaouDQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "lL70gLaouDQ",
+     "url": "https://www.youtube.com/watch?v=lL70gLaouDQ",
+     "embed": "https://www.youtube-nocookie.com/embed/lL70gLaouDQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-i-part-1",
+   "title": "The Computer Chronicles - Computer Bowl I Part 1 (1988)",
+   "name": "The Computer Chronicles - Computer Bowl I Part 1",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1698,
+   "thumb": "media/yt/wc2dfpMg0_U.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "wc2dfpMg0_U",
+     "url": "https://www.youtube.com/watch?v=wc2dfpMg0_U",
+     "embed": "https://www.youtube-nocookie.com/embed/wc2dfpMg0_U?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-i-part-2",
+   "title": "The Computer Chronicles - Computer Bowl I Part 2 (1988)",
+   "name": "The Computer Chronicles - Computer Bowl I Part 2",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1694,
+   "thumb": "media/yt/SSz_4LFZaxo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SSz_4LFZaxo",
+     "url": "https://www.youtube.com/watch?v=SSz_4LFZaxo",
+     "embed": "https://www.youtube-nocookie.com/embed/SSz_4LFZaxo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-games-5",
+   "title": "The Computer Chronicles - Computer Games (1988)",
+   "name": "The Computer Chronicles - Computer Games",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1670,
+   "thumb": "media/yt/ii-xFXBb-B8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ii-xFXBb-B8",
+     "url": "https://www.youtube.com/watch?v=ii-xFXBb-B8",
+     "embed": "https://www.youtube-nocookie.com/embed/ii-xFXBb-B8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-imaging-and-dig",
+   "title": "The Computer Chronicles - Computer Imaging and Digitizing (1988)",
+   "name": "The Computer Chronicles - Computer Imaging and Digitizing",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1733,
+   "thumb": "media/yt/XhyEYZbHQOg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "XhyEYZbHQOg",
+     "url": "https://www.youtube.com/watch?v=XhyEYZbHQOg",
+     "embed": "https://www.youtube-nocookie.com/embed/XhyEYZbHQOg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-consumer-buyers-guide-2",
+   "title": "The Computer Chronicles - Consumer Buyer's Guide (1988)",
+   "name": "The Computer Chronicles - Consumer Buyer's Guide",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1714,
+   "thumb": "media/yt/SJB6V88PrZE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SJB6V88PrZE",
+     "url": "https://www.youtube.com/watch?v=SJB6V88PrZE",
+     "embed": "https://www.youtube-nocookie.com/embed/SJB6V88PrZE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-decision-support-softwar",
+   "title": "The Computer Chronicles - Decision Support Software (1988)",
+   "name": "The Computer Chronicles - Decision Support Software",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1639,
+   "thumb": "media/yt/-xqW_cC3R_c.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "-xqW_cC3R_c",
+     "url": "https://www.youtube.com/watch?v=-xqW_cC3R_c",
+     "embed": "https://www.youtube-nocookie.com/embed/-xqW_cC3R_c?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-input-devices",
+   "title": "The Computer Chronicles - Input Devices (1988)",
+   "name": "The Computer Chronicles - Input Devices",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1663,
+   "thumb": "media/yt/OsNua6MDRuk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "OsNua6MDRuk",
+     "url": "https://www.youtube.com/watch?v=OsNua6MDRuk",
+     "embed": "https://www.youtube-nocookie.com/embed/OsNua6MDRuk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-investment-software-2",
+   "title": "The Computer Chronicles - Investment Software (1988)",
+   "name": "The Computer Chronicles - Investment Software",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1715,
+   "thumb": "media/yt/NI_dmKo0CoQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "NI_dmKo0CoQ",
+     "url": "https://www.youtube.com/watch?v=NI_dmKo0CoQ",
+     "embed": "https://www.youtube-nocookie.com/embed/NI_dmKo0CoQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-laptop-peripherals",
+   "title": "The Computer Chronicles - Laptop Peripherals (1988)",
+   "name": "The Computer Chronicles - Laptop Peripherals",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1649,
+   "thumb": "media/yt/DLtzzMJhOFI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "DLtzzMJhOFI",
+     "url": "https://www.youtube.com/watch?v=DLtzzMJhOFI",
+     "embed": "https://www.youtube-nocookie.com/embed/DLtzzMJhOFI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-macworld-boston",
+   "title": "The Computer Chronicles - MacWorld Boston (1988)",
+   "name": "The Computer Chronicles - MacWorld Boston",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1754,
+   "thumb": "media/yt/ppbhCI2dk_A.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ppbhCI2dk_A",
+     "url": "https://www.youtube.com/watch?v=ppbhCI2dk_A",
+     "embed": "https://www.youtube-nocookie.com/embed/ppbhCI2dk_A?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-multitasking",
+   "title": "The Computer Chronicles - Multitasking (1988)",
+   "name": "The Computer Chronicles - Multitasking",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1655,
+   "thumb": "media/yt/IKzleg4AcXg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IKzleg4AcXg",
+     "url": "https://www.youtube.com/watch?v=IKzleg4AcXg",
+     "embed": "https://www.youtube-nocookie.com/embed/IKzleg4AcXg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-personal-cad",
+   "title": "The Computer Chronicles - Personal CAD (1988)",
+   "name": "The Computer Chronicles - Personal CAD",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1745,
+   "thumb": "media/yt/2PPuGtQmwRc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2PPuGtQmwRc",
+     "url": "https://www.youtube.com/watch?v=2PPuGtQmwRc",
+     "embed": "https://www.youtube-nocookie.com/embed/2PPuGtQmwRc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-shareware",
+   "title": "The Computer Chronicles - Shareware (1988)",
+   "name": "The Computer Chronicles - Shareware",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1693,
+   "thumb": "media/yt/1aDXV10-5lo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1aDXV10-5lo",
+     "url": "https://www.youtube.com/watch?v=1aDXV10-5lo",
+     "embed": "https://www.youtube-nocookie.com/embed/1aDXV10-5lo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-spreadsheet-wars",
+   "title": "The Computer Chronicles - Spreadsheet Wars (1988)",
+   "name": "The Computer Chronicles - Spreadsheet Wars",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1691,
+   "thumb": "media/yt/eAiZBUYNUBA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "eAiZBUYNUBA",
+     "url": "https://www.youtube.com/watch?v=eAiZBUYNUBA",
+     "embed": "https://www.youtube-nocookie.com/embed/eAiZBUYNUBA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-tax-preparation-software-2",
+   "title": "The Computer Chronicles - Tax Preparation Software (1988)",
+   "name": "The Computer Chronicles - Tax Preparation Software",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1687,
+   "thumb": "media/yt/ZyDDCEc2Ktg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ZyDDCEc2Ktg",
+     "url": "https://www.youtube.com/watch?v=ZyDDCEc2Ktg",
+     "embed": "https://www.youtube-nocookie.com/embed/ZyDDCEc2Ktg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-the-new-amigas",
+   "title": "The Computer Chronicles - The New Amigas (1988)",
+   "name": "The Computer Chronicles - The New Amigas",
+   "year": 1988,
+   "chan": "The Computer Chronicles",
+   "dur": 1677,
+   "thumb": "media/yt/C-hJ_3MvH7Q.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "C-hJ_3MvH7Q",
+     "url": "https://www.youtube.com/watch?v=C-hJ_3MvH7Q",
+     "embed": "https://www.youtube-nocookie.com/embed/C-hJ_3MvH7Q?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "1988-the-secret-life-of-3",
    "title": "1988 The Secret Life of Machines: Radio",
    "name": "The Secret Life of Machines: Radio",
@@ -20559,6 +23489,481 @@
    "approved": true
   },
   {
+   "slug": "the-computer-chronicles-amiga-2500",
+   "title": "The Computer Chronicles - Amiga 2500 (1989)",
+   "name": "The Computer Chronicles - Amiga 2500",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1738,
+   "thumb": "media/yt/zObp2cyo_B0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "zObp2cyo_B0",
+     "url": "https://www.youtube.com/watch?v=zObp2cyo_B0",
+     "embed": "https://www.youtube-nocookie.com/embed/zObp2cyo_B0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-atari-st",
+   "title": "The Computer Chronicles - Atari ST (1989)",
+   "name": "The Computer Chronicles - Atari ST",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1719,
+   "thumb": "media/yt/EjKnUOZ7ZN8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "EjKnUOZ7ZN8",
+     "url": "https://www.youtube.com/watch?v=EjKnUOZ7ZN8",
+     "embed": "https://www.youtube-nocookie.com/embed/EjKnUOZ7ZN8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-viruses-2",
+   "title": "The Computer Chronicles - Computer Viruses (1989)",
+   "name": "The Computer Chronicles - Computer Viruses",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1760,
+   "thumb": "media/yt/oqSPE4AlWY8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "oqSPE4AlWY8",
+     "url": "https://www.youtube.com/watch?v=oqSPE4AlWY8",
+     "embed": "https://www.youtube-nocookie.com/embed/oqSPE4AlWY8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-fitness",
+   "title": "The Computer Chronicles - Computers and Fitness (1989)",
+   "name": "The Computer Chronicles - Computers and Fitness",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1690,
+   "thumb": "media/yt/85u6P5Od2Gg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "85u6P5Od2Gg",
+     "url": "https://www.youtube.com/watch?v=85u6P5Od2Gg",
+     "embed": "https://www.youtube-nocookie.com/embed/85u6P5Od2Gg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-in-space",
+   "title": "The Computer Chronicles - Computers in Space (1989)",
+   "name": "The Computer Chronicles - Computers in Space",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1703,
+   "thumb": "media/yt/THtkk-LvZ18.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "THtkk-LvZ18",
+     "url": "https://www.youtube.com/watch?v=THtkk-LvZ18",
+     "embed": "https://www.youtube-nocookie.com/embed/THtkk-LvZ18?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-desktop-presentation-gra-2",
+   "title": "The Computer Chronicles - Desktop Presentation Graphics Part 1 (1989)",
+   "name": "The Computer Chronicles - Desktop Presentation Graphics Part 1",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1716,
+   "thumb": "media/yt/ysJZn3wqsAw.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ysJZn3wqsAw",
+     "url": "https://www.youtube.com/watch?v=ysJZn3wqsAw",
+     "embed": "https://www.youtube-nocookie.com/embed/ysJZn3wqsAw?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-desktop-presentation-gra",
+   "title": "The Computer Chronicles - Desktop Presentation Graphics Part 2 (1989)",
+   "name": "The Computer Chronicles - Desktop Presentation Graphics Part 2",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1734,
+   "thumb": "media/yt/nne6O4iH3lE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "nne6O4iH3lE",
+     "url": "https://www.youtube.com/watch?v=nne6O4iH3lE",
+     "embed": "https://www.youtube-nocookie.com/embed/nne6O4iH3lE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-fax-boards",
+   "title": "The Computer Chronicles - Fax Boards (1989)",
+   "name": "The Computer Chronicles - Fax Boards",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1746,
+   "thumb": "media/yt/Kc_JVVuE31Q.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Kc_JVVuE31Q",
+     "url": "https://www.youtube.com/watch?v=Kc_JVVuE31Q",
+     "embed": "https://www.youtube-nocookie.com/embed/Kc_JVVuE31Q?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-foreign-language-softwar",
+   "title": "The Computer Chronicles - Foreign Language Software (1989)",
+   "name": "The Computer Chronicles - Foreign Language Software",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1747,
+   "thumb": "media/yt/iorZd_t_HLI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "iorZd_t_HLI",
+     "url": "https://www.youtube.com/watch?v=iorZd_t_HLI",
+     "embed": "https://www.youtube-nocookie.com/embed/iorZd_t_HLI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-hard-disk-management",
+   "title": "The Computer Chronicles - Hard Disk Management (1989)",
+   "name": "The Computer Chronicles - Hard Disk Management",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1756,
+   "thumb": "media/yt/VnooVMqu2SM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "VnooVMqu2SM",
+     "url": "https://www.youtube.com/watch?v=VnooVMqu2SM",
+     "embed": "https://www.youtube-nocookie.com/embed/VnooVMqu2SM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-high-tech-india-part-1",
+   "title": "The Computer Chronicles - High Tech India Part 1 (1989)",
+   "name": "The Computer Chronicles - High Tech India Part 1",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1724,
+   "thumb": "media/yt/_c8kDl1E5As.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_c8kDl1E5As",
+     "url": "https://www.youtube.com/watch?v=_c8kDl1E5As",
+     "embed": "https://www.youtube-nocookie.com/embed/_c8kDl1E5As?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-high-tech-india-part-2",
+   "title": "The Computer Chronicles - High Tech India Part 2 (1989)",
+   "name": "The Computer Chronicles - High Tech India Part 2",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1745,
+   "thumb": "media/yt/ilTGI82fHlo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ilTGI82fHlo",
+     "url": "https://www.youtube.com/watch?v=ilTGI82fHlo",
+     "embed": "https://www.youtube-nocookie.com/embed/ilTGI82fHlo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-holiday-buyers-guide",
+   "title": "The Computer Chronicles - Holiday Buyer's Guide (1989)",
+   "name": "The Computer Chronicles - Holiday Buyer's Guide",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1686,
+   "thumb": "media/yt/PJ95IclntIY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "PJ95IclntIY",
+     "url": "https://www.youtube.com/watch?v=PJ95IclntIY",
+     "embed": "https://www.youtube-nocookie.com/embed/PJ95IclntIY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-laptops",
+   "title": "The Computer Chronicles - Laptops (1989)",
+   "name": "The Computer Chronicles - Laptops",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1785,
+   "thumb": "media/yt/zRCBepOHaYk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "zRCBepOHaYk",
+     "url": "https://www.youtube.com/watch?v=zRCBepOHaYk",
+     "embed": "https://www.youtube-nocookie.com/embed/zRCBepOHaYk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-low-cost-lans",
+   "title": "The Computer Chronicles - Low Cost LANs (1989)",
+   "name": "The Computer Chronicles - Low Cost LANs",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1659,
+   "thumb": "media/yt/8O9ygxelTiI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "8O9ygxelTiI",
+     "url": "https://www.youtube.com/watch?v=8O9ygxelTiI",
+     "embed": "https://www.youtube-nocookie.com/embed/8O9ygxelTiI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-macworld-san-francisco",
+   "title": "The Computer Chronicles - MacWorld San Francisco (1989)",
+   "name": "The Computer Chronicles - MacWorld San Francisco",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1669,
+   "thumb": "media/yt/QezmMA9AgkM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "QezmMA9AgkM",
+     "url": "https://www.youtube.com/watch?v=QezmMA9AgkM",
+     "embed": "https://www.youtube-nocookie.com/embed/QezmMA9AgkM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-new-laptops",
+   "title": "The Computer Chronicles - New Laptops (1989)",
+   "name": "The Computer Chronicles - New Laptops",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1719,
+   "thumb": "media/yt/8wibmbJ7o-I.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "8wibmbJ7o-I",
+     "url": "https://www.youtube.com/watch?v=8wibmbJ7o-I",
+     "embed": "https://www.youtube-nocookie.com/embed/8wibmbJ7o-I?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-personal-information-man",
+   "title": "The Computer Chronicles - Personal Information Management Software (PIMS) (1989)",
+   "name": "The Computer Chronicles - Personal Information Management Software (PIMS)",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1770,
+   "thumb": "media/yt/HB38RA5xYY0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "HB38RA5xYY0",
+     "url": "https://www.youtube.com/watch?v=HB38RA5xYY0",
+     "embed": "https://www.youtube-nocookie.com/embed/HB38RA5xYY0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-writing-software",
+   "title": "The Computer Chronicles - Writing Software (1989)",
+   "name": "The Computer Chronicles - Writing Software",
+   "year": 1989,
+   "chan": "The Computer Chronicles",
+   "dur": 1735,
+   "thumb": "media/yt/0IPoei_b6OM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0IPoei_b6OM",
+     "url": "https://www.youtube.com/watch?v=0IPoei_b6OM",
+     "embed": "https://www.youtube-nocookie.com/embed/0IPoei_b6OM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "the-little-death",
    "title": "The Little Death (1989)",
    "name": "The Little Death",
@@ -20897,6 +24302,531 @@
    "era": "era-9",
    "found_by": "channel sweep · @VintageCG",
    "approved": true
+  },
+  {
+   "slug": "the-computer-chronicles-amiga-3000",
+   "title": "The Computer Chronicles - Amiga 3000 (1990)",
+   "name": "The Computer Chronicles - Amiga 3000",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1750,
+   "thumb": "media/yt/T-IxHOB3Btg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "T-IxHOB3Btg",
+     "url": "https://www.youtube.com/watch?v=T-IxHOB3Btg",
+     "embed": "https://www.youtube-nocookie.com/embed/T-IxHOB3Btg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-cd-rom-software",
+   "title": "The Computer Chronicles - CD-ROM Software (1990)",
+   "name": "The Computer Chronicles - CD-ROM Software",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1533,
+   "thumb": "media/yt/hiJAPtsDiKg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "hiJAPtsDiKg",
+     "url": "https://www.youtube.com/watch?v=hiJAPtsDiKg",
+     "embed": "https://www.youtube-nocookie.com/embed/hiJAPtsDiKg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-ii-part-1",
+   "title": "The Computer Chronicles - Computer Bowl II Part 1 (1990)",
+   "name": "The Computer Chronicles - Computer Bowl II Part 1",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1726,
+   "thumb": "media/yt/GJbtdrMbPK4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "GJbtdrMbPK4",
+     "url": "https://www.youtube.com/watch?v=GJbtdrMbPK4",
+     "embed": "https://www.youtube-nocookie.com/embed/GJbtdrMbPK4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-ii-part-2",
+   "title": "The Computer Chronicles - Computer Bowl II Part 2 (1990)",
+   "name": "The Computer Chronicles - Computer Bowl II Part 2",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1627,
+   "thumb": "media/yt/NbjCZtBOWyk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "NbjCZtBOWyk",
+     "url": "https://www.youtube.com/watch?v=NbjCZtBOWyk",
+     "embed": "https://www.youtube-nocookie.com/embed/NbjCZtBOWyk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-viruses",
+   "title": "The Computer Chronicles - Computer Viruses (1990)",
+   "name": "The Computer Chronicles - Computer Viruses",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1757,
+   "thumb": "media/yt/xuE3zNiuErI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "xuE3zNiuErI",
+     "url": "https://www.youtube.com/watch?v=xuE3zNiuErI",
+     "embed": "https://www.youtube-nocookie.com/embed/xuE3zNiuErI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-on-campus",
+   "title": "The Computer Chronicles - Computers on Campus (1990)",
+   "name": "The Computer Chronicles - Computers on Campus",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1702,
+   "thumb": "media/yt/5eWdfwaXuhE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "5eWdfwaXuhE",
+     "url": "https://www.youtube.com/watch?v=5eWdfwaXuhE",
+     "embed": "https://www.youtube-nocookie.com/embed/5eWdfwaXuhE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-consumer-buyers-guide",
+   "title": "The Computer Chronicles - Consumer Buyer's Guide (1990)",
+   "name": "The Computer Chronicles - Consumer Buyer's Guide",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1769,
+   "thumb": "media/yt/eRpHYaBw9oY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "eRpHYaBw9oY",
+     "url": "https://www.youtube.com/watch?v=eRpHYaBw9oY",
+     "embed": "https://www.youtube-nocookie.com/embed/eRpHYaBw9oY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-handheld-computers",
+   "title": "The Computer Chronicles - Handheld Computers (1990)",
+   "name": "The Computer Chronicles - Handheld Computers",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1762,
+   "thumb": "media/yt/jOQq2AkRE4I.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "jOQq2AkRE4I",
+     "url": "https://www.youtube.com/watch?v=jOQq2AkRE4I",
+     "embed": "https://www.youtube-nocookie.com/embed/jOQq2AkRE4I?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-high-tech-france-part-1",
+   "title": "The Computer Chronicles - High Tech France Part 1 (1990)",
+   "name": "The Computer Chronicles - High Tech France Part 1",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1749,
+   "thumb": "media/yt/DUx7dP2S7h4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "DUx7dP2S7h4",
+     "url": "https://www.youtube.com/watch?v=DUx7dP2S7h4",
+     "embed": "https://www.youtube-nocookie.com/embed/DUx7dP2S7h4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-high-tech-france-part-2",
+   "title": "The Computer Chronicles - High Tech France Part 2 (1990)",
+   "name": "The Computer Chronicles - High Tech France Part 2",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1713,
+   "thumb": "media/yt/sbQPrcyCf00.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "sbQPrcyCf00",
+     "url": "https://www.youtube.com/watch?v=sbQPrcyCf00",
+     "embed": "https://www.youtube-nocookie.com/embed/sbQPrcyCf00?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-home-pcs",
+   "title": "The Computer Chronicles - Home PCs (1990)",
+   "name": "The Computer Chronicles - Home PCs",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1772,
+   "thumb": "media/yt/IdRdaZ-2rsg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "IdRdaZ-2rsg",
+     "url": "https://www.youtube.com/watch?v=IdRdaZ-2rsg",
+     "embed": "https://www.youtube-nocookie.com/embed/IdRdaZ-2rsg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-hypercard-2",
+   "title": "The Computer Chronicles - Hypercard (1990)",
+   "name": "The Computer Chronicles - Hypercard",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1743,
+   "thumb": "media/yt/v9o5Ld8hpug.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "v9o5Ld8hpug",
+     "url": "https://www.youtube.com/watch?v=v9o5Ld8hpug",
+     "embed": "https://www.youtube-nocookie.com/embed/v9o5Ld8hpug?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-hypertext",
+   "title": "The Computer Chronicles - Hypertext (1990)",
+   "name": "The Computer Chronicles - Hypertext",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1708,
+   "thumb": "media/yt/FzbHYl17x6U.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "FzbHYl17x6U",
+     "url": "https://www.youtube.com/watch?v=FzbHYl17x6U",
+     "embed": "https://www.youtube-nocookie.com/embed/FzbHYl17x6U?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-input-devices-2",
+   "title": "The Computer Chronicles - Input Devices (1990)",
+   "name": "The Computer Chronicles - Input Devices",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1731,
+   "thumb": "media/yt/3NQhSLYOspw.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3NQhSLYOspw",
+     "url": "https://www.youtube.com/watch?v=3NQhSLYOspw",
+     "embed": "https://www.youtube-nocookie.com/embed/3NQhSLYOspw?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-low-cost-laser-printers",
+   "title": "The Computer Chronicles - Low Cost Laser Printers (1990)",
+   "name": "The Computer Chronicles - Low Cost Laser Printers",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1667,
+   "thumb": "media/yt/M-uvBNBnNUg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "M-uvBNBnNUg",
+     "url": "https://www.youtube.com/watch?v=M-uvBNBnNUg",
+     "embed": "https://www.youtube-nocookie.com/embed/M-uvBNBnNUg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-memory-management",
+   "title": "The Computer Chronicles - Memory Management (1990)",
+   "name": "The Computer Chronicles - Memory Management",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1741,
+   "thumb": "media/yt/aqmBIoNEd7g.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "aqmBIoNEd7g",
+     "url": "https://www.youtube.com/watch?v=aqmBIoNEd7g",
+     "embed": "https://www.youtube-nocookie.com/embed/aqmBIoNEd7g?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-optical-storage",
+   "title": "The Computer Chronicles - Optical Storage (1990)",
+   "name": "The Computer Chronicles - Optical Storage",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1732,
+   "thumb": "media/yt/7JQmmoJO7G8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "7JQmmoJO7G8",
+     "url": "https://www.youtube.com/watch?v=7JQmmoJO7G8",
+     "embed": "https://www.youtube-nocookie.com/embed/7JQmmoJO7G8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-programming-languages",
+   "title": "The Computer Chronicles - Programming Languages (1990)",
+   "name": "The Computer Chronicles - Programming Languages",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1711,
+   "thumb": "media/yt/TcrmLfQx_to.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "TcrmLfQx_to",
+     "url": "https://www.youtube.com/watch?v=TcrmLfQx_to",
+     "embed": "https://www.youtube-nocookie.com/embed/TcrmLfQx_to?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-the-global-software-mark",
+   "title": "The Computer Chronicles - The Global Software Market (1990)",
+   "name": "The Computer Chronicles - The Global Software Market",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1768,
+   "thumb": "media/yt/mX35DxSFe1Q.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "mX35DxSFe1Q",
+     "url": "https://www.youtube.com/watch?v=mX35DxSFe1Q",
+     "embed": "https://www.youtube-nocookie.com/embed/mX35DxSFe1Q?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-video-game-consoles",
+   "title": "The Computer Chronicles - Video Game Consoles (1990)",
+   "name": "The Computer Chronicles - Video Game Consoles",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1723,
+   "thumb": "media/yt/kUB8dr_Kqf4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "kUB8dr_Kqf4",
+     "url": "https://www.youtube.com/watch?v=kUB8dr_Kqf4",
+     "embed": "https://www.youtube-nocookie.com/embed/kUB8dr_Kqf4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-windows-30",
+   "title": "The Computer Chronicles - Windows 3.0 (1990)",
+   "name": "The Computer Chronicles - Windows 3.0",
+   "year": 1990,
+   "chan": "The Computer Chronicles",
+   "dur": 1722,
+   "thumb": "media/yt/YewNEAIkbG4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "YewNEAIkbG4",
+     "url": "https://www.youtube.com/watch?v=YewNEAIkbG4",
+     "embed": "https://www.youtube-nocookie.com/embed/YewNEAIkbG4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
   },
   {
    "slug": "wallpaper-patterns-in-different-geometries-lms-1",
@@ -21251,6 +25181,456 @@
    "era": "era-9"
   },
   {
+   "slug": "the-computer-chronicles-cd-roms",
+   "title": "The Computer Chronicles - CD ROMs (1991)",
+   "name": "The Computer Chronicles - CD ROMs",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1745,
+   "thumb": "media/yt/Z2FtriDClE4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Z2FtriDClE4",
+     "url": "https://www.youtube.com/watch?v=Z2FtriDClE4",
+     "embed": "https://www.youtube-nocookie.com/embed/Z2FtriDClE4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-ces",
+   "title": "The Computer Chronicles - CES (1991)",
+   "name": "The Computer Chronicles - CES",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1764,
+   "thumb": "media/yt/o1wwjwJ0bCg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "o1wwjwJ0bCg",
+     "url": "https://www.youtube.com/watch?v=o1wwjwJ0bCg",
+     "embed": "https://www.youtube-nocookie.com/embed/o1wwjwJ0bCg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-iii-part-1",
+   "title": "The Computer Chronicles - Computer Bowl III Part 1 (1991)",
+   "name": "The Computer Chronicles - Computer Bowl III Part 1",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1659,
+   "thumb": "media/yt/p-FFvsRLghw.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "p-FFvsRLghw",
+     "url": "https://www.youtube.com/watch?v=p-FFvsRLghw",
+     "embed": "https://www.youtube-nocookie.com/embed/p-FFvsRLghw?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-iii-part-2",
+   "title": "The Computer Chronicles - Computer Bowl III Part 2 (1991)",
+   "name": "The Computer Chronicles - Computer Bowl III Part 2",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1699,
+   "thumb": "media/yt/aYGllfswfuA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "aYGllfswfuA",
+     "url": "https://www.youtube.com/watch?v=aYGllfswfuA",
+     "embed": "https://www.youtube-nocookie.com/embed/aYGllfswfuA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-displays",
+   "title": "The Computer Chronicles - Computer Displays (1991)",
+   "name": "The Computer Chronicles - Computer Displays",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1739,
+   "thumb": "media/yt/CKf7Oc60fVM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "CKf7Oc60fVM",
+     "url": "https://www.youtube.com/watch?v=CKf7Oc60fVM",
+     "embed": "https://www.youtube-nocookie.com/embed/CKf7Oc60fVM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-games",
+   "title": "The Computer Chronicles - Computer Games (1991)",
+   "name": "The Computer Chronicles - Computer Games",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1747,
+   "thumb": "media/yt/AdkD4lZqV0o.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "AdkD4lZqV0o",
+     "url": "https://www.youtube.com/watch?v=AdkD4lZqV0o",
+     "embed": "https://www.youtube-nocookie.com/embed/AdkD4lZqV0o?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-medicine",
+   "title": "The Computer Chronicles - Computers and Medicine (1991)",
+   "name": "The Computer Chronicles - Computers and Medicine",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1712,
+   "thumb": "media/yt/Pufguf4KJfI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Pufguf4KJfI",
+     "url": "https://www.youtube.com/watch?v=Pufguf4KJfI",
+     "embed": "https://www.youtube-nocookie.com/embed/Pufguf4KJfI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-sports",
+   "title": "The Computer Chronicles - Computers and Sports (1991)",
+   "name": "The Computer Chronicles - Computers and Sports",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1686,
+   "thumb": "media/yt/Z-mjPHN1iHc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Z-mjPHN1iHc",
+     "url": "https://www.youtube.com/watch?v=Z-mjPHN1iHc",
+     "embed": "https://www.youtube-nocookie.com/embed/Z-mjPHN1iHc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-connectivity",
+   "title": "The Computer Chronicles - Connectivity (1991)",
+   "name": "The Computer Chronicles - Connectivity",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1700,
+   "thumb": "media/yt/g9H-y8sxlGY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "g9H-y8sxlGY",
+     "url": "https://www.youtube.com/watch?v=g9H-y8sxlGY",
+     "embed": "https://www.youtube-nocookie.com/embed/g9H-y8sxlGY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-consumer-buying-guide-4",
+   "title": "The Computer Chronicles - Consumer Buying Guide (1991)",
+   "name": "The Computer Chronicles - Consumer Buying Guide",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1627,
+   "thumb": "media/yt/3-nHT-hpqh4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3-nHT-hpqh4",
+     "url": "https://www.youtube.com/watch?v=3-nHT-hpqh4",
+     "embed": "https://www.youtube-nocookie.com/embed/3-nHT-hpqh4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-file-compression",
+   "title": "The Computer Chronicles - File Compression (1991)",
+   "name": "The Computer Chronicles - File Compression",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1719,
+   "thumb": "media/yt/ALfkAjCUSLg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ALfkAjCUSLg",
+     "url": "https://www.youtube.com/watch?v=ALfkAjCUSLg",
+     "embed": "https://www.youtube-nocookie.com/embed/ALfkAjCUSLg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-font-city",
+   "title": "The Computer Chronicles - Font City (1991)",
+   "name": "The Computer Chronicles - Font City",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1768,
+   "thumb": "media/yt/zQgzRBHL7LQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "zQgzRBHL7LQ",
+     "url": "https://www.youtube.com/watch?v=zQgzRBHL7LQ",
+     "embed": "https://www.youtube-nocookie.com/embed/zQgzRBHL7LQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-foreign-language-softwar-2",
+   "title": "The Computer Chronicles - Foreign Language Software (1991)",
+   "name": "The Computer Chronicles - Foreign Language Software",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1717,
+   "thumb": "media/yt/0X57aS_ravE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0X57aS_ravE",
+     "url": "https://www.youtube.com/watch?v=0X57aS_ravE",
+     "embed": "https://www.youtube-nocookie.com/embed/0X57aS_ravE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-groupware",
+   "title": "The Computer Chronicles - Groupware (1991)",
+   "name": "The Computer Chronicles - Groupware",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1689,
+   "thumb": "media/yt/kkCs3fR_iYw.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "kkCs3fR_iYw",
+     "url": "https://www.youtube.com/watch?v=kkCs3fR_iYw",
+     "embed": "https://www.youtube-nocookie.com/embed/kkCs3fR_iYw?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-laptops-and-handhelds",
+   "title": "The Computer Chronicles - Laptops and Handhelds (1991)",
+   "name": "The Computer Chronicles - Laptops and Handhelds",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1726,
+   "thumb": "media/yt/2i0cEO2UeBg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2i0cEO2UeBg",
+     "url": "https://www.youtube.com/watch?v=2i0cEO2UeBg",
+     "embed": "https://www.youtube-nocookie.com/embed/2i0cEO2UeBg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-macintosh-system-70",
+   "title": "The Computer Chronicles - Macintosh System 7.0 (1991)",
+   "name": "The Computer Chronicles - Macintosh System 7.0",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1712,
+   "thumb": "media/yt/3OPqVHP00tc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "3OPqVHP00tc",
+     "url": "https://www.youtube.com/watch?v=3OPqVHP00tc",
+     "embed": "https://www.youtube-nocookie.com/embed/3OPqVHP00tc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-macros",
+   "title": "The Computer Chronicles - Macros (1991)",
+   "name": "The Computer Chronicles - Macros",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1780,
+   "thumb": "media/yt/7pW_5wjQT6M.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "7pW_5wjQT6M",
+     "url": "https://www.youtube.com/watch?v=7pW_5wjQT6M",
+     "embed": "https://www.youtube-nocookie.com/embed/7pW_5wjQT6M?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-network-security",
+   "title": "The Computer Chronicles - Network Security (1991)",
+   "name": "The Computer Chronicles - Network Security",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1766,
+   "thumb": "media/yt/CTiIwne5sNY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "CTiIwne5sNY",
+     "url": "https://www.youtube.com/watch?v=CTiIwne5sNY",
+     "embed": "https://www.youtube-nocookie.com/embed/CTiIwne5sNY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
    "slug": "1991-the-computer-chronicle",
    "title": "1991 The Computer Chronicles - Neural Networks",
    "name": "The Computer Chronicles - Neural Networks",
@@ -21280,6 +25660,131 @@
      "embed": "https://www.youtube-nocookie.com/embed/LbZa-8_01Wo?rel=0",
      "status": "live",
      "oembed": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-scanners",
+   "title": "The Computer Chronicles - Scanners (1991)",
+   "name": "The Computer Chronicles - Scanners",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1748,
+   "thumb": "media/yt/SyTiOCqfH8I.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SyTiOCqfH8I",
+     "url": "https://www.youtube.com/watch?v=SyTiOCqfH8I",
+     "embed": "https://www.youtube-nocookie.com/embed/SyTiOCqfH8I?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-sleeper-software",
+   "title": "The Computer Chronicles - Sleeper Software (1991)",
+   "name": "The Computer Chronicles - Sleeper Software",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1723,
+   "thumb": "media/yt/1Rukq_prUTM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1Rukq_prUTM",
+     "url": "https://www.youtube.com/watch?v=1Rukq_prUTM",
+     "embed": "https://www.youtube-nocookie.com/embed/1Rukq_prUTM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-software-for-schools",
+   "title": "The Computer Chronicles - Software for Schools (1991)",
+   "name": "The Computer Chronicles - Software for Schools",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1721,
+   "thumb": "media/yt/fb9mZXE9lK8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "fb9mZXE9lK8",
+     "url": "https://www.youtube.com/watch?v=fb9mZXE9lK8",
+     "embed": "https://www.youtube-nocookie.com/embed/fb9mZXE9lK8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-tandyradio-shack-compute",
+   "title": "The Computer Chronicles - Tandy/Radio Shack Computers (1991)",
+   "name": "The Computer Chronicles - Tandy/Radio Shack Computers",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1740,
+   "thumb": "media/yt/sb5JGdKOHlA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "sb5JGdKOHlA",
+     "url": "https://www.youtube.com/watch?v=sb5JGdKOHlA",
+     "embed": "https://www.youtube-nocookie.com/embed/sb5JGdKOHlA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-windows-apps",
+   "title": "The Computer Chronicles - Windows Apps (1991)",
+   "name": "The Computer Chronicles - Windows Apps",
+   "year": 1991,
+   "chan": "The Computer Chronicles",
+   "dur": 1735,
+   "thumb": "media/yt/Q7AQVdmnZi4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Q7AQVdmnZi4",
+     "url": "https://www.youtube.com/watch?v=Q7AQVdmnZi4",
+     "embed": "https://www.youtube-nocookie.com/embed/Q7AQVdmnZi4?rel=0",
+     "status": "live"
     }
    ],
    "era": "era-9"
@@ -21477,6 +25982,631 @@
    "era": "era-9",
    "found_by": "channel sweep · @VintageCG",
    "approved": true
+  },
+  {
+   "slug": "the-computer-chronicles-build-your-own-pc",
+   "title": "The Computer Chronicles - Build Your Own PC (1992)",
+   "name": "The Computer Chronicles - Build Your Own PC",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1681,
+   "thumb": "media/yt/J5_doCwi608.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "J5_doCwi608",
+     "url": "https://www.youtube.com/watch?v=J5_doCwi608",
+     "embed": "https://www.youtube-nocookie.com/embed/J5_doCwi608?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-cd-rom-software-2",
+   "title": "The Computer Chronicles - CD-ROM Software (1992)",
+   "name": "The Computer Chronicles - CD-ROM Software",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1626,
+   "thumb": "media/yt/9GGs0jidmj4.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9GGs0jidmj4",
+     "url": "https://www.youtube.com/watch?v=9GGs0jidmj4",
+     "embed": "https://www.youtube-nocookie.com/embed/9GGs0jidmj4?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-comdex-fall-1992",
+   "title": "The Computer Chronicles - Comdex Fall 1992 (1992)",
+   "name": "The Computer Chronicles - Comdex Fall 1992",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1607,
+   "thumb": "media/yt/evMilwVBHAQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "evMilwVBHAQ",
+     "url": "https://www.youtube.com/watch?v=evMilwVBHAQ",
+     "embed": "https://www.youtube-nocookie.com/embed/evMilwVBHAQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-comdex-spring-1992",
+   "title": "The Computer Chronicles - Comdex Spring 1992 (1992)",
+   "name": "The Computer Chronicles - Comdex Spring 1992",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1563,
+   "thumb": "media/yt/LbeFG-G2eSY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "LbeFG-G2eSY",
+     "url": "https://www.youtube.com/watch?v=LbeFG-G2eSY",
+     "embed": "https://www.youtube-nocookie.com/embed/LbeFG-G2eSY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-art",
+   "title": "The Computer Chronicles - Computer Art (1992)",
+   "name": "The Computer Chronicles - Computer Art",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1609,
+   "thumb": "media/yt/q2I0IOfnho0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "q2I0IOfnho0",
+     "url": "https://www.youtube.com/watch?v=q2I0IOfnho0",
+     "embed": "https://www.youtube-nocookie.com/embed/q2I0IOfnho0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-iv-part-1",
+   "title": "The Computer Chronicles - Computer Bowl IV Part 1 (1992)",
+   "name": "The Computer Chronicles - Computer Bowl IV Part 1",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1662,
+   "thumb": "media/yt/f3ugQKKbUQY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "f3ugQKKbUQY",
+     "url": "https://www.youtube.com/watch?v=f3ugQKKbUQY",
+     "embed": "https://www.youtube-nocookie.com/embed/f3ugQKKbUQY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-iv-part-2",
+   "title": "The Computer Chronicles - Computer Bowl IV Part 2 (1992)",
+   "name": "The Computer Chronicles - Computer Bowl IV Part 2",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1704,
+   "thumb": "media/yt/2acwnIQkavE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2acwnIQkavE",
+     "url": "https://www.youtube.com/watch?v=2acwnIQkavE",
+     "embed": "https://www.youtube-nocookie.com/embed/2acwnIQkavE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-video",
+   "title": "The Computer Chronicles - Computer Video (1992)",
+   "name": "The Computer Chronicles - Computer Video",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1697,
+   "thumb": "media/yt/OR75XcJbfrc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "OR75XcJbfrc",
+     "url": "https://www.youtube.com/watch?v=OR75XcJbfrc",
+     "embed": "https://www.youtube-nocookie.com/embed/OR75XcJbfrc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-kids",
+   "title": "The Computer Chronicles - Computers and Kids (1992)",
+   "name": "The Computer Chronicles - Computers and Kids",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1539,
+   "thumb": "media/yt/0WwGRxEJgRM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "0WwGRxEJgRM",
+     "url": "https://www.youtube.com/watch?v=0WwGRxEJgRM",
+     "embed": "https://www.youtube-nocookie.com/embed/0WwGRxEJgRM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computers-and-the-disabl",
+   "title": "The Computer Chronicles - Computers and the Disabled (1992)",
+   "name": "The Computer Chronicles - Computers and the Disabled",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1713,
+   "thumb": "media/yt/84C5SFRh81M.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "84C5SFRh81M",
+     "url": "https://www.youtube.com/watch?v=84C5SFRh81M",
+     "embed": "https://www.youtube-nocookie.com/embed/84C5SFRh81M?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-consumer-buying-guide-2",
+   "title": "The Computer Chronicles - Consumer Buying Guide (1992)",
+   "name": "The Computer Chronicles - Consumer Buying Guide",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1536,
+   "thumb": "media/yt/Vj45Ny19Vgc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Vj45Ny19Vgc",
+     "url": "https://www.youtube.com/watch?v=Vj45Ny19Vgc",
+     "embed": "https://www.youtube-nocookie.com/embed/Vj45Ny19Vgc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-diagnostic-software",
+   "title": "The Computer Chronicles - Diagnostic Software (1992)",
+   "name": "The Computer Chronicles - Diagnostic Software",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1636,
+   "thumb": "media/yt/maylZmLHfnk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "maylZmLHfnk",
+     "url": "https://www.youtube.com/watch?v=maylZmLHfnk",
+     "embed": "https://www.youtube-nocookie.com/embed/maylZmLHfnk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-easy-to-use-databases",
+   "title": "The Computer Chronicles - Easy to Use Databases (1992)",
+   "name": "The Computer Chronicles - Easy to Use Databases",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1608,
+   "thumb": "media/yt/9FYATYZMIR8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9FYATYZMIR8",
+     "url": "https://www.youtube.com/watch?v=9FYATYZMIR8",
+     "embed": "https://www.youtube-nocookie.com/embed/9FYATYZMIR8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-electronic-publishing",
+   "title": "The Computer Chronicles - Electronic Publishing (1992)",
+   "name": "The Computer Chronicles - Electronic Publishing",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1551,
+   "thumb": "media/yt/TJYegKYnDW0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "TJYegKYnDW0",
+     "url": "https://www.youtube.com/watch?v=TJYegKYnDW0",
+     "embed": "https://www.youtube-nocookie.com/embed/TJYegKYnDW0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-european-technology-roun",
+   "title": "The Computer Chronicles - European Technology Roundtable Exhibition Vienna (1992)",
+   "name": "The Computer Chronicles - European Technology Roundtable Exhibition Vienna",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1685,
+   "thumb": "media/yt/6LBeUoi6LzQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "6LBeUoi6LzQ",
+     "url": "https://www.youtube.com/watch?v=6LBeUoi6LzQ",
+     "embed": "https://www.youtube-nocookie.com/embed/6LBeUoi6LzQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-integrated-software",
+   "title": "The Computer Chronicles - Integrated Software (1992)",
+   "name": "The Computer Chronicles - Integrated Software",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1676,
+   "thumb": "media/yt/SJdYuMzyEJM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "SJdYuMzyEJM",
+     "url": "https://www.youtube.com/watch?v=SJdYuMzyEJM",
+     "embed": "https://www.youtube-nocookie.com/embed/SJdYuMzyEJM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-midi-music-2",
+   "title": "The Computer Chronicles - MIDI Music 2 (1992)",
+   "name": "The Computer Chronicles - MIDI Music 2",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1736,
+   "thumb": "media/yt/lOvkuPzXmnI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "lOvkuPzXmnI",
+     "url": "https://www.youtube.com/watch?v=lOvkuPzXmnI",
+     "embed": "https://www.youtube-nocookie.com/embed/lOvkuPzXmnI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-new-generation-spreadshe",
+   "title": "The Computer Chronicles - New Generation Spreadsheets (1992)",
+   "name": "The Computer Chronicles - New Generation Spreadsheets",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1598,
+   "thumb": "media/yt/N4EI3a3C-3I.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "N4EI3a3C-3I",
+     "url": "https://www.youtube.com/watch?v=N4EI3a3C-3I",
+     "embed": "https://www.youtube-nocookie.com/embed/N4EI3a3C-3I?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-notebook-computers",
+   "title": "The Computer Chronicles - Notebook Computers (1992)",
+   "name": "The Computer Chronicles - Notebook Computers",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1595,
+   "thumb": "media/yt/i_AB-es1pFk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "i_AB-es1pFk",
+     "url": "https://www.youtube.com/watch?v=i_AB-es1pFk",
+     "embed": "https://www.youtube-nocookie.com/embed/i_AB-es1pFk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-secrets-of-word-perfect",
+   "title": "The Computer Chronicles - Secrets of Word Perfect (1992)",
+   "name": "The Computer Chronicles - Secrets of Word Perfect",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1552,
+   "thumb": "media/yt/kHel_aqMOb8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "kHel_aqMOb8",
+     "url": "https://www.youtube.com/watch?v=kHel_aqMOb8",
+     "embed": "https://www.youtube-nocookie.com/embed/kHel_aqMOb8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-space-and-astronomy",
+   "title": "The Computer Chronicles - Space and Astronomy (1992)",
+   "name": "The Computer Chronicles - Space and Astronomy",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1622,
+   "thumb": "media/yt/jdTTVIX837Y.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "jdTTVIX837Y",
+     "url": "https://www.youtube.com/watch?v=jdTTVIX837Y",
+     "embed": "https://www.youtube-nocookie.com/embed/jdTTVIX837Y?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-tax-preparation-software",
+   "title": "The Computer Chronicles - Tax Preparation Software (1992)",
+   "name": "The Computer Chronicles - Tax Preparation Software",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1655,
+   "thumb": "media/yt/sOZ9dsAYvVk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "sOZ9dsAYvVk",
+     "url": "https://www.youtube.com/watch?v=sOZ9dsAYvVk",
+     "embed": "https://www.youtube-nocookie.com/embed/sOZ9dsAYvVk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-virtual-reality",
+   "title": "The Computer Chronicles - Virtual Reality (1992)",
+   "name": "The Computer Chronicles - Virtual Reality",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1619,
+   "thumb": "media/yt/wfHMSqQKg6s.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "wfHMSqQKg6s",
+     "url": "https://www.youtube.com/watch?v=wfHMSqQKg6s",
+     "embed": "https://www.youtube-nocookie.com/embed/wfHMSqQKg6s?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-windows-enhancements-har",
+   "title": "The Computer Chronicles - Windows Enhancements - Hardware (1992)",
+   "name": "The Computer Chronicles - Windows Enhancements - Hardware",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1464,
+   "thumb": "media/yt/d98Xyssu_oM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "d98Xyssu_oM",
+     "url": "https://www.youtube.com/watch?v=d98Xyssu_oM",
+     "embed": "https://www.youtube-nocookie.com/embed/d98Xyssu_oM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-windows-enhancements-sof",
+   "title": "The Computer Chronicles - Windows Enhancements - Software (1992)",
+   "name": "The Computer Chronicles - Windows Enhancements - Software",
+   "year": 1992,
+   "chan": "The Computer Chronicles",
+   "dur": 1608,
+   "thumb": "media/yt/93qjf290Mfw.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "93qjf290Mfw",
+     "url": "https://www.youtube.com/watch?v=93qjf290Mfw",
+     "embed": "https://www.youtube-nocookie.com/embed/93qjf290Mfw?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
   },
   {
    "slug": "1992-the-machine-that-chang",
@@ -21733,6 +26863,731 @@
    "n_live": 1,
    "n_total": 1,
    "year_source": "description",
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-baseball-software",
+   "title": "The Computer Chronicles - Baseball Software (1993)",
+   "name": "The Computer Chronicles - Baseball Software",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1505,
+   "thumb": "media/yt/WhxHLG4FsWQ.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "WhxHLG4FsWQ",
+     "url": "https://www.youtube.com/watch?v=WhxHLG4FsWQ",
+     "embed": "https://www.youtube-nocookie.com/embed/WhxHLG4FsWQ?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-beginners-guide-to-pcs",
+   "title": "The Computer Chronicles - Beginner's Guide to PCs (1993)",
+   "name": "The Computer Chronicles - Beginner's Guide to PCs",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1638,
+   "thumb": "media/yt/UYeMDcMLxKA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "UYeMDcMLxKA",
+     "url": "https://www.youtube.com/watch?v=UYeMDcMLxKA",
+     "embed": "https://www.youtube-nocookie.com/embed/UYeMDcMLxKA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-buying-a-new-computer",
+   "title": "The Computer Chronicles - Buying a New Computer (1993)",
+   "name": "The Computer Chronicles - Buying a New Computer",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1535,
+   "thumb": "media/yt/2EBaj3kJNGI.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "2EBaj3kJNGI",
+     "url": "https://www.youtube.com/watch?v=2EBaj3kJNGI",
+     "embed": "https://www.youtube-nocookie.com/embed/2EBaj3kJNGI?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-cd-rom",
+   "title": "The Computer Chronicles - CD-ROM (1993)",
+   "name": "The Computer Chronicles - CD-ROM",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1599,
+   "thumb": "media/yt/7cUjJui26zY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "7cUjJui26zY",
+     "url": "https://www.youtube.com/watch?v=7cUjJui26zY",
+     "embed": "https://www.youtube-nocookie.com/embed/7cUjJui26zY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-color-printers",
+   "title": "The Computer Chronicles - Color Printers (1993)",
+   "name": "The Computer Chronicles - Color Printers",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1236,
+   "thumb": "media/yt/ozcE24FVqZg.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "ozcE24FVqZg",
+     "url": "https://www.youtube.com/watch?v=ozcE24FVqZg",
+     "embed": "https://www.youtube-nocookie.com/embed/ozcE24FVqZg?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-comdex",
+   "title": "The Computer Chronicles - Comdex (1993)",
+   "name": "The Computer Chronicles - Comdex",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1605,
+   "thumb": "media/yt/nMqc_0ZK3UA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "nMqc_0ZK3UA",
+     "url": "https://www.youtube.com/watch?v=nMqc_0ZK3UA",
+     "embed": "https://www.youtube-nocookie.com/embed/nMqc_0ZK3UA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-v-part-1",
+   "title": "The Computer Chronicles - Computer Bowl V Part 1 (1993)",
+   "name": "The Computer Chronicles - Computer Bowl V Part 1",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1611,
+   "thumb": "media/yt/TPY6g_reWgs.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "TPY6g_reWgs",
+     "url": "https://www.youtube.com/watch?v=TPY6g_reWgs",
+     "embed": "https://www.youtube-nocookie.com/embed/TPY6g_reWgs?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-bowl-v-part-2",
+   "title": "The Computer Chronicles - Computer Bowl V Part 2 (1993)",
+   "name": "The Computer Chronicles - Computer Bowl V Part 2",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1630,
+   "thumb": "media/yt/9AXan76UEYw.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9AXan76UEYw",
+     "url": "https://www.youtube.com/watch?v=9AXan76UEYw",
+     "embed": "https://www.youtube-nocookie.com/embed/9AXan76UEYw?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-computer-ergonomics",
+   "title": "The Computer Chronicles - Computer Ergonomics (1993)",
+   "name": "The Computer Chronicles - Computer Ergonomics",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1660,
+   "thumb": "media/yt/83IxRHJPDd8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "83IxRHJPDd8",
+     "url": "https://www.youtube.com/watch?v=83IxRHJPDd8",
+     "embed": "https://www.youtube-nocookie.com/embed/83IxRHJPDd8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-consumer-buying-guide",
+   "title": "The Computer Chronicles - Consumer Buying Guide (1993)",
+   "name": "The Computer Chronicles - Consumer Buying Guide",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1528,
+   "thumb": "media/yt/_M_Vt_7CEKk.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "_M_Vt_7CEKk",
+     "url": "https://www.youtube.com/watch?v=_M_Vt_7CEKk",
+     "embed": "https://www.youtube-nocookie.com/embed/_M_Vt_7CEKk?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-consumer-buying-guide-3",
+   "title": "The Computer Chronicles - Consumer Buying Guide (1993)",
+   "name": "The Computer Chronicles - Consumer Buying Guide",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1607,
+   "thumb": "media/yt/CJmv0o3w8SU.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "CJmv0o3w8SU",
+     "url": "https://www.youtube.com/watch?v=CJmv0o3w8SU",
+     "embed": "https://www.youtube-nocookie.com/embed/CJmv0o3w8SU?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-consumer-electronics-sho",
+   "title": "The Computer Chronicles - Consumer Electronics Show (1993)",
+   "name": "The Computer Chronicles - Consumer Electronics Show",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1608,
+   "thumb": "media/yt/s2brw5xHkjs.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "s2brw5xHkjs",
+     "url": "https://www.youtube.com/watch?v=s2brw5xHkjs",
+     "embed": "https://www.youtube-nocookie.com/embed/s2brw5xHkjs?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-creative-writing-softwar",
+   "title": "The Computer Chronicles - Creative Writing Software (1993)",
+   "name": "The Computer Chronicles - Creative Writing Software",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1613,
+   "thumb": "media/yt/zApktGYRPac.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "zApktGYRPac",
+     "url": "https://www.youtube.com/watch?v=zApktGYRPac",
+     "embed": "https://www.youtube-nocookie.com/embed/zApktGYRPac?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-digital-journalism",
+   "title": "The Computer Chronicles - Digital Journalism (1993)",
+   "name": "The Computer Chronicles - Digital Journalism",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1568,
+   "thumb": "media/yt/18u68dckcMc.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "18u68dckcMc",
+     "url": "https://www.youtube.com/watch?v=18u68dckcMc",
+     "embed": "https://www.youtube-nocookie.com/embed/18u68dckcMc?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-digital-photography",
+   "title": "The Computer Chronicles - Digital Photography (1993)",
+   "name": "The Computer Chronicles - Digital Photography",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1562,
+   "thumb": "media/yt/f3TixwM3cFA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "f3TixwM3cFA",
+     "url": "https://www.youtube.com/watch?v=f3TixwM3cFA",
+     "embed": "https://www.youtube-nocookie.com/embed/f3TixwM3cFA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-etre-barcelona",
+   "title": "The Computer Chronicles - ETRE Barcelona (1993)",
+   "name": "The Computer Chronicles - ETRE Barcelona",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1767,
+   "thumb": "media/yt/VpKGhCPk8PU.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "VpKGhCPk8PU",
+     "url": "https://www.youtube.com/watch?v=VpKGhCPk8PU",
+     "embed": "https://www.youtube-nocookie.com/embed/VpKGhCPk8PU?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-high-tech-israel",
+   "title": "The Computer Chronicles - High Tech Israel (1993)",
+   "name": "The Computer Chronicles - High Tech Israel",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1613,
+   "thumb": "media/yt/sFvPeCrp4EY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "sFvPeCrp4EY",
+     "url": "https://www.youtube.com/watch?v=sFvPeCrp4EY",
+     "embed": "https://www.youtube-nocookie.com/embed/sFvPeCrp4EY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-ms-dos-62",
+   "title": "The Computer Chronicles - MS-DOS 6.2 (1993)",
+   "name": "The Computer Chronicles - MS-DOS 6.2",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1591,
+   "thumb": "media/yt/Zd5Bqxa5Gfw.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "Zd5Bqxa5Gfw",
+     "url": "https://www.youtube.com/watch?v=Zd5Bqxa5Gfw",
+     "embed": "https://www.youtube-nocookie.com/embed/Zd5Bqxa5Gfw?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-organizer-software",
+   "title": "The Computer Chronicles - Organizer Software (1993)",
+   "name": "The Computer Chronicles - Organizer Software",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1623,
+   "thumb": "media/yt/O2Grjocp0DE.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "O2Grjocp0DE",
+     "url": "https://www.youtube.com/watch?v=O2Grjocp0DE",
+     "embed": "https://www.youtube-nocookie.com/embed/O2Grjocp0DE?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-os2",
+   "title": "The Computer Chronicles - OS/2 (1993)",
+   "name": "The Computer Chronicles - OS/2",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1631,
+   "thumb": "media/yt/1YcGX5F9ZZA.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "1YcGX5F9ZZA",
+     "url": "https://www.youtube.com/watch?v=1YcGX5F9ZZA",
+     "embed": "https://www.youtube-nocookie.com/embed/1YcGX5F9ZZA?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-pentium-pcs",
+   "title": "The Computer Chronicles - Pentium PCs (1993)",
+   "name": "The Computer Chronicles - Pentium PCs",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1601,
+   "thumb": "media/yt/9VhfvVRPlwY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "9VhfvVRPlwY",
+     "url": "https://www.youtube.com/watch?v=9VhfvVRPlwY",
+     "embed": "https://www.youtube-nocookie.com/embed/9VhfvVRPlwY?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-screen-savers-and-wallpa",
+   "title": "The Computer Chronicles - Screen Savers and Wallpapers (1993)",
+   "name": "The Computer Chronicles - Screen Savers and Wallpapers",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1558,
+   "thumb": "media/yt/HXFExzAYg4U.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "HXFExzAYg4U",
+     "url": "https://www.youtube.com/watch?v=HXFExzAYg4U",
+     "embed": "https://www.youtube-nocookie.com/embed/HXFExzAYg4U?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-self-improvement-softwar",
+   "title": "The Computer Chronicles - Self Improvement Software (1993)",
+   "name": "The Computer Chronicles - Self Improvement Software",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1624,
+   "thumb": "media/yt/W7HD3H_9r0A.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "W7HD3H_9r0A",
+     "url": "https://www.youtube.com/watch?v=W7HD3H_9r0A",
+     "embed": "https://www.youtube-nocookie.com/embed/W7HD3H_9r0A?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-small-business-software",
+   "title": "The Computer Chronicles - Small Business Software (1993)",
+   "name": "The Computer Chronicles - Small Business Software",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1526,
+   "thumb": "media/yt/kR6PhctH_K0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "kR6PhctH_K0",
+     "url": "https://www.youtube.com/watch?v=kR6PhctH_K0",
+     "embed": "https://www.youtube-nocookie.com/embed/kR6PhctH_K0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-spa-codie-awards-1993",
+   "title": "The Computer Chronicles - SPA Codie Awards 1993 (1993)",
+   "name": "The Computer Chronicles - SPA Codie Awards 1993",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1607,
+   "thumb": "media/yt/cWq97fXNm-8.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "cWq97fXNm-8",
+     "url": "https://www.youtube.com/watch?v=cWq97fXNm-8",
+     "embed": "https://www.youtube-nocookie.com/embed/cWq97fXNm-8?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-tax-software",
+   "title": "The Computer Chronicles - Tax Software (1993)",
+   "name": "The Computer Chronicles - Tax Software",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1486,
+   "thumb": "media/yt/6xruLYCxlSo.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "6xruLYCxlSo",
+     "url": "https://www.youtube.com/watch?v=6xruLYCxlSo",
+     "embed": "https://www.youtube-nocookie.com/embed/6xruLYCxlSo?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-the-internet",
+   "title": "The Computer Chronicles - The Internet (1993)",
+   "name": "The Computer Chronicles - The Internet",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1607,
+   "thumb": "media/yt/U_o8gerare0.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "U_o8gerare0",
+     "url": "https://www.youtube.com/watch?v=U_o8gerare0",
+     "embed": "https://www.youtube-nocookie.com/embed/U_o8gerare0?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-visual-programming-langu",
+   "title": "The Computer Chronicles - Visual Programming Languages (1993)",
+   "name": "The Computer Chronicles - Visual Programming Languages",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1648,
+   "thumb": "media/yt/AEkweKSdnHM.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "AEkweKSdnHM",
+     "url": "https://www.youtube.com/watch?v=AEkweKSdnHM",
+     "embed": "https://www.youtube-nocookie.com/embed/AEkweKSdnHM?rel=0",
+     "status": "live"
+    }
+   ],
+   "era": "era-9"
+  },
+  {
+   "slug": "the-computer-chronicles-windows-nt",
+   "title": "The Computer Chronicles - Windows NT (1993)",
+   "name": "The Computer Chronicles - Windows NT",
+   "year": 1993,
+   "chan": "The Computer Chronicles",
+   "dur": 1571,
+   "thumb": "media/yt/cHkdQ5CG0PY.jpg",
+   "collections": [
+    "computer-chronicles"
+   ],
+   "status": "live",
+   "added": "2026-10-02",
+   "checked": null,
+   "sources": [
+    {
+     "kind": "youtube",
+     "id": "cHkdQ5CG0PY",
+     "url": "https://www.youtube.com/watch?v=cHkdQ5CG0PY",
+     "embed": "https://www.youtube-nocookie.com/embed/cHkdQ5CG0PY?rel=0",
+     "status": "live"
+    }
+   ],
    "era": "era-9"
   },
   {

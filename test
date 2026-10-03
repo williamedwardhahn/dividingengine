@@ -474,8 +474,16 @@ def test_browser():
             check('the glossary grows on scroll',
                   pg.locator('.gloss .gitem').count() > n0,
                   f"{n0} -> {pg.locator('.gloss .gitem').count()}")
+            # Scoped to the glossary. Counting the whole document measured the
+            # timeline scale bar, which drew a tick per dated card and was half
+            # the nodes on every page.
+            gnodes = pg.evaluate("document.querySelectorAll('#glhost *').length")
+            check('the glossary does not flood the DOM', gnodes < 2500, f'{gnodes} nodes')
+            ticks = pg.evaluate("document.querySelectorAll('#ticks span').length")
+            check('the scale bar collapses its ticks', ticks < 800,
+                  f'{ticks} ticks')
             nodes = pg.evaluate("document.querySelectorAll('*').length")
-            check('the glossary does not flood the DOM', nodes < 4000, f'{nodes} nodes')
+            check('the page as a whole stays light', nodes < 4000, f'{nodes} nodes')
             # One sample measures whatever else the machine was doing. Take the
             # median of three cold loads of the heaviest entry point (glossary
             # derives the whole apparatus before it can paint).
@@ -570,9 +578,15 @@ def test_browser():
             shown = pg.eval_on_selector_all('.gloss .gitem', 'e=>e.filter(x=>!x.hidden).length')
             check('the glossary can be filtered', 0 < shown < 40, f'{shown} shown')
             pg.goto('http://127.0.0.1:8911/#era-4/8', wait_until='load'); pg.wait_for_timeout(600)
-            check('the timeline scale is drawn',
-                  pg.locator('#ticks .tk').count() > 300,
-                  f"{pg.locator('#ticks .tk').count()} ticks")
+            # Was '> 300 ticks', which only held because every dated card drew
+            # its own, most of them stacked invisibly on one pixel. What matters
+            # is that marks are drawn and that they span the bar.
+            tk = pg.eval_on_selector_all(
+                '#ticks .tk', 'e=>e.map(x=>parseFloat(x.style.left))')
+            check('the timeline scale is drawn', len(tk) > 80, f'{len(tk)} ticks')
+            check('the scale spans the bar',
+                  bool(tk) and min(tk) < 25 and max(tk) > 70,
+                  f'{min(tk):.0f}%–{max(tk):.0f}%' if tk else 'none')
             check('the scale marks where you are', not pg.is_hidden('#mark'))
             import re as _re
             pg.goto('http://127.0.0.1:8911/#era-2/0', wait_until='load'); pg.wait_for_timeout(400)

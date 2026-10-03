@@ -1131,11 +1131,18 @@ function visible(p){ return gear!=="century" || p.y>=1890; }
 function drawScale(){
   const W = T.undated ? 88 : 100;
   const sc = x => x*W/100;
-  let h="";
+  // One tick per card put 1,100+ spans on the bar, most of them stacked on the
+  // same pixel and invisible — half the DOM of every page. Collapse to one per
+  // column; a card tick wins over a film tick so the taller mark survives.
+  const col = new Map();
   for(const p of T.pts){
     if(!visible(p)) continue;
-    h += `<span class="tk${p.f?" f":""}" style="left:${sc(xOf(p.y)).toFixed(3)}%;height:${p.f?7:11}px"></span>`;
+    const k = (Math.round(sc(xOf(p.y)) / 0.15) * 0.15).toFixed(2);
+    if(!col.has(k) || (col.get(k) && p.f === 0)) col.set(k, p.f);
   }
+  let h="";
+  for(const [left, f] of col)
+    h += `<span class="tk${f?" f":""}" style="left:${left}%;height:${f?7:11}px"></span>`;
   $("#ticks").innerHTML = h;
   const marks = gear==="century"
     ? [1900,1920,1940,1960,1980,2000]
