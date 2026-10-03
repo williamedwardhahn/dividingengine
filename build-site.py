@@ -110,6 +110,7 @@ def film_card(f):
     if src.get('kind') != 'youtube':
         if src.get('embed'): c['emb'] = src['embed']
         if src.get('url'):   c['url'] = src['url']
+        if src.get('hls'):   c['hls'] = src['hls']
     if src.get('reason'): c['why'] = src['reason']
     if src.get('via'):    c['via'] = src['via']
     if f.get('collections'): c['coll'] = f['collections']
@@ -617,7 +618,10 @@ def main():
     # addressable, in the Back chain. They were bolted on beside the card system;
     # a book's apparatus belongs inside the book.
     for sid, title, sub in (
-            ('contents', 'Contents', 'the whole archive, in order'),
+            # The reading surface, not an index. Every card's line is printed
+            # there, so nobody has to page through a 577-card stack to find
+            # out what it says.
+            ('contents', 'Timeline', 'every card, in order, with what it says'),
             ('index',    'Index',    'every name, alphabetically'),
             ('glossary', 'Glossary', 'terms, as the cards define them')):
         stacks.append({'id': sid, 'kind': 'apparatus', 'title': title, 'sub': sub,

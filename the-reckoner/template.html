@@ -78,11 +78,19 @@ details.toc[open] summary::before{content:"▾"}
   color:var(--ink-3);flex:0 0 60px}
 .tsub{font-family:var(--mono);font-size:10px;color:var(--ink-3);flex:1}
 .tn{font-family:var(--mono);font-size:10px;color:var(--brass)}
-ol.tocl{list-style:none;margin:8px 0 6px;padding:0 0 0 71px;columns:2;column-gap:34px}
-@media(max-width:720px){ol.tocl{columns:1;padding-left:20px}}
-ol.tocl li{break-inside:avoid;padding:2px 0}
-ol.tocl a{font-size:13px;text-decoration:none;color:var(--ink)}
-ol.tocl a:hover{color:var(--rubric)}
+/* One column, because each entry now carries its own line of prose and two
+   columns of running text is a newspaper, not a timeline. */
+ol.tocl{list-style:none;margin:8px 0 6px;padding:0 0 0 71px;max-width:74ch}
+@media(max-width:720px){ol.tocl{padding-left:20px}}
+ol.tocl li{break-inside:avoid;padding:7px 0;border-top:1px solid var(--rule-2)}
+ol.tocl li:first-child{border-top:0}
+ol.tocl a{font-size:13.5px;text-decoration:none;color:var(--ink)}
+ol.tocl a b{font-weight:500}
+ol.tocl a:hover b{color:var(--rubric)}
+.tlx{margin:3px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.tlfilm{padding:4px 0 2px 71px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase}
+@media(max-width:720px){.tlfilm{padding-left:20px}}
 .td{font-family:var(--mono);font-size:10px;color:var(--brass);margin-right:7px}
 .tf{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-3);margin-left:6px}
@@ -132,6 +140,9 @@ a.xl:hover{border-bottom-color:var(--rubric)}
 .cardpic figcaption a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule)}
 .cardpic figcaption a:hover{color:var(--brass)}
 .filmsyn{margin:2px 0 16px}
+/* 1980s television was 4:3; letterboxing it into 16:9 would be a choice */
+video.hls{width:100%;aspect-ratio:4/3;display:block;background:#000;
+  border:1px solid var(--rule);border-radius:2px}
 
 /* Photographs taken in a museum, shown as plates: the first one large, the
    rest paired beneath it. Each carries its own caption, because a group of
@@ -456,7 +467,10 @@ dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:18px}
 
 <nav id="menubar" aria-label="Menu">
   <button class="mi" data-act="sheet">Films</button>
-  <button class="mi" data-act="home">Home</button>
+  <!-- Timeline takes Home's slot: Home is the first entry in Go, and the
+       reading surface earns a place in the bar more than a second route to
+       a stack you can reach in one click. -->
+  <a class="mi" href="#contents/0">Timeline</a>
   <details class="menu" id="gomenu">
     <summary class="mi">Go &#9662;</summary>
     <div class="dropdown" id="golist"></div>
@@ -566,8 +580,13 @@ function app(){
       contents.push({id:s.id, kind:s.kind||"thread", title:s.title, short:shortName(s),
         sub:s.sub||"", n:s.cards.length,
         film:s.cards.filter(c=>c.kindc==="film").length,
+        // the one-liner itself, not just the title: 650 cards have a median
+        // body of 187 characters and the only way to read them was to page
+        // through the stack one at a time
         cards:s.cards.map((c,i)=>({t:c.t||"", d:c.d||"", to:`${s.id}/${i}`,
-                                   film:c.kindc==="film"?1:0}))});
+                                   film:c.kindc==="film"?1:0,
+                                   x:(c.b||"").replace(/<[^>]+>/g," ")
+                                              .replace(/\s+/g," ").trim().slice(0,240)}))});
     }
     s.cards.forEach((c,i)=>{
       if(s.id==="home"||s.kind==="apparatus"||c.special) return;
@@ -694,21 +713,33 @@ function renderContents(){
   const eras = APP.contents.filter(s=>s.kind==="era");
   const thr  = APP.contents.filter(s=>s.kind!=="era" && s.kind!=="undated");
   const und  = APP.contents.filter(s=>s.kind==="undated");
-  const grp = (s,i)=>`
-    <details class="toc"${i<2?" open":""}>
+  // Read the thing, don't navigate to it. Every card's one-liner is printed
+  // here in order; the card view is for the ones that have grown past a line.
+  // Films are counted rather than listed — 1,256 of them would bury the prose,
+  // and the film sheet already browses them properly.
+  const row = c => `<li><a href="#${c.to}">`
+    + (c.d ? `<span class="td">${esc(c.d)}</span>` : "")
+    + `<b>${esc(c.t)}</b></a>`
+    + (c.x ? `<p class="tlx">${esc(c.x)}</p>` : "")
+    + `</li>`;
+  const grp = (s,open)=>{
+    const prose = s.cards.filter(c=>!c.film);
+    return `<details class="toc"${open?" open":""}>
       <summary><span class="tnum">${esc(s.id.replace('-',' '))}</span>
         <a class="x" href="#${s.id}/0">${esc(s.short)}</a>
         <span class="tsub">${esc(s.sub||"")}</span>
-        <span class="tn">${s.n}${s.film?` · ${s.film} film`:""}</span></summary>
-      <ol class="tocl">${s.cards.map(c=>
-        `<li><a href="#${c.to}">${c.d?`<span class="td">${esc(c.d)}</span>`:""}${esc(c.t)}${c.film?'<span class="tf">film</span>':""}</a></li>`
-      ).join("")}</ol>
+        <span class="tn">${prose.length}${s.film?` · ${s.film} film`:""}</span></summary>
+      <ol class="tocl">${prose.map(row).join("")}</ol>
+      ${s.film? `<p class="tlfilm"><a class="x" href="#films">${s.film} film${s.film>1?"s":""}
+         from this era &rarr;</a></p>`:""}
     </details>`;
-  return `<p class="tocintro">${eras.reduce((a,s)=>a+s.n,0)} cards on the timeline,
-    ${thr.reduce((a,s)=>a+s.n,0)} more along the threads.</p>
-    <h2 class="toch">The timeline</h2>${eras.map(grp).join("")}
-    <h2 class="toch">The threads</h2>${thr.map((s,i)=>grp(s,9)).join("")}`
-    + (und.length? `<h2 class="toch">Not yet dated</h2>${und.map((s,i)=>grp(s,9)).join("")}`:"");
+  };
+  const nProse = eras.reduce((a,s)=>a+s.cards.filter(c=>!c.film).length,0);
+  return `<p class="tocintro">${nProse} cards on the timeline, each with what it says,
+    ${thr.reduce((a,s)=>a+s.cards.filter(c=>!c.film).length,0)} more along the threads.</p>
+    <h2 class="toch">The timeline</h2>${eras.map(s=>grp(s,true)).join("")}
+    <h2 class="toch">The threads</h2>${thr.map(s=>grp(s,false)).join("")}`
+    + (und.length? `<h2 class="toch">Not yet dated</h2>${und.map(s=>grp(s,false)).join("")}`:"");
 }
 function listFilter(id, ph){
   return `<div class="lfind"><input id="${id}" type="search" placeholder="${ph}"
@@ -848,6 +879,51 @@ const ytWatch = v => `https://www.youtube.com/watch?v=${v}`;
 const filmEmbed = cd => cd.emb || (cd.v ? ytEmbed(cd.v) : "");
 const filmUrl   = cd => cd.url || (cd.v ? ytWatch(cd.v) : "");
 
+// hls.js, loaded once and only when a stream card is actually opened. Safari
+// plays HLS natively and never fetches it.
+let hlsLib = null;
+function hlsReady(){
+  if(window.Hls) return Promise.resolve();
+  if(!hlsLib) hlsLib = new Promise(done => {
+    const s = document.createElement("script");
+    s.src = "https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.17/hls.min.js";
+    s.onload = done; s.onerror = done;
+    document.head.appendChild(s);
+  });
+  return hlsLib;
+}
+function playHls(id){
+  const v = document.getElementById(id);
+  if(!v || v.dataset.wired) return;
+  v.dataset.wired = "1";
+  const src = v.dataset.src;
+  // Chromium answers "maybe" to canPlayType for HLS and then plays it badly —
+  // it pinned the 256x144 rung for an entire clip. Only Safari, which answers
+  // "probably" and has a real implementation, gets the native path.
+  if(v.canPlayType("application/vnd.apple.mpegurl") === "probably"){
+    v.src = src; return;
+  }
+  hlsReady().then(() => {
+    if(window.Hls && window.Hls.isSupported()){
+      const h = new window.Hls({maxBufferLength: 30});
+      h.on(window.Hls.Events.MANIFEST_PARSED, () => {
+        // The manifest lists renditions largest first, so "the last one that
+        // fits" is the smallest one. Take the widest that fits instead.
+        const want = (v.clientWidth || 640) * (window.devicePixelRatio || 1) * 1.3;
+        let best = 0;
+        h.levels.forEach((lv, i) => {
+          if(lv.width <= want && lv.width > (h.levels[best].width || 0)) best = i;
+        });
+        h.startLevel = best;
+        h.currentLevel = best;
+      });
+      h.loadSource(src); h.attachMedia(v);
+    } else {
+      v.src = src;                       // last resort; some browsers manage
+    }
+  });
+}
+
 function renderFilm(cd){
   const meta = [cd.by, cd.dur? fmtDur(cd.dur) : "", cd.via? "restored copy" : ""]
         .filter(Boolean).map(x=>`<span>${esc(x)}</span>`).join("");
@@ -855,7 +931,16 @@ function renderFilm(cd){
   // Most films carry no prose. The ones that do — the BBC archive supplies a
   // synopsis — were shipping it and never showing it.
   if(cd.b) h += `<div class="body filmsyn">${linkify(md(cd.b.includes("<")? cd.b : esc(cd.b)))}</div>`;
-  if(cd.status==="live" && filmEmbed(cd)){
+  if(cd.hls){
+    // The BBC serve these with access-control-allow-origin: *, so they play
+    // here rather than only linking out.
+    const vid = "hls" + (cd.v || "").replace(/[^a-z0-9]/gi, "");
+    h += `<div class="film"><video id="${vid}" class="hls" controls preload="none"
+          playsinline poster="${esc(cd.img||"")}" data-src="${esc(cd.hls)}"></video></div>
+          <p class="small">From the <a href="${esc(filmUrl(cd))}" target="_blank"
+          rel="noopener">BBC Computer Literacy Project Archive &nearr;</a></p>`;
+    setTimeout(() => playHls(vid), 0);
+  } else if(cd.status==="live" && filmEmbed(cd)){
     h += `<div class="film"><iframe src="${esc(filmEmbed(cd))}" title="${esc(cd.t)}" loading="lazy"
           allowfullscreen allow="accelerometer; encrypted-media; picture-in-picture"></iframe></div>`;
     if(cd.via) h += `<p class="small">Restored copy — <a href="${esc(filmUrl(cd))}" target="_blank"
